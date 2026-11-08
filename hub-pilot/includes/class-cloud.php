@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors.Discouraged -- Custom analytics tables and the file-based spool require direct queries and file I/O.
+// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors.Discouraged, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom analytics tables and the file-based spool require direct queries and file I/O; every table identifier is a fixed internal wphs_* name, never user input.
 
 final class WPHS_Cloud {
 

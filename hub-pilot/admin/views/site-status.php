@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables are local to the admin method that requires this file.
+
 $overview       = isset( $overview ) && is_array( $overview ) ? $overview : array();
 $overview_error = isset( $overview_error ) ? (string) $overview_error : '';
 $overview_stale = ! empty( $overview_stale );

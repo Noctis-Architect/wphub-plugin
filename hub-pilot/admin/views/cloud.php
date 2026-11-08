@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables are local to the admin method that requires this file.
+
 $settings_url = add_query_arg( array( 'page' => 'hub-pilot-settings' ), admin_url( 'admin.php' ) );
 $notice       = get_transient( 'wphs_cloud_notice' );
 

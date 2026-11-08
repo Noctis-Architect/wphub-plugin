@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables are local to the admin method that requires this file.
+
 $security     = WPHS_Security_Check::results();
 $has_failures = ! empty( $security['failures'] );
 ?>
