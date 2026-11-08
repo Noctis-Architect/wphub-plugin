@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors.Discouraged -- Custom analytics tables and the file-based spool require direct queries and file I/O.
+
 final class WPHS_Cloud {
 
 	const CRON                 = 'wphs_cloud_sync';
@@ -126,6 +128,7 @@ final class WPHS_Cloud {
 			);
 		}
 
+		/* translators: %d: HTTP status code. */
 		$message = is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Could not fetch site status from the console (HTTP %d).', 'traffic-analytics' ), $code );
 
 		return self::overview_fallback( substr( wp_strip_all_tags( (string) $message ), 0, 300 ), $code );
@@ -185,6 +188,7 @@ final class WPHS_Cloud {
 		$raw  = (string) wp_remote_retrieve_body( $response );
 		$data = json_decode( $raw, true );
 		$ok   = $code >= 200 && $code < 300;
+		/* translators: %d: HTTP status code. */
 		$msg  = $ok ? __( 'Connected to the console.', 'traffic-analytics' ) : ( is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Invalid response from the console (HTTP %d)', 'traffic-analytics' ), $code ) );
 		$msg  = substr( wp_strip_all_tags( (string) $msg ), 0, 300 );
 

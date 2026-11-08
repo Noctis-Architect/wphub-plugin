@@ -1,9 +1,12 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom analytics tables use fixed names from WPHS_Schema::table().
+
 final class WPHS_Reports {
 
 	public static function requested_range() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only report parameter.
 		$range = isset( $_GET['range'] ) ? absint( $_GET['range'] ) : 7;
 
 		if ( ! in_array( $range, array( 1, 7, 30, 90 ), true ) ) {
@@ -14,6 +17,7 @@ final class WPHS_Reports {
 	}
 
 	public static function requested_mode() {
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only report parameter.
 		$mode = isset( $_GET['mode'] ) ? sanitize_key( wp_unslash( $_GET['mode'] ) ) : 'verified';
 
 		return self::valid_mode( $mode );
@@ -84,13 +88,13 @@ final class WPHS_Reports {
 	public static function start_date( $days ) {
 		$today = current_time( 'Y-m-d' );
 
-		return date( 'Y-m-d', strtotime( $today . ' -' . max( 0, $days - 1 ) . ' days' ) );
+		return wp_date( 'Y-m-d', strtotime( $today . ' -' . max( 0, $days - 1 ) . ' days' ) );
 	}
 
 	public static function detail_cutoff() {
 		$days = max( 7, (int) WPHS_Settings::value( 'retention_detail_days' ) );
 
-		return date( 'Y-m-d', strtotime( current_time( 'Y-m-d' ) . ' -' . $days . ' days' ) );
+		return wp_date( 'Y-m-d', strtotime( current_time( 'Y-m-d' ) . ' -' . $days . ' days' ) );
 	}
 
 	public static function detail_from( $start ) {
@@ -151,8 +155,8 @@ final class WPHS_Reports {
 		$table = WPHS_Schema::table( $all ? 'totals' : 'totals_grade' );
 		$where = $all ? '' : self::grade_filter( $mode );
 
-		$end   = date( 'Y-m-d', strtotime( $start . ' -1 day' ) );
-		$begin = date( 'Y-m-d', strtotime( $end . ' -' . max( 0, $days - 1 ) . ' days' ) );
+		$end   = wp_date( 'Y-m-d', strtotime( $start . ' -1 day' ) );
+		$begin = wp_date( 'Y-m-d', strtotime( $end . ' -' . max( 0, $days - 1 ) . ' days' ) );
 
 		$row = $wpdb->get_row(
 			$wpdb->prepare(
@@ -245,7 +249,7 @@ final class WPHS_Reports {
 		$out = array();
 
 		for ( $i = $days - 1; $i >= 0; $i-- ) {
-			$day = date( 'Y-m-d', strtotime( $today . ' -' . $i . ' days' ) );
+			$day = wp_date( 'Y-m-d', strtotime( $today . ' -' . $i . ' days' ) );
 			$row = isset( $map[ $day ] ) ? $map[ $day ] : array();
 
 			$out[] = array(
@@ -528,6 +532,7 @@ final class WPHS_Reports {
 
 		if ( $seconds < 60 ) {
 			return sprintf(
+				/* translators: %s: number of seconds. */
 				_n( '%s second', '%s seconds', $seconds, 'traffic-analytics' ),
 				number_format_i18n( $seconds )
 			);
@@ -538,12 +543,14 @@ final class WPHS_Reports {
 
 		if ( 0 === $rest ) {
 			return sprintf(
+				/* translators: %s: number of minutes. */
 				_n( '%s minute', '%s minutes', $minutes, 'traffic-analytics' ),
 				number_format_i18n( $minutes )
 			);
 		}
 
 		return sprintf(
+			/* translators: %1$s: minutes; %2$s: seconds. */
 			__( '%1$s min %2$s sec', 'traffic-analytics' ),
 			number_format_i18n( $minutes ),
 			number_format_i18n( $rest )

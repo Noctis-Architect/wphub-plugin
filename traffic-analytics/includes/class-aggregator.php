@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors.Discouraged -- Custom analytics tables and the file-based spool require direct queries and file I/O.
+
 final class WPHS_Aggregator {
 
 	const EVENT          = 'wphs_aggregate';
@@ -47,6 +49,7 @@ final class WPHS_Aggregator {
 		}
 
 		if ( function_exists( 'set_time_limit' ) ) {
+			// phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- Extend the execution time for queue processing.
 			@set_time_limit( 120 );
 		}
 

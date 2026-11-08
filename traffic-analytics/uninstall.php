@@ -1,6 +1,8 @@
 <?php
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
+// phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors.Discouraged -- One-time cleanup of fixed plugin tables and the plugin spool directory.
+
 wp_clear_scheduled_hook( 'wphs_aggregate' );
 wp_clear_scheduled_hook( 'wphs_cloud_sync' );
 

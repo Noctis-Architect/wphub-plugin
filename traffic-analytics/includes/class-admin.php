@@ -227,6 +227,7 @@ final class WPHS_Admin {
 
 		if ( $result['ok'] && 'sent' === $result['message'] ) {
 			$message = sprintf(
+				/* translators: %1$s: number of sent events; %2$s: number of queued events. */
 				__( '%1$s events were sent to the console; %2$s events remain queued.', 'traffic-analytics' ),
 				number_format_i18n( $result['sent'] ),
 				number_format_i18n( $result['pending'] )

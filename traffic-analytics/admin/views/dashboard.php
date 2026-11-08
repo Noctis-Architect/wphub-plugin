@@ -5,6 +5,7 @@ $t            = $data['totals'];
 $prev         = $data['prev'];
 $changes      = $data['changes'];
 $range        = (int) $data['days'];
+// phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Local template variable.
 $mode         = $data['mode'];
 $mode_label   = $data['mode_label'];
 $mode_hint    = $data['mode_hint'];
@@ -12,8 +13,11 @@ $mode_options = $data['mode_options'];
 $quality      = $data['quality'];
 $ranges       = array(
 	1  => __( 'Today', 'traffic-analytics' ),
+	/* translators: %s: number of days. */
 	7  => sprintf( _n( '%s day', '%s days', 7, 'traffic-analytics' ), number_format_i18n( 7 ) ),
+	/* translators: %s: number of days. */
 	30 => sprintf( _n( '%s day', '%s days', 30, 'traffic-analytics' ), number_format_i18n( 30 ) ),
+	/* translators: %s: number of days. */
 	90 => sprintf( _n( '%s day', '%s days', 90, 'traffic-analytics' ), number_format_i18n( 90 ) ),
 );
 $next         = wp_next_scheduled( WPHS_Aggregator::EVENT );
@@ -50,6 +54,7 @@ foreach ( $quality['groups'] as $group ) {
 	}
 }
 
+/* translators: %s: time difference, for example "5 minutes". */
 $last_run_text  = $data['last_run'] > 0 ? sprintf( __( '%s ago', 'traffic-analytics' ), human_time_diff( $data['last_run'], time() ) ) : __( 'No processing yet', 'traffic-analytics' );
 $token_set      = ! empty( $token_set );
 $overview_error = isset( $overview_error ) ? (string) $overview_error : '';
@@ -313,12 +318,20 @@ $channel_classes = array(
 		<?php endif; ?>
 
 		<?php if ( $data['detail_limited'] ) : ?>
-			<div class="wphs-notice"><?php echo esc_html( sprintf( __( 'Page, source, device, and event details for part of this range have been deleted. Totals are calculated from daily summaries; details are available from %s.', 'traffic-analytics' ), WPHS_Reports::day_label( $data['detail_from'] ) ) ); ?></div>
+			<div class="wphs-notice">
+			<?php
+			/* translators: %s: date when detailed data starts. */
+			echo esc_html( sprintf( __( 'Page, source, device, and event details for part of this range have been deleted. Totals are calculated from daily summaries; details are available from %s.', 'traffic-analytics' ), WPHS_Reports::day_label( $data['detail_from'] ) ) );
+			?>
+			</div>
 		<?php endif; ?>
 
 		<?php if ( 0 === (int) $t['pageviews'] ) : ?>
 			<div class="wphs-notice">
-				<?php echo esc_html( sprintf( __( 'No data for this range in "%s" mode.', 'traffic-analytics' ), $mode_label ) ); ?>
+				<?php
+				/* translators: %s: report mode label. */
+				echo esc_html( sprintf( __( 'No data for this range in "%s" mode.', 'traffic-analytics' ), $mode_label ) );
+				?>
 				<?php if ( 'all' !== $mode ) : ?>
 					<a href="<?php echo esc_url( $report_url( $range, 'all' ) ); ?>"><?php esc_html_e( 'Show all visits', 'traffic-analytics' ); ?></a>
 				<?php else : ?>
@@ -356,7 +369,12 @@ $channel_classes = array(
 					<?php endif; ?>
 					<?php foreach ( $points as $i => $point ) : ?>
 						<rect x="<?php echo esc_attr( round( $i * $step, 2 ) ); ?>" y="0" width="<?php echo esc_attr( round( $step, 2 ) ); ?>" height="240" fill="transparent" pointer-events="all">
-							<title><?php echo esc_html( sprintf( __( '%1$s — %2$s pageviews, %3$s visitors', 'traffic-analytics' ), WPHS_Reports::day_label( $point['p']['day'] ), number_format_i18n( $point['p']['pageviews'] ), number_format_i18n( $point['p']['visitors'] ) ) ); ?></title>
+							<title>
+							<?php
+							/* translators: %1$s: date; %2$s: pageviews; %3$s: visitors. */
+							echo esc_html( sprintf( __( '%1$s — %2$s pageviews, %3$s visitors', 'traffic-analytics' ), WPHS_Reports::day_label( $point['p']['day'] ), number_format_i18n( $point['p']['pageviews'] ), number_format_i18n( $point['p']['visitors'] ) ) );
+							?>
+							</title>
 						</rect>
 					<?php endforeach; ?>
 				</svg>
@@ -530,13 +548,21 @@ $channel_classes = array(
 
 	<?php if ( $data['spool_size'] > 0 ) : ?>
 		<div class="wphs-notice">
-			<?php echo esc_html( sprintf( __( '%s of data is queued for processing.', 'traffic-analytics' ), size_format( $data['spool_size'], 1 ) ) ); ?>
+			<?php
+			/* translators: %s: amount of queued data, for example "1 KB". */
+			echo esc_html( sprintf( __( '%s of data is queued for processing.', 'traffic-analytics' ), size_format( $data['spool_size'], 1 ) ) );
+			?>
 			<a href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Process queue manually', 'traffic-analytics' ); ?></a>
 		</div>
 	<?php endif; ?>
 
 	<?php if ( ! $next ) : ?>
-		<div class="wphs-notice"><?php echo esc_html( sprintf( __( 'Scheduled processing is not active. Process the queue manually from the settings page or set a server cron for %s.', 'traffic-analytics' ), 'wphs_aggregate' ) ); ?></div>
+		<div class="wphs-notice">
+		<?php
+		/* translators: %s: cron event name. */
+		echo esc_html( sprintf( __( 'Scheduled processing is not active. Process the queue manually from the settings page or set a server cron for %s.', 'traffic-analytics' ), 'wphs_aggregate' ) );
+		?>
+		</div>
 	<?php endif; ?>
 
 	<div class="wphs-footer">

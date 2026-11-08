@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Request headers are analytics inputs and are normalized by dedicated methods.
+
 final class WPHS_Collector {
 
 	const REST_NS = 'wphub-analytics/v1';
@@ -126,7 +128,7 @@ final class WPHS_Collector {
 			return true;
 		}
 
-		if ( ! isset( $_SERVER['REQUEST_METHOD'] ) || 'GET' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) ) {
+		if ( ! isset( $_SERVER['REQUEST_METHOD'] ) || 'GET' !== strtoupper( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ) ) {
 			return true;
 		}
 
