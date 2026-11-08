@@ -27,7 +27,7 @@ A lightweight, cookie-free WordPress analytics plugin with User-Agent + browser-
 - تست امنیت و وضعیت SSL
 - پایش آپ‌تایم و هشدارها
 
-برای شروع، در [کنسول WP-Hub](https://console.wphb.org) یک حساب بسازید، دامنه را تأیید کنید و **کلید اتصال سایت** را دریافت کنید.
+برای شروع، در [کنسول WP-Hub](https://console.wp-hub.org) یک حساب بسازید، دامنه را تأیید کنید و **کلید اتصال سایت** را دریافت کنید.
 
 > آدرس کنسول در پلاگین **ثابت و هاردکد** است. در تنظیمات پلاگین فقط **کلید اتصال** را وارد می‌کنید؛ هیچ فیلد آدرسی وجود ندارد.
 
@@ -61,7 +61,7 @@ A lightweight, cookie-free WordPress analytics plugin with User-Agent + browser-
 define( 'WPHS_CONSOLE_URL', 'https://your-console.example' );
 ```
 
-این کار فقط برای توسعه/خودمیزبانی است و در پنل نمایش داده نمی‌شود. در نسخهٔ عمومی، پیش‌فرض `https://console.wphb.org` است.
+این کار فقط برای توسعه/خودمیزبانی است و در پنل نمایش داده نمی‌شود. در نسخهٔ عمومی، پیش‌فرض `https://console.wp-hub.org` است.
 
 ### زمان‌بندی ارسال
 
