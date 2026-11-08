@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: HubPilot 0.4.0\n"
+"Project-Id-Version: HubPilot 0.4.1\n"
 "Report-Msgid-Bugs-To: https://wp-hub.org/contact\n"
 "POT-Creation-Date: 2026-11-07 23:14+0330\n"
 "PO-Revision-Date: 2026-11-07 23:14+0330\n"
@@ -495,20 +495,11 @@ msgstr "برای شمردن بازدید در حالت «تأییدشده»، ا
 msgid "Known bots are filtered by User-Agent. Visits without browser verification appear in \"No-JS\", and rejected visits appear in \"Suspect\"."
 msgstr "ربات‌های شناخته‌شده بر اساس User-Agent حذف می‌شوند. بازدیدهای بدون تأیید مرورگر در حالت «بدون JS» و بازدیدهای ردشده در حالت «مشکوک» نمایش داده می‌شوند."
 
-msgid "Send visitor IP to console"
-msgstr "ارسال IP به کنسول"
-
-msgid "In Cloud mode, send the visitor IP to the console for datacenter and country detection"
-msgstr "در حالت ابری، IP بازدیدکننده برای تشخیص دیتاسنتر و کشور به کنسول ارسال شود"
-
-msgid "The IP is sent only server-to-server over HTTPS; the console stores only the result (datacenter/country) and does not keep the raw IP. This option has no effect in Local mode."
-msgstr "IP فقط در ارتباط سرور به سرور و روی HTTPS ارسال می‌شود؛ کنسول فقط نتیجه (دیتاسنتر/کشور) را ذخیره می‌کند و IP خام را نگه نمی‌دارد. در حالت محلی این گزینه اثری ندارد."
-
 msgid "Privacy and filtering"
 msgstr "حریم خصوصی و فیلتر"
 
-msgid "No raw IP storage"
-msgstr "بدون ذخیره IP خام"
+msgid "Cookie-free"
+msgstr "بدون کوکی"
 
 msgid "Logged-in users"
 msgstr "کاربران واردشده"

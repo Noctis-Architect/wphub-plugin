@@ -4,7 +4,7 @@ Tags: analytics, security, monitoring, privacy, cookieless
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.0
+Stable tag: 0.4.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,7 +60,7 @@ Local mode:
 Cloud mode:
 
 * No analytics rows are written to the local analytics tables. Events wait in a protected spool file and are sent every five minutes.
-* The batch includes the site URL and host, WordPress version, plugin version, timezone, and the event fields listed above. It can also include the visitor IP address when "Send visitor IP to console" is enabled; the console uses it for datacenter, Tor, VPN, and country classification. See the service privacy policy for details.
+* The batch includes the site URL and host, WordPress version, plugin version, timezone, and the event fields listed above. It includes the visitor IP address; the console uses it for datacenter, Tor, VPN, and country classification. Cloud mode is opt-in: no analytics events are sent until you select Cloud mode and save a site token. See the service privacy policy for details.
 * No analytics events are sent until you select Cloud mode and save a site token.
 
 Uninstalling the plugin removes its settings and temporary queue. Analytics tables are kept unless you enable **Delete analytics tables on uninstall**. See the External services section for the cloud service details.
@@ -75,7 +75,7 @@ This plugin connects to the WP-Hub console only when Cloud mode is enabled and a
 
 * Service: WP-Hub console
 * URL: https://console.wp-hub.org
-* Data sent: site URL and host, WordPress version, plugin version, timezone, page paths and titles, referrer host, channel, device, browser, operating system, country code, hashed visitor and session identifiers, visit grade, timestamps, engagement time, scroll depth, event counts, and optionally the visitor IP address.
+* Data sent: site URL and host, WordPress version, plugin version, timezone, page paths and titles, referrer host, channel, device, browser, operating system, country code, hashed visitor and session identifiers, visit grade, timestamps, engagement time, scroll depth, event counts, and the visitor IP address.
 * When: every five minutes via WP-Cron, or when you press "Send queue now".
 * Purpose: analytics reports, traffic quality, speed tests, security checks, and uptime monitoring in the console.
 * Terms of Use: https://wp-hub.org/terms
@@ -151,6 +151,13 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 
 == Changelog ==
 
+= 0.4.1 =
+* Send tracking beacons through admin-ajax.php so collection works on sites where the CDN blocks POST requests to the REST API.
+* Keep the tracker in cacheable HTML even when a cache entry is created by a bot or a request that is not counted, so real visitors on cached pages are still tracked.
+* Exclude the tracker from LiteSpeed Cache JS optimization and delay, and pass the tracker configuration on the script tag.
+* Add a generator meta tag so the source credit remains visible when HTML minification removes comments.
+* Cloud mode now always sends the visitor IP for country and datacenter classification; the separate "Send visitor IP" option was removed.
+
 = 0.4.0 =
 * Initial public release.
 * Cookie-free local analytics with a dashboard for pageviews, visitors, sessions, bounce rate, engaged time, pages, sources, devices, and events.
@@ -163,6 +170,9 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 * English admin interface with a Persian translation that follows the site or user locale.
 
 == Upgrade Notice ==
+
+= 0.4.1 =
+Improves tracker delivery on cached and CDN-protected sites, keeps the source credit in optimized HTML, and removes the separate visitor IP option. Cloud mode now includes the visitor IP.
 
 = 0.4.0 =
 Initial public release.

@@ -214,20 +214,13 @@ $cloud_cron_txt     = $cloud['cron_next'] > time() ? wp_date( 'Y/m/d H:i', $clou
 						<p class="wphs-hint"><?php esc_html_e( 'Known bots are filtered by User-Agent. Visits without browser verification appear in "No-JS", and rejected visits appear in "Suspect".', 'hub-pilot' ); ?></p>
 					</td>
 				</tr>
-				<tr>
-					<th scope="row"><?php esc_html_e( 'Send visitor IP to console', 'hub-pilot' ); ?></th>
-					<td>
-						<label><input type="checkbox" name="send_visitor_ip" value="1" <?php checked( ! empty( $settings['send_visitor_ip'] ) ); ?>> <?php esc_html_e( 'In Cloud mode, send the visitor IP to the console for datacenter and country detection', 'hub-pilot' ); ?></label>
-						<p class="wphs-hint"><?php esc_html_e( 'The IP is sent only server-to-server over HTTPS; the console stores only the result (datacenter/country) and does not keep the raw IP. This option has no effect in Local mode.', 'hub-pilot' ); ?></p>
-					</td>
-				</tr>
 			</table>
 		</section>
 
 		<section class="wphs-card">
 			<div class="wphs-card-head">
 				<h2><?php esc_html_e( 'Privacy and filtering', 'hub-pilot' ); ?></h2>
-				<span class="wphs-muted"><?php esc_html_e( 'No raw IP storage', 'hub-pilot' ); ?></span>
+				<span class="wphs-muted"><?php esc_html_e( 'Cookie-free', 'hub-pilot' ); ?></span>
 			</div>
 			<table class="wphs-field-table" role="presentation">
 				<tr>

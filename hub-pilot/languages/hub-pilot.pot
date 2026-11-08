@@ -6,7 +6,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: HubPilot 0.4.0\n"
+"Project-Id-Version: HubPilot 0.4.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-11-08 19:27+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin/views/dashboard.php:15
 msgid "Today"
@@ -739,29 +739,12 @@ msgid ""
 "appear in \"No-JS\", and rejected visits appear in \"Suspect\"."
 msgstr ""
 
-#: admin/views/settings.php:216
-msgid "Send visitor IP to console"
-msgstr ""
-
-#: admin/views/settings.php:218
-msgid ""
-"In Cloud mode, send the visitor IP to the console for datacenter and country "
-"detection"
-msgstr ""
-
-#: admin/views/settings.php:219
-msgid ""
-"The IP is sent only server-to-server over HTTPS; the console stores only the "
-"result (datacenter/country) and does not keep the raw IP. This option has no "
-"effect in Local mode."
-msgstr ""
-
 #: admin/views/settings.php:227
 msgid "Privacy and filtering"
 msgstr ""
 
-#: admin/views/settings.php:228
-msgid "No raw IP storage"
+#: admin/views/settings.php:223
+msgid "Cookie-free"
 msgstr ""
 
 #: admin/views/settings.php:232
