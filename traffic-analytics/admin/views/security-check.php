@@ -30,5 +30,10 @@ $has_failures = ! empty( $security['failures'] );
 		<p class="wphs-security-note"><?php esc_html_e( 'Some checks could not run from this server.', 'traffic-analytics' ); ?></p>
 	<?php endif; ?>
 
-	<p class="wphs-table-note"><?php echo esc_html( sprintf( __( 'Checked %s ago.', 'traffic-analytics' ), human_time_diff( $security['checked_at'], time() ) ) ); ?></p>
+	<p class="wphs-table-note">
+	<?php
+	/* translators: %s: time difference, for example "5 minutes". */
+	echo esc_html( sprintf( __( 'Checked %s ago.', 'traffic-analytics' ), human_time_diff( $security['checked_at'], time() ) ) );
+	?>
+	</p>
 </section>

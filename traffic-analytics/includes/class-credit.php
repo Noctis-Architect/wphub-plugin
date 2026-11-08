@@ -25,9 +25,9 @@ final class WPHS_Credit {
 		$rule  = str_repeat( '─', $width );
 
 		echo "\n<!--\n";
-		echo '  ┌' . $rule . "┐\n";
-		echo '  │' . str_pad( $label, $width, ' ', STR_PAD_BOTH ) . "│\n";
-		echo '  └' . $rule . "┘\n";
+		echo esc_html( '  ┌' . $rule . "┐\n" );
+		echo esc_html( '  │' . str_pad( $label, $width, ' ', STR_PAD_BOTH ) . "│\n" );
+		echo esc_html( '  └' . $rule . "┘\n" );
 		echo "-->\n";
 	}
 }

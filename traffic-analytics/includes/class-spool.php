@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.WP.AlternativeFunctions, WordPress.PHP.NoSilencedErrors.Discouraged -- The spool uses direct file I/O and locks for a high-frequency queue.
+
 final class WPHS_Spool {
 
 	const OPTION_KEY   = 'wphs_spool_key';

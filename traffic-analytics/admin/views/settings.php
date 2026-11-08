@@ -6,9 +6,11 @@ $last_run     = (int) get_option( 'wphs_last_run', 0 );
 $spool        = WPHS_Spool::size();
 $files        = WPHS_Spool::files();
 $dashboard    = add_query_arg( array( 'page' => 'wphub-analytics' ), admin_url( 'admin.php' ) );
+/* translators: %s: time difference, for example "5 minutes". */
 $last_run_txt = $last_run > 0 ? sprintf( __( '%s ago', 'traffic-analytics' ), human_time_diff( $last_run, time() ) ) : __( 'Not yet', 'traffic-analytics' );
 $next_txt     = $next && $next > time() ? wp_date( 'Y/m/d H:i', $next ) : __( 'Waiting to run', 'traffic-analytics' );
-$dir_ok       = is_dir( WPHS_Spool::dir() ) && is_writable( WPHS_Spool::dir() );
+$dir_ok       = is_dir( WPHS_Spool::dir() ) && wp_is_writable( WPHS_Spool::dir() );
+// phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Local template variable.
 $mode         = WPHS_Settings::mode();
 $cloud        = WPHS_Cloud::status();
 $cloud_notice = get_transient( 'wphs_cloud_notice' );
@@ -17,7 +19,9 @@ if ( $cloud_notice ) {
 	delete_transient( 'wphs_cloud_notice' );
 }
 
+/* translators: %s: time difference, for example "5 minutes". */
 $cloud_last_success = $cloud['last_success'] > 0 ? sprintf( __( '%s ago', 'traffic-analytics' ), human_time_diff( $cloud['last_success'], time() ) ) : '—';
+/* translators: %s: time difference until the next attempt. */
 $cloud_next_txt     = $cloud['next_attempt'] > time() ? sprintf( __( 'in about %s', 'traffic-analytics' ), human_time_diff( time(), $cloud['next_attempt'] ) ) : '—';
 $cloud_cron_txt     = $cloud['cron_next'] > time() ? wp_date( 'Y/m/d H:i', $cloud['cron_next'] ) : __( 'Waiting to run', 'traffic-analytics' );
 ?>
@@ -35,10 +39,12 @@ $cloud_cron_txt     = $cloud['cron_next'] > time() ? wp_date( 'Y/m/d H:i', $clou
 		</div>
 	</header>
 
+	<?php // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only display flag. ?>
 	<?php if ( isset( $_GET['updated'] ) ) : ?>
 		<div class="wphs-notice is-success"><?php esc_html_e( 'Settings saved.', 'traffic-analytics' ); ?></div>
 	<?php endif; ?>
 
+	<?php // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only display flag. ?>
 	<?php if ( isset( $_GET['flushed'] ) ) : ?>
 		<div class="wphs-notice is-success"><?php esc_html_e( 'Queue processed; existing data was added to analytics.', 'traffic-analytics' ); ?></div>
 	<?php endif; ?>
@@ -147,7 +153,12 @@ $cloud_cron_txt     = $cloud['cron_next'] > time() ? wp_date( 'Y/m/d H:i', $clou
 					<td>
 						<select id="wphs-detail" name="retention_detail_days">
 							<?php foreach ( array( 7, 14, 30, 60, 90 ) as $days ) : ?>
-								<option value="<?php echo esc_attr( $days ); ?>" <?php selected( (int) $settings['retention_detail_days'], $days ); ?>><?php echo esc_html( sprintf( _n( '%s day', '%s days', $days, 'traffic-analytics' ), number_format_i18n( $days ) ) ); ?></option>
+								<option value="
+								<?php echo esc_attr( $days ); ?>" <?php selected( (int) $settings['retention_detail_days'], $days ); ?>><?php
+								/* translators: %s: number of days. */
+								echo esc_html( sprintf( _n( '%s day', '%s days', $days, 'traffic-analytics' ), number_format_i18n( $days ) ) );
+								?>
+								</option>
 							<?php endforeach; ?>
 						</select>
 						<p class="wphs-hint"><?php esc_html_e( 'After this period, per-visit tracking, hourly stats, sessions, and events are deleted.', 'traffic-analytics' ); ?></p>
@@ -158,7 +169,12 @@ $cloud_cron_txt     = $cloud['cron_next'] > time() ? wp_date( 'Y/m/d H:i', $clou
 					<td>
 						<select id="wphs-daily" name="retention_daily_days">
 							<?php foreach ( array( 30, 90, 180, 365 ) as $days ) : ?>
-								<option value="<?php echo esc_attr( $days ); ?>" <?php selected( (int) $settings['retention_daily_days'], $days ); ?>><?php echo esc_html( sprintf( _n( '%s day', '%s days', $days, 'traffic-analytics' ), number_format_i18n( $days ) ) ); ?></option>
+								<option value="
+								<?php echo esc_attr( $days ); ?>" <?php selected( (int) $settings['retention_daily_days'], $days ); ?>><?php
+								/* translators: %s: number of days. */
+								echo esc_html( sprintf( _n( '%s day', '%s days', $days, 'traffic-analytics' ), number_format_i18n( $days ) ) );
+								?>
+								</option>
 							<?php endforeach; ?>
 						</select>
 						<p class="wphs-hint"><?php esc_html_e( 'After this period, page, source, device, and browser breakdowns are deleted and only daily totals remain.', 'traffic-analytics' ); ?></p>
@@ -169,7 +185,12 @@ $cloud_cron_txt     = $cloud['cron_next'] > time() ? wp_date( 'Y/m/d H:i', $clou
 					<td>
 						<select id="wphs-totals" name="retention_totals_months">
 							<?php foreach ( array( 0, 6, 12, 24, 36, 60 ) as $months ) : ?>
-								<option value="<?php echo esc_attr( $months ); ?>" <?php selected( (int) $settings['retention_totals_months'], $months ); ?>><?php echo 0 === $months ? esc_html__( 'Keep forever', 'traffic-analytics' ) : esc_html( sprintf( _n( '%s month', '%s months', $months, 'traffic-analytics' ), number_format_i18n( $months ) ) ); ?></option>
+								<option value="
+								<?php echo esc_attr( $months ); ?>" <?php selected( (int) $settings['retention_totals_months'], $months ); ?>><?php
+								/* translators: %s: number of months. */
+								echo 0 === $months ? esc_html__( 'Keep forever', 'traffic-analytics' ) : esc_html( sprintf( _n( '%s month', '%s months', $months, 'traffic-analytics' ), number_format_i18n( $months ) ) );
+								?>
+								</option>
 							<?php endforeach; ?>
 						</select>
 						<p class="wphs-hint"><?php esc_html_e( 'Older data, including daily totals, is deleted after this period. "Keep forever" accepts very slow database growth.', 'traffic-analytics' ); ?></p>

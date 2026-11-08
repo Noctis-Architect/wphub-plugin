@@ -40,6 +40,7 @@ register_deactivation_hook( __FILE__, array( 'WPHS_Cloud', 'deactivate' ) );
 add_action(
 	'plugins_loaded',
 	static function () {
+		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- Bundled translations are loaded for non-WordPress.org installs.
 		load_plugin_textdomain( 'traffic-analytics', false, dirname( plugin_basename( WPHS_FILE ) ) . '/languages' );
 		WPHS_Schema::maybe_upgrade();
 		WPHS_Collector::init();

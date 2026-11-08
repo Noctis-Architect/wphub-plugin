@@ -33,8 +33,11 @@ if ( $console_analytics ) {
 	}
 }
 
+/* translators: %s: time difference, for example "5 minutes". */
 $last_success = $status['last_success'] > 0 ? sprintf( __( '%s ago', 'traffic-analytics' ), human_time_diff( $status['last_success'], time() ) ) : __( 'Not yet', 'traffic-analytics' );
+/* translators: %s: time difference, for example "5 minutes". */
 $last_attempt = $status['last_attempt'] > 0 ? sprintf( __( '%s ago', 'traffic-analytics' ), human_time_diff( $status['last_attempt'], time() ) ) : __( 'No attempts yet', 'traffic-analytics' );
+/* translators: %s: time difference until the next attempt. */
 $next_attempt = $status['next_attempt'] > time() ? sprintf( __( 'in about %s', 'traffic-analytics' ), human_time_diff( time(), $status['next_attempt'] ) ) : '—';
 $cron_next    = $status['cron_next'] > time() ? wp_date( 'Y/m/d H:i', $status['cron_next'] ) : __( 'Waiting to run', 'traffic-analytics' );
 $connected    = $status['token_set'] && '' === $status['last_error'];
@@ -70,7 +73,12 @@ $connected    = $status['token_set'] && '' === $status['last_error'];
 		<section class="wphs-card">
 			<div class="wphs-card-head">
 				<h2><?php esc_html_e( 'Console analytics', 'traffic-analytics' ); ?></h2>
-				<span class="wphs-muted"><?php echo esc_html( sprintf( _n( 'Last %s day', 'Last %s days', $ca_days, 'traffic-analytics' ), number_format_i18n( $ca_days ) ) ); ?></span>
+				<span class="wphs-muted">
+				<?php
+				/* translators: %s: number of days. */
+				echo esc_html( sprintf( _n( 'Last %s day', 'Last %s days', $ca_days, 'traffic-analytics' ), number_format_i18n( $ca_days ) ) );
+				?>
+				</span>
 			</div>
 			<div class="wphs-console-stats">
 				<div><span><?php esc_html_e( 'Pageviews', 'traffic-analytics' ); ?></span><strong><?php echo esc_html( WPHS_Reports::int( $console_analytics['pageviews'] ?? 0 ) ); ?></strong></div>
@@ -87,7 +95,12 @@ $connected    = $status['token_set'] && '' === $status['last_error'];
 		<div class="wphs-kpi">
 			<div class="wphs-kpi-top"><span class="wphs-kpi-label"><?php esc_html_e( 'Queued', 'traffic-analytics' ); ?></span></div>
 			<div class="wphs-kpi-value"><?php echo esc_html( WPHS_Reports::int( $status['pending'] ) ); ?></div>
-			<div class="wphs-kpi-foot"><span><?php echo esc_html( sprintf( __( '%1$s in %2$s files', 'traffic-analytics' ), size_format( $status['spool_size'], 1 ), number_format_i18n( $status['files'] ) ) ); ?></span></div>
+			<div class="wphs-kpi-foot"><span>
+			<?php
+			/* translators: %1$s: data size; %2$s: number of files. */
+			echo esc_html( sprintf( __( '%1$s in %2$s files', 'traffic-analytics' ), size_format( $status['spool_size'], 1 ), number_format_i18n( $status['files'] ) ) );
+			?>
+			</span></div>
 		</div>
 		<div class="wphs-kpi">
 			<div class="wphs-kpi-top"><span class="wphs-kpi-label"><?php esc_html_e( 'Last successful sync', 'traffic-analytics' ); ?></span></div>
@@ -113,7 +126,12 @@ $connected    = $status['token_set'] && '' === $status['last_error'];
 			</div>
 			<div class="wphs-status-item">
 				<div class="wphs-status-label"><?php esc_html_e( 'Last batch', 'traffic-analytics' ); ?></div>
-				<div class="wphs-status-value"><?php echo $status['last_count'] > 0 ? esc_html( sprintf( __( '%1$s events — HTTP %2$s', 'traffic-analytics' ), number_format_i18n( $status['last_count'] ), $status['last_http'] ) ) : '—'; ?></div>
+				<div class="wphs-status-value">
+				<?php
+				/* translators: %1$s: number of events; %2$s: HTTP status code. */
+				echo $status['last_count'] > 0 ? esc_html( sprintf( __( '%1$s events — HTTP %2$s', 'traffic-analytics' ), number_format_i18n( $status['last_count'] ), $status['last_http'] ) ) : '—';
+				?>
+				</div>
 			</div>
 			<div class="wphs-status-item">
 				<div class="wphs-status-label"><?php esc_html_e( 'Sync schedule', 'traffic-analytics' ); ?></div>
@@ -125,7 +143,12 @@ $connected    = $status['token_set'] && '' === $status['last_error'];
 			</div>
 			<div class="wphs-status-item">
 				<div class="wphs-status-label"><?php esc_html_e( 'Old local data', 'traffic-analytics' ); ?></div>
-				<div class="wphs-status-value"><?php echo esc_html( sprintf( _n( '%s summary day', '%s summary days', (int) $status['local_rows'], 'traffic-analytics' ), number_format_i18n( $status['local_rows'] ) ) ); ?></div>
+				<div class="wphs-status-value">
+				<?php
+				/* translators: %s: number of days. */
+				echo esc_html( sprintf( _n( '%s summary day', '%s summary days', (int) $status['local_rows'], 'traffic-analytics' ), number_format_i18n( $status['local_rows'] ) ) );
+				?>
+				</div>
 			</div>
 		</div>
 

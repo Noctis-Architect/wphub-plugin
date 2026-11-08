@@ -231,7 +231,12 @@ $monitor_link  = $monitoring && ! empty( $monitoring['url'] ) ? $monitoring['url
 							<span>TTFB <b><?php echo esc_html( $fmt_ms( $monitoring['avg_ttfb_ms'] ) ); ?></b></span>
 						<?php endif; ?>
 						<?php if ( isset( $monitoring['ssl_days_remaining'] ) && is_numeric( $monitoring['ssl_days_remaining'] ) ) : ?>
-							<span>SSL <b><?php echo esc_html( sprintf( _n( '%s day', '%s days', (int) $monitoring['ssl_days_remaining'], 'traffic-analytics' ), number_format_i18n( (int) $monitoring['ssl_days_remaining'] ) ) ); ?></b></span>
+							<span>SSL <b>
+							<?php
+							/* translators: %s: number of days. */
+							echo esc_html( sprintf( _n( '%s day', '%s days', (int) $monitoring['ssl_days_remaining'], 'traffic-analytics' ), number_format_i18n( (int) $monitoring['ssl_days_remaining'] ) ) );
+							?>
+							</b></span>
 						<?php elseif ( isset( $monitoring['ssl_valid'] ) ) : ?>
 							<span>SSL <b><?php echo $monitoring['ssl_valid'] ? esc_html__( 'Valid', 'traffic-analytics' ) : esc_html__( 'Invalid', 'traffic-analytics' ); ?></b></span>
 						<?php endif; ?>
