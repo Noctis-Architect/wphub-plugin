@@ -15,7 +15,6 @@ final class WPHS_Settings {
 			'respect_dnt'             => true,
 			'exclude_404'             => true,
 			'bot_js_check'            => true,
-			'send_visitor_ip'         => true,
 			'hide_notices'            => true,
 			'source_credit'           => true,
 			'retention_detail_days'   => 30,
@@ -93,7 +92,6 @@ final class WPHS_Settings {
 		$out['respect_dnt']         = ! empty( $input['respect_dnt'] );
 		$out['exclude_404']         = ! empty( $input['exclude_404'] );
 		$out['bot_js_check']        = ! empty( $input['bot_js_check'] );
-		$out['send_visitor_ip']     = ! empty( $input['send_visitor_ip'] );
 		$out['hide_notices']        = ! empty( $input['hide_notices'] );
 		$out['source_credit']       = ! empty( $input['source_credit'] );
 		$out['delete_on_uninstall'] = ! empty( $input['delete_on_uninstall'] );

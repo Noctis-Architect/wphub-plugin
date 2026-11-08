@@ -29,5 +29,6 @@ final class WPHS_Credit {
 		echo esc_html( '  │' . str_pad( $label, $width, ' ', STR_PAD_BOTH ) . "│\n" );
 		echo esc_html( '  └' . $rule . "┘\n" );
 		echo "-->\n";
+		echo '<meta name="generator" content="' . esc_attr( 'HubPilot by WP-Hub' ) . '">' . "\n";
 	}
 }

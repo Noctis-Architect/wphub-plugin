@@ -7,6 +7,8 @@ final class WPHS_Collector {
 
 	const REST_NS = 'hub-pilot/v1';
 
+	private static $tracker_config = array();
+
 	private const SEARCH_HOSTS = array(
 		'bing.com',
 		'duckduckgo.com',
@@ -52,10 +54,15 @@ final class WPHS_Collector {
 	public static function init() {
 		add_action( 'template_redirect', array( __CLASS__, 'maybe_capture' ), 20 );
 		add_action( 'rest_api_init', array( __CLASS__, 'register_routes' ) );
+		add_action( 'wp_ajax_nopriv_wphs_collect', array( __CLASS__, 'ajax_collect' ) );
+		add_action( 'wp_ajax_wphs_collect', array( __CLASS__, 'ajax_collect' ) );
+		add_filter( 'script_loader_tag', array( __CLASS__, 'script_tag' ), 10, 3 );
+		add_filter( 'litespeed_optimize_js_excludes', array( __CLASS__, 'litespeed_excludes' ) );
+		add_filter( 'litespeed_optm_js_defer_exc', array( __CLASS__, 'litespeed_excludes' ) );
 	}
 
 	public static function maybe_capture() {
-		if ( self::skip_request() ) {
+		if ( self::skip_request( true ) ) {
 			return;
 		}
 
@@ -66,39 +73,41 @@ final class WPHS_Collector {
 			return;
 		}
 
-		$query    = isset( $_SERVER['QUERY_STRING'] ) ? wp_unslash( $_SERVER['QUERY_STRING'] ) : '';
-		$referrer = isset( $_SERVER['HTTP_REFERER'] ) ? wp_unslash( $_SERVER['HTTP_REFERER'] ) : '';
-		$ref      = self::referrer_data( $referrer, $query );
+		if ( ! self::skip_request() ) {
+			$query    = isset( $_SERVER['QUERY_STRING'] ) ? wp_unslash( $_SERVER['QUERY_STRING'] ) : '';
+			$referrer = isset( $_SERVER['HTTP_REFERER'] ) ? wp_unslash( $_SERVER['HTTP_REFERER'] ) : '';
+			$ref      = self::referrer_data( $referrer, $query );
 
-		$context = array(
-			'eid' => self::random_id(),
-			'h'   => $hit_id,
-			'c'   => '',
-			'src' => 'server',
-			'u'   => $path,
-			'ti'  => self::page_title(),
-			'r'   => $ref['host'],
-			'ch'  => $ref['channel'],
-			'd'   => self::device(),
-			'b'   => self::browser(),
-			'o'   => self::os(),
-			'cc'  => self::country(),
-			'v'   => self::visitor_hash(),
-			's'   => self::session_hash(),
-			'pid' => self::page_id(),
-			'k'   => 'pv',
-			'g'   => 'u',
-			't'   => time(),
-		);
+			$context = array(
+				'eid' => self::random_id(),
+				'h'   => $hit_id,
+				'c'   => '',
+				'src' => 'server',
+				'u'   => $path,
+				'ti'  => self::page_title(),
+				'r'   => $ref['host'],
+				'ch'  => $ref['channel'],
+				'd'   => self::device(),
+				'b'   => self::browser(),
+				'o'   => self::os(),
+				'cc'  => self::country(),
+				'v'   => self::visitor_hash(),
+				's'   => self::session_hash(),
+				'pid' => self::page_id(),
+				'k'   => 'pv',
+				'g'   => 'u',
+				't'   => time(),
+			);
 
-		$ip = self::cloud_ip();
+			$ip = self::cloud_ip();
 
-		if ( '' !== $ip ) {
-			$context['ip'] = $ip;
-		}
+			if ( '' !== $ip ) {
+				$context['ip'] = $ip;
+			}
 
-		if ( ! WPHS_Spool::append( $context ) ) {
-			return;
+			if ( ! WPHS_Spool::append( $context ) ) {
+				return;
+			}
 		}
 
 		wp_enqueue_script(
@@ -113,17 +122,19 @@ final class WPHS_Collector {
 		);
 
 		$inline = array(
-			'e' => esc_url_raw( rest_url( self::REST_NS . '/collect' ) ),
+			'e' => esc_url_raw( admin_url( 'admin-ajax.php?action=wphs_collect' ) ),
 			'h' => $hit_id,
 			'p' => $path,
 			's' => self::signature( $hit_id, $path ),
 			'd' => WPHS_Settings::value( 'respect_dnt' ) ? 1 : 0,
 		);
 
+		self::$tracker_config = $inline;
+
 		wp_add_inline_script( 'wphs-tracker', 'window.wphs=' . wp_json_encode( $inline ) . ';', 'before' );
 	}
 
-	private static function skip_request() {
+	private static function skip_request( $output_only = false ) {
 		if ( is_admin() || wp_doing_ajax() || wp_doing_cron() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || ( defined( 'WP_CLI' ) && WP_CLI ) ) {
 			return true;
 		}
@@ -138,6 +149,10 @@ final class WPHS_Collector {
 
 		if ( WPHS_Settings::value( 'exclude_404' ) && is_404() ) {
 			return true;
+		}
+
+		if ( $output_only ) {
+			return false;
 		}
 
 		if ( is_user_logged_in() && ! WPHS_Settings::value( 'track_logged_in' ) ) {
@@ -248,7 +263,7 @@ final class WPHS_Collector {
 	}
 
 	private static function cloud_ip() {
-		if ( 'cloud' !== WPHS_Settings::mode() || ! WPHS_Settings::value( 'send_visitor_ip' ) ) {
+		if ( 'cloud' !== WPHS_Settings::mode() ) {
 			return '';
 		}
 
@@ -495,23 +510,74 @@ final class WPHS_Collector {
 			return new WP_Error( 'wphs_too_large', '', array( 'status' => 413 ) );
 		}
 
+		$params = $request->get_json_params();
+
+		if ( ! is_array( $params ) ) {
+			return new WP_Error( 'wphs_bad_request', '', array( 'status' => 400 ) );
+		}
+
+		$result = self::process_collect( $params );
+
+		if ( is_wp_error( $result ) ) {
+			return $result;
+		}
+
+		return new WP_REST_Response( null, 204 );
+	}
+
+	/**
+	 * Transport for sites whose CDN blocks POST requests to the REST API.
+	 * The payload carries the same HMAC signature as the REST route.
+	 */
+	public static function ajax_collect() {
+		$method = isset( $_SERVER['REQUEST_METHOD'] ) ? strtoupper( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ) : '';
+
+		if ( 'POST' !== $method ) {
+			status_header( 405 );
+			exit;
+		}
+
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Public signed analytics beacon; the HMAC signature is verified below.
+		$payload = isset( $_POST['payload'] ) ? wp_unslash( $_POST['payload'] ) : '';
+
+		if ( ! is_string( $payload ) || strlen( $payload ) > 2048 ) {
+			status_header( 413 );
+			exit;
+		}
+
+		$params = json_decode( $payload, true );
+
+		if ( ! is_array( $params ) ) {
+			status_header( 400 );
+			exit;
+		}
+
+		$result = self::process_collect( $params );
+
+		if ( is_wp_error( $result ) ) {
+			$data   = $result->get_error_data();
+			$status = is_array( $data ) && isset( $data['status'] ) ? (int) $data['status'] : 400;
+			status_header( $status );
+			exit;
+		}
+
+		status_header( 204 );
+		exit;
+	}
+
+	private static function process_collect( array $params ) {
 		if ( WPHS_Settings::value( 'respect_dnt' ) && self::is_dnt() ) {
-			return new WP_REST_Response( null, 204 );
+			return true;
 		}
 
 		if ( is_user_logged_in() && ! WPHS_Settings::value( 'track_logged_in' ) ) {
-			return new WP_REST_Response( null, 204 );
+			return true;
 		}
 
 		$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '';
 
 		if ( WPHS_Bot_Filter::is_bot( $ua ) ) {
-			return new WP_REST_Response( null, 204 );
-		}
-
-		$params = $request->get_json_params();
-		if ( ! is_array( $params ) ) {
-			return new WP_Error( 'wphs_bad_request', '', array( 'status' => 400 ) );
+			return true;
 		}
 
 		$type = isset( $params['t'] ) ? (string) $params['t'] : '';
@@ -534,38 +600,44 @@ final class WPHS_Collector {
 			$title    = isset( $params['ti'] ) ? (string) $params['ti'] : '';
 			$signals  = isset( $params['bs'] ) && is_array( $params['bs'] ) ? $params['bs'] : null;
 
-			$ref    = self::referrer_data( $referrer, $query );
-			$grade  = 'v';
+			$ref   = self::referrer_data( $referrer, $query );
+			$grade = 'v';
 
 			if ( WPHS_Settings::value( 'bot_js_check' ) ) {
 				$verdict = WPHS_Bot_Filter::evaluate_js( $signals, $ua );
 				$grade   = $verdict['verified'] ? 'v' : 's';
 			}
 
-			WPHS_Spool::append(
-				array(
-					'eid' => self::random_id(),
-					'k'   => 'pv',
-					'h'   => $hit,
-					'c'   => $id,
-					'src' => 'js',
-					'u'   => $path,
-					'ti'  => substr( sanitize_text_field( wp_strip_all_tags( $title ) ), 0, 120 ),
-					'r'   => $ref['host'],
-					'ch'  => $ref['channel'],
-					'd'   => self::device(),
-					'b'   => self::browser(),
-					'o'   => self::os(),
-					'cc'  => self::country(),
-					'v'   => self::visitor_hash(),
-					's'   => self::session_hash(),
-					'pid' => 0,
-					'g'   => $grade,
-					't'   => time(),
-				)
+			$context = array(
+				'eid' => self::random_id(),
+				'k'   => 'pv',
+				'h'   => $hit,
+				'c'   => $id,
+				'src' => 'js',
+				'u'   => $path,
+				'ti'  => substr( sanitize_text_field( wp_strip_all_tags( $title ) ), 0, 120 ),
+				'r'   => $ref['host'],
+				'ch'  => $ref['channel'],
+				'd'   => self::device(),
+				'b'   => self::browser(),
+				'o'   => self::os(),
+				'cc'  => self::country(),
+				'v'   => self::visitor_hash(),
+				's'   => self::session_hash(),
+				'pid' => 0,
+				'g'   => $grade,
+				't'   => time(),
 			);
 
-			return new WP_REST_Response( null, 204 );
+			$ip = self::cloud_ip();
+
+			if ( '' !== $ip ) {
+				$context['ip'] = $ip;
+			}
+
+			WPHS_Spool::append( $context );
+
+			return true;
 		}
 
 		if ( 'eng' === $type ) {
@@ -595,7 +667,7 @@ final class WPHS_Collector {
 			}
 
 			if ( 0 === $seconds && empty( $scroll ) && empty( $events ) ) {
-				return new WP_REST_Response( null, 204 );
+				return true;
 			}
 
 			WPHS_Spool::append(
@@ -611,9 +683,30 @@ final class WPHS_Collector {
 				)
 			);
 
-			return new WP_REST_Response( null, 204 );
+			return true;
 		}
 
 		return new WP_Error( 'wphs_bad_request', '', array( 'status' => 400 ) );
+	}
+
+	public static function script_tag( $tag, $handle, $src ) {
+		if ( 'wphs-tracker' !== $handle || empty( self::$tracker_config ) ) {
+			return $tag;
+		}
+
+		$config = esc_attr( wp_json_encode( self::$tracker_config ) );
+
+		return str_replace( '<script ', '<script data-wphs="' . $config . '" data-no-optimize="1" data-no-defer="1" ', $tag );
+	}
+
+	public static function litespeed_excludes( $excludes ) {
+		if ( ! is_array( $excludes ) ) {
+			$excludes = array();
+		}
+
+		$excludes[] = 'wphs-tracker';
+		$excludes[] = 'tracker.js';
+
+		return $excludes;
 	}
 }

@@ -2,10 +2,19 @@
 	'use strict';
 
 	var d = window.wphs;
+	if (!d) {
+		var el = document.currentScript || document.getElementById('wphs-tracker-js');
+		if (el && el.getAttribute) {
+			try {
+				d = JSON.parse(el.getAttribute('data-wphs') || '');
+			} catch (e) {}
+		}
+	}
 	if (!d || !d.e || !d.h || !d.s) {
 		return;
 	}
-	if (d.d && navigator.globalPrivacyControl === true) {
+	var dnt = navigator.doNotTrack || window.doNotTrack;
+	if (d.d && (navigator.globalPrivacyControl === true || dnt === '1' || dnt === 'yes' || dnt === 1)) {
 		return;
 	}
 
@@ -45,17 +54,17 @@
 	}
 
 	function send(payload) {
-		var body = JSON.stringify(payload);
+		var body = 'action=wphs_collect&payload=' + encodeURIComponent(JSON.stringify(payload));
 		try {
 			if (navigator.sendBeacon) {
-				navigator.sendBeacon(d.e, new Blob([body], { type: 'application/json' }));
+				navigator.sendBeacon(d.e, new Blob([body], { type: 'application/x-www-form-urlencoded' }));
 				return;
 			}
 		} catch (e) {}
 		try {
 			window.fetch(d.e, {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
+				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: body,
 				keepalive: true
 			});
