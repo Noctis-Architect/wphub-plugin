@@ -1,6 +1,8 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template variables are local to the admin method that requires this file.
+
 $next         = wp_next_scheduled( WPHS_Aggregator::EVENT );
 $last_run     = (int) get_option( 'wphs_last_run', 0 );
 $spool        = WPHS_Spool::size();
