@@ -129,7 +129,7 @@ final class WPHS_Cloud {
 		}
 
 		/* translators: %d: HTTP status code. */
-		$message = is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Could not fetch site status from the console (HTTP %d).', 'traffic-analytics' ), $code );
+		$message = is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Could not fetch site status from the console (HTTP %d).', 'hub-pilot' ), $code );
 
 		return self::overview_fallback( substr( wp_strip_all_tags( (string) $message ), 0, 300 ), $code );
 	}
@@ -160,7 +160,7 @@ final class WPHS_Cloud {
 		$token = self::token();
 
 		if ( '' === $token ) {
-			return array( false, __( 'The site connection key is not set.', 'traffic-analytics' ), 0 );
+			return array( false, __( 'The site connection key is not set.', 'hub-pilot' ), 0 );
 		}
 
 		$response = wp_remote_get(
@@ -189,7 +189,7 @@ final class WPHS_Cloud {
 		$data = json_decode( $raw, true );
 		$ok   = $code >= 200 && $code < 300;
 		/* translators: %d: HTTP status code. */
-		$msg  = $ok ? __( 'Connected to the console.', 'traffic-analytics' ) : ( is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Invalid response from the console (HTTP %d)', 'traffic-analytics' ), $code ) );
+		$msg  = $ok ? __( 'Connected to the console.', 'hub-pilot' ) : ( is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Invalid response from the console (HTTP %d)', 'hub-pilot' ), $code ) );
 		$msg  = substr( wp_strip_all_tags( (string) $msg ), 0, 300 );
 
 		self::save_ping( $ok, $msg );

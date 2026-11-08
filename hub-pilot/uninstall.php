@@ -34,7 +34,7 @@ if ( $delete ) {
 
 $key = get_option( 'wphs_spool_key', '' );
 if ( is_string( $key ) && preg_match( '/^[a-z0-9]{8,20}$/', $key ) ) {
-	$dir = trailingslashit( WP_CONTENT_DIR ) . 'wphub-analytics-' . $key;
+	$dir = trailingslashit( WP_CONTENT_DIR ) . 'hub-pilot-' . $key;
 
 	foreach ( (array) glob( $dir . '/*' ) as $file ) {
 		if ( is_file( $file ) ) {

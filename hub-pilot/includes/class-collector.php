@@ -5,7 +5,7 @@ defined( 'ABSPATH' ) || exit;
 
 final class WPHS_Collector {
 
-	const REST_NS = 'wphub-analytics/v1';
+	const REST_NS = 'hub-pilot/v1';
 
 	private const SEARCH_HOSTS = array(
 		'bing.com',
@@ -462,7 +462,7 @@ final class WPHS_Collector {
 		} elseif ( is_post_type_archive() ) {
 			$title = post_type_archive_title( '', false );
 		} elseif ( is_search() ) {
-			$title = __( 'Search:', 'traffic-analytics' ) . ' ' . get_search_query();
+			$title = __( 'Search:', 'hub-pilot' ) . ' ' . get_search_query();
 		} elseif ( is_home() || is_front_page() ) {
 			$title = get_bloginfo( 'name' );
 		}

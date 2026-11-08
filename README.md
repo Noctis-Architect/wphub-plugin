@@ -1,16 +1,18 @@
-# Traffic Analytics by WP-Hub
+# HubPilot
 
-پلاگین سبک و بدون کوکی آمار بازدید وردپرس؛ با تشخیص ربات بر اساس User-Agent و رفتار مرورگر، ذخیره‌سازی محلی یا ارسال امن به کنسول WP-Hub.
+پلاگین اتصال وردپرس به کنسول WP-Hub؛ آمار محلی و بدون کوکی، بررسی امنیتی ساده، و نمایش وضعیت سرعت، امنیت و پایش در یک داشبورد.
 
-A lightweight, cookie-free WordPress analytics plugin with User-Agent + browser-signal bot detection and optional cloud sync.
+A WordPress connector for the WP-Hub console with local cookie-free analytics, basic security checks, speed/security/uptime status, and optional cloud sync.
 
 > **کنسول WP-Hub** — آمار، سرعت، امنیت و پایش سایت در یک داشبورد.
 > **[شروع رایگان در console.wp-hub.org](https://console.wp-hub.org)**
 
 ---
 
-## چرا WP-Hub Analytics؟
+## چرا HubPilot؟
 
+- **اتصال به کنسول**: وضعیت تست سرعت، امنیت و پایش را از کنسول WP-Hub داخل وردپرس نشان می‌دهد.
+- **بررسی امنیتی ساده**: دایرکتوری، REST users، wp-admin، افزونهٔ امنیتی، ویرایش فایل و دیباگ را در یک کارت کم‌حجم چک می‌کند.
 - **سبک و بدون کوکی**: بدون اسکریپت سنگین، بدون کوکی ردیابی و بدون بار اضافه بر دیتابیس.
 - **آمار قابل اعتماد**: علاوه بر User-Agent، سیگنال‌های رفتار مرورگر (webdriver، WebGL، پلاگین‌ها، rAF، تعامل و زمان لود) بررسی می‌شوند.
 - **آمار چندحالته**: حالت پیش‌فرض فقط بازدیدهای «تأییدشده» را نشان می‌دهد؛ حالت‌های «همه»، «بدون JS» و «مشکوک» هم در دسترس‌اند.
@@ -44,7 +46,7 @@ A lightweight, cookie-free WordPress analytics plugin with User-Agent + browser-
 
 ## نصب
 
-1. فایل ZIP نسخهٔ انتشار را از بخش Releases دانلود کنید (یا پوشهٔ `wphub-analytics` را از همین مخزن بردارید).
+1. فایل ZIP نسخهٔ انتشار را از بخش Releases دانلود کنید (یا پوشهٔ `hub-pilot` را از همین مخزن بردارید).
 2. در وردپرس به **افزونه‌ها ← افزودن** بروید و ZIP را نصب و فعال کنید.
 3. به **آمار WP-Hub ← تنظیمات** بروید.
 4. حالت ذخیره‌سازی را انتخاب کنید:
@@ -100,7 +102,7 @@ define( 'WPHS_CONSOLE_URL', 'https://your-console.example' );
 ## توسعه
 
 - مستندات قرارداد کنسول و پیاده‌سازی سمت سرور: [`CONSOLE-INTEGRATION-GUIDE.md`](CONSOLE-INTEGRATION-GUIDE.md)
-- کد پلاگین در پوشهٔ `traffic-analytics/` است.
+- کد پلاگین در پوشهٔ `hub-pilot/` است.
 - Issues و Pull Requestها در همین مخزن پذیرفته می‌شوند.
 - برای گزارش مشکلات امنیتی، لطفاً از مسیر پشتیبانی کنسول استفاده کنید و جزئیات را عمومی نکنید.
 

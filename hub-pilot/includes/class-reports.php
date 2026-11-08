@@ -25,10 +25,10 @@ final class WPHS_Reports {
 
 	public static function mode_options() {
 		return array(
-			'verified' => __( 'Verified', 'traffic-analytics' ),
-			'all'      => __( 'All', 'traffic-analytics' ),
-			'nojs'     => __( 'No-JS', 'traffic-analytics' ),
-			'suspect'  => __( 'Suspect', 'traffic-analytics' ),
+			'verified' => __( 'Verified', 'hub-pilot' ),
+			'all'      => __( 'All', 'hub-pilot' ),
+			'nojs'     => __( 'No-JS', 'hub-pilot' ),
+			'suspect'  => __( 'Suspect', 'hub-pilot' ),
 		);
 	}
 
@@ -42,13 +42,13 @@ final class WPHS_Reports {
 	public static function mode_hint( $mode ) {
 		switch ( self::valid_mode( $mode ) ) {
 			case 'all':
-				return __( 'All recorded visits, including verified, No-JS, and suspect traffic.', 'traffic-analytics' );
+				return __( 'All recorded visits, including verified, No-JS, and suspect traffic.', 'hub-pilot' );
 			case 'nojs':
-				return __( 'The User-Agent was valid, but no browser verification (JavaScript) was received.', 'traffic-analytics' );
+				return __( 'The User-Agent was valid, but no browser verification (JavaScript) was received.', 'hub-pilot' );
 			case 'suspect':
-				return __( 'Browser signals were not verified or bot signals were detected.', 'traffic-analytics' );
+				return __( 'Browser signals were not verified or bot signals were detected.', 'hub-pilot' );
 			default:
-				return __( 'Only visits with a valid User-Agent and verified browser signals.', 'traffic-analytics' );
+				return __( 'Only visits with a valid User-Agent and verified browser signals.', 'hub-pilot' );
 		}
 	}
 
@@ -458,11 +458,11 @@ final class WPHS_Reports {
 		}
 
 		$definitions = array(
-			array( 'key' => 'verified', 'grade' => 'v', 'label' => __( 'Verified', 'traffic-analytics' ), 'tone' => 'is-verified' ),
-			array( 'key' => 'nojs', 'grade' => 'u', 'label' => __( 'No-JS', 'traffic-analytics' ), 'tone' => 'is-nojs' ),
-			array( 'key' => 'suspect', 'grade' => 's', 'label' => __( 'Suspect', 'traffic-analytics' ), 'tone' => 'is-suspect' ),
-			array( 'key' => 'datacenter', 'grade' => 'd', 'label' => __( 'Datacenter', 'traffic-analytics' ), 'tone' => 'is-datacenter' ),
-			array( 'key' => 'legacy', 'grade' => '', 'label' => __( 'Before breakdown', 'traffic-analytics' ), 'tone' => 'is-legacy' ),
+			array( 'key' => 'verified', 'grade' => 'v', 'label' => __( 'Verified', 'hub-pilot' ), 'tone' => 'is-verified' ),
+			array( 'key' => 'nojs', 'grade' => 'u', 'label' => __( 'No-JS', 'hub-pilot' ), 'tone' => 'is-nojs' ),
+			array( 'key' => 'suspect', 'grade' => 's', 'label' => __( 'Suspect', 'hub-pilot' ), 'tone' => 'is-suspect' ),
+			array( 'key' => 'datacenter', 'grade' => 'd', 'label' => __( 'Datacenter', 'hub-pilot' ), 'tone' => 'is-datacenter' ),
+			array( 'key' => 'legacy', 'grade' => '', 'label' => __( 'Before breakdown', 'hub-pilot' ), 'tone' => 'is-legacy' ),
 		);
 
 		$total = 0;
@@ -533,7 +533,7 @@ final class WPHS_Reports {
 		if ( $seconds < 60 ) {
 			return sprintf(
 				/* translators: %s: number of seconds. */
-				_n( '%s second', '%s seconds', $seconds, 'traffic-analytics' ),
+				_n( '%s second', '%s seconds', $seconds, 'hub-pilot' ),
 				number_format_i18n( $seconds )
 			);
 		}
@@ -544,14 +544,14 @@ final class WPHS_Reports {
 		if ( 0 === $rest ) {
 			return sprintf(
 				/* translators: %s: number of minutes. */
-				_n( '%s minute', '%s minutes', $minutes, 'traffic-analytics' ),
+				_n( '%s minute', '%s minutes', $minutes, 'hub-pilot' ),
 				number_format_i18n( $minutes )
 			);
 		}
 
 		return sprintf(
 			/* translators: %1$s: minutes; %2$s: seconds. */
-			__( '%1$s min %2$s sec', 'traffic-analytics' ),
+			__( '%1$s min %2$s sec', 'hub-pilot' ),
 			number_format_i18n( $minutes ),
 			number_format_i18n( $rest )
 		);
@@ -559,14 +559,14 @@ final class WPHS_Reports {
 
 	public static function channel_label( $channel ) {
 		$labels = array(
-			'direct'   => __( 'Direct', 'traffic-analytics' ),
-			'search'   => __( 'Search', 'traffic-analytics' ),
-			'social'   => __( 'Social', 'traffic-analytics' ),
-			'referral' => __( 'Referral', 'traffic-analytics' ),
-			'paid'     => __( 'Paid', 'traffic-analytics' ),
-			'email'    => __( 'Email', 'traffic-analytics' ),
-			'campaign' => __( 'Campaign', 'traffic-analytics' ),
-			'internal' => __( 'Internal', 'traffic-analytics' ),
+			'direct'   => __( 'Direct', 'hub-pilot' ),
+			'search'   => __( 'Search', 'hub-pilot' ),
+			'social'   => __( 'Social', 'hub-pilot' ),
+			'referral' => __( 'Referral', 'hub-pilot' ),
+			'paid'     => __( 'Paid', 'hub-pilot' ),
+			'email'    => __( 'Email', 'hub-pilot' ),
+			'campaign' => __( 'Campaign', 'hub-pilot' ),
+			'internal' => __( 'Internal', 'hub-pilot' ),
 		);
 
 		return isset( $labels[ $channel ] ) ? $labels[ $channel ] : $channel;
@@ -574,9 +574,9 @@ final class WPHS_Reports {
 
 	public static function device_label( $device ) {
 		$labels = array(
-			'desktop' => __( 'Desktop', 'traffic-analytics' ),
-			'mobile'  => __( 'Mobile', 'traffic-analytics' ),
-			'tablet'  => __( 'Tablet', 'traffic-analytics' ),
+			'desktop' => __( 'Desktop', 'hub-pilot' ),
+			'mobile'  => __( 'Mobile', 'hub-pilot' ),
+			'tablet'  => __( 'Tablet', 'hub-pilot' ),
 		);
 
 		return isset( $labels[ $device ] ) ? $labels[ $device ] : $device;
@@ -584,14 +584,14 @@ final class WPHS_Reports {
 
 	public static function event_label( $event ) {
 		$labels = array(
-			'outbound'   => __( 'Outbound click', 'traffic-analytics' ),
-			'download'   => __( 'File download', 'traffic-analytics' ),
-			'form'       => __( 'Form submission', 'traffic-analytics' ),
-			'cart'       => __( 'Add to cart', 'traffic-analytics' ),
-			'scroll_25'  => __( 'Scroll 25%', 'traffic-analytics' ),
-			'scroll_50'  => __( 'Scroll 50%', 'traffic-analytics' ),
-			'scroll_75'  => __( 'Scroll 75%', 'traffic-analytics' ),
-			'scroll_100' => __( 'Scroll 100%', 'traffic-analytics' ),
+			'outbound'   => __( 'Outbound click', 'hub-pilot' ),
+			'download'   => __( 'File download', 'hub-pilot' ),
+			'form'       => __( 'Form submission', 'hub-pilot' ),
+			'cart'       => __( 'Add to cart', 'hub-pilot' ),
+			'scroll_25'  => __( 'Scroll 25%', 'hub-pilot' ),
+			'scroll_50'  => __( 'Scroll 50%', 'hub-pilot' ),
+			'scroll_75'  => __( 'Scroll 75%', 'hub-pilot' ),
+			'scroll_100' => __( 'Scroll 100%', 'hub-pilot' ),
 		);
 
 		return isset( $labels[ $event ] ) ? $labels[ $event ] : $event;
