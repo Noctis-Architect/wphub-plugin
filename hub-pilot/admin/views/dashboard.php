@@ -225,7 +225,7 @@ $channel_classes = array(
 		</div>
 
 		<div class="wphs-mode-row">
-			<nav class="wphs-segmented wphs-mode-nav" aria-label="<?php esc_attr_e( 'Traffic quality', 'hub-pilot' ); ?>">
+			<nav class="wphs-segmented wphs-mode-nav" aria-label="<?php esc_attr_e( 'Visitor quality', 'hub-pilot' ); ?>">
 				<span class="wphs-mode-caption"><?php esc_html_e( 'Quality', 'hub-pilot' ); ?></span>
 				<?php foreach ( $mode_options as $mode_key => $mode_text ) : ?>
 					<a class="wphs-seg<?php echo $mode === $mode_key ? ' is-active' : ''; ?>"
@@ -288,14 +288,14 @@ $channel_classes = array(
 		<p class="wphs-table-note"><?php esc_html_e( 'Visitors are based on a daily hash; the same person on different days is counted again.', 'hub-pilot' ); ?></p>
 
 		<?php if ( ! $quality['has_data'] ) : ?>
-			<div class="wphs-notice"><?php esc_html_e( 'Traffic quality is recorded from now on; older data is only visible in "All" mode.', 'hub-pilot' ); ?></div>
+			<div class="wphs-notice"><?php esc_html_e( 'Visitor quality is recorded from now on; older data is only visible in "All" mode.', 'hub-pilot' ); ?></div>
 		<?php else : ?>
 			<section class="wphs-card wphs-quality-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Traffic quality', 'hub-pilot' ); ?></h2>
-					<span class="wphs-quality-score <?php echo esc_attr( $quality_tone ); ?>"><?php echo esc_html( number_format_i18n( $quality['verified_share'], $quality['verified_share'] < 10 ? 1 : 0 ) . '% ' . __( 'verified', 'hub-pilot' ) ); ?></span>
+					<h2><?php esc_html_e( 'Visitor quality', 'hub-pilot' ); ?></h2>
+					<span class="wphs-quality-score <?php echo esc_attr( $quality_tone ); ?>"><?php echo esc_html( number_format_i18n( $quality['verified_share'], $quality['verified_share'] < 10 ? 1 : 0 ) . '% ' . __( 'browser detected', 'hub-pilot' ) ); ?></span>
 				</div>
-				<div class="wphs-quality-track" role="img" aria-label="<?php esc_attr_e( 'Traffic quality breakdown', 'hub-pilot' ); ?>">
+				<div class="wphs-quality-track" role="img" aria-label="<?php esc_attr_e( 'Visitor quality breakdown', 'hub-pilot' ); ?>">
 					<?php foreach ( $quality_groups as $group ) : ?>
 						<?php if ( $group['pageviews'] <= 0 ) : ?>
 							<?php continue; ?>
@@ -314,7 +314,7 @@ $channel_classes = array(
 					<?php endforeach; ?>
 				</div>
 				<?php if ( $has_legacy_quality ) : ?>
-					<p class="wphs-table-note"><?php esc_html_e( 'Some data in this range was recorded before quality breakdown was enabled and is not counted in Verified, No-JS, or Suspect.', 'hub-pilot' ); ?></p>
+					<p class="wphs-table-note"><?php esc_html_e( 'Some data in this range was recorded before the visitor breakdown was enabled and is not included in the browser or bot groups.', 'hub-pilot' ); ?></p>
 				<?php endif; ?>
 			</section>
 		<?php endif; ?>

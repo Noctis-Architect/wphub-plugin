@@ -89,7 +89,7 @@ $connected    = $status['token_set'] && '' === $status['last_error'];
 				<div><span><?php esc_html_e( 'Bounce rate', 'hub-pilot' ); ?></span><strong><?php echo esc_html( number_format_i18n( $ca_bounce, 0 ) . '%' ); ?></strong></div>
 				<div><span><?php esc_html_e( 'Avg. engaged time', 'hub-pilot' ); ?></span><strong><?php echo esc_html( WPHS_Reports::duration( $ca_avg ) ); ?></strong></div>
 			</div>
-			<p class="wphs-table-note"><?php esc_html_e( 'Only verified visits (valid User-Agent + browser signals) are shown; see the console analytics dashboard for other modes.', 'hub-pilot' ); ?></p>
+			<p class="wphs-table-note"><?php esc_html_e( 'Only visits with a detected browser are shown; see the console analytics dashboard for other modes.', 'hub-pilot' ); ?></p>
 		</section>
 	<?php endif; ?>
 

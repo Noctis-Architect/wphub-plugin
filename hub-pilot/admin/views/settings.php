@@ -203,15 +203,15 @@ $cloud_cron_txt     = $cloud['cron_next'] > time() ? wp_date( 'Y/m/d H:i', $clou
 
 		<section class="wphs-card">
 			<div class="wphs-card-head">
-				<h2><?php esc_html_e( 'Bot detection and traffic quality', 'hub-pilot' ); ?></h2>
-				<span class="wphs-muted"><?php esc_html_e( 'User-Agent + browser signals', 'hub-pilot' ); ?></span>
+				<h2><?php esc_html_e( 'Bot filtering and visitor quality', 'hub-pilot' ); ?></h2>
+				<span class="wphs-muted"><?php esc_html_e( 'Automatic filtering', 'hub-pilot' ); ?></span>
 			</div>
 			<table class="wphs-field-table" role="presentation">
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Browser verification', 'hub-pilot' ); ?></th>
+					<th scope="row"><?php esc_html_e( 'Browser check', 'hub-pilot' ); ?></th>
 					<td>
-						<label><input type="checkbox" name="bot_js_check" value="1" <?php checked( ! empty( $settings['bot_js_check'] ) ); ?>> <?php esc_html_e( 'To count a visit as "verified", also check JavaScript execution and browser signals', 'hub-pilot' ); ?></label>
-						<p class="wphs-hint"><?php esc_html_e( 'Known bots are filtered by User-Agent. Visits without browser verification appear in "No-JS", and rejected visits appear in "Suspect".', 'hub-pilot' ); ?></p>
+						<label><input type="checkbox" name="bot_js_check" value="1" <?php checked( ! empty( $settings['bot_js_check'] ) ); ?>> <?php esc_html_e( 'Check the browser to count a visit as a real visit', 'hub-pilot' ); ?></label>
+						<p class="wphs-hint"><?php esc_html_e( 'Known bots are filtered automatically. Visits with no recognized browser appear in "No browser"; bot-like visits appear in "Bot".', 'hub-pilot' ); ?></p>
 					</td>
 				</tr>
 			</table>
@@ -268,7 +268,7 @@ $cloud_cron_txt     = $cloud['cron_next'] > time() ? wp_date( 'Y/m/d H:i', $clou
 				<tr>
 					<th scope="row"><?php esc_html_e( 'Source credit', 'hub-pilot' ); ?></th>
 					<td>
-						<label><input type="checkbox" name="source_credit" value="1" <?php checked( ! empty( $settings['source_credit'] ) ); ?>> <?php esc_html_e( 'Show the WP-Hub name at the top of the page source', 'hub-pilot' ); ?></label>
+						<label><input type="checkbox" name="source_credit" value="1" <?php checked( ! empty( $settings['source_credit'] ) ); ?>> <?php esc_html_e( 'Show the Traffic Analytics by HubPilot credit in the page source', 'hub-pilot' ); ?></label>
 						<p class="wphs-hint"><?php esc_html_e( 'This is only an HTML comment and does not affect the site\'s appearance or speed.', 'hub-pilot' ); ?></p>
 					</td>
 				</tr>

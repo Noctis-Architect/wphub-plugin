@@ -4,7 +4,7 @@ Tags: analytics, security, monitoring, privacy, cookieless
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.4.1
+Stable tag: 0.4.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,7 +23,7 @@ The plugin works in two modes:
 
 * Cookie-free tracking with no personal profiles and no cross-site identifiers.
 * Bot filtering using the User-Agent plus browser signals (JavaScript execution, WebGL renderer class, plugins, animation frames, interaction, visibility, and timing).
-* Four report modes: verified (default), all, no-JS, and suspect.
+* Four report modes: browser detected (default), all, no browser, and bot.
 * Visit quality card with a breakdown by traffic group.
 * Tiered data retention: detailed data, daily data, and daily totals.
 * Local dashboard with pageviews, visitors, sessions, bounce rate, average engaged time, top pages, sources, devices, and events.
@@ -45,7 +45,7 @@ Cloud mode is optional. It requires an account at the WP-Hub console, a verified
 
 = Source credit =
 
-After activation, the plugin adds a small HTML comment at the top of the page's head section with the HubPilot name. It is not a visible banner and has no effect on the page layout or speed. You can turn it off in the plugin's **Settings → Appearance and notifications** screen.
+After activation, the plugin adds a small HTML comment and a generator meta tag with the "Traffic Analytics by HubPilot" credit at the top of the page's head section. It is not a visible banner and has no effect on the page layout or speed. You can turn it off in the plugin's **Settings → Appearance and notifications** screen.
 
 = Privacy =
 
@@ -151,6 +151,10 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 
 == Changelog ==
 
+= 0.4.2 =
+* Source credit now reads "Traffic Analytics by HubPilot" in both the HTML comment and the generator meta tag.
+* Simpler visitor labels: "Browser detected", "No browser", and "Bot" replace the technical Verified, No-JS, and Suspect labels.
+
 = 0.4.1 =
 * Send tracking beacons through admin-ajax.php so collection works on sites where the CDN blocks POST requests to the REST API.
 * Keep the tracker in cacheable HTML even when a cache entry is created by a bot or a request that is not counted, so real visitors on cached pages are still tracked.
@@ -162,7 +166,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 * Initial public release.
 * Cookie-free local analytics with a dashboard for pageviews, visitors, sessions, bounce rate, engaged time, pages, sources, devices, and events.
 * User-Agent and browser-signal bot filtering.
-* Verified, all, no-JS, and suspect report modes.
+* Browser-detected, all, no-browser, and bot report modes.
 * Tiered data retention.
 * Optional cloud sync to the WP-Hub console with HMAC-SHA256, gzip, queue, and backoff.
 * Optional source credit comment.
@@ -170,6 +174,9 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 * English admin interface with a Persian translation that follows the site or user locale.
 
 == Upgrade Notice ==
+
+= 0.4.2 =
+Updates the source credit text to "Traffic Analytics by HubPilot" and makes visitor labels simpler.
 
 = 0.4.1 =
 Improves tracker delivery on cached and CDN-protected sites, keeps the source credit in optimized HTML, and removes the separate visitor IP option. Cloud mode now includes the visitor IP.

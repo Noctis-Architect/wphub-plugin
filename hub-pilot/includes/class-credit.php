@@ -21,7 +21,7 @@ final class WPHS_Credit {
 		}
 
 		$width = 47;
-		$label = 'HUBPILOT BY WP-HUB';
+		$label = 'TRAFFIC ANALYTICS BY HUBPILOT';
 		$rule  = str_repeat( '─', $width );
 
 		echo "\n<!--\n";
@@ -29,6 +29,6 @@ final class WPHS_Credit {
 		echo esc_html( '  │' . str_pad( $label, $width, ' ', STR_PAD_BOTH ) . "│\n" );
 		echo esc_html( '  └' . $rule . "┘\n" );
 		echo "-->\n";
-		echo '<meta name="generator" content="' . esc_attr( 'HubPilot by WP-Hub' ) . '">' . "\n";
+		echo '<meta name="generator" content="' . esc_attr( 'TRAFFIC ANALYTICS BY HUBPILOT' ) . '">' . "\n";
 	}
 }
