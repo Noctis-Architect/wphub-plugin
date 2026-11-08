@@ -3,7 +3,7 @@
  * Plugin Name: HubPilot
  * Plugin URI:  https://wp-hub.org
  * Description: Connects WordPress to the WP-Hub console for cloud analytics, speed, security, and uptime monitoring, with optional local analytics and basic security checks.
- * Version:     0.4.1
+ * Version:     0.4.2
  * Author:      WP-Hub
  * License:     GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'WPHS_VERSION', '0.4.1' );
+define( 'WPHS_VERSION', '0.4.2' );
 define( 'WPHS_PRODUCTION_CONSOLE_URL', 'https://console.wp-hub.org' );
 define( 'WPHS_FILE', __FILE__ );
 define( 'WPHS_DIR', plugin_dir_path( __FILE__ ) );

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: HubPilot 0.4.1\n"
-"Report-Msgid-Bugs-To: https://wp-hub.org/contact\n"
-"POT-Creation-Date: 2026-11-07 23:14+0330\n"
+"Project-Id-Version: HubPilot 0.4.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hub-pilot\n"
+"POT-Creation-Date: 2026-11-08T19:58:38+00:00\n"
 "PO-Revision-Date: 2026-11-07 23:14+0330\n"
 "Last-Translator: WP-Hub <https://wp-hub.org>\n"
 "Language-Team: Persian\n"
@@ -13,893 +13,1390 @@ msgstr ""
 "X-Domain: hub-pilot\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-msgid "Today"
-msgstr "امروز"
+#. Plugin Name of the plugin
+#: hub-pilot.php includes/class-admin.php:97 includes/class-admin.php:98
+msgid "HubPilot"
+msgstr "HubPilot"
 
-msgid "%s day"
-msgid_plural "%s days"
-msgstr[0] "%s روز"
-msgstr[1] "%s روز"
+#. Plugin URI of the plugin
+#: hub-pilot.php
+msgid "https://wp-hub.org"
+msgstr ""
 
+#. Description of the plugin
+#: hub-pilot.php
+msgid ""
+"Connects WordPress to the WP-Hub console for cloud analytics, speed, "
+"security, and uptime monitoring, with optional local analytics and basic "
+"security checks."
+msgstr ""
+
+#. Author of the plugin
+#: hub-pilot.php
+#, fuzzy
+msgid "WP-Hub"
+msgstr "کنسول WP-Hub"
+
+#. translators: %s: time difference, for example "5 minutes".
+#: admin/views/cloud.php:39 admin/views/cloud.php:41
+#: admin/views/dashboard.php:60 admin/views/settings.php:12
+#: admin/views/settings.php:25
+#, php-format
 msgid "%s ago"
 msgstr "%s پیش"
 
-msgid "No processing yet"
-msgstr "بدون پردازش"
-
-msgid "HubPilot Dashboard"
-msgstr "داشبورد HubPilot"
-
-msgid "Site analytics, speed, security, and monitoring"
-msgstr "آمار، سرعت، امنیت و پایش سایت"
-
-msgid "Lightweight pageview and engagement analytics"
-msgstr "آمار سبک بازدید و تعامل کاربران"
-
-msgid "Automatic processing active"
-msgstr "پردازش خودکار فعال"
-
-msgid "Automatic processing disabled"
-msgstr "پردازش خودکار غیرفعال"
-
-msgid "Settings"
-msgstr "تنظیمات"
-
-msgid "Pageviews"
-msgstr "بازدید"
-
-msgid "Pageviews, sources, and engagement"
-msgstr "بازدید، منبع ورود و تعامل"
-
-msgid "No data yet"
-msgstr "هنوز داده‌ای ثبت نشده است"
-
-msgid "Data starts with the first real visit. Admin and logged-in user visits are not counted by default."
-msgstr "داده‌ها با اولین بازدید واقعی شروع می‌شوند. بازدید مدیر و کاربران واردشده به‌صورت پیش‌فرض شمرده نمی‌شود."
-
-msgid "Open the site in a private window"
-msgstr "سایت را در حالت ناشناس باز کنید"
-
-msgid "Open the dashboard or run cron"
-msgstr "داشبورد را باز کنید یا cron را اجرا کنید"
-
-msgid "If caching is enabled, clear it once"
-msgstr "در صورت وجود کش، یک‌بار آن را پاک کنید"
-
-msgid "Check settings"
-msgstr "بررسی تنظیمات"
-
-msgid "Refresh"
-msgstr "بازخوانی"
-
-msgid "Report range"
-msgstr "بازه گزارش"
-
-msgid "to"
-msgstr "تا"
-
-msgid "Last processed:"
-msgstr "آخرین پردازش:"
-
-msgid "Traffic quality"
-msgstr "کیفیت بازدید"
-
-msgid "Quality"
-msgstr "کیفیت"
-
-msgid "No previous data"
-msgstr "داده دوره قبل نیست"
-
-msgid "vs. previous period"
-msgstr "نسبت به دوره قبل"
-
-msgid "Visitors"
-msgstr "بازدیدکننده"
-
-msgid "Sessions"
-msgstr "نشست"
-
-msgid "Avg. engaged time"
-msgstr "میانگین زمان فعال"
-
-msgid "Previous period:"
-msgstr "دوره قبل:"
-
-msgid "Bounce rate"
-msgstr "نرخ پرش"
-
-msgid "Visitors are based on a daily hash; the same person on different days is counted again."
-msgstr "بازدیدکننده بر پایه هش روزانه محاسبه می‌شود؛ بازدید یک نفر در روزهای مختلف دوباره شمرده می‌شود."
-
-msgid "Traffic quality is recorded from now on; older data is only visible in \"All\" mode."
-msgstr "تفکیک کیفیت از این پس ثبت می‌شود؛ داده‌های قبلی فقط در حالت «همه» دیده می‌شوند."
-
-msgid "verified"
-msgstr "تأییدشده"
-
-msgid "Traffic quality breakdown"
-msgstr "ترکیب کیفیت بازدیدها"
-
-msgid "Some data in this range was recorded before quality breakdown was enabled and is not counted in Verified, No-JS, or Suspect."
-msgstr "بخشی از داده‌های این بازه قبل از فعال‌سازی تفکیک کیفیت ثبت شده است و در حالت‌های تأییدشده، بدون JS و مشکوک شمرده نمی‌شود."
-
-msgid "Page, source, device, and event details for part of this range have been deleted. Totals are calculated from daily summaries; details are available from %s."
-msgstr "جزئیات صفحه، منبع، دستگاه و رویدادها برای بخشی از این بازه پاک شده است. اعداد کلی از خلاصه روزانه محاسبه می‌شوند و جزئیات از تاریخ %s در دسترس است."
-
-msgid "No data for this range in \"%s\" mode."
-msgstr "در حالت «%s» برای این بازه داده‌ای نیست."
-
-msgid "Show all visits"
-msgstr "نمایش همه بازدیدها"
-
-msgid "Choose another range."
-msgstr "بازه دیگری را انتخاب کنید."
-
-msgid "Daily pageviews"
-msgstr "بازدید روزانه"
-
-msgid "Total pageviews:"
-msgstr "مجموع بازدید:"
-
-msgid "Peak day:"
-msgstr "بیشترین روز:"
-
-msgid "pageviews on"
-msgstr "بازدید در"
-
-msgid "Daily pageviews chart"
-msgstr "نمودار بازدید روزانه"
-
-msgid "%1$s — %2$s pageviews, %3$s visitors"
-msgstr "%1$s — %2$s بازدید، %3$s بازدیدکننده"
-
-msgid "Top pages"
-msgstr "صفحات پرتردید"
-
-msgid "10 pages"
-msgstr "۱۰ صفحه"
-
-msgid "Page"
-msgstr "صفحه"
-
-msgid "Avg. time"
-msgstr "میانگین زمان"
-
-msgid "No data to display."
-msgstr "داده‌ای برای نمایش نیست."
-
-msgid "Top 10 pages; visitors per page are unique, and one person can be counted on multiple pages."
-msgstr "۱۰ صفحه پرتردید؛ بازدیدکننده هر صفحه جداست و یک نفر می‌تواند در چند صفحه شمرده شود."
-
-msgid "Sources"
-msgstr "منابع ورود"
-
-msgid "10 sources"
-msgstr "۱۰ منبع"
-
-msgid "Source"
-msgstr "منبع"
-
-msgid "Channel"
-msgstr "کانال"
-
-msgid "Direct"
-msgstr "مستقیم"
-
-msgid "Top 10 sources; visitors per source are unique; internal navigation is excluded, so the sum does not equal total pageviews."
-msgstr "۱۰ منبع نخست؛ بازدیدکننده هر منبع جداست؛ بازدیدهای ناوبری داخلی در این جدول نیستند؛ به همین دلیل جمع آن با کل بازدید برابر نیست."
-
-msgid "Devices"
-msgstr "دستگاه‌ها"
-
-msgid "Share of total pageviews"
-msgstr "سهم از کل بازدید"
-
-msgid "Device"
-msgstr "دستگاه"
-
-msgid "Share"
-msgstr "سهم"
-
-msgid "Visitors per device are unique; one person using multiple devices is counted in multiple rows."
-msgstr "بازدیدکننده هر دستگاه جداست؛ یک نفر با چند دستگاه در چند ردیف شمرده می‌شود."
-
-msgid "Events"
-msgstr "رویدادها"
-
-msgid "Top 8 events"
-msgstr "۸ رویداد پرتکرار"
-
-msgid "Event"
-msgstr "رویداد"
-
-msgid "Count"
-msgstr "تعداد"
-
-msgid "No events recorded."
-msgstr "رویدادی ثبت نشده است."
-
-msgid "Events are collected from browser interactions."
-msgstr "رویدادها از تعامل‌های سمت مرورگر جمع‌آوری می‌شوند."
-
-msgid "%s of data is queued for processing."
-msgstr "%s داده در صف پردازش است."
-
-msgid "Process queue manually"
-msgstr "پردازش دستی صف"
-
-msgid "Scheduled processing is not active. Process the queue manually from the settings page or set a server cron for %s."
-msgstr "زمان‌بندی پردازش دوره‌ای فعال نیست. از صفحه تنظیمات، صف را دستی پردازش کنید یا cron سرور را برای رویداد %s تنظیم کنید."
-
-msgid "Settings and data retention"
-msgstr "تنظیمات و نگهداری داده‌ها"
-
+#. translators: %s: time difference, for example "5 minutes".
+#: admin/views/cloud.php:39 admin/views/settings.php:12
 msgid "Not yet"
 msgstr "هنوز انجام نشده"
 
+#. translators: %s: time difference, for example "5 minutes".
+#: admin/views/cloud.php:41
 msgid "No attempts yet"
 msgstr "هنوز تلاشی انجام نشده"
 
+#. translators: %s: time difference until the next attempt.
+#: admin/views/cloud.php:43 admin/views/settings.php:27
+#, php-format
 msgid "in about %s"
 msgstr "حدود %s دیگر"
 
+#: admin/views/cloud.php:44 admin/views/settings.php:13
+#: admin/views/settings.php:28
 msgid "Waiting to run"
 msgstr "در انتظار اجرا"
 
+#: admin/views/cloud.php:52 admin/views/dashboard.php:176
+msgid "HubPilot Dashboard"
+msgstr "داشبورد HubPilot"
+
+#: admin/views/cloud.php:53
 msgid "Cloud mode — analytics data is not stored on this site"
 msgstr "حالت ابری — داده‌های آماری روی این سایت ذخیره نمی‌شوند"
 
+#: admin/views/cloud.php:57
 msgid "Connection ready"
 msgstr "اتصال آماده"
 
+#: admin/views/cloud.php:57
 msgid "Needs review"
 msgstr "نیاز به بررسی"
 
+#: admin/views/cloud.php:57 admin/views/cloud.php:127
 msgid "Not configured"
 msgstr "تنظیم نشده"
 
-msgid "The site connection key is not set. Nothing is sent to the console until you enter the key in Settings."
-msgstr "کلید اتصال سایت تنظیم نشده است. تا زمانی که کلید را در تنظیمات وارد نکنید، ارسالی به کنسول انجام نمی‌شود."
+#: admin/views/cloud.php:58 admin/views/dashboard.php:182
+#: includes/class-admin.php:117 includes/class-admin.php:118
+msgid "Settings"
+msgstr "تنظیمات"
 
+#: admin/views/cloud.php:67
+msgid ""
+"The site connection key is not set. Nothing is sent to the console until you "
+"enter the key in Settings."
+msgstr ""
+"کلید اتصال سایت تنظیم نشده است. تا زمانی که کلید را در تنظیمات وارد نکنید، "
+"ارسالی به کنسول انجام نمی‌شود."
+
+#: admin/views/cloud.php:77
 msgid "Console analytics"
 msgstr "آمار از کنسول"
 
+#. translators: %s: number of days.
+#: admin/views/cloud.php:81
+#, php-format
 msgid "Last %s day"
 msgid_plural "Last %s days"
 msgstr[0] "%s روز اخیر"
 msgstr[1] "%s روز اخیر"
 
-msgid "Only verified visits (valid User-Agent + browser signals) are shown; see the console analytics dashboard for other modes."
-msgstr "فقط بازدیدهای تأییدشده (User-Agent سالم + رفتار مرورگر) نمایش داده می‌شوند؛ برای حالت‌های دیگر، داشبورد آمار کنسول را ببینید."
+#: admin/views/cloud.php:86 admin/views/dashboard.php:191
+#: admin/views/dashboard.php:244 admin/views/dashboard.php:348
+#: admin/views/dashboard.php:402 admin/views/dashboard.php:441
+#: admin/views/dashboard.php:484
+msgid "Pageviews"
+msgstr "بازدید"
 
+#: admin/views/cloud.php:87 admin/views/dashboard.php:254
+#: admin/views/dashboard.php:403 admin/views/dashboard.php:442
+#: admin/views/dashboard.php:485
+msgid "Visitors"
+msgstr "بازدیدکننده"
+
+#: admin/views/cloud.php:88 admin/views/dashboard.php:264
+msgid "Sessions"
+msgstr "نشست"
+
+#: admin/views/cloud.php:89 admin/views/dashboard.php:282
+msgid "Bounce rate"
+msgstr "نرخ پرش"
+
+#: admin/views/cloud.php:90 admin/views/dashboard.php:274
+msgid "Avg. engaged time"
+msgstr "میانگین زمان فعال"
+
+#: admin/views/cloud.php:92
+msgid ""
+"Only visits with a detected browser are shown; see the console analytics "
+"dashboard for other modes."
+msgstr ""
+"فقط بازدیدهایی که مرورگرشان تشخیص داده شده نمایش داده می‌شوند؛ برای حالت‌های "
+"دیگر، داشبورد آمار کنسول را ببینید."
+
+#: admin/views/cloud.php:98
 msgid "Queued"
 msgstr "در صف ارسال"
 
+#. translators: %1$s: data size; %2$s: number of files.
+#: admin/views/cloud.php:103
+#, php-format
 msgid "%1$s in %2$s files"
 msgstr "%1$s در %2$s فایل"
 
+#: admin/views/cloud.php:108 admin/views/settings.php:329
 msgid "Last successful sync"
 msgstr "آخرین ارسال موفق"
 
+#: admin/views/cloud.php:110
 msgid "Last attempt:"
 msgstr "آخرین تلاش:"
 
+#: admin/views/cloud.php:113
 msgid "Consecutive failures"
 msgstr "خطاهای پیاپی"
 
+#: admin/views/cloud.php:115
 msgid "Next attempt:"
 msgstr "تلاش بعدی:"
 
+#: admin/views/cloud.php:121
 msgid "Connection status"
 msgstr "وضعیت اتصال"
 
+#: admin/views/cloud.php:122 admin/views/site-status.php:120
 msgid "Open console"
 msgstr "بازکردن کنسول"
 
+#: admin/views/cloud.php:126
 msgid "Connection key"
 msgstr "کلید اتصال"
 
+#: admin/views/cloud.php:127
 msgid "Configured"
 msgstr "تنظیم شده"
 
+#: admin/views/cloud.php:130
 msgid "Last batch"
 msgstr "آخرین دسته ارسالی"
 
+#. translators: %1$s: number of events; %2$s: HTTP status code.
+#: admin/views/cloud.php:134
+#, php-format
 msgid "%1$s events — HTTP %2$s"
 msgstr "%1$s رویداد — HTTP %2$s"
 
+#: admin/views/cloud.php:139
 msgid "Sync schedule"
 msgstr "زمان‌بندی ارسال"
 
+#: admin/views/cloud.php:143 admin/views/settings.php:333
 msgid "Last error"
 msgstr "آخرین خطا"
 
+#: admin/views/cloud.php:147 admin/views/settings.php:341
 msgid "Old local data"
 msgstr "داده‌های محلی قدیمی"
 
+#. translators: %s: number of days.
+#: admin/views/cloud.php:151
+#, php-format
 msgid "%s summary day"
 msgid_plural "%s summary days"
 msgstr[0] "%s روز خلاصه"
 msgstr[1] "%s روز خلاصه"
 
-msgid "In Cloud mode, data is only placed in a temporary queue and removed from the site after a successful sync. If the console is unavailable, the site and visitors are unaffected and sending is retried later."
-msgstr "در حالت ابری، داده‌ها فقط در صف موقت قرار می‌گیرند و پس از ارسال موفق از سایت پاک می‌شوند. اگر کنسول در دسترس نباشد، سایت و بازدیدکنندگان هیچ اختلالی نمی‌بینند و ارسال با تأخیر دوباره تلاش می‌شود."
+#: admin/views/cloud.php:157
+msgid ""
+"In Cloud mode, data is only placed in a temporary queue and removed from the "
+"site after a successful sync. If the console is unavailable, the site and "
+"visitors are unaffected and sending is retried later."
+msgstr ""
+"در حالت ابری، داده‌ها فقط در صف موقت قرار می‌گیرند و پس از ارسال موفق از سایت "
+"پاک می‌شوند. اگر کنسول در دسترس نباشد، سایت و بازدیدکنندگان هیچ اختلالی "
+"نمی‌بینند و ارسال با تأخیر دوباره تلاش می‌شود."
 
+#: admin/views/cloud.php:162
 msgid "Actions"
 msgstr "عملیات"
 
+#: admin/views/cloud.php:163
 msgid "Manual"
 msgstr "دستی"
 
+#: admin/views/cloud.php:169 admin/views/settings.php:354
 msgid "Send queue now"
 msgstr "ارسال فوری صف"
 
+#: admin/views/cloud.php:174 admin/views/settings.php:359
 msgid "Test connection"
 msgstr "تست اتصال"
 
+#: admin/views/cloud.php:177 admin/views/settings.php:362
 msgid "Purge local analytics data? This cannot be undone."
 msgstr "داده‌های محلی آمار پاک شوند؟ این کار قابل بازگشت نیست."
 
+#: admin/views/cloud.php:180 admin/views/settings.php:365
 msgid "Purge local data"
 msgstr "پاک‌کردن داده‌های محلی"
 
+#: admin/views/cloud.php:189
 msgid "Storage mode: Cloud"
 msgstr "حالت ذخیره‌سازی: ابری"
 
+#: admin/views/cloud.php:190
 msgid "Settings and connection key"
 msgstr "تنظیمات و کلید اتصال"
 
+#: admin/views/dashboard.php:17
+msgid "Today"
+msgstr "امروز"
+
+#. translators: %s: number of days.
+#: admin/views/dashboard.php:19 admin/views/dashboard.php:21
+#: admin/views/dashboard.php:23 admin/views/settings.php:161
+#: admin/views/settings.php:177 admin/views/site-status.php:239
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s روز"
+msgstr[1] "%s روز"
+
+#. translators: %s: time difference, for example "5 minutes".
+#: admin/views/dashboard.php:60
+msgid "No processing yet"
+msgstr "بدون پردازش"
+
+#: admin/views/dashboard.php:177
+msgid "Site analytics, speed, security, and monitoring"
+msgstr "آمار، سرعت، امنیت و پایش سایت"
+
+#: admin/views/dashboard.php:177
+msgid "Lightweight pageview and engagement analytics"
+msgstr "آمار سبک بازدید و تعامل کاربران"
+
+#: admin/views/dashboard.php:181
+msgid "Automatic processing active"
+msgstr "پردازش خودکار فعال"
+
+#: admin/views/dashboard.php:181
+msgid "Automatic processing disabled"
+msgstr "پردازش خودکار غیرفعال"
+
+#: admin/views/dashboard.php:192
+msgid "Pageviews, sources, and engagement"
+msgstr "بازدید، منبع ورود و تعامل"
+
+#: admin/views/dashboard.php:198
+msgid "No data yet"
+msgstr "هنوز داده‌ای ثبت نشده است"
+
+#: admin/views/dashboard.php:199
+msgid ""
+"Data starts with the first real visit. Admin and logged-in user visits are "
+"not counted by default."
+msgstr ""
+"داده‌ها با اولین بازدید واقعی شروع می‌شوند. بازدید مدیر و کاربران واردشده "
+"به‌صورت پیش‌فرض شمرده نمی‌شود."
+
+#: admin/views/dashboard.php:201
+msgid "Open the site in a private window"
+msgstr "سایت را در حالت ناشناس باز کنید"
+
+#: admin/views/dashboard.php:202
+msgid "Open the dashboard or run cron"
+msgstr "داشبورد را باز کنید یا cron را اجرا کنید"
+
+#: admin/views/dashboard.php:203
+msgid "If caching is enabled, clear it once"
+msgstr "در صورت وجود کش، یک‌بار آن را پاک کنید"
+
+#: admin/views/dashboard.php:206
+msgid "Check settings"
+msgstr "بررسی تنظیمات"
+
+#: admin/views/dashboard.php:207
+msgid "Refresh"
+msgstr "بازخوانی"
+
+#: admin/views/dashboard.php:212
+msgid "Report range"
+msgstr "بازه گزارش"
+
+#: admin/views/dashboard.php:221
+msgid "to"
+msgstr "تا"
+
+#: admin/views/dashboard.php:223 admin/views/dashboard.php:571
+msgid "Last processed:"
+msgstr "آخرین پردازش:"
+
+#: admin/views/dashboard.php:228 admin/views/dashboard.php:295
+msgid "Visitor quality"
+msgstr "کیفیت بازدید"
+
+#: admin/views/dashboard.php:229
+msgid "Quality"
+msgstr "کیفیت"
+
+#: admin/views/dashboard.php:248 admin/views/dashboard.php:258
+#: admin/views/dashboard.php:268
+msgid "No previous data"
+msgstr "داده دوره قبل نیست"
+
+#: admin/views/dashboard.php:248 admin/views/dashboard.php:258
+#: admin/views/dashboard.php:268
+msgid "vs. previous period"
+msgstr "نسبت به دوره قبل"
+
+#: admin/views/dashboard.php:277 admin/views/dashboard.php:285
+msgid "Previous period:"
+msgstr "دوره قبل:"
+
+#: admin/views/dashboard.php:288
+msgid ""
+"Visitors are based on a daily hash; the same person on different days is "
+"counted again."
+msgstr ""
+"بازدیدکننده بر پایه هش روزانه محاسبه می‌شود؛ بازدید یک نفر در روزهای مختلف "
+"دوباره شمرده می‌شود."
+
+#: admin/views/dashboard.php:291
+msgid ""
+"Visitor quality is recorded from now on; older data is only visible in "
+"\"All\" mode."
+msgstr ""
+"تفکیک کیفیت از این پس ثبت می‌شود؛ داده‌های قبلی فقط در حالت «همه» دیده می‌شوند."
+
+#: admin/views/dashboard.php:296
+msgid "browser detected"
+msgstr "مرورگر تشخیص داده شده"
+
+#: admin/views/dashboard.php:298
+msgid "Visitor quality breakdown"
+msgstr "ترکیب کیفیت بازدیدها"
+
+#: admin/views/dashboard.php:317
+msgid ""
+"Some data in this range was recorded before the visitor breakdown was "
+"enabled and is not included in the browser or bot groups."
+msgstr ""
+"بخشی از داده‌های این بازه قبل از فعال‌شدن تفکیک بازدیدکننده ثبت شده و در "
+"گروه‌های مرورگر یا ربات حساب نمی‌شود."
+
+#. translators: %s: date when detailed data starts.
+#: admin/views/dashboard.php:326
+#, php-format
+msgid ""
+"Page, source, device, and event details for part of this range have been "
+"deleted. Totals are calculated from daily summaries; details are available "
+"from %s."
+msgstr ""
+"جزئیات صفحه، منبع، دستگاه و رویدادها برای بخشی از این بازه پاک شده است. "
+"اعداد کلی از خلاصه روزانه محاسبه می‌شوند و جزئیات از تاریخ %s در دسترس است."
+
+#. translators: %s: report mode label.
+#: admin/views/dashboard.php:335
+#, php-format
+msgid "No data for this range in \"%s\" mode."
+msgstr "در حالت «%s» برای این بازه داده‌ای نیست."
+
+#: admin/views/dashboard.php:338
+msgid "Show all visits"
+msgstr "نمایش همه بازدیدها"
+
+#: admin/views/dashboard.php:340
+msgid "Choose another range."
+msgstr "بازه دیگری را انتخاب کنید."
+
+#: admin/views/dashboard.php:347
+msgid "Daily pageviews"
+msgstr "بازدید روزانه"
+
+#: admin/views/dashboard.php:351
+msgid "Total pageviews:"
+msgstr "مجموع بازدید:"
+
+#: admin/views/dashboard.php:353
+msgid "Peak day:"
+msgstr "بیشترین روز:"
+
+#: admin/views/dashboard.php:353
+msgid "pageviews on"
+msgstr "بازدید در"
+
+#: admin/views/dashboard.php:357
+msgid "Daily pageviews chart"
+msgstr "نمودار بازدید روزانه"
+
+#. translators: %1$s: date; %2$s: pageviews; %3$s: visitors.
+#: admin/views/dashboard.php:377
+#, php-format
+msgid "%1$s — %2$s pageviews, %3$s visitors"
+msgstr "%1$s — %2$s بازدید، %3$s بازدیدکننده"
+
+#: admin/views/dashboard.php:394
+msgid "Top pages"
+msgstr "صفحات پرتردید"
+
+#: admin/views/dashboard.php:395
+msgid "10 pages"
+msgstr "۱۰ صفحه"
+
+#: admin/views/dashboard.php:401
+msgid "Page"
+msgstr "صفحه"
+
+#: admin/views/dashboard.php:404
+msgid "Avg. time"
+msgstr "میانگین زمان"
+
+#: admin/views/dashboard.php:409 admin/views/dashboard.php:447
+#: admin/views/dashboard.php:491
+msgid "No data to display."
+msgstr "داده‌ای برای نمایش نیست."
+
+#: admin/views/dashboard.php:427
+msgid ""
+"Top 10 pages; visitors per page are unique, and one person can be counted on "
+"multiple pages."
+msgstr ""
+"۱۰ صفحه پرتردید؛ بازدیدکننده هر صفحه جداست و یک نفر می‌تواند در چند صفحه "
+"شمرده شود."
+
+#: admin/views/dashboard.php:432
+msgid "Sources"
+msgstr "منابع ورود"
+
+#: admin/views/dashboard.php:433
+msgid "10 sources"
+msgstr "۱۰ منبع"
+
+#: admin/views/dashboard.php:439
+msgid "Source"
+msgstr "منبع"
+
+#: admin/views/dashboard.php:440
+msgid "Channel"
+msgstr "کانال"
+
+#: admin/views/dashboard.php:450 includes/class-reports.php:562
+msgid "Direct"
+msgstr "مستقیم"
+
+#: admin/views/dashboard.php:469
+msgid ""
+"Top 10 sources; visitors per source are unique; internal navigation is "
+"excluded, so the sum does not equal total pageviews."
+msgstr ""
+"۱۰ منبع نخست؛ بازدیدکننده هر منبع جداست؛ بازدیدهای ناوبری داخلی در این جدول "
+"نیستند؛ به همین دلیل جمع آن با کل بازدید برابر نیست."
+
+#: admin/views/dashboard.php:476
+msgid "Devices"
+msgstr "دستگاه‌ها"
+
+#: admin/views/dashboard.php:477
+msgid "Share of total pageviews"
+msgstr "سهم از کل بازدید"
+
+#: admin/views/dashboard.php:483
+msgid "Device"
+msgstr "دستگاه"
+
+#: admin/views/dashboard.php:486
+msgid "Share"
+msgstr "سهم"
+
+#: admin/views/dashboard.php:514
+msgid ""
+"Visitors per device are unique; one person using multiple devices is counted "
+"in multiple rows."
+msgstr ""
+"بازدیدکننده هر دستگاه جداست؛ یک نفر با چند دستگاه در چند ردیف شمرده می‌شود."
+
+#: admin/views/dashboard.php:519
+msgid "Events"
+msgstr "رویدادها"
+
+#: admin/views/dashboard.php:520
+msgid "Top 8 events"
+msgstr "۸ رویداد پرتکرار"
+
+#: admin/views/dashboard.php:526
+msgid "Event"
+msgstr "رویداد"
+
+#: admin/views/dashboard.php:527
+msgid "Count"
+msgstr "تعداد"
+
+#: admin/views/dashboard.php:532
+msgid "No events recorded."
+msgstr "رویدادی ثبت نشده است."
+
+#: admin/views/dashboard.php:544
+msgid "Events are collected from browser interactions."
+msgstr "رویدادها از تعامل‌های سمت مرورگر جمع‌آوری می‌شوند."
+
+#. translators: %s: amount of queued data, for example "1 KB".
+#: admin/views/dashboard.php:555
+#, php-format
+msgid "%s of data is queued for processing."
+msgstr "%s داده در صف پردازش است."
+
+#: admin/views/dashboard.php:557 admin/views/settings.php:311
+msgid "Process queue manually"
+msgstr "پردازش دستی صف"
+
+#. translators: %s: cron event name.
+#: admin/views/dashboard.php:565
+#, php-format
+msgid ""
+"Scheduled processing is not active. Process the queue manually from the "
+"settings page or set a server cron for %s."
+msgstr ""
+"زمان‌بندی پردازش دوره‌ای فعال نیست. از صفحه تنظیمات، صف را دستی پردازش کنید یا "
+"cron سرور را برای رویداد %s تنظیم کنید."
+
+#: admin/views/dashboard.php:572
+msgid "Settings and data retention"
+msgstr "تنظیمات و نگهداری داده‌ها"
+
+#: admin/views/security-check.php:11
+msgid "Security check"
+msgstr "بررسی امنیتی"
+
+#: admin/views/security-check.php:13
+msgid "Basic checks"
+msgstr "بررسی‌های پایه"
+
+#: admin/views/security-check.php:14
+msgid "Re-check"
+msgstr "بررسی مجدد"
+
+#: admin/views/security-check.php:28
+msgid "All basic checks passed."
+msgstr "همهٔ بررسی‌های پایه موفق بودند."
+
+#: admin/views/security-check.php:32
+msgid "Some checks could not run from this server."
+msgstr "برخی بررسی‌ها از این سرور قابل اجرا نبودند."
+
+#. translators: %s: time difference, for example "5 minutes".
+#: admin/views/security-check.php:38
+#, php-format
+msgid "Checked %s ago."
+msgstr "بررسی‌شده %s پیش."
+
+#: admin/views/settings.php:35
 msgid "HubPilot Settings"
 msgstr "تنظیمات HubPilot"
 
+#: admin/views/settings.php:36
 msgid "Data retention, privacy, and processing status"
 msgstr "نگهداری داده‌ها، حریم خصوصی و وضعیت پردازش"
 
+#: admin/views/settings.php:40
 msgid "Back to dashboard"
 msgstr "بازگشت به داشبورد"
 
+#: admin/views/settings.php:46
 msgid "Settings saved."
 msgstr "تنظیمات ذخیره شد."
 
+#: admin/views/settings.php:51
 msgid "Queue processed; existing data was added to analytics."
 msgstr "صف پردازش شد؛ داده‌های موجود به آمار اضافه شدند."
 
-msgid "The site connection key is not set; in Cloud mode, no data is sent to the console until you enter it."
-msgstr "کلید اتصال سایت تنظیم نشده است؛ در حالت ابری تا ورود کلید، داده‌ای به کنسول ارسال نمی‌شود."
+#: admin/views/settings.php:59
+msgid ""
+"The site connection key is not set; in Cloud mode, no data is sent to the "
+"console until you enter it."
+msgstr ""
+"کلید اتصال سایت تنظیم نشده است؛ در حالت ابری تا ورود کلید، داده‌ای به کنسول "
+"ارسال نمی‌شود."
 
+#: admin/views/settings.php:64
 msgid "Three data retention levels"
 msgstr "سه سطح نگهداری داده"
 
+#: admin/views/settings.php:65
 msgid "Keeps the database lean"
 msgstr "دیتابیس سبک می‌ماند"
 
-msgid "Data is retained in tiers; after each level expires, only the next level remains."
-msgstr "داده‌ها به‌صورت پله‌ای نگهداری می‌شوند؛ بعد از پایان هر سطح، فقط سطح بعدی باقی می‌ماند."
+#: admin/views/settings.php:67
+msgid ""
+"Data is retained in tiers; after each level expires, only the next level "
+"remains."
+msgstr ""
+"داده‌ها به‌صورت پله‌ای نگهداری می‌شوند؛ بعد از پایان هر سطح، فقط سطح بعدی باقی "
+"می‌ماند."
 
+#: admin/views/settings.php:72
 msgid "Level"
 msgstr "سطح"
 
+#: admin/views/settings.php:73
 msgid "Includes"
 msgstr "شامل"
 
+#: admin/views/settings.php:74
 msgid "Default"
 msgstr "پیش‌فرض"
 
+#: admin/views/settings.php:79 admin/views/settings.php:154
 msgid "Detailed data"
 msgstr "جزئیات لحظه‌ای"
 
+#: admin/views/settings.php:80
 msgid "Per-visit tracking, hourly table, sessions, and events"
 msgstr "ردیابی تک‌بازدید، جدول ساعتی، نشست‌ها و رویدادها"
 
+#: admin/views/settings.php:81
 msgid "30 days"
 msgstr "۳۰ روز"
 
+#: admin/views/settings.php:84 admin/views/settings.php:170
 msgid "Daily data"
 msgstr "جزئیات روزانه"
 
+#: admin/views/settings.php:85
 msgid "Page, source, device, and browser breakdown by day"
 msgstr "تفکیک صفحه، منبع ورود، دستگاه و مرورگر در سطح روز"
 
+#: admin/views/settings.php:86
 msgid "180 days"
 msgstr "۱۸۰ روز"
 
+#: admin/views/settings.php:89 admin/views/settings.php:186
 msgid "Daily totals"
 msgstr "خلاصه روزانه"
 
-msgid "Pageviews, visitors, sessions, bounces, and engaged time without page or source breakdown"
+#: admin/views/settings.php:90
+msgid ""
+"Pageviews, visitors, sessions, bounces, and engaged time without page or "
+"source breakdown"
 msgstr "بازدید، بازدیدکننده، نشست، پرش و زمان فعال بدون تفکیک صفحه و منبع"
 
+#: admin/views/settings.php:91
 msgid "24 months"
 msgstr "۲۴ ماه"
 
+#: admin/views/settings.php:104
 msgid "Storage mode"
 msgstr "حالت ذخیره‌سازی"
 
+#: admin/views/settings.php:105
 msgid "Local or cloud"
 msgstr "محلی یا ابری"
 
+#: admin/views/settings.php:110
 msgid "Local"
 msgstr "محلی"
 
-msgid "Data is stored in this site's database and the full local dashboard is available."
+#: admin/views/settings.php:111
+msgid ""
+"Data is stored in this site's database and the full local dashboard is "
+"available."
 msgstr "داده‌ها در دیتابیس همین سایت ذخیره می‌شوند و داشبورد محلی کامل فعال است."
 
+#: admin/views/settings.php:115
 msgid "Cloud"
 msgstr "ابری"
 
-msgid "No analytics data is stored in the site database; a temporary queue is sent to the console at most every five minutes."
-msgstr "هیچ داده آماری در دیتابیس سایت ذخیره نمی‌شود؛ صف موقت حداکثر هر ۵ دقیقه به کنسول ارسال می‌شود."
+#: admin/views/settings.php:116
+msgid ""
+"No analytics data is stored in the site database; a temporary queue is sent "
+"to the console at most every five minutes."
+msgstr ""
+"هیچ داده آماری در دیتابیس سایت ذخیره نمی‌شود؛ صف موقت حداکثر هر ۵ دقیقه به "
+"کنسول ارسال می‌شود."
 
-msgid "In Cloud mode, the temporary queue is cleared after a successful sync. If the console is unavailable, the site and its visitors are unaffected."
-msgstr "در حالت ابری، صف موقت بعد از ارسال موفق پاک می‌شود و اگر کنسول در دسترس نباشد، سایت و بازدیدکنندگان هیچ اختلالی نمی‌بینند."
+#: admin/views/settings.php:119
+msgid ""
+"In Cloud mode, the temporary queue is cleared after a successful sync. If "
+"the console is unavailable, the site and its visitors are unaffected."
+msgstr ""
+"در حالت ابری، صف موقت بعد از ارسال موفق پاک می‌شود و اگر کنسول در دسترس "
+"نباشد، سایت و بازدیدکنندگان هیچ اختلالی نمی‌بینند."
 
+#: admin/views/settings.php:124
 msgid "WP-Hub console"
 msgstr "کنسول WP-Hub"
 
+#: admin/views/settings.php:125
 msgid "Analytics, speed, security, and monitoring in one dashboard"
 msgstr "آمار، سرعت، امنیت و پایش در یک داشبورد"
 
-msgid "For full reports, speed tests, security checks, and monitoring, get a site key from the console. The console URL is fixed in the plugin and does not need to be entered."
-msgstr "برای دیدن گزارش‌های کامل، تست سرعت، امنیت و پایش، کلید اتصال سایت را از کنسول بگیرید. آدرس کنسول در پلاگین ثابت است و نیازی به وارد کردن آن نیست."
+#: admin/views/settings.php:126
+msgid ""
+"For full reports, speed tests, security checks, and monitoring, get a site "
+"key from the console. The console URL is fixed in the plugin and does not "
+"need to be entered."
+msgstr ""
+"برای دیدن گزارش‌های کامل، تست سرعت، امنیت و پایش، کلید اتصال سایت را از کنسول "
+"بگیرید. آدرس کنسول در پلاگین ثابت است و نیازی به وارد کردن آن نیست."
 
+#: admin/views/settings.php:128
 msgid "Get key from console"
 msgstr "دریافت کلید از کنسول"
 
+#: admin/views/settings.php:133
 msgid "Console connection"
 msgstr "اتصال به کنسول"
 
+#: admin/views/settings.php:134
 msgid "Cloud mode only"
 msgstr "فقط در حالت ابری"
 
+#: admin/views/settings.php:138
 msgid "Site connection key"
 msgstr "کلید اتصال سایت"
 
-msgid "Get the site's dedicated key from the console and enter it here. The console URL is fixed in the plugin; requests use Bearer authentication and an HMAC signature."
-msgstr "کلید اختصاصی سایت را از کنسول دریافت و اینجا وارد کنید. آدرس کنسول در پلاگین ثابت است و ارسال با Bearer و امضای HMAC انجام می‌شود."
+#: admin/views/settings.php:141
+msgid ""
+"Get the site's dedicated key from the console and enter it here. The console "
+"URL is fixed in the plugin; requests use Bearer authentication and an HMAC "
+"signature."
+msgstr ""
+"کلید اختصاصی سایت را از کنسول دریافت و اینجا وارد کنید. آدرس کنسول در پلاگین "
+"ثابت است و ارسال با Bearer و امضای HMAC انجام می‌شود."
 
+#: admin/views/settings.php:149
 msgid "Data retention"
 msgstr "نگهداری داده‌ها"
 
+#: admin/views/settings.php:150
 msgid "Configurable ranges"
 msgstr "بازه‌های قابل تنظیم"
 
-msgid "After this period, per-visit tracking, hourly stats, sessions, and events are deleted."
-msgstr "بعد از این مدت، ردیابی تک‌بازدید، آمار ساعتی، نشست‌ها و رویدادها حذف می‌شوند."
+#: admin/views/settings.php:166
+msgid ""
+"After this period, per-visit tracking, hourly stats, sessions, and events "
+"are deleted."
+msgstr ""
+"بعد از این مدت، ردیابی تک‌بازدید، آمار ساعتی، نشست‌ها و رویدادها حذف می‌شوند."
 
-msgid "After this period, page, source, device, and browser breakdowns are deleted and only daily totals remain."
-msgstr "بعد از این مدت، تفکیک صفحه، منبع، دستگاه و مرورگر حذف می‌شود و فقط خلاصه روزانه می‌ماند."
+#: admin/views/settings.php:182
+msgid ""
+"After this period, page, source, device, and browser breakdowns are deleted "
+"and only daily totals remain."
+msgstr ""
+"بعد از این مدت، تفکیک صفحه، منبع، دستگاه و مرورگر حذف می‌شود و فقط خلاصه "
+"روزانه می‌ماند."
 
+#. translators: %s: number of months.
+#: admin/views/settings.php:193
 msgid "Keep forever"
 msgstr "همیشه نگه‌داری شود"
 
+#. translators: %s: number of months.
+#: admin/views/settings.php:193
+#, php-format
 msgid "%s month"
 msgid_plural "%s months"
 msgstr[0] "%s ماه"
 msgstr[1] "%s ماه"
 
-msgid "Older data, including daily totals, is deleted after this period. \"Keep forever\" accepts very slow database growth."
-msgstr "قدیمی‌تر از این مدت، حتی خلاصه روزانه هم حذف می‌شود. گزینه «همیشه» رشد بسیار کند دیتابیس را می‌پذیرد."
+#: admin/views/settings.php:198
+msgid ""
+"Older data, including daily totals, is deleted after this period. \"Keep "
+"forever\" accepts very slow database growth."
+msgstr ""
+"قدیمی‌تر از این مدت، حتی خلاصه روزانه هم حذف می‌شود. گزینه «همیشه» رشد بسیار "
+"کند دیتابیس را می‌پذیرد."
 
-msgid "Bot detection and traffic quality"
-msgstr "تشخیص ربات و کیفیت بازدید"
+#: admin/views/settings.php:206
+msgid "Bot filtering and visitor quality"
+msgstr "فیلتر ربات و کیفیت بازدید"
 
-msgid "User-Agent + browser signals"
-msgstr "User-Agent + رفتار مرورگر"
+#: admin/views/settings.php:207
+msgid "Automatic filtering"
+msgstr "فیلتر خودکار"
 
-msgid "Browser verification"
-msgstr "تأیید رفتار مرورگر"
+#: admin/views/settings.php:211
+msgid "Browser check"
+msgstr "تشخیص مرورگر"
 
-msgid "To count a visit as \"verified\", also check JavaScript execution and browser signals"
-msgstr "برای شمردن بازدید در حالت «تأییدشده»، اجرای JS و سیگنال‌های مرورگر هم بررسی شود"
+#: admin/views/settings.php:213
+msgid "Check the browser to count a visit as a real visit"
+msgstr "برای ثبت بازدید واقعی، مرورگر کاربر بررسی شود"
 
-msgid "Known bots are filtered by User-Agent. Visits without browser verification appear in \"No-JS\", and rejected visits appear in \"Suspect\"."
-msgstr "ربات‌های شناخته‌شده بر اساس User-Agent حذف می‌شوند. بازدیدهای بدون تأیید مرورگر در حالت «بدون JS» و بازدیدهای ردشده در حالت «مشکوک» نمایش داده می‌شوند."
+#: admin/views/settings.php:214
+msgid ""
+"Known bots are filtered automatically. Visits with no recognized browser "
+"appear in \"No browser\"; bot-like visits appear in \"Bot\"."
+msgstr ""
+"ربات‌ها به‌صورت خودکار حذف می‌شوند. بازدیدهایی که مرورگرشان شناسایی نشود در "
+"«بدون مرورگر» و بازدیدهای شبیه ربات در «ربات» نمایش داده می‌شوند."
 
+#: admin/views/settings.php:222
 msgid "Privacy and filtering"
 msgstr "حریم خصوصی و فیلتر"
 
+#: admin/views/settings.php:223
 msgid "Cookie-free"
 msgstr "بدون کوکی"
 
+#: admin/views/settings.php:227
 msgid "Logged-in users"
 msgstr "کاربران واردشده"
 
+#: admin/views/settings.php:229
 msgid "Track logged-in users too"
 msgstr "بازدید کاربران واردشده هم ثبت شود"
 
+#: admin/views/settings.php:230
 msgid "By default, admin and logged-in user visits are not tracked."
 msgstr "به‌صورت پیش‌فرض بازدید مدیر و کاربران واردشده ثبت نمی‌شود."
 
+#: admin/views/settings.php:234
 msgid "Do Not Track"
 msgstr "Do Not Track"
 
+#: admin/views/settings.php:236
 msgid "Respect visitors' DNT / GPC requests"
 msgstr "درخواست DNT / GPC کاربران رعایت شود"
 
+#: admin/views/settings.php:240
 msgid "404 pages"
 msgstr "صفحات ۴۰۴"
 
+#: admin/views/settings.php:242
 msgid "Do not track 404 pages"
 msgstr "صفحات ۴۰۴ ثبت نشوند"
 
+#: admin/views/settings.php:246
 msgid "Uninstall"
 msgstr "حذف افزونه"
 
+#: admin/views/settings.php:248
 msgid "Delete analytics tables on uninstall"
 msgstr "هنگام حذف افزونه، جدول‌های آمار هم حذف شوند"
 
-msgid "If disabled, data remains in the database after the plugin is uninstalled."
-msgstr "اگر این گزینه خاموش باشد، داده‌ها پس از حذف افزونه در دیتابیس باقی می‌مانند."
+#: admin/views/settings.php:249
+msgid ""
+"If disabled, data remains in the database after the plugin is uninstalled."
+msgstr ""
+"اگر این گزینه خاموش باشد، داده‌ها پس از حذف افزونه در دیتابیس باقی می‌مانند."
 
+#: admin/views/settings.php:257
 msgid "Appearance and notifications"
 msgstr "ظاهر و اعلان‌ها"
 
+#: admin/views/settings.php:258
 msgid "Analytics pages only"
 msgstr "فقط در صفحات آمار"
 
+#: admin/views/settings.php:262
 msgid "WordPress notices"
 msgstr "اعلان‌های وردپرس"
 
+#: admin/views/settings.php:264
 msgid "Hide WordPress and other plugin notices on analytics pages"
 msgstr "اعلان‌های وردپرس و افزونه‌های دیگر در صفحات آمار پنهان شوند"
 
-msgid "This option only affects this plugin's dashboard and settings pages, not other admin pages."
-msgstr "این گزینه فقط روی داشبورد و تنظیمات همین افزونه اعمال می‌شود و روی بقیه صفحات مدیریت اثری ندارد."
+#: admin/views/settings.php:265
+msgid ""
+"This option only affects this plugin's dashboard and settings pages, not "
+"other admin pages."
+msgstr ""
+"این گزینه فقط روی داشبورد و تنظیمات همین افزونه اعمال می‌شود و روی بقیه صفحات "
+"مدیریت اثری ندارد."
 
+#: admin/views/settings.php:269
 msgid "Source credit"
 msgstr "نام در سورس"
 
-msgid "Show the WP-Hub name at the top of the page source"
-msgstr "نام WP-Hub در بالای سورس صفحات نمایش داده شود"
+#: admin/views/settings.php:271
+msgid "Show the Traffic Analytics by HubPilot credit in the page source"
+msgstr "کردیت «Traffic Analytics by HubPilot» در سورس صفحات نمایش داده شود"
 
-msgid "This is only an HTML comment and does not affect the site's appearance or speed."
+#: admin/views/settings.php:272
+msgid ""
+"This is only an HTML comment and does not affect the site's appearance or "
+"speed."
 msgstr "این فقط یک کامنت HTML است و روی ظاهر یا سرعت سایت اثری ندارد."
 
+#: admin/views/settings.php:278
 msgid "Save settings"
 msgstr "ذخیره تنظیمات"
 
+#: admin/views/settings.php:284
 msgid "Processing status"
 msgstr "وضعیت پردازش"
 
+#: admin/views/settings.php:285
 msgid "Queue health and schedule"
 msgstr "سلامت صف و زمان‌بندی"
 
+#: admin/views/settings.php:289
 msgid "Scheduled processing"
 msgstr "پردازش دوره‌ای"
 
+#: admin/views/settings.php:291
 msgid "Active — "
 msgstr "فعال — "
 
+#: admin/views/settings.php:291
 msgid "Disabled"
 msgstr "غیرفعال"
 
+#: admin/views/settings.php:295
 msgid "Last processed"
 msgstr "آخرین پردازش"
 
+#: admin/views/settings.php:299
 msgid "Current queue"
 msgstr "صف فعلی"
 
+#: admin/views/settings.php:300
 msgid "in"
 msgstr "در"
 
+#: admin/views/settings.php:300
 msgid "files"
 msgstr "فایل"
 
+#: admin/views/settings.php:303 admin/views/settings.php:345
 msgid "Queue directory"
 msgstr "پوشه صف"
 
+#: admin/views/settings.php:304 admin/views/settings.php:346
 msgid "Writable"
 msgstr "قابل نوشتن"
 
+#: admin/views/settings.php:304 admin/views/settings.php:346
 msgid "Not writable"
 msgstr "غیرقابل نوشتن"
 
-msgid "If you use full-page caching, clear it once after activation so the tracker is included in cached pages. Analytics are kept only on this site with no external requests."
-msgstr "اگر از کش تمام‌صفحه استفاده می‌کنید، بعد از فعال‌سازی افزونه یک‌بار کش را پاک کنید تا اسکریپت ردیاب در صفحات کش‌شده قرار بگیرد. آمار بدون هیچ درخواست خارجی و فقط روی همین سایت نگه‌داری می‌شود."
+#: admin/views/settings.php:314
+msgid ""
+"If you use full-page caching, clear it once after activation so the tracker "
+"is included in cached pages. Analytics are kept only on this site with no "
+"external requests."
+msgstr ""
+"اگر از کش تمام‌صفحه استفاده می‌کنید، بعد از فعال‌سازی افزونه یک‌بار کش را پاک "
+"کنید تا اسکریپت ردیاب در صفحات کش‌شده قرار بگیرد. آمار بدون هیچ درخواست خارجی "
+"و فقط روی همین سایت نگه‌داری می‌شود."
 
-msgid "If DISABLE_WP_CRON is enabled, set a real server cron for wphs_aggregate or use the manual processing button."
-msgstr "اگر DISABLE_WP_CRON فعال است، برای رویداد wphs_aggregate یک cron واقعی روی سرور تنظیم کنید یا از دکمه پردازش دستی استفاده کنید."
+#: admin/views/settings.php:315
+msgid ""
+"If DISABLE_WP_CRON is enabled, set a real server cron for wphs_aggregate or "
+"use the manual processing button."
+msgstr ""
+"اگر DISABLE_WP_CRON فعال است، برای رویداد wphs_aggregate یک cron واقعی روی "
+"سرور تنظیم کنید یا از دکمه پردازش دستی استفاده کنید."
 
+#: admin/views/settings.php:320
 msgid "Cloud sync status"
 msgstr "وضعیت ارسال ابری"
 
+#: admin/views/settings.php:321
 msgid "No local storage"
 msgstr "بدون ذخیره‌سازی محلی"
 
+#: admin/views/settings.php:325
 msgid "Queued events"
 msgstr "در صف ارسال"
 
+#: admin/views/settings.php:326
 msgid "events"
 msgstr "رویداد"
 
+#: admin/views/settings.php:337
 msgid "Next attempt / schedule"
 msgstr "تلاش بعدی / زمان‌بندی"
 
+#: admin/views/settings.php:342
 msgid "summary days"
 msgstr "روز خلاصه"
 
-msgid "In Cloud mode, no analytics data is written to the site database; only a temporary queue file is used. Events are removed from the queue after a successful sync."
-msgstr "در حالت ابری هیچ داده آماری در دیتابیس سایت نوشته نمی‌شود؛ فقط صف موقت فایل. پس از ارسال موفق، رویدادها از صف حذف می‌شوند."
+#: admin/views/settings.php:370
+msgid ""
+"In Cloud mode, no analytics data is written to the site database; only a "
+"temporary queue file is used. Events are removed from the queue after a "
+"successful sync."
+msgstr ""
+"در حالت ابری هیچ داده آماری در دیتابیس سایت نوشته نمی‌شود؛ فقط صف موقت فایل. "
+"پس از ارسال موفق، رویدادها از صف حذف می‌شوند."
 
-msgid "If DISABLE_WP_CRON is enabled, set a real server cron for wphs_cloud_sync or use the send-now button."
-msgstr "اگر DISABLE_WP_CRON فعال است، برای رویداد wphs_cloud_sync یک cron واقعی روی سرور تنظیم کنید یا از دکمه ارسال فوری استفاده کنید."
+#: admin/views/settings.php:371
+msgid ""
+"If DISABLE_WP_CRON is enabled, set a real server cron for wphs_cloud_sync or "
+"use the send-now button."
+msgstr ""
+"اگر DISABLE_WP_CRON فعال است، برای رویداد wphs_cloud_sync یک cron واقعی روی "
+"سرور تنظیم کنید یا از دکمه ارسال فوری استفاده کنید."
 
+#: admin/views/site-status.php:48
 msgid "sec"
 msgstr "ثانیه"
 
+#: admin/views/site-status.php:73
 msgid "Critical"
 msgstr "بحرانی"
 
+#: admin/views/site-status.php:74
 msgid "High"
 msgstr "بالا"
 
+#: admin/views/site-status.php:75
 msgid "Medium"
 msgstr "متوسط"
 
+#: admin/views/site-status.php:76
 msgid "Low"
 msgstr "پایین"
 
+#: admin/views/site-status.php:91
 msgid "Headers"
 msgstr "هدرها"
 
+#: admin/views/site-status.php:92
 msgid "SSL"
 msgstr "SSL"
 
+#: admin/views/site-status.php:93
 msgid "Vulnerabilities"
 msgstr "آسیب‌پذیری"
 
+#: admin/views/site-status.php:108
 msgid "Online"
 msgstr "آنلاین"
 
+#: admin/views/site-status.php:108
 msgid "Offline"
 msgstr "آفلاین"
 
+#: admin/views/site-status.php:108
 msgid "Unknown"
 msgstr "نامشخص"
 
+#: admin/views/site-status.php:115
 msgid "Site status"
 msgstr "وضعیت سایت"
 
+#: admin/views/site-status.php:126
 msgid "Failed to fetch site status from the console:"
 msgstr "دریافت وضعیت سایت از کنسول ناموفق بود:"
 
+#: admin/views/site-status.php:127
 msgid "Check connection"
 msgstr "بررسی اتصال"
 
+#: admin/views/site-status.php:131
 msgid "Could not reach the console; showing the last saved data."
-msgstr "ارتباط تازه با کنسول برقرار نشد؛ آخرین داده‌های ذخیره‌شده نمایش داده می‌شود."
+msgstr ""
+"ارتباط تازه با کنسول برقرار نشد؛ آخرین داده‌های ذخیره‌شده نمایش داده می‌شود."
 
+#: admin/views/site-status.php:137
 msgid "Latest speed test"
 msgstr "آخرین تست سرعت"
 
+#: admin/views/site-status.php:138
 msgid "Mobile and desktop"
 msgstr "موبایل و دسکتاپ"
 
+#: admin/views/site-status.php:142
 msgid "No speed test recorded yet."
 msgstr "هنوز تست سرعتی ثبت نشده است."
 
+#: admin/views/site-status.php:147 includes/class-reports.php:578
 msgid "Mobile"
 msgstr "موبایل"
 
+#: admin/views/site-status.php:148 includes/class-reports.php:577
 msgid "Desktop"
 msgstr "دسکتاپ"
 
+#: admin/views/site-status.php:161 admin/views/site-status.php:200
 msgid "Tested:"
 msgstr "تست:"
 
+#: admin/views/site-status.php:163
 msgid "No test recorded"
 msgstr "تستی ثبت نشده"
 
+#: admin/views/site-status.php:170
 msgid "Speed test details in the console"
 msgstr "جزئیات تست سرعت در کنسول"
 
+#: admin/views/site-status.php:175
 msgid "Latest security test"
 msgstr "آخرین تست امنیت"
 
+#: admin/views/site-status.php:176
 msgid "If available"
 msgstr "در صورت وجود"
 
+#: admin/views/site-status.php:180
 msgid "No security test recorded yet."
 msgstr "هنوز تست امنیتی ثبت نشده است."
 
+#: admin/views/site-status.php:186
 msgid "Security score"
 msgstr "نمره امنیت"
 
+#: admin/views/site-status.php:215
 msgid "Security test details in the console"
 msgstr "جزئیات تست امنیت در کنسول"
 
+#: admin/views/site-status.php:220
 msgid "Monitoring"
 msgstr "پایش و مانیتورینگ"
 
+#: admin/views/site-status.php:221
 msgid "24 hours"
 msgstr "۲۴ ساعت"
 
+#: admin/views/site-status.php:225
 msgid "Monitoring is not active or no data has been recorded."
 msgstr "مانیتورینگ فعال نیست یا داده‌ای ثبت نشده است."
 
+#: admin/views/site-status.php:230
 msgid "Uptime"
 msgstr "آپتایم"
 
+#: admin/views/site-status.php:243
 msgid "Valid"
 msgstr "معتبر"
 
+#: admin/views/site-status.php:243
 msgid "Invalid"
 msgstr "نامعتبر"
 
+#: admin/views/site-status.php:246
 msgid "Last check:"
 msgstr "آخرین بررسی:"
 
+#: admin/views/site-status.php:249
 msgid "Monitoring details in the console"
 msgstr "جزئیات پایش در کنسول"
 
-msgid "Security check"
-msgstr "بررسی امنیتی"
+#: includes/class-admin.php:108 includes/class-admin.php:109
+msgid "Dashboard"
+msgstr "داشبورد"
 
-msgid "Basic checks"
-msgstr "بررسی‌های پایه"
+#: includes/class-admin.php:144 includes/class-admin.php:184
+#: includes/class-admin.php:194 includes/class-admin.php:277
+#: includes/class-aggregator.php:848
+msgid "You do not have permission to access this page."
+msgstr "دسترسی مجاز نیست."
 
-msgid "Re-check"
-msgstr "بررسی مجدد"
+#. translators: %1$s: number of sent events; %2$s: number of queued events.
+#: includes/class-admin.php:231
+#, php-format
+msgid "%1$s events were sent to the console; %2$s events remain queued."
+msgstr "%1$s رویداد به کنسول ارسال شد؛ %2$s رویداد در صف باقی مانده است."
 
-msgid "All basic checks passed."
-msgstr "همهٔ بررسی‌های پایه موفق بودند."
+#: includes/class-admin.php:236
+msgid "The queue was empty; nothing to send."
+msgstr "صف خالی بود؛ چیزی برای ارسال نبود."
 
-msgid "Some checks could not run from this server."
-msgstr "برخی بررسی‌ها از این سرور قابل اجرا نبودند."
+#: includes/class-admin.php:239
+msgid "Cloud mode is not active."
+msgstr "حالت ابری فعال نیست."
 
-msgid "Checked %s ago."
-msgstr "بررسی‌شده %s پیش."
-
-msgid "Could not fetch site status from the console (HTTP %d)."
-msgstr "دریافت وضعیت سایت از کنسول ممکن نشد (HTTP %d)."
-
+#: includes/class-admin.php:240 includes/class-cloud.php:163
 msgid "The site connection key is not set."
 msgstr "کلید اتصال سایت تنظیم نشده است."
 
+#: includes/class-admin.php:241
+msgid "The next attempt is not allowed yet; try again later."
+msgstr "ارسال بعدی هنوز مجاز نیست؛ کمی بعد دوباره تلاش کنید."
+
+#: includes/class-admin.php:242
+msgid "Another process is already running."
+msgstr "یک پردازش دیگر در حال اجراست."
+
+#: includes/class-admin.php:245
+msgid "Sync failed: "
+msgstr "ارسال ناموفق: "
+
+#: includes/class-admin.php:256
+msgid "Local analytics data was purged."
+msgstr "داده‌های محلی آمار پاک شد."
+
+#. translators: %d: HTTP status code.
+#: includes/class-cloud.php:132
+#, php-format
+msgid "Could not fetch site status from the console (HTTP %d)."
+msgstr "دریافت وضعیت سایت از کنسول ممکن نشد (HTTP %d)."
+
+#. translators: %d: HTTP status code.
+#: includes/class-cloud.php:192
 msgid "Connected to the console."
 msgstr "اتصال به کنسول برقرار است."
 
+#. translators: %d: HTTP status code.
+#: includes/class-cloud.php:192
+#, php-format
 msgid "Invalid response from the console (HTTP %d)"
 msgstr "پاسخ نامعتبر از کنسول (HTTP %d)"
 
-msgid "Verified"
-msgstr "تأییدشده"
+#: includes/class-collector.php:480
+msgid "Search:"
+msgstr "جستجو:"
 
+#: includes/class-reports.php:28 includes/class-reports.php:461
+msgid "Browser detected"
+msgstr "مرورگر تشخیص داده شده"
+
+#: includes/class-reports.php:29
 msgid "All"
 msgstr "همه"
 
-msgid "No-JS"
-msgstr "بدون JS"
+#: includes/class-reports.php:30 includes/class-reports.php:462
+msgid "No browser"
+msgstr "بدون مرورگر"
 
-msgid "Suspect"
-msgstr "مشکوک"
+#: includes/class-reports.php:31 includes/class-reports.php:463
+msgid "Bot"
+msgstr "ربات"
 
-msgid "All recorded visits, including verified, No-JS, and suspect traffic."
-msgstr "همه بازدیدهای ثبت‌شده؛ شامل تأییدشده، بدون JS و مشکوک."
+#: includes/class-reports.php:45
+msgid ""
+"All recorded visits, including browser-detected, no-browser, and bot traffic."
+msgstr "همه بازدیدهای ثبت‌شده، شامل مرورگر تشخیص داده شده، بدون مرورگر و ربات."
 
-msgid "The User-Agent was valid, but no browser verification (JavaScript) was received."
-msgstr "User-Agent سالم بوده اما تأیید رفتار مرورگر (JS) دریافت نشده است."
+#: includes/class-reports.php:47
+msgid "The browser was not recognized or JavaScript did not run."
+msgstr "مرورگر بازدیدکننده شناسایی نشد یا جاوااسکریپت اجرا نشد."
 
-msgid "Browser signals were not verified or bot signals were detected."
-msgstr "رفتار مرورگر تأیید نشده یا نشانه‌های ربات دیده شده است."
+#: includes/class-reports.php:49
+msgid "Bot-like behavior was detected."
+msgstr "رفتار شبیه ربات تشخیص داده شد."
 
-msgid "Only visits with a valid User-Agent and verified browser signals."
-msgstr "فقط بازدیدهایی که User-Agent سالم و رفتار مرورگرشان تأیید شده است."
+#: includes/class-reports.php:51
+msgid "Only visits where the browser was detected."
+msgstr "فقط بازدیدهایی که مرورگر بازدیدکننده تشخیص داده شده است."
 
-msgid "Datacenter"
-msgstr "دیتاسنتر"
+#: includes/class-reports.php:464
+msgid "Server"
+msgstr "سرور"
 
+#: includes/class-reports.php:465
 msgid "Before breakdown"
 msgstr "قبل از تفکیک"
 
+#. translators: %s: number of seconds.
+#: includes/class-reports.php:536
+#, php-format
 msgid "%s second"
 msgid_plural "%s seconds"
 msgstr[0] "%s ثانیه"
 msgstr[1] "%s ثانیه"
 
+#. translators: %s: number of minutes.
+#: includes/class-reports.php:547
+#, php-format
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s دقیقه"
 msgstr[1] "%s دقیقه"
 
+#. translators: %1$s: minutes; %2$s: seconds.
+#: includes/class-reports.php:554
+#, php-format
 msgid "%1$s min %2$s sec"
 msgstr "%1$s دقیقه و %2$s ثانیه"
 
+#: includes/class-reports.php:563
 msgid "Search"
 msgstr "جستجو"
 
+#: includes/class-reports.php:564
 msgid "Social"
 msgstr "شبکه اجتماعی"
 
+#: includes/class-reports.php:565
 msgid "Referral"
 msgstr "ارجاع"
 
+#: includes/class-reports.php:566
 msgid "Paid"
 msgstr "تبلیغات"
 
+#: includes/class-reports.php:567
 msgid "Email"
 msgstr "ایمیل"
 
+#: includes/class-reports.php:568
 msgid "Campaign"
 msgstr "کمپین"
 
+#: includes/class-reports.php:569
 msgid "Internal"
 msgstr "داخلی"
 
+#: includes/class-reports.php:579
 msgid "Tablet"
 msgstr "تبلت"
 
+#: includes/class-reports.php:587
 msgid "Outbound click"
 msgstr "کلیک لینک خروجی"
 
+#: includes/class-reports.php:588
 msgid "File download"
 msgstr "دانلود فایل"
 
+#: includes/class-reports.php:589
 msgid "Form submission"
 msgstr "ارسال فرم"
 
+#: includes/class-reports.php:590
 msgid "Add to cart"
 msgstr "افزودن به سبد"
 
+#: includes/class-reports.php:591
 msgid "Scroll 25%"
 msgstr "اسکرول ۲۵٪"
 
+#: includes/class-reports.php:592
 msgid "Scroll 50%"
 msgstr "اسکرول ۵۰٪"
 
+#: includes/class-reports.php:593
 msgid "Scroll 75%"
 msgstr "اسکرول ۷۵٪"
 
+#: includes/class-reports.php:594
 msgid "Scroll 100%"
 msgstr "اسکرول ۱۰۰٪"
 
-msgid "Search:"
-msgstr "جستجو:"
-
-msgid "HubPilot"
-msgstr "HubPilot"
-
-msgid "Dashboard"
-msgstr "داشبورد"
-
-msgid "You do not have permission to access this page."
-msgstr "دسترسی مجاز نیست."
-
-msgid "%1$s events were sent to the console; %2$s events remain queued."
-msgstr "%1$s رویداد به کنسول ارسال شد؛ %2$s رویداد در صف باقی مانده است."
-
-msgid "The queue was empty; nothing to send."
-msgstr "صف خالی بود؛ چیزی برای ارسال نبود."
-
-msgid "Cloud mode is not active."
-msgstr "حالت ابری فعال نیست."
-
-msgid "The next attempt is not allowed yet; try again later."
-msgstr "ارسال بعدی هنوز مجاز نیست؛ کمی بعد دوباره تلاش کنید."
-
-msgid "Another process is already running."
-msgstr "یک پردازش دیگر در حال اجراست."
-
-msgid "Sync failed: "
-msgstr "ارسال ناموفق: "
-
-msgid "Local analytics data was purged."
-msgstr "داده‌های محلی آمار پاک شد."
-
+#: includes/class-security-check.php:34
 msgid "Directory listing is enabled"
 msgstr "نمایش فهرست دایرکتوری فعال است."
 
+#: includes/class-security-check.php:45
 msgid "REST users endpoint is public"
 msgstr "مسیر REST کاربران عمومی است."
 
+#: includes/class-security-check.php:56
 msgid "wp-admin is directly accessible"
 msgstr "دسترسی مستقیم به wp-admin باز است."
 
+#: includes/class-security-check.php:65
 msgid "No security plugin detected"
 msgstr "هیچ افزونهٔ امنیتی فعالی شناسایی نشد."
 
+#: includes/class-security-check.php:72
 msgid "File editing is enabled"
 msgstr "ویرایش فایل‌ها از پنل فعال است."
 
+#: includes/class-security-check.php:79
 msgid "Debug display is enabled"
 msgstr "نمایش خطاهای دیباگ فعال است."

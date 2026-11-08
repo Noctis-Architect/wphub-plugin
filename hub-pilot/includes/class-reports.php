@@ -25,10 +25,10 @@ final class WPHS_Reports {
 
 	public static function mode_options() {
 		return array(
-			'verified' => __( 'Verified', 'hub-pilot' ),
+			'verified' => __( 'Browser detected', 'hub-pilot' ),
 			'all'      => __( 'All', 'hub-pilot' ),
-			'nojs'     => __( 'No-JS', 'hub-pilot' ),
-			'suspect'  => __( 'Suspect', 'hub-pilot' ),
+			'nojs'     => __( 'No browser', 'hub-pilot' ),
+			'suspect'  => __( 'Bot', 'hub-pilot' ),
 		);
 	}
 
@@ -42,13 +42,13 @@ final class WPHS_Reports {
 	public static function mode_hint( $mode ) {
 		switch ( self::valid_mode( $mode ) ) {
 			case 'all':
-				return __( 'All recorded visits, including verified, No-JS, and suspect traffic.', 'hub-pilot' );
+				return __( 'All recorded visits, including browser-detected, no-browser, and bot traffic.', 'hub-pilot' );
 			case 'nojs':
-				return __( 'The User-Agent was valid, but no browser verification (JavaScript) was received.', 'hub-pilot' );
+				return __( 'The browser was not recognized or JavaScript did not run.', 'hub-pilot' );
 			case 'suspect':
-				return __( 'Browser signals were not verified or bot signals were detected.', 'hub-pilot' );
+				return __( 'Bot-like behavior was detected.', 'hub-pilot' );
 			default:
-				return __( 'Only visits with a valid User-Agent and verified browser signals.', 'hub-pilot' );
+				return __( 'Only visits where the browser was detected.', 'hub-pilot' );
 		}
 	}
 
@@ -458,10 +458,10 @@ final class WPHS_Reports {
 		}
 
 		$definitions = array(
-			array( 'key' => 'verified', 'grade' => 'v', 'label' => __( 'Verified', 'hub-pilot' ), 'tone' => 'is-verified' ),
-			array( 'key' => 'nojs', 'grade' => 'u', 'label' => __( 'No-JS', 'hub-pilot' ), 'tone' => 'is-nojs' ),
-			array( 'key' => 'suspect', 'grade' => 's', 'label' => __( 'Suspect', 'hub-pilot' ), 'tone' => 'is-suspect' ),
-			array( 'key' => 'datacenter', 'grade' => 'd', 'label' => __( 'Datacenter', 'hub-pilot' ), 'tone' => 'is-datacenter' ),
+			array( 'key' => 'verified', 'grade' => 'v', 'label' => __( 'Browser detected', 'hub-pilot' ), 'tone' => 'is-verified' ),
+			array( 'key' => 'nojs', 'grade' => 'u', 'label' => __( 'No browser', 'hub-pilot' ), 'tone' => 'is-nojs' ),
+			array( 'key' => 'suspect', 'grade' => 's', 'label' => __( 'Bot', 'hub-pilot' ), 'tone' => 'is-suspect' ),
+			array( 'key' => 'datacenter', 'grade' => 'd', 'label' => __( 'Server', 'hub-pilot' ), 'tone' => 'is-datacenter' ),
 			array( 'key' => 'legacy', 'grade' => '', 'label' => __( 'Before breakdown', 'hub-pilot' ), 'tone' => 'is-legacy' ),
 		);
 
