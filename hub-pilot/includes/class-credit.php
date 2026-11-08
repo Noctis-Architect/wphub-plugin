@@ -21,7 +21,7 @@ final class WPHS_Credit {
 		}
 
 		$width = 47;
-		$label = 'TRAFFIC ANALYTICS BY WP-HUB';
+		$label = 'HUBPILOT BY WP-HUB';
 		$rule  = str_repeat( '─', $width );
 
 		echo "\n<!--\n";

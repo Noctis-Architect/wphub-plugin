@@ -31,7 +31,7 @@ final class WPHS_Security_Check {
 		if ( 'fail' === $directory ) {
 			$failures[] = array(
 				'key'   => 'directory_listing',
-				'label' => __( 'Directory listing is enabled', 'traffic-analytics' ),
+				'label' => __( 'Directory listing is enabled', 'hub-pilot' ),
 			);
 		} elseif ( 'unknown' === $directory ) {
 			$unknown[] = 'directory_listing';
@@ -42,7 +42,7 @@ final class WPHS_Security_Check {
 		if ( 'fail' === $rest ) {
 			$failures[] = array(
 				'key'   => 'rest_users',
-				'label' => __( 'REST users endpoint is public', 'traffic-analytics' ),
+				'label' => __( 'REST users endpoint is public', 'hub-pilot' ),
 			);
 		} elseif ( 'unknown' === $rest ) {
 			$unknown[] = 'rest_users';
@@ -53,7 +53,7 @@ final class WPHS_Security_Check {
 		if ( 'fail' === $admin ) {
 			$failures[] = array(
 				'key'   => 'wp_admin',
-				'label' => __( 'wp-admin is directly accessible', 'traffic-analytics' ),
+				'label' => __( 'wp-admin is directly accessible', 'hub-pilot' ),
 			);
 		} elseif ( 'unknown' === $admin ) {
 			$unknown[] = 'wp_admin';
@@ -62,21 +62,21 @@ final class WPHS_Security_Check {
 		if ( ! self::has_security_plugin() ) {
 			$failures[] = array(
 				'key'   => 'security_plugin',
-				'label' => __( 'No security plugin detected', 'traffic-analytics' ),
+				'label' => __( 'No security plugin detected', 'hub-pilot' ),
 			);
 		}
 
 		if ( ! self::file_editing_disabled() ) {
 			$failures[] = array(
 				'key'   => 'file_edit',
-				'label' => __( 'File editing is enabled', 'traffic-analytics' ),
+				'label' => __( 'File editing is enabled', 'hub-pilot' ),
 			);
 		}
 
 		if ( self::debug_display_enabled() ) {
 			$failures[] = array(
 				'key'   => 'debug_display',
-				'label' => __( 'Debug display is enabled', 'traffic-analytics' ),
+				'label' => __( 'Debug display is enabled', 'hub-pilot' ),
 			);
 		}
 

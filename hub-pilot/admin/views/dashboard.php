@@ -12,19 +12,19 @@ $mode_hint    = $data['mode_hint'];
 $mode_options = $data['mode_options'];
 $quality      = $data['quality'];
 $ranges       = array(
-	1  => __( 'Today', 'traffic-analytics' ),
+	1  => __( 'Today', 'hub-pilot' ),
 	/* translators: %s: number of days. */
-	7  => sprintf( _n( '%s day', '%s days', 7, 'traffic-analytics' ), number_format_i18n( 7 ) ),
+	7  => sprintf( _n( '%s day', '%s days', 7, 'hub-pilot' ), number_format_i18n( 7 ) ),
 	/* translators: %s: number of days. */
-	30 => sprintf( _n( '%s day', '%s days', 30, 'traffic-analytics' ), number_format_i18n( 30 ) ),
+	30 => sprintf( _n( '%s day', '%s days', 30, 'hub-pilot' ), number_format_i18n( 30 ) ),
 	/* translators: %s: number of days. */
-	90 => sprintf( _n( '%s day', '%s days', 90, 'traffic-analytics' ), number_format_i18n( 90 ) ),
+	90 => sprintf( _n( '%s day', '%s days', 90, 'hub-pilot' ), number_format_i18n( 90 ) ),
 );
 $next         = wp_next_scheduled( WPHS_Aggregator::EVENT );
-$settings_url = add_query_arg( array( 'page' => 'wphub-analytics-settings' ), admin_url( 'admin.php' ) );
+$settings_url = add_query_arg( array( 'page' => 'hub-pilot-settings' ), admin_url( 'admin.php' ) );
 $refresh_url  = add_query_arg(
 	array(
-		'page'  => 'wphub-analytics',
+		'page'  => 'hub-pilot',
 		'range' => $range,
 		'mode'  => $mode,
 	),
@@ -33,7 +33,7 @@ $refresh_url  = add_query_arg(
 $report_url   = static function ( $days, $report_mode ) {
 	return add_query_arg(
 		array(
-			'page'  => 'wphub-analytics',
+			'page'  => 'hub-pilot',
 			'range' => $days,
 			'mode'  => $report_mode,
 		),
@@ -55,7 +55,7 @@ foreach ( $quality['groups'] as $group ) {
 }
 
 /* translators: %s: time difference, for example "5 minutes". */
-$last_run_text  = $data['last_run'] > 0 ? sprintf( __( '%s ago', 'traffic-analytics' ), human_time_diff( $data['last_run'], time() ) ) : __( 'No processing yet', 'traffic-analytics' );
+$last_run_text  = $data['last_run'] > 0 ? sprintf( __( '%s ago', 'hub-pilot' ), human_time_diff( $data['last_run'], time() ) ) : __( 'No processing yet', 'hub-pilot' );
 $token_set      = ! empty( $token_set );
 $overview_error = isset( $overview_error ) ? (string) $overview_error : '';
 $overview_stale = ! empty( $overview_stale );
@@ -171,13 +171,13 @@ $channel_classes = array(
 		<div class="wphs-hero-brand">
 			<span class="wphs-logo"><img src="<?php echo esc_url( WPHS_URL . 'assets/logo.png' ); ?>" alt="" width="38" height="38"></span>
 			<div>
-				<h1 class="wphs-title"><?php esc_html_e( 'WP-Hub Dashboard', 'traffic-analytics' ); ?></h1>
-				<p class="wphs-sub"><?php echo $token_set ? esc_html__( 'Site analytics, speed, security, and monitoring', 'traffic-analytics' ) : esc_html__( 'Lightweight pageview and engagement analytics', 'traffic-analytics' ); ?></p>
+				<h1 class="wphs-title"><?php esc_html_e( 'HubPilot Dashboard', 'hub-pilot' ); ?></h1>
+				<p class="wphs-sub"><?php echo $token_set ? esc_html__( 'Site analytics, speed, security, and monitoring', 'hub-pilot' ) : esc_html__( 'Lightweight pageview and engagement analytics', 'hub-pilot' ); ?></p>
 			</div>
 		</div>
 		<div class="wphs-hero-side">
-			<span class="wphs-live<?php echo $next ? ' is-on' : ''; ?>"><i></i><?php echo $next ? esc_html__( 'Automatic processing active', 'traffic-analytics' ) : esc_html__( 'Automatic processing disabled', 'traffic-analytics' ); ?></span>
-			<a class="wphs-btn is-ghost" href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Settings', 'traffic-analytics' ); ?></a>
+			<span class="wphs-live<?php echo $next ? ' is-on' : ''; ?>"><i></i><?php echo $next ? esc_html__( 'Automatic processing active', 'hub-pilot' ) : esc_html__( 'Automatic processing disabled', 'hub-pilot' ); ?></span>
+			<a class="wphs-btn is-ghost" href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Settings', 'hub-pilot' ); ?></a>
 		</div>
 	</header>
 
@@ -186,28 +186,28 @@ $channel_classes = array(
 	<?php endif; ?>
 
 	<div class="wphs-section-head">
-		<h2><?php esc_html_e( 'Pageviews', 'traffic-analytics' ); ?> <span class="wphs-mode-badge"><?php echo esc_html( $mode_label ); ?></span></h2>
-		<span class="wphs-muted"><?php esc_html_e( 'Pageviews, sources, and engagement', 'traffic-analytics' ); ?></span>
+		<h2><?php esc_html_e( 'Pageviews', 'hub-pilot' ); ?> <span class="wphs-mode-badge"><?php echo esc_html( $mode_label ); ?></span></h2>
+		<span class="wphs-muted"><?php esc_html_e( 'Pageviews, sources, and engagement', 'hub-pilot' ); ?></span>
 	</div>
 
 	<?php if ( ! $data['has_any'] ) : ?>
 		<section class="wphs-empty-state">
 			<div class="wphs-empty-icon"><?php echo $icons['chart']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
-			<h2><?php esc_html_e( 'No data yet', 'traffic-analytics' ); ?></h2>
-			<p><?php esc_html_e( 'Data starts with the first real visit. Admin and logged-in user visits are not counted by default.', 'traffic-analytics' ); ?></p>
+			<h2><?php esc_html_e( 'No data yet', 'hub-pilot' ); ?></h2>
+			<p><?php esc_html_e( 'Data starts with the first real visit. Admin and logged-in user visits are not counted by default.', 'hub-pilot' ); ?></p>
 			<ul class="wphs-steps">
-				<li><span>1</span> <?php esc_html_e( 'Open the site in a private window', 'traffic-analytics' ); ?></li>
-				<li><span>2</span> <?php esc_html_e( 'Open the dashboard or run cron', 'traffic-analytics' ); ?></li>
-				<li><span>3</span> <?php esc_html_e( 'If caching is enabled, clear it once', 'traffic-analytics' ); ?></li>
+				<li><span>1</span> <?php esc_html_e( 'Open the site in a private window', 'hub-pilot' ); ?></li>
+				<li><span>2</span> <?php esc_html_e( 'Open the dashboard or run cron', 'hub-pilot' ); ?></li>
+				<li><span>3</span> <?php esc_html_e( 'If caching is enabled, clear it once', 'hub-pilot' ); ?></li>
 			</ul>
 			<div class="wphs-empty-actions">
-				<a class="wphs-btn is-primary" href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Check settings', 'traffic-analytics' ); ?></a>
-				<a class="wphs-btn is-secondary" href="<?php echo esc_url( $refresh_url ); ?>"><?php esc_html_e( 'Refresh', 'traffic-analytics' ); ?></a>
+				<a class="wphs-btn is-primary" href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Check settings', 'hub-pilot' ); ?></a>
+				<a class="wphs-btn is-secondary" href="<?php echo esc_url( $refresh_url ); ?>"><?php esc_html_e( 'Refresh', 'hub-pilot' ); ?></a>
 			</div>
 		</section>
 	<?php else : ?>
 		<div class="wphs-toolbar">
-			<nav class="wphs-segmented" aria-label="<?php esc_attr_e( 'Report range', 'traffic-analytics' ); ?>">
+			<nav class="wphs-segmented" aria-label="<?php esc_attr_e( 'Report range', 'hub-pilot' ); ?>">
 				<?php foreach ( $ranges as $days => $label ) : ?>
 					<a class="wphs-seg<?php echo $range === $days ? ' is-active' : ''; ?>"
 						href="<?php echo esc_url( $report_url( $days, $mode ) ); ?>">
@@ -216,15 +216,15 @@ $channel_classes = array(
 				<?php endforeach; ?>
 			</nav>
 			<div class="wphs-toolbar-meta">
-				<?php echo esc_html( WPHS_Reports::day_label( $data['start'] ) ); ?> <?php esc_html_e( 'to', 'traffic-analytics' ); ?> <?php echo esc_html( WPHS_Reports::day_label( $data['today'] ) ); ?>
+				<?php echo esc_html( WPHS_Reports::day_label( $data['start'] ) ); ?> <?php esc_html_e( 'to', 'hub-pilot' ); ?> <?php echo esc_html( WPHS_Reports::day_label( $data['today'] ) ); ?>
 				—
-				<?php esc_html_e( 'Last processed:', 'traffic-analytics' ); ?> <?php echo esc_html( $last_run_text ); ?>
+				<?php esc_html_e( 'Last processed:', 'hub-pilot' ); ?> <?php echo esc_html( $last_run_text ); ?>
 			</div>
 		</div>
 
 		<div class="wphs-mode-row">
-			<nav class="wphs-segmented wphs-mode-nav" aria-label="<?php esc_attr_e( 'Traffic quality', 'traffic-analytics' ); ?>">
-				<span class="wphs-mode-caption"><?php esc_html_e( 'Quality', 'traffic-analytics' ); ?></span>
+			<nav class="wphs-segmented wphs-mode-nav" aria-label="<?php esc_attr_e( 'Traffic quality', 'hub-pilot' ); ?>">
+				<span class="wphs-mode-caption"><?php esc_html_e( 'Quality', 'hub-pilot' ); ?></span>
 				<?php foreach ( $mode_options as $mode_key => $mode_text ) : ?>
 					<a class="wphs-seg<?php echo $mode === $mode_key ? ' is-active' : ''; ?>"
 						href="<?php echo esc_url( $report_url( $range, $mode_key ) ); ?>">
@@ -239,61 +239,61 @@ $channel_classes = array(
 			<div class="wphs-kpi">
 				<div class="wphs-kpi-top">
 					<span class="wphs-kpi-icon"><?php echo $icons['eye']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-					<span class="wphs-kpi-label"><?php esc_html_e( 'Pageviews', 'traffic-analytics' ); ?></span>
+					<span class="wphs-kpi-label"><?php esc_html_e( 'Pageviews', 'hub-pilot' ); ?></span>
 				</div>
 				<div class="wphs-kpi-value"><?php echo esc_html( WPHS_Reports::int( $t['pageviews'] ) ); ?></div>
 				<div class="wphs-kpi-foot">
-					<?php echo null === $changes['pageviews'] ? '<span class="wphs-muted">' . esc_html__( 'No previous data', 'traffic-analytics' ) . '</span>' : $trend( $changes['pageviews'] ) . '<span>' . esc_html__( 'vs. previous period', 'traffic-analytics' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<?php echo null === $changes['pageviews'] ? '<span class="wphs-muted">' . esc_html__( 'No previous data', 'hub-pilot' ) . '</span>' : $trend( $changes['pageviews'] ) . '<span>' . esc_html__( 'vs. previous period', 'hub-pilot' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</div>
 			</div>
 			<div class="wphs-kpi">
 				<div class="wphs-kpi-top">
 					<span class="wphs-kpi-icon"><?php echo $icons['users']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-					<span class="wphs-kpi-label"><?php esc_html_e( 'Visitors', 'traffic-analytics' ); ?></span>
+					<span class="wphs-kpi-label"><?php esc_html_e( 'Visitors', 'hub-pilot' ); ?></span>
 				</div>
 				<div class="wphs-kpi-value"><?php echo esc_html( WPHS_Reports::int( $t['visitors'] ) ); ?></div>
 				<div class="wphs-kpi-foot">
-					<?php echo null === $changes['visitors'] ? '<span class="wphs-muted">' . esc_html__( 'No previous data', 'traffic-analytics' ) . '</span>' : $trend( $changes['visitors'] ) . '<span>' . esc_html__( 'vs. previous period', 'traffic-analytics' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<?php echo null === $changes['visitors'] ? '<span class="wphs-muted">' . esc_html__( 'No previous data', 'hub-pilot' ) . '</span>' : $trend( $changes['visitors'] ) . '<span>' . esc_html__( 'vs. previous period', 'hub-pilot' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</div>
 			</div>
 			<div class="wphs-kpi">
 				<div class="wphs-kpi-top">
 					<span class="wphs-kpi-icon"><?php echo $icons['activity']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-					<span class="wphs-kpi-label"><?php esc_html_e( 'Sessions', 'traffic-analytics' ); ?></span>
+					<span class="wphs-kpi-label"><?php esc_html_e( 'Sessions', 'hub-pilot' ); ?></span>
 				</div>
 				<div class="wphs-kpi-value"><?php echo esc_html( WPHS_Reports::int( $t['sessions'] ) ); ?></div>
 				<div class="wphs-kpi-foot">
-					<?php echo null === $changes['sessions'] ? '<span class="wphs-muted">' . esc_html__( 'No previous data', 'traffic-analytics' ) . '</span>' : $trend( $changes['sessions'] ) . '<span>' . esc_html__( 'vs. previous period', 'traffic-analytics' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					<?php echo null === $changes['sessions'] ? '<span class="wphs-muted">' . esc_html__( 'No previous data', 'hub-pilot' ) . '</span>' : $trend( $changes['sessions'] ) . '<span>' . esc_html__( 'vs. previous period', 'hub-pilot' ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 				</div>
 			</div>
 			<div class="wphs-kpi">
 				<div class="wphs-kpi-top">
 					<span class="wphs-kpi-icon"><?php echo $icons['clock']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-					<span class="wphs-kpi-label"><?php esc_html_e( 'Avg. engaged time', 'traffic-analytics' ); ?></span>
+					<span class="wphs-kpi-label"><?php esc_html_e( 'Avg. engaged time', 'hub-pilot' ); ?></span>
 				</div>
 				<div class="wphs-kpi-value is-compact"><?php echo esc_html( WPHS_Reports::duration( $data['avg_engaged'] ) ); ?></div>
-				<div class="wphs-kpi-foot"><span><?php esc_html_e( 'Previous period:', 'traffic-analytics' ); ?> <?php echo esc_html( $prev_avg_text ); ?></span></div>
+				<div class="wphs-kpi-foot"><span><?php esc_html_e( 'Previous period:', 'hub-pilot' ); ?> <?php echo esc_html( $prev_avg_text ); ?></span></div>
 			</div>
 			<div class="wphs-kpi">
 				<div class="wphs-kpi-top">
 					<span class="wphs-kpi-icon"><?php echo $icons['bounce']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-					<span class="wphs-kpi-label"><?php esc_html_e( 'Bounce rate', 'traffic-analytics' ); ?></span>
+					<span class="wphs-kpi-label"><?php esc_html_e( 'Bounce rate', 'hub-pilot' ); ?></span>
 				</div>
 				<div class="wphs-kpi-value"><?php echo esc_html( number_format_i18n( $data['bounce_rate'], 0 ) . '%' ); ?></div>
-				<div class="wphs-kpi-foot"><span><?php esc_html_e( 'Previous period:', 'traffic-analytics' ); ?> <?php echo esc_html( $prev_bounce_text ); ?></span></div>
+				<div class="wphs-kpi-foot"><span><?php esc_html_e( 'Previous period:', 'hub-pilot' ); ?> <?php echo esc_html( $prev_bounce_text ); ?></span></div>
 			</div>
 		</section>
-		<p class="wphs-table-note"><?php esc_html_e( 'Visitors are based on a daily hash; the same person on different days is counted again.', 'traffic-analytics' ); ?></p>
+		<p class="wphs-table-note"><?php esc_html_e( 'Visitors are based on a daily hash; the same person on different days is counted again.', 'hub-pilot' ); ?></p>
 
 		<?php if ( ! $quality['has_data'] ) : ?>
-			<div class="wphs-notice"><?php esc_html_e( 'Traffic quality is recorded from now on; older data is only visible in "All" mode.', 'traffic-analytics' ); ?></div>
+			<div class="wphs-notice"><?php esc_html_e( 'Traffic quality is recorded from now on; older data is only visible in "All" mode.', 'hub-pilot' ); ?></div>
 		<?php else : ?>
 			<section class="wphs-card wphs-quality-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Traffic quality', 'traffic-analytics' ); ?></h2>
-					<span class="wphs-quality-score <?php echo esc_attr( $quality_tone ); ?>"><?php echo esc_html( number_format_i18n( $quality['verified_share'], $quality['verified_share'] < 10 ? 1 : 0 ) . '% ' . __( 'verified', 'traffic-analytics' ) ); ?></span>
+					<h2><?php esc_html_e( 'Traffic quality', 'hub-pilot' ); ?></h2>
+					<span class="wphs-quality-score <?php echo esc_attr( $quality_tone ); ?>"><?php echo esc_html( number_format_i18n( $quality['verified_share'], $quality['verified_share'] < 10 ? 1 : 0 ) . '% ' . __( 'verified', 'hub-pilot' ) ); ?></span>
 				</div>
-				<div class="wphs-quality-track" role="img" aria-label="<?php esc_attr_e( 'Traffic quality breakdown', 'traffic-analytics' ); ?>">
+				<div class="wphs-quality-track" role="img" aria-label="<?php esc_attr_e( 'Traffic quality breakdown', 'hub-pilot' ); ?>">
 					<?php foreach ( $quality_groups as $group ) : ?>
 						<?php if ( $group['pageviews'] <= 0 ) : ?>
 							<?php continue; ?>
@@ -312,7 +312,7 @@ $channel_classes = array(
 					<?php endforeach; ?>
 				</div>
 				<?php if ( $has_legacy_quality ) : ?>
-					<p class="wphs-table-note"><?php esc_html_e( 'Some data in this range was recorded before quality breakdown was enabled and is not counted in Verified, No-JS, or Suspect.', 'traffic-analytics' ); ?></p>
+					<p class="wphs-table-note"><?php esc_html_e( 'Some data in this range was recorded before quality breakdown was enabled and is not counted in Verified, No-JS, or Suspect.', 'hub-pilot' ); ?></p>
 				<?php endif; ?>
 			</section>
 		<?php endif; ?>
@@ -321,7 +321,7 @@ $channel_classes = array(
 			<div class="wphs-notice">
 			<?php
 			/* translators: %s: date when detailed data starts. */
-			echo esc_html( sprintf( __( 'Page, source, device, and event details for part of this range have been deleted. Totals are calculated from daily summaries; details are available from %s.', 'traffic-analytics' ), WPHS_Reports::day_label( $data['detail_from'] ) ) );
+			echo esc_html( sprintf( __( 'Page, source, device, and event details for part of this range have been deleted. Totals are calculated from daily summaries; details are available from %s.', 'hub-pilot' ), WPHS_Reports::day_label( $data['detail_from'] ) ) );
 			?>
 			</div>
 		<?php endif; ?>
@@ -330,29 +330,29 @@ $channel_classes = array(
 			<div class="wphs-notice">
 				<?php
 				/* translators: %s: report mode label. */
-				echo esc_html( sprintf( __( 'No data for this range in "%s" mode.', 'traffic-analytics' ), $mode_label ) );
+				echo esc_html( sprintf( __( 'No data for this range in "%s" mode.', 'hub-pilot' ), $mode_label ) );
 				?>
 				<?php if ( 'all' !== $mode ) : ?>
-					<a href="<?php echo esc_url( $report_url( $range, 'all' ) ); ?>"><?php esc_html_e( 'Show all visits', 'traffic-analytics' ); ?></a>
+					<a href="<?php echo esc_url( $report_url( $range, 'all' ) ); ?>"><?php esc_html_e( 'Show all visits', 'hub-pilot' ); ?></a>
 				<?php else : ?>
-					<?php esc_html_e( 'Choose another range.', 'traffic-analytics' ); ?>
+					<?php esc_html_e( 'Choose another range.', 'hub-pilot' ); ?>
 				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 
 		<section class="wphs-card wphs-chart-card">
 			<div class="wphs-card-head">
-				<h2><?php esc_html_e( 'Daily pageviews', 'traffic-analytics' ); ?></h2>
-				<span class="wphs-legend"><i></i> <?php esc_html_e( 'Pageviews', 'traffic-analytics' ); ?></span>
+				<h2><?php esc_html_e( 'Daily pageviews', 'hub-pilot' ); ?></h2>
+				<span class="wphs-legend"><i></i> <?php esc_html_e( 'Pageviews', 'hub-pilot' ); ?></span>
 			</div>
 			<div class="wphs-chart-meta">
-				<?php esc_html_e( 'Total pageviews:', 'traffic-analytics' ); ?> <?php echo esc_html( WPHS_Reports::int( $t['pageviews'] ) ); ?>
+				<?php esc_html_e( 'Total pageviews:', 'hub-pilot' ); ?> <?php echo esc_html( WPHS_Reports::int( $t['pageviews'] ) ); ?>
 				<?php if ( $peak_day ) : ?>
-					— <?php esc_html_e( 'Peak day:', 'traffic-analytics' ); ?> <?php echo esc_html( WPHS_Reports::int( $chart_peak ) ); ?> <?php esc_html_e( 'pageviews on', 'traffic-analytics' ); ?> <?php echo esc_html( WPHS_Reports::day_label( $peak_day['day'] ) ); ?>
+					— <?php esc_html_e( 'Peak day:', 'hub-pilot' ); ?> <?php echo esc_html( WPHS_Reports::int( $chart_peak ) ); ?> <?php esc_html_e( 'pageviews on', 'hub-pilot' ); ?> <?php echo esc_html( WPHS_Reports::day_label( $peak_day['day'] ) ); ?>
 				<?php endif; ?>
 			</div>
 			<div class="wphs-chart">
-				<svg viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-label="<?php esc_attr_e( 'Daily pageviews chart', 'traffic-analytics' ); ?>">
+				<svg viewBox="0 0 1000 240" preserveAspectRatio="none" role="img" aria-label="<?php esc_attr_e( 'Daily pageviews chart', 'hub-pilot' ); ?>">
 					<g stroke="#e8eef5" stroke-width="1" vector-effect="non-scaling-stroke">
 						<?php foreach ( $grid_lines as $grid_y ) : ?>
 							<line x1="0" y1="<?php echo esc_attr( $grid_y ); ?>" x2="1000" y2="<?php echo esc_attr( $grid_y ); ?>"></line>
@@ -372,7 +372,7 @@ $channel_classes = array(
 							<title>
 							<?php
 							/* translators: %1$s: date; %2$s: pageviews; %3$s: visitors. */
-							echo esc_html( sprintf( __( '%1$s — %2$s pageviews, %3$s visitors', 'traffic-analytics' ), WPHS_Reports::day_label( $point['p']['day'] ), number_format_i18n( $point['p']['pageviews'] ), number_format_i18n( $point['p']['visitors'] ) ) );
+							echo esc_html( sprintf( __( '%1$s — %2$s pageviews, %3$s visitors', 'hub-pilot' ), WPHS_Reports::day_label( $point['p']['day'] ), number_format_i18n( $point['p']['pageviews'] ), number_format_i18n( $point['p']['visitors'] ) ) );
 							?>
 							</title>
 						</rect>
@@ -389,22 +389,22 @@ $channel_classes = array(
 		<div class="wphs-grid-2">
 			<section class="wphs-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Top pages', 'traffic-analytics' ); ?></h2>
-					<span class="wphs-muted"><?php esc_html_e( '10 pages', 'traffic-analytics' ); ?></span>
+					<h2><?php esc_html_e( 'Top pages', 'hub-pilot' ); ?></h2>
+					<span class="wphs-muted"><?php esc_html_e( '10 pages', 'hub-pilot' ); ?></span>
 				</div>
 				<div class="wphs-table-wrap">
 					<table class="wphs-table">
 						<thead>
 							<tr>
-								<th><?php esc_html_e( 'Page', 'traffic-analytics' ); ?></th>
-								<th class="num"><?php esc_html_e( 'Pageviews', 'traffic-analytics' ); ?></th>
-								<th class="num"><?php esc_html_e( 'Visitors', 'traffic-analytics' ); ?></th>
-								<th class="num"><?php esc_html_e( 'Avg. time', 'traffic-analytics' ); ?></th>
+								<th><?php esc_html_e( 'Page', 'hub-pilot' ); ?></th>
+								<th class="num"><?php esc_html_e( 'Pageviews', 'hub-pilot' ); ?></th>
+								<th class="num"><?php esc_html_e( 'Visitors', 'hub-pilot' ); ?></th>
+								<th class="num"><?php esc_html_e( 'Avg. time', 'hub-pilot' ); ?></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php if ( empty( $data['pages'] ) ) : ?>
-								<tr><td colspan="4" class="wphs-empty"><?php esc_html_e( 'No data to display.', 'traffic-analytics' ); ?></td></tr>
+								<tr><td colspan="4" class="wphs-empty"><?php esc_html_e( 'No data to display.', 'hub-pilot' ); ?></td></tr>
 							<?php else : ?>
 								<?php foreach ( $data['pages'] as $row ) : ?>
 									<?php $label = '' !== (string) $row['title'] ? $row['title'] : $row['path']; ?>
@@ -422,30 +422,30 @@ $channel_classes = array(
 						</tbody>
 					</table>
 				</div>
-				<p class="wphs-table-note"><?php esc_html_e( 'Top 10 pages; visitors per page are unique, and one person can be counted on multiple pages.', 'traffic-analytics' ); ?></p>
+				<p class="wphs-table-note"><?php esc_html_e( 'Top 10 pages; visitors per page are unique, and one person can be counted on multiple pages.', 'hub-pilot' ); ?></p>
 			</section>
 
 			<section class="wphs-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Sources', 'traffic-analytics' ); ?></h2>
-					<span class="wphs-muted"><?php esc_html_e( '10 sources', 'traffic-analytics' ); ?></span>
+					<h2><?php esc_html_e( 'Sources', 'hub-pilot' ); ?></h2>
+					<span class="wphs-muted"><?php esc_html_e( '10 sources', 'hub-pilot' ); ?></span>
 				</div>
 				<div class="wphs-table-wrap">
 					<table class="wphs-table">
 						<thead>
 							<tr>
-								<th><?php esc_html_e( 'Source', 'traffic-analytics' ); ?></th>
-								<th><?php esc_html_e( 'Channel', 'traffic-analytics' ); ?></th>
-								<th class="num"><?php esc_html_e( 'Pageviews', 'traffic-analytics' ); ?></th>
-								<th class="num"><?php esc_html_e( 'Visitors', 'traffic-analytics' ); ?></th>
+								<th><?php esc_html_e( 'Source', 'hub-pilot' ); ?></th>
+								<th><?php esc_html_e( 'Channel', 'hub-pilot' ); ?></th>
+								<th class="num"><?php esc_html_e( 'Pageviews', 'hub-pilot' ); ?></th>
+								<th class="num"><?php esc_html_e( 'Visitors', 'hub-pilot' ); ?></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php if ( empty( $data['sources'] ) ) : ?>
-								<tr><td colspan="4" class="wphs-empty"><?php esc_html_e( 'No data to display.', 'traffic-analytics' ); ?></td></tr>
+								<tr><td colspan="4" class="wphs-empty"><?php esc_html_e( 'No data to display.', 'hub-pilot' ); ?></td></tr>
 							<?php else : ?>
 								<?php foreach ( $data['sources'] as $row ) : ?>
-									<?php $name = '' !== (string) $row['host'] ? $row['host'] : __( 'Direct', 'traffic-analytics' ); ?>
+									<?php $name = '' !== (string) $row['host'] ? $row['host'] : __( 'Direct', 'hub-pilot' ); ?>
 									<tr>
 										<td><?php echo esc_html( $name ); ?></td>
 										<td>
@@ -464,29 +464,29 @@ $channel_classes = array(
 						</tbody>
 					</table>
 				</div>
-				<p class="wphs-table-note"><?php esc_html_e( 'Top 10 sources; visitors per source are unique; internal navigation is excluded, so the sum does not equal total pageviews.', 'traffic-analytics' ); ?></p>
+				<p class="wphs-table-note"><?php esc_html_e( 'Top 10 sources; visitors per source are unique; internal navigation is excluded, so the sum does not equal total pageviews.', 'hub-pilot' ); ?></p>
 			</section>
 		</div>
 
 		<div class="wphs-grid-2">
 			<section class="wphs-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Devices', 'traffic-analytics' ); ?></h2>
-					<span class="wphs-muted"><?php esc_html_e( 'Share of total pageviews', 'traffic-analytics' ); ?></span>
+					<h2><?php esc_html_e( 'Devices', 'hub-pilot' ); ?></h2>
+					<span class="wphs-muted"><?php esc_html_e( 'Share of total pageviews', 'hub-pilot' ); ?></span>
 				</div>
 				<div class="wphs-table-wrap">
 					<table class="wphs-table">
 						<thead>
 							<tr>
-								<th><?php esc_html_e( 'Device', 'traffic-analytics' ); ?></th>
-								<th class="num"><?php esc_html_e( 'Pageviews', 'traffic-analytics' ); ?></th>
-								<th class="num"><?php esc_html_e( 'Visitors', 'traffic-analytics' ); ?></th>
-								<th><?php esc_html_e( 'Share', 'traffic-analytics' ); ?></th>
+								<th><?php esc_html_e( 'Device', 'hub-pilot' ); ?></th>
+								<th class="num"><?php esc_html_e( 'Pageviews', 'hub-pilot' ); ?></th>
+								<th class="num"><?php esc_html_e( 'Visitors', 'hub-pilot' ); ?></th>
+								<th><?php esc_html_e( 'Share', 'hub-pilot' ); ?></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php if ( empty( $data['devices'] ) ) : ?>
-								<tr><td colspan="4" class="wphs-empty"><?php esc_html_e( 'No data to display.', 'traffic-analytics' ); ?></td></tr>
+								<tr><td colspan="4" class="wphs-empty"><?php esc_html_e( 'No data to display.', 'hub-pilot' ); ?></td></tr>
 							<?php else : ?>
 								<?php foreach ( $data['devices'] as $row ) : ?>
 									<?php
@@ -509,25 +509,25 @@ $channel_classes = array(
 						</tbody>
 					</table>
 				</div>
-				<p class="wphs-table-note"><?php esc_html_e( 'Visitors per device are unique; one person using multiple devices is counted in multiple rows.', 'traffic-analytics' ); ?></p>
+				<p class="wphs-table-note"><?php esc_html_e( 'Visitors per device are unique; one person using multiple devices is counted in multiple rows.', 'hub-pilot' ); ?></p>
 			</section>
 
 			<section class="wphs-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Events', 'traffic-analytics' ); ?></h2>
-					<span class="wphs-muted"><?php esc_html_e( 'Top 8 events', 'traffic-analytics' ); ?></span>
+					<h2><?php esc_html_e( 'Events', 'hub-pilot' ); ?></h2>
+					<span class="wphs-muted"><?php esc_html_e( 'Top 8 events', 'hub-pilot' ); ?></span>
 				</div>
 				<div class="wphs-table-wrap">
 					<table class="wphs-table">
 						<thead>
 							<tr>
-								<th><?php esc_html_e( 'Event', 'traffic-analytics' ); ?></th>
-								<th class="num"><?php esc_html_e( 'Count', 'traffic-analytics' ); ?></th>
+								<th><?php esc_html_e( 'Event', 'hub-pilot' ); ?></th>
+								<th class="num"><?php esc_html_e( 'Count', 'hub-pilot' ); ?></th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php if ( empty( $data['events'] ) ) : ?>
-								<tr><td colspan="2" class="wphs-empty"><?php esc_html_e( 'No events recorded.', 'traffic-analytics' ); ?></td></tr>
+								<tr><td colspan="2" class="wphs-empty"><?php esc_html_e( 'No events recorded.', 'hub-pilot' ); ?></td></tr>
 							<?php else : ?>
 								<?php foreach ( $data['events'] as $row ) : ?>
 									<tr>
@@ -539,7 +539,7 @@ $channel_classes = array(
 						</tbody>
 					</table>
 				</div>
-				<p class="wphs-table-note"><?php esc_html_e( 'Events are collected from browser interactions.', 'traffic-analytics' ); ?></p>
+				<p class="wphs-table-note"><?php esc_html_e( 'Events are collected from browser interactions.', 'hub-pilot' ); ?></p>
 			</section>
 		</div>
 	<?php endif; ?>
@@ -550,9 +550,9 @@ $channel_classes = array(
 		<div class="wphs-notice">
 			<?php
 			/* translators: %s: amount of queued data, for example "1 KB". */
-			echo esc_html( sprintf( __( '%s of data is queued for processing.', 'traffic-analytics' ), size_format( $data['spool_size'], 1 ) ) );
+			echo esc_html( sprintf( __( '%s of data is queued for processing.', 'hub-pilot' ), size_format( $data['spool_size'], 1 ) ) );
 			?>
-			<a href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Process queue manually', 'traffic-analytics' ); ?></a>
+			<a href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Process queue manually', 'hub-pilot' ); ?></a>
 		</div>
 	<?php endif; ?>
 
@@ -560,13 +560,13 @@ $channel_classes = array(
 		<div class="wphs-notice">
 		<?php
 		/* translators: %s: cron event name. */
-		echo esc_html( sprintf( __( 'Scheduled processing is not active. Process the queue manually from the settings page or set a server cron for %s.', 'traffic-analytics' ), 'wphs_aggregate' ) );
+		echo esc_html( sprintf( __( 'Scheduled processing is not active. Process the queue manually from the settings page or set a server cron for %s.', 'hub-pilot' ), 'wphs_aggregate' ) );
 		?>
 		</div>
 	<?php endif; ?>
 
 	<div class="wphs-footer">
-		<span><?php esc_html_e( 'Last processed:', 'traffic-analytics' ); ?> <?php echo esc_html( $last_run_text ); ?></span>
-		<a href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Settings and data retention', 'traffic-analytics' ); ?></a>
+		<span><?php esc_html_e( 'Last processed:', 'hub-pilot' ); ?> <?php echo esc_html( $last_run_text ); ?></span>
+		<a href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Settings and data retention', 'hub-pilot' ); ?></a>
 	</div>
 </div>

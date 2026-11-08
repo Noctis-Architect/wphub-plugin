@@ -23,7 +23,7 @@ final class WPHS_Aggregator {
 	public static function schedules( $schedules ) {
 		$schedules['wphs_five_minutes'] = array(
 			'interval' => 300,
-			'display'  => 'Traffic Analytics by WP-Hub (5 min)',
+			'display'  => 'HubPilot (5 min)',
 		);
 
 		return $schedules;
@@ -845,7 +845,7 @@ final class WPHS_Aggregator {
 
 	public static function manual_flush() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'traffic-analytics' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'hub-pilot' ) );
 		}
 
 		check_admin_referer( 'wphs_flush' );
@@ -855,7 +855,7 @@ final class WPHS_Aggregator {
 		wp_safe_redirect(
 			add_query_arg(
 				array(
-					'page'    => 'wphub-analytics-settings',
+					'page'    => 'hub-pilot-settings',
 					'flushed' => 1,
 				),
 				admin_url( 'admin.php' )

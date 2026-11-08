@@ -21,15 +21,15 @@ final class WPHS_Admin {
 		$url = WPHS_URL . 'assets/menu-icon.png';
 
 		echo '<style id="wphs-menu-icon">';
-		echo '#toplevel_page_wphub-analytics .wp-menu-image{background-image:url("' . esc_url( $url ) . '") !important;background-size:20px 20px !important;background-position:center !important;background-repeat:no-repeat !important;}';
-		echo '#toplevel_page_wphub-analytics .wp-menu-image:before{content:none !important;}';
+		echo '#toplevel_page_hub-pilot .wp-menu-image{background-image:url("' . esc_url( $url ) . '") !important;background-size:20px 20px !important;background-position:center !important;background-repeat:no-repeat !important;}';
+		echo '#toplevel_page_hub-pilot .wp-menu-image:before{content:none !important;}';
 		echo '</style>';
 	}
 
 	public static function clean_admin_bar( $bar ) {
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 
-		if ( ! $screen || false === strpos( (string) $screen->id, 'wphub-analytics' ) ) {
+		if ( ! $screen || false === strpos( (string) $screen->id, 'hub-pilot' ) ) {
 			return;
 		}
 
@@ -62,7 +62,7 @@ final class WPHS_Admin {
 	public static function body_class( $classes ) {
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 
-		if ( $screen && false !== strpos( (string) $screen->id, 'wphub-analytics' ) ) {
+		if ( $screen && false !== strpos( (string) $screen->id, 'hub-pilot' ) ) {
 			$classes .= ' wphs-admin';
 
 			if ( WPHS_Settings::value( 'hide_notices' ) ) {
@@ -76,7 +76,7 @@ final class WPHS_Admin {
 	public static function clear_notices() {
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 
-		if ( ! $screen || false === strpos( (string) $screen->id, 'wphub-analytics' ) ) {
+		if ( ! $screen || false === strpos( (string) $screen->id, 'hub-pilot' ) ) {
 			return;
 		}
 
@@ -94,36 +94,36 @@ final class WPHS_Admin {
 		$cap = 'manage_options';
 
 		add_menu_page(
-			__( 'WP-Hub Analytics', 'traffic-analytics' ),
-			__( 'WP-Hub Analytics', 'traffic-analytics' ),
+			__( 'HubPilot', 'hub-pilot' ),
+			__( 'HubPilot', 'hub-pilot' ),
 			$cap,
-			'wphub-analytics',
+			'hub-pilot',
 			array( __CLASS__, 'render_dashboard' ),
 			self::menu_icon(),
 			3
 		);
 
 		add_submenu_page(
-			'wphub-analytics',
-			__( 'Dashboard', 'traffic-analytics' ),
-			__( 'Dashboard', 'traffic-analytics' ),
+			'hub-pilot',
+			__( 'Dashboard', 'hub-pilot' ),
+			__( 'Dashboard', 'hub-pilot' ),
 			$cap,
-			'wphub-analytics',
+			'hub-pilot',
 			array( __CLASS__, 'render_dashboard' )
 		);
 
 		add_submenu_page(
-			'wphub-analytics',
-			__( 'Settings', 'traffic-analytics' ),
-			__( 'Settings', 'traffic-analytics' ),
+			'hub-pilot',
+			__( 'Settings', 'hub-pilot' ),
+			__( 'Settings', 'hub-pilot' ),
 			$cap,
-			'wphub-analytics-settings',
+			'hub-pilot-settings',
 			array( __CLASS__, 'render_settings' )
 		);
 	}
 
 	public static function assets( $hook ) {
-		if ( false === strpos( (string) $hook, 'wphub-analytics' ) ) {
+		if ( false === strpos( (string) $hook, 'hub-pilot' ) ) {
 			return;
 		}
 
@@ -141,7 +141,7 @@ final class WPHS_Admin {
 
 	public static function render_dashboard() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'traffic-analytics' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'hub-pilot' ) );
 		}
 
 		$token_set      = WPHS_Cloud::has_token();
@@ -181,7 +181,7 @@ final class WPHS_Admin {
 
 	public static function render_settings() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'traffic-analytics' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'hub-pilot' ) );
 		}
 
 		$settings = WPHS_Settings::all();
@@ -191,7 +191,7 @@ final class WPHS_Admin {
 
 	public static function save_settings() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'traffic-analytics' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'hub-pilot' ) );
 		}
 
 		check_admin_referer( 'wphs_save_settings' );
@@ -202,7 +202,7 @@ final class WPHS_Admin {
 		wp_safe_redirect(
 			add_query_arg(
 				array(
-					'page'    => 'wphub-analytics-settings',
+					'page'    => 'hub-pilot-settings',
 					'updated' => 1,
 				),
 				admin_url( 'admin.php' )
@@ -228,21 +228,21 @@ final class WPHS_Admin {
 		if ( $result['ok'] && 'sent' === $result['message'] ) {
 			$message = sprintf(
 				/* translators: %1$s: number of sent events; %2$s: number of queued events. */
-				__( '%1$s events were sent to the console; %2$s events remain queued.', 'traffic-analytics' ),
+				__( '%1$s events were sent to the console; %2$s events remain queued.', 'hub-pilot' ),
 				number_format_i18n( $result['sent'] ),
 				number_format_i18n( $result['pending'] )
 			);
 		} elseif ( $result['ok'] ) {
-			$message = __( 'The queue was empty; nothing to send.', 'traffic-analytics' );
+			$message = __( 'The queue was empty; nothing to send.', 'hub-pilot' );
 		} else {
 			$map = array(
-				'not_cloud' => __( 'Cloud mode is not active.', 'traffic-analytics' ),
-				'no_token'  => __( 'The site connection key is not set.', 'traffic-analytics' ),
-				'backoff'   => __( 'The next attempt is not allowed yet; try again later.', 'traffic-analytics' ),
-				'locked'    => __( 'Another process is already running.', 'traffic-analytics' ),
+				'not_cloud' => __( 'Cloud mode is not active.', 'hub-pilot' ),
+				'no_token'  => __( 'The site connection key is not set.', 'hub-pilot' ),
+				'backoff'   => __( 'The next attempt is not allowed yet; try again later.', 'hub-pilot' ),
+				'locked'    => __( 'Another process is already running.', 'hub-pilot' ),
 			);
 
-			$message = isset( $map[ $result['message'] ] ) ? $map[ $result['message'] ] : __( 'Sync failed: ', 'traffic-analytics' ) . $result['message'];
+			$message = isset( $map[ $result['message'] ] ) ? $map[ $result['message'] ] : __( 'Sync failed: ', 'hub-pilot' ) . $result['message'];
 		}
 
 		self::cloud_notice( $result['ok'] ? 'success' : 'error', $message );
@@ -253,7 +253,7 @@ final class WPHS_Admin {
 		self::guard( 'wphs_purge_local' );
 
 		WPHS_Cloud::purge_local_data();
-		self::cloud_notice( 'success', __( 'Local analytics data was purged.', 'traffic-analytics' ) );
+		self::cloud_notice( 'success', __( 'Local analytics data was purged.', 'hub-pilot' ) );
 		self::back();
 	}
 
@@ -264,8 +264,8 @@ final class WPHS_Admin {
 
 		$back = wp_get_referer();
 
-		if ( ! $back || false === strpos( $back, 'wphub-analytics' ) ) {
-			$back = admin_url( 'admin.php?page=wphub-analytics' );
+		if ( ! $back || false === strpos( $back, 'hub-pilot' ) ) {
+			$back = admin_url( 'admin.php?page=hub-pilot' );
 		}
 
 		wp_safe_redirect( $back );
@@ -274,7 +274,7 @@ final class WPHS_Admin {
 
 	private static function guard( $action ) {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'traffic-analytics' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'hub-pilot' ) );
 		}
 
 		check_admin_referer( $action );
@@ -294,8 +294,8 @@ final class WPHS_Admin {
 	private static function back() {
 		$back = wp_get_referer();
 
-		if ( ! $back || false === strpos( $back, 'wphub-analytics' ) ) {
-			$back = admin_url( 'admin.php?page=wphub-analytics-settings' );
+		if ( ! $back || false === strpos( $back, 'hub-pilot' ) ) {
+			$back = admin_url( 'admin.php?page=hub-pilot-settings' );
 		}
 
 		wp_safe_redirect( $back );

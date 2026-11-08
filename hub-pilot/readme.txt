@@ -1,18 +1,18 @@
-=== Traffic Analytics by WP-Hub ===
+=== HubPilot ===
 Contributors: wphub
-Tags: analytics, statistics, privacy, cookieless, traffic
+Tags: analytics, security, monitoring, privacy, cookieless
 Requires at least: 6.0
-Tested up to: 7.0
+Tested up to: 7.1.4
 Requires PHP: 7.4
 Stable tag: 0.4.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Lightweight, cookie-free WordPress analytics with local storage and optional secure sync to the WP-Hub console.
+Connects WordPress to the WP-Hub console for cloud analytics, speed, security, and uptime monitoring, with optional local analytics.
 
 == Description ==
 
-Traffic Analytics by WP-Hub is a lightweight, cookie-free analytics plugin for WordPress. It records pageviews, referrers and channels, devices, browsers, engagement time, scroll depth, and outbound, download, form, and cart events without loading a third-party front-end script.
+HubPilot connects WordPress to the WP-Hub console for cloud analytics, speed tests, security checks, and uptime monitoring, with optional local analytics and basic security checks. In local mode it records pageviews, referrers and channels, devices, browsers, engagement time, scroll depth, and outbound, download, form, and cart events without loading a third-party front-end script.
 
 The plugin works in two modes:
 
@@ -28,6 +28,8 @@ The plugin works in two modes:
 * Tiered data retention: detailed data, daily data, and daily totals.
 * Local dashboard with pageviews, visitors, sessions, bounce rate, average engaged time, top pages, sources, devices, and events.
 * Optional cloud sync with gzip, HMAC-SHA256 signatures, a local queue, retries, and exponential backoff.
+* Console overview with speed-test, security-test, and uptime status when Cloud mode is connected.
+* Basic local security check card for directory listing, REST users, wp-admin exposure, security plugins, file editing, and debug display.
 * Respects DNT and GPC; logged-in users are not tracked by default.
 * No third-party scripts, fonts, or images are loaded on the front end.
 
@@ -43,7 +45,7 @@ Cloud mode is optional. It requires an account at the WP-Hub console, a verified
 
 = Source credit =
 
-After activation, the plugin adds a small HTML comment at the top of the page's head section with the Traffic Analytics by WP-Hub name. It is not a visible banner and has no effect on the page layout or speed. You can turn it off in the plugin's **Settings → Appearance and notifications** screen.
+After activation, the plugin adds a small HTML comment at the top of the page's head section with the HubPilot name. It is not a visible banner and has no effect on the page layout or speed. You can turn it off in the plugin's **Settings → Appearance and notifications** screen.
 
 = Privacy =
 
@@ -65,7 +67,7 @@ Uninstalling the plugin removes its settings and temporary queue. Analytics tabl
 
 = فارسی =
 
-Traffic Analytics by WP-Hub یک افزونهٔ سبک و بدون کوکی آمار بازدید است. به‌صورت پیش‌فرض همه‌چیز روی همان سایت ذخیره می‌شود و هیچ رویداد آماری به بیرون ارسال نمی‌شود. حالت ابری اختیاری است و برای آن به کلید اتصال از کنسول WP-Hub نیاز دارید. ربات‌ها با User-Agent و سیگنال‌های مرورگر فیلتر می‌شوند، DNT/GPC رعایت می‌شود و بازدید کاربران واردشده به‌صورت پیش‌فرض ثبت نمی‌شود. رابط مدیریت به انگلیسی است و ترجمهٔ فارسی بر اساس زبان کاربر بارگذاری می‌شود.
+HubPilot یک افزونهٔ سبک و بدون کوکی آمار بازدید است. به‌صورت پیش‌فرض همه‌چیز روی همان سایت ذخیره می‌شود و هیچ رویداد آماری به بیرون ارسال نمی‌شود. حالت ابری اختیاری است و برای آن به کلید اتصال از کنسول WP-Hub نیاز دارید. ربات‌ها با User-Agent و سیگنال‌های مرورگر فیلتر می‌شوند، DNT/GPC رعایت می‌شود و بازدید کاربران واردشده به‌صورت پیش‌فرض ثبت نمی‌شود. رابط مدیریت به انگلیسی است و ترجمهٔ فارسی بر اساس زبان کاربر بارگذاری می‌شود.
 
 == External services ==
 
@@ -136,11 +138,10 @@ Go to the plugin's **Settings → Appearance and notifications** screen and disa
 
 == Screenshots ==
 
-1. Dashboard overview with pageviews, visitors, sessions, average engaged time, bounce rate, and traffic quality.
-2. Top pages, sources, devices, and event breakdown.
+1. HubPilot dashboard overview with pageviews, visitors, sessions, average engaged time, bounce rate, and traffic quality.
+2. Top pages, sources, devices, events, and the basic security check.
 3. Storage mode, three data retention tiers, and console connection settings.
 4. Bot detection, privacy, source credit, and processing status.
-5. Cloud mode, console connection status, and the basic security check.
 
 The screenshots use demo data from a test site.
 

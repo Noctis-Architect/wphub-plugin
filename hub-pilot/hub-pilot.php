@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Traffic Analytics by WP-Hub
+ * Plugin Name: HubPilot
  * Plugin URI:  https://wp-hub.org
- * Description: Lightweight pageview, source, and engagement analytics with no extra load on the site or database.
+ * Description: Connects WordPress to the WP-Hub console for cloud analytics, speed, security, and uptime monitoring, with optional local analytics and basic security checks.
  * Version:     0.4.0
  * Author:      WP-Hub
  * License:     GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: traffic-analytics
+ * Text Domain: hub-pilot
  * Domain Path: /languages
  * Requires PHP: 7.4
  * Requires at least: 6.0
@@ -41,7 +41,7 @@ add_action(
 	'plugins_loaded',
 	static function () {
 		// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- Bundled translations are loaded for non-WordPress.org installs.
-		load_plugin_textdomain( 'traffic-analytics', false, dirname( plugin_basename( WPHS_FILE ) ) . '/languages' );
+		load_plugin_textdomain( 'hub-pilot', false, dirname( plugin_basename( WPHS_FILE ) ) . '/languages' );
 		WPHS_Schema::maybe_upgrade();
 		WPHS_Collector::init();
 		WPHS_Aggregator::init();

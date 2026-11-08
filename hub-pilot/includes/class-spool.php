@@ -45,7 +45,7 @@ final class WPHS_Spool {
 			update_option( self::OPTION_KEY, $key, true );
 		}
 
-		self::$dir = trailingslashit( WP_CONTENT_DIR ) . 'wphub-analytics-' . $key;
+		self::$dir = trailingslashit( WP_CONTENT_DIR ) . 'hub-pilot-' . $key;
 
 		return self::$dir;
 	}
