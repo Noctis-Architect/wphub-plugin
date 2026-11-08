@@ -1,0 +1,1327 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Traffic Analytics by WP-Hub package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Traffic Analytics by WP-Hub 0.4.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-08 17:23+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: admin/views/dashboard.php:14
+msgid "Today"
+msgstr ""
+
+#: admin/views/dashboard.php:15 admin/views/dashboard.php:16
+#: admin/views/dashboard.php:17 admin/views/settings.php:150
+#: admin/views/settings.php:161 admin/views/site-status.php:234
+#, php-format
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/views/dashboard.php:53 admin/views/cloud.php:36
+#: admin/views/cloud.php:37 admin/views/settings.php:9
+#: admin/views/settings.php:20
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: admin/views/dashboard.php:53
+msgid "No processing yet"
+msgstr ""
+
+#: admin/views/dashboard.php:169 admin/views/cloud.php:47
+msgid "WP-Hub Dashboard"
+msgstr ""
+
+#: admin/views/dashboard.php:170
+msgid "Site analytics, speed, security, and monitoring"
+msgstr ""
+
+#: admin/views/dashboard.php:170
+msgid "Lightweight pageview and engagement analytics"
+msgstr ""
+
+#: admin/views/dashboard.php:174
+msgid "Automatic processing active"
+msgstr ""
+
+#: admin/views/dashboard.php:174
+msgid "Automatic processing disabled"
+msgstr ""
+
+#: admin/views/dashboard.php:175 admin/views/cloud.php:53
+#: includes/class-admin.php:117 includes/class-admin.php:118
+msgid "Settings"
+msgstr ""
+
+#: admin/views/dashboard.php:184 admin/views/dashboard.php:237
+#: admin/views/dashboard.php:333 admin/views/dashboard.php:382
+#: admin/views/dashboard.php:421 admin/views/dashboard.php:464
+#: admin/views/cloud.php:76
+msgid "Pageviews"
+msgstr ""
+
+#: admin/views/dashboard.php:185
+msgid "Pageviews, sources, and engagement"
+msgstr ""
+
+#: admin/views/dashboard.php:191
+msgid "No data yet"
+msgstr ""
+
+#: admin/views/dashboard.php:192
+msgid ""
+"Data starts with the first real visit. Admin and logged-in user visits are "
+"not counted by default."
+msgstr ""
+
+#: admin/views/dashboard.php:194
+msgid "Open the site in a private window"
+msgstr ""
+
+#: admin/views/dashboard.php:195
+msgid "Open the dashboard or run cron"
+msgstr ""
+
+#: admin/views/dashboard.php:196
+msgid "If caching is enabled, clear it once"
+msgstr ""
+
+#: admin/views/dashboard.php:199
+msgid "Check settings"
+msgstr ""
+
+#: admin/views/dashboard.php:200
+msgid "Refresh"
+msgstr ""
+
+#: admin/views/dashboard.php:205
+msgid "Report range"
+msgstr ""
+
+#: admin/views/dashboard.php:214
+msgid "to"
+msgstr ""
+
+#: admin/views/dashboard.php:216 admin/views/dashboard.php:543
+msgid "Last processed:"
+msgstr ""
+
+#: admin/views/dashboard.php:221 admin/views/dashboard.php:288
+msgid "Traffic quality"
+msgstr ""
+
+#: admin/views/dashboard.php:222
+msgid "Quality"
+msgstr ""
+
+#: admin/views/dashboard.php:241 admin/views/dashboard.php:251
+#: admin/views/dashboard.php:261
+msgid "No previous data"
+msgstr ""
+
+#: admin/views/dashboard.php:241 admin/views/dashboard.php:251
+#: admin/views/dashboard.php:261
+msgid "vs. previous period"
+msgstr ""
+
+#: admin/views/dashboard.php:247 admin/views/dashboard.php:383
+#: admin/views/dashboard.php:422 admin/views/dashboard.php:465
+#: admin/views/cloud.php:77
+msgid "Visitors"
+msgstr ""
+
+#: admin/views/dashboard.php:257 admin/views/cloud.php:78
+msgid "Sessions"
+msgstr ""
+
+#: admin/views/dashboard.php:267 admin/views/cloud.php:80
+msgid "Avg. engaged time"
+msgstr ""
+
+#: admin/views/dashboard.php:270 admin/views/dashboard.php:278
+msgid "Previous period:"
+msgstr ""
+
+#: admin/views/dashboard.php:275 admin/views/cloud.php:79
+msgid "Bounce rate"
+msgstr ""
+
+#: admin/views/dashboard.php:281
+msgid ""
+"Visitors are based on a daily hash; the same person on different days is "
+"counted again."
+msgstr ""
+
+#: admin/views/dashboard.php:284
+msgid ""
+"Traffic quality is recorded from now on; older data is only visible in "
+"\"All\" mode."
+msgstr ""
+
+#: admin/views/dashboard.php:289
+msgid "verified"
+msgstr ""
+
+#: admin/views/dashboard.php:291
+msgid "Traffic quality breakdown"
+msgstr ""
+
+#: admin/views/dashboard.php:310
+msgid ""
+"Some data in this range was recorded before quality breakdown was enabled "
+"and is not counted in Verified, No-JS, or Suspect."
+msgstr ""
+
+#: admin/views/dashboard.php:316
+#, php-format
+msgid ""
+"Page, source, device, and event details for part of this range have been "
+"deleted. Totals are calculated from daily summaries; details are available "
+"from %s."
+msgstr ""
+
+#: admin/views/dashboard.php:321
+#, php-format
+msgid "No data for this range in \"%s\" mode."
+msgstr ""
+
+#: admin/views/dashboard.php:323
+msgid "Show all visits"
+msgstr ""
+
+#: admin/views/dashboard.php:325
+msgid "Choose another range."
+msgstr ""
+
+#: admin/views/dashboard.php:332
+msgid "Daily pageviews"
+msgstr ""
+
+#: admin/views/dashboard.php:336
+msgid "Total pageviews:"
+msgstr ""
+
+#: admin/views/dashboard.php:338
+msgid "Peak day:"
+msgstr ""
+
+#: admin/views/dashboard.php:338
+msgid "pageviews on"
+msgstr ""
+
+#: admin/views/dashboard.php:342
+msgid "Daily pageviews chart"
+msgstr ""
+
+#: admin/views/dashboard.php:359
+#, php-format
+msgid "%1$s — %2$s pageviews, %3$s visitors"
+msgstr ""
+
+#: admin/views/dashboard.php:374
+msgid "Top pages"
+msgstr ""
+
+#: admin/views/dashboard.php:375
+msgid "10 pages"
+msgstr ""
+
+#: admin/views/dashboard.php:381
+msgid "Page"
+msgstr ""
+
+#: admin/views/dashboard.php:384
+msgid "Avg. time"
+msgstr ""
+
+#: admin/views/dashboard.php:389 admin/views/dashboard.php:427
+#: admin/views/dashboard.php:471
+msgid "No data to display."
+msgstr ""
+
+#: admin/views/dashboard.php:407
+msgid ""
+"Top 10 pages; visitors per page are unique, and one person can be counted on "
+"multiple pages."
+msgstr ""
+
+#: admin/views/dashboard.php:412
+msgid "Sources"
+msgstr ""
+
+#: admin/views/dashboard.php:413
+msgid "10 sources"
+msgstr ""
+
+#: admin/views/dashboard.php:419
+msgid "Source"
+msgstr ""
+
+#: admin/views/dashboard.php:420
+msgid "Channel"
+msgstr ""
+
+#: admin/views/dashboard.php:430 includes/class-reports.php:555
+msgid "Direct"
+msgstr ""
+
+#: admin/views/dashboard.php:449
+msgid ""
+"Top 10 sources; visitors per source are unique; internal navigation is "
+"excluded, so the sum does not equal total pageviews."
+msgstr ""
+
+#: admin/views/dashboard.php:456
+msgid "Devices"
+msgstr ""
+
+#: admin/views/dashboard.php:457
+msgid "Share of total pageviews"
+msgstr ""
+
+#: admin/views/dashboard.php:463
+msgid "Device"
+msgstr ""
+
+#: admin/views/dashboard.php:466
+msgid "Share"
+msgstr ""
+
+#: admin/views/dashboard.php:494
+msgid ""
+"Visitors per device are unique; one person using multiple devices is counted "
+"in multiple rows."
+msgstr ""
+
+#: admin/views/dashboard.php:499
+msgid "Events"
+msgstr ""
+
+#: admin/views/dashboard.php:500
+msgid "Top 8 events"
+msgstr ""
+
+#: admin/views/dashboard.php:506
+msgid "Event"
+msgstr ""
+
+#: admin/views/dashboard.php:507
+msgid "Count"
+msgstr ""
+
+#: admin/views/dashboard.php:512
+msgid "No events recorded."
+msgstr ""
+
+#: admin/views/dashboard.php:524
+msgid "Events are collected from browser interactions."
+msgstr ""
+
+#: admin/views/dashboard.php:533
+#, php-format
+msgid "%s of data is queued for processing."
+msgstr ""
+
+#: admin/views/dashboard.php:534 admin/views/settings.php:295
+msgid "Process queue manually"
+msgstr ""
+
+#: admin/views/dashboard.php:539
+#, php-format
+msgid ""
+"Scheduled processing is not active. Process the queue manually from the "
+"settings page or set a server cron for %s."
+msgstr ""
+
+#: admin/views/dashboard.php:544
+msgid "Settings and data retention"
+msgstr ""
+
+#: admin/views/cloud.php:36 admin/views/settings.php:9
+msgid "Not yet"
+msgstr ""
+
+#: admin/views/cloud.php:37
+msgid "No attempts yet"
+msgstr ""
+
+#: admin/views/cloud.php:38 admin/views/settings.php:21
+#, php-format
+msgid "in about %s"
+msgstr ""
+
+#: admin/views/cloud.php:39 admin/views/settings.php:10
+#: admin/views/settings.php:22
+msgid "Waiting to run"
+msgstr ""
+
+#: admin/views/cloud.php:48
+msgid "Cloud mode — analytics data is not stored on this site"
+msgstr ""
+
+#: admin/views/cloud.php:52
+msgid "Connection ready"
+msgstr ""
+
+#: admin/views/cloud.php:52
+msgid "Needs review"
+msgstr ""
+
+#: admin/views/cloud.php:52 admin/views/cloud.php:112
+msgid "Not configured"
+msgstr ""
+
+#: admin/views/cloud.php:62
+msgid ""
+"The site connection key is not set. Nothing is sent to the console until you "
+"enter the key in Settings."
+msgstr ""
+
+#: admin/views/cloud.php:72
+msgid "Console analytics"
+msgstr ""
+
+#: admin/views/cloud.php:73
+#, php-format
+msgid "Last %s day"
+msgid_plural "Last %s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/views/cloud.php:82
+msgid ""
+"Only verified visits (valid User-Agent + browser signals) are shown; see the "
+"console analytics dashboard for other modes."
+msgstr ""
+
+#: admin/views/cloud.php:88
+msgid "Queued"
+msgstr ""
+
+#: admin/views/cloud.php:90
+#, php-format
+msgid "%1$s in %2$s files"
+msgstr ""
+
+#: admin/views/cloud.php:93 admin/views/settings.php:313
+msgid "Last successful sync"
+msgstr ""
+
+#: admin/views/cloud.php:95
+msgid "Last attempt:"
+msgstr ""
+
+#: admin/views/cloud.php:98
+msgid "Consecutive failures"
+msgstr ""
+
+#: admin/views/cloud.php:100
+msgid "Next attempt:"
+msgstr ""
+
+#: admin/views/cloud.php:106
+msgid "Connection status"
+msgstr ""
+
+#: admin/views/cloud.php:107 admin/views/site-status.php:118
+msgid "Open console"
+msgstr ""
+
+#: admin/views/cloud.php:111
+msgid "Connection key"
+msgstr ""
+
+#: admin/views/cloud.php:112
+msgid "Configured"
+msgstr ""
+
+#: admin/views/cloud.php:115
+msgid "Last batch"
+msgstr ""
+
+#: admin/views/cloud.php:116
+#, php-format
+msgid "%1$s events — HTTP %2$s"
+msgstr ""
+
+#: admin/views/cloud.php:119
+msgid "Sync schedule"
+msgstr ""
+
+#: admin/views/cloud.php:123 admin/views/settings.php:317
+msgid "Last error"
+msgstr ""
+
+#: admin/views/cloud.php:127 admin/views/settings.php:325
+msgid "Old local data"
+msgstr ""
+
+#: admin/views/cloud.php:128
+#, php-format
+msgid "%s summary day"
+msgid_plural "%s summary days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/views/cloud.php:132
+msgid ""
+"In Cloud mode, data is only placed in a temporary queue and removed from the "
+"site after a successful sync. If the console is unavailable, the site and "
+"visitors are unaffected and sending is retried later."
+msgstr ""
+
+#: admin/views/cloud.php:137
+msgid "Actions"
+msgstr ""
+
+#: admin/views/cloud.php:138
+msgid "Manual"
+msgstr ""
+
+#: admin/views/cloud.php:144 admin/views/settings.php:338
+msgid "Send queue now"
+msgstr ""
+
+#: admin/views/cloud.php:149 admin/views/settings.php:343
+msgid "Test connection"
+msgstr ""
+
+#: admin/views/cloud.php:152 admin/views/settings.php:346
+msgid "Purge local analytics data? This cannot be undone."
+msgstr ""
+
+#: admin/views/cloud.php:155 admin/views/settings.php:349
+msgid "Purge local data"
+msgstr ""
+
+#: admin/views/cloud.php:164
+msgid "Storage mode: Cloud"
+msgstr ""
+
+#: admin/views/cloud.php:165
+msgid "Settings and connection key"
+msgstr ""
+
+#: admin/views/settings.php:29
+msgid "WP-Hub Analytics Settings"
+msgstr ""
+
+#: admin/views/settings.php:30
+msgid "Data retention, privacy, and processing status"
+msgstr ""
+
+#: admin/views/settings.php:34
+msgid "Back to dashboard"
+msgstr ""
+
+#: admin/views/settings.php:39
+msgid "Settings saved."
+msgstr ""
+
+#: admin/views/settings.php:43
+msgid "Queue processed; existing data was added to analytics."
+msgstr ""
+
+#: admin/views/settings.php:51
+msgid ""
+"The site connection key is not set; in Cloud mode, no data is sent to the "
+"console until you enter it."
+msgstr ""
+
+#: admin/views/settings.php:56
+msgid "Three data retention levels"
+msgstr ""
+
+#: admin/views/settings.php:57
+msgid "Keeps the database lean"
+msgstr ""
+
+#: admin/views/settings.php:59
+msgid ""
+"Data is retained in tiers; after each level expires, only the next level "
+"remains."
+msgstr ""
+
+#: admin/views/settings.php:64
+msgid "Level"
+msgstr ""
+
+#: admin/views/settings.php:65
+msgid "Includes"
+msgstr ""
+
+#: admin/views/settings.php:66
+msgid "Default"
+msgstr ""
+
+#: admin/views/settings.php:71 admin/views/settings.php:146
+msgid "Detailed data"
+msgstr ""
+
+#: admin/views/settings.php:72
+msgid "Per-visit tracking, hourly table, sessions, and events"
+msgstr ""
+
+#: admin/views/settings.php:73
+msgid "30 days"
+msgstr ""
+
+#: admin/views/settings.php:76 admin/views/settings.php:157
+msgid "Daily data"
+msgstr ""
+
+#: admin/views/settings.php:77
+msgid "Page, source, device, and browser breakdown by day"
+msgstr ""
+
+#: admin/views/settings.php:78
+msgid "180 days"
+msgstr ""
+
+#: admin/views/settings.php:81 admin/views/settings.php:168
+msgid "Daily totals"
+msgstr ""
+
+#: admin/views/settings.php:82
+msgid ""
+"Pageviews, visitors, sessions, bounces, and engaged time without page or "
+"source breakdown"
+msgstr ""
+
+#: admin/views/settings.php:83
+msgid "24 months"
+msgstr ""
+
+#: admin/views/settings.php:96
+msgid "Storage mode"
+msgstr ""
+
+#: admin/views/settings.php:97
+msgid "Local or cloud"
+msgstr ""
+
+#: admin/views/settings.php:102
+msgid "Local"
+msgstr ""
+
+#: admin/views/settings.php:103
+msgid ""
+"Data is stored in this site's database and the full local dashboard is "
+"available."
+msgstr ""
+
+#: admin/views/settings.php:107
+msgid "Cloud"
+msgstr ""
+
+#: admin/views/settings.php:108
+msgid ""
+"No analytics data is stored in the site database; a temporary queue is sent "
+"to the console at most every five minutes."
+msgstr ""
+
+#: admin/views/settings.php:111
+msgid ""
+"In Cloud mode, the temporary queue is cleared after a successful sync. If "
+"the console is unavailable, the site and its visitors are unaffected."
+msgstr ""
+
+#: admin/views/settings.php:116
+msgid "WP-Hub console"
+msgstr ""
+
+#: admin/views/settings.php:117
+msgid "Analytics, speed, security, and monitoring in one dashboard"
+msgstr ""
+
+#: admin/views/settings.php:118
+msgid ""
+"For full reports, speed tests, security checks, and monitoring, get a site "
+"key from the console. The console URL is fixed in the plugin and does not "
+"need to be entered."
+msgstr ""
+
+#: admin/views/settings.php:120
+msgid "Get key from console"
+msgstr ""
+
+#: admin/views/settings.php:125
+msgid "Console connection"
+msgstr ""
+
+#: admin/views/settings.php:126
+msgid "Cloud mode only"
+msgstr ""
+
+#: admin/views/settings.php:130
+msgid "Site connection key"
+msgstr ""
+
+#: admin/views/settings.php:133
+msgid ""
+"Get the site's dedicated key from the console and enter it here. The console "
+"URL is fixed in the plugin; requests use Bearer authentication and an HMAC "
+"signature."
+msgstr ""
+
+#: admin/views/settings.php:141
+msgid "Data retention"
+msgstr ""
+
+#: admin/views/settings.php:142
+msgid "Configurable ranges"
+msgstr ""
+
+#: admin/views/settings.php:153
+msgid ""
+"After this period, per-visit tracking, hourly stats, sessions, and events "
+"are deleted."
+msgstr ""
+
+#: admin/views/settings.php:164
+msgid ""
+"After this period, page, source, device, and browser breakdowns are deleted "
+"and only daily totals remain."
+msgstr ""
+
+#: admin/views/settings.php:172
+msgid "Keep forever"
+msgstr ""
+
+#: admin/views/settings.php:172
+#, php-format
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: admin/views/settings.php:175
+msgid ""
+"Older data, including daily totals, is deleted after this period. \"Keep "
+"forever\" accepts very slow database growth."
+msgstr ""
+
+#: admin/views/settings.php:183
+msgid "Bot detection and traffic quality"
+msgstr ""
+
+#: admin/views/settings.php:184
+msgid "User-Agent + browser signals"
+msgstr ""
+
+#: admin/views/settings.php:188
+msgid "Browser verification"
+msgstr ""
+
+#: admin/views/settings.php:190
+msgid ""
+"To count a visit as \"verified\", also check JavaScript execution and "
+"browser signals"
+msgstr ""
+
+#: admin/views/settings.php:191
+msgid ""
+"Known bots are filtered by User-Agent. Visits without browser verification "
+"appear in \"No-JS\", and rejected visits appear in \"Suspect\"."
+msgstr ""
+
+#: admin/views/settings.php:195
+msgid "Send visitor IP to console"
+msgstr ""
+
+#: admin/views/settings.php:197
+msgid ""
+"In Cloud mode, send the visitor IP to the console for datacenter and country "
+"detection"
+msgstr ""
+
+#: admin/views/settings.php:198
+msgid ""
+"The IP is sent only server-to-server over HTTPS; the console stores only the "
+"result (datacenter/country) and does not keep the raw IP. This option has no "
+"effect in Local mode."
+msgstr ""
+
+#: admin/views/settings.php:206
+msgid "Privacy and filtering"
+msgstr ""
+
+#: admin/views/settings.php:207
+msgid "No raw IP storage"
+msgstr ""
+
+#: admin/views/settings.php:211
+msgid "Logged-in users"
+msgstr ""
+
+#: admin/views/settings.php:213
+msgid "Track logged-in users too"
+msgstr ""
+
+#: admin/views/settings.php:214
+msgid "By default, admin and logged-in user visits are not tracked."
+msgstr ""
+
+#: admin/views/settings.php:218
+msgid "Do Not Track"
+msgstr ""
+
+#: admin/views/settings.php:220
+msgid "Respect visitors' DNT / GPC requests"
+msgstr ""
+
+#: admin/views/settings.php:224
+msgid "404 pages"
+msgstr ""
+
+#: admin/views/settings.php:226
+msgid "Do not track 404 pages"
+msgstr ""
+
+#: admin/views/settings.php:230
+msgid "Uninstall"
+msgstr ""
+
+#: admin/views/settings.php:232
+msgid "Delete analytics tables on uninstall"
+msgstr ""
+
+#: admin/views/settings.php:233
+msgid ""
+"If disabled, data remains in the database after the plugin is uninstalled."
+msgstr ""
+
+#: admin/views/settings.php:241
+msgid "Appearance and notifications"
+msgstr ""
+
+#: admin/views/settings.php:242
+msgid "Analytics pages only"
+msgstr ""
+
+#: admin/views/settings.php:246
+msgid "WordPress notices"
+msgstr ""
+
+#: admin/views/settings.php:248
+msgid "Hide WordPress and other plugin notices on analytics pages"
+msgstr ""
+
+#: admin/views/settings.php:249
+msgid ""
+"This option only affects this plugin's dashboard and settings pages, not "
+"other admin pages."
+msgstr ""
+
+#: admin/views/settings.php:253
+msgid "Source credit"
+msgstr ""
+
+#: admin/views/settings.php:255
+msgid "Show the WP-Hub name at the top of the page source"
+msgstr ""
+
+#: admin/views/settings.php:256
+msgid ""
+"This is only an HTML comment and does not affect the site's appearance or "
+"speed."
+msgstr ""
+
+#: admin/views/settings.php:262
+msgid "Save settings"
+msgstr ""
+
+#: admin/views/settings.php:268
+msgid "Processing status"
+msgstr ""
+
+#: admin/views/settings.php:269
+msgid "Queue health and schedule"
+msgstr ""
+
+#: admin/views/settings.php:273
+msgid "Scheduled processing"
+msgstr ""
+
+#: admin/views/settings.php:275
+msgid "Active — "
+msgstr ""
+
+#: admin/views/settings.php:275
+msgid "Disabled"
+msgstr ""
+
+#: admin/views/settings.php:279
+msgid "Last processed"
+msgstr ""
+
+#: admin/views/settings.php:283
+msgid "Current queue"
+msgstr ""
+
+#: admin/views/settings.php:284
+msgid "in"
+msgstr ""
+
+#: admin/views/settings.php:284
+msgid "files"
+msgstr ""
+
+#: admin/views/settings.php:287 admin/views/settings.php:329
+msgid "Queue directory"
+msgstr ""
+
+#: admin/views/settings.php:288 admin/views/settings.php:330
+msgid "Writable"
+msgstr ""
+
+#: admin/views/settings.php:288 admin/views/settings.php:330
+msgid "Not writable"
+msgstr ""
+
+#: admin/views/settings.php:298
+msgid ""
+"If you use full-page caching, clear it once after activation so the tracker "
+"is included in cached pages. Analytics are kept only on this site with no "
+"external requests."
+msgstr ""
+
+#: admin/views/settings.php:299
+msgid ""
+"If DISABLE_WP_CRON is enabled, set a real server cron for wphs_aggregate or "
+"use the manual processing button."
+msgstr ""
+
+#: admin/views/settings.php:304
+msgid "Cloud sync status"
+msgstr ""
+
+#: admin/views/settings.php:305
+msgid "No local storage"
+msgstr ""
+
+#: admin/views/settings.php:309
+msgid "Queued events"
+msgstr ""
+
+#: admin/views/settings.php:310
+msgid "events"
+msgstr ""
+
+#: admin/views/settings.php:321
+msgid "Next attempt / schedule"
+msgstr ""
+
+#: admin/views/settings.php:326
+msgid "summary days"
+msgstr ""
+
+#: admin/views/settings.php:354
+msgid ""
+"In Cloud mode, no analytics data is written to the site database; only a "
+"temporary queue file is used. Events are removed from the queue after a "
+"successful sync."
+msgstr ""
+
+#: admin/views/settings.php:355
+msgid ""
+"If DISABLE_WP_CRON is enabled, set a real server cron for wphs_cloud_sync or "
+"use the send-now button."
+msgstr ""
+
+#: admin/views/site-status.php:46
+msgid "sec"
+msgstr ""
+
+#: admin/views/site-status.php:71
+msgid "Critical"
+msgstr ""
+
+#: admin/views/site-status.php:72
+msgid "High"
+msgstr ""
+
+#: admin/views/site-status.php:73
+msgid "Medium"
+msgstr ""
+
+#: admin/views/site-status.php:74
+msgid "Low"
+msgstr ""
+
+#: admin/views/site-status.php:89
+msgid "Headers"
+msgstr ""
+
+#: admin/views/site-status.php:90
+msgid "SSL"
+msgstr ""
+
+#: admin/views/site-status.php:91
+msgid "Vulnerabilities"
+msgstr ""
+
+#: admin/views/site-status.php:106
+msgid "Online"
+msgstr ""
+
+#: admin/views/site-status.php:106
+msgid "Offline"
+msgstr ""
+
+#: admin/views/site-status.php:106
+msgid "Unknown"
+msgstr ""
+
+#: admin/views/site-status.php:113
+msgid "Site status"
+msgstr ""
+
+#: admin/views/site-status.php:124
+msgid "Failed to fetch site status from the console:"
+msgstr ""
+
+#: admin/views/site-status.php:125
+msgid "Check connection"
+msgstr ""
+
+#: admin/views/site-status.php:129
+msgid "Could not reach the console; showing the last saved data."
+msgstr ""
+
+#: admin/views/site-status.php:135
+msgid "Latest speed test"
+msgstr ""
+
+#: admin/views/site-status.php:136
+msgid "Mobile and desktop"
+msgstr ""
+
+#: admin/views/site-status.php:140
+msgid "No speed test recorded yet."
+msgstr ""
+
+#: admin/views/site-status.php:145 includes/class-reports.php:571
+msgid "Mobile"
+msgstr ""
+
+#: admin/views/site-status.php:146 includes/class-reports.php:570
+msgid "Desktop"
+msgstr ""
+
+#: admin/views/site-status.php:159 admin/views/site-status.php:198
+msgid "Tested:"
+msgstr ""
+
+#: admin/views/site-status.php:161
+msgid "No test recorded"
+msgstr ""
+
+#: admin/views/site-status.php:168
+msgid "Speed test details in the console"
+msgstr ""
+
+#: admin/views/site-status.php:173
+msgid "Latest security test"
+msgstr ""
+
+#: admin/views/site-status.php:174
+msgid "If available"
+msgstr ""
+
+#: admin/views/site-status.php:178
+msgid "No security test recorded yet."
+msgstr ""
+
+#: admin/views/site-status.php:184
+msgid "Security score"
+msgstr ""
+
+#: admin/views/site-status.php:213
+msgid "Security test details in the console"
+msgstr ""
+
+#: admin/views/site-status.php:218
+msgid "Monitoring"
+msgstr ""
+
+#: admin/views/site-status.php:219
+msgid "24 hours"
+msgstr ""
+
+#: admin/views/site-status.php:223
+msgid "Monitoring is not active or no data has been recorded."
+msgstr ""
+
+#: admin/views/site-status.php:228
+msgid "Uptime"
+msgstr ""
+
+#: admin/views/site-status.php:236
+msgid "Valid"
+msgstr ""
+
+#: admin/views/site-status.php:236
+msgid "Invalid"
+msgstr ""
+
+#: admin/views/site-status.php:239
+msgid "Last check:"
+msgstr ""
+
+#: admin/views/site-status.php:242
+msgid "Monitoring details in the console"
+msgstr ""
+
+#: admin/views/security-check.php:9
+msgid "Security check"
+msgstr ""
+
+#: admin/views/security-check.php:11
+msgid "Basic checks"
+msgstr ""
+
+#: admin/views/security-check.php:12
+msgid "Re-check"
+msgstr ""
+
+#: admin/views/security-check.php:26
+msgid "All basic checks passed."
+msgstr ""
+
+#: admin/views/security-check.php:30
+msgid "Some checks could not run from this server."
+msgstr ""
+
+#: admin/views/security-check.php:33
+#, php-format
+msgid "Checked %s ago."
+msgstr ""
+
+#: includes/class-cloud.php:129
+#, php-format
+msgid "Could not fetch site status from the console (HTTP %d)."
+msgstr ""
+
+#: includes/class-cloud.php:160 includes/class-admin.php:239
+msgid "The site connection key is not set."
+msgstr ""
+
+#: includes/class-cloud.php:188
+msgid "Connected to the console."
+msgstr ""
+
+#: includes/class-cloud.php:188
+#, php-format
+msgid "Invalid response from the console (HTTP %d)"
+msgstr ""
+
+#: includes/class-reports.php:24 includes/class-reports.php:457
+msgid "Verified"
+msgstr ""
+
+#: includes/class-reports.php:25
+msgid "All"
+msgstr ""
+
+#: includes/class-reports.php:26 includes/class-reports.php:458
+msgid "No-JS"
+msgstr ""
+
+#: includes/class-reports.php:27 includes/class-reports.php:459
+msgid "Suspect"
+msgstr ""
+
+#: includes/class-reports.php:41
+msgid "All recorded visits, including verified, No-JS, and suspect traffic."
+msgstr ""
+
+#: includes/class-reports.php:43
+msgid ""
+"The User-Agent was valid, but no browser verification (JavaScript) was "
+"received."
+msgstr ""
+
+#: includes/class-reports.php:45
+msgid "Browser signals were not verified or bot signals were detected."
+msgstr ""
+
+#: includes/class-reports.php:47
+msgid "Only visits with a valid User-Agent and verified browser signals."
+msgstr ""
+
+#: includes/class-reports.php:460
+msgid "Datacenter"
+msgstr ""
+
+#: includes/class-reports.php:461
+msgid "Before breakdown"
+msgstr ""
+
+#: includes/class-reports.php:531
+#, php-format
+msgid "%s second"
+msgid_plural "%s seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-reports.php:541
+#, php-format
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-reports.php:547
+#, php-format
+msgid "%1$s min %2$s sec"
+msgstr ""
+
+#: includes/class-reports.php:556
+msgid "Search"
+msgstr ""
+
+#: includes/class-reports.php:557
+msgid "Social"
+msgstr ""
+
+#: includes/class-reports.php:558
+msgid "Referral"
+msgstr ""
+
+#: includes/class-reports.php:559
+msgid "Paid"
+msgstr ""
+
+#: includes/class-reports.php:560
+msgid "Email"
+msgstr ""
+
+#: includes/class-reports.php:561
+msgid "Campaign"
+msgstr ""
+
+#: includes/class-reports.php:562
+msgid "Internal"
+msgstr ""
+
+#: includes/class-reports.php:572
+msgid "Tablet"
+msgstr ""
+
+#: includes/class-reports.php:580
+msgid "Outbound click"
+msgstr ""
+
+#: includes/class-reports.php:581
+msgid "File download"
+msgstr ""
+
+#: includes/class-reports.php:582
+msgid "Form submission"
+msgstr ""
+
+#: includes/class-reports.php:583
+msgid "Add to cart"
+msgstr ""
+
+#: includes/class-reports.php:584
+msgid "Scroll 25%"
+msgstr ""
+
+#: includes/class-reports.php:585
+msgid "Scroll 50%"
+msgstr ""
+
+#: includes/class-reports.php:586
+msgid "Scroll 75%"
+msgstr ""
+
+#: includes/class-reports.php:587
+msgid "Scroll 100%"
+msgstr ""
+
+#: includes/class-collector.php:463
+msgid "Search:"
+msgstr ""
+
+#: includes/class-admin.php:97 includes/class-admin.php:98
+msgid "WP-Hub Analytics"
+msgstr ""
+
+#: includes/class-admin.php:108 includes/class-admin.php:109
+msgid "Dashboard"
+msgstr ""
+
+#: includes/class-admin.php:144 includes/class-admin.php:184
+#: includes/class-admin.php:194 includes/class-admin.php:276
+#: includes/class-aggregator.php:845
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: includes/class-admin.php:230
+#, php-format
+msgid "%1$s events were sent to the console; %2$s events remain queued."
+msgstr ""
+
+#: includes/class-admin.php:235
+msgid "The queue was empty; nothing to send."
+msgstr ""
+
+#: includes/class-admin.php:238
+msgid "Cloud mode is not active."
+msgstr ""
+
+#: includes/class-admin.php:240
+msgid "The next attempt is not allowed yet; try again later."
+msgstr ""
+
+#: includes/class-admin.php:241
+msgid "Another process is already running."
+msgstr ""
+
+#: includes/class-admin.php:244
+msgid "Sync failed: "
+msgstr ""
+
+#: includes/class-admin.php:255
+msgid "Local analytics data was purged."
+msgstr ""
+
+#: includes/class-security-check.php:34
+msgid "Directory listing is enabled"
+msgstr ""
+
+#: includes/class-security-check.php:45
+msgid "REST users endpoint is public"
+msgstr ""
+
+#: includes/class-security-check.php:56
+msgid "wp-admin is directly accessible"
+msgstr ""
+
+#: includes/class-security-check.php:65
+msgid "No security plugin detected"
+msgstr ""
+
+#: includes/class-security-check.php:72
+msgid "File editing is enabled"
+msgstr ""
+
+#: includes/class-security-check.php:79
+msgid "Debug display is enabled"
+msgstr ""

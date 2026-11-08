@@ -1,0 +1,914 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Traffic Analytics by WP-Hub 0.4.0\n"
+"Report-Msgid-Bugs-To: https://wp-hub.org/contact\n"
+"POT-Creation-Date: 2026-11-07 23:14+0330\n"
+"PO-Revision-Date: 2026-11-07 23:14+0330\n"
+"Last-Translator: WP-Hub <https://wp-hub.org>\n"
+"Language-Team: Persian\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: traffic-analytics\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Today"
+msgstr "امروز"
+
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s روز"
+msgstr[1] "%s روز"
+
+msgid "%s ago"
+msgstr "%s پیش"
+
+msgid "No processing yet"
+msgstr "بدون پردازش"
+
+msgid "WP-Hub Dashboard"
+msgstr "داشبورد WP-Hub"
+
+msgid "Site analytics, speed, security, and monitoring"
+msgstr "آمار، سرعت، امنیت و پایش سایت"
+
+msgid "Lightweight pageview and engagement analytics"
+msgstr "آمار سبک بازدید و تعامل کاربران"
+
+msgid "Automatic processing active"
+msgstr "پردازش خودکار فعال"
+
+msgid "Automatic processing disabled"
+msgstr "پردازش خودکار غیرفعال"
+
+msgid "Settings"
+msgstr "تنظیمات"
+
+msgid "Pageviews"
+msgstr "بازدید"
+
+msgid "Pageviews, sources, and engagement"
+msgstr "بازدید، منبع ورود و تعامل"
+
+msgid "No data yet"
+msgstr "هنوز داده‌ای ثبت نشده است"
+
+msgid "Data starts with the first real visit. Admin and logged-in user visits are not counted by default."
+msgstr "داده‌ها با اولین بازدید واقعی شروع می‌شوند. بازدید مدیر و کاربران واردشده به‌صورت پیش‌فرض شمرده نمی‌شود."
+
+msgid "Open the site in a private window"
+msgstr "سایت را در حالت ناشناس باز کنید"
+
+msgid "Open the dashboard or run cron"
+msgstr "داشبورد را باز کنید یا cron را اجرا کنید"
+
+msgid "If caching is enabled, clear it once"
+msgstr "در صورت وجود کش، یک‌بار آن را پاک کنید"
+
+msgid "Check settings"
+msgstr "بررسی تنظیمات"
+
+msgid "Refresh"
+msgstr "بازخوانی"
+
+msgid "Report range"
+msgstr "بازه گزارش"
+
+msgid "to"
+msgstr "تا"
+
+msgid "Last processed:"
+msgstr "آخرین پردازش:"
+
+msgid "Traffic quality"
+msgstr "کیفیت بازدید"
+
+msgid "Quality"
+msgstr "کیفیت"
+
+msgid "No previous data"
+msgstr "داده دوره قبل نیست"
+
+msgid "vs. previous period"
+msgstr "نسبت به دوره قبل"
+
+msgid "Visitors"
+msgstr "بازدیدکننده"
+
+msgid "Sessions"
+msgstr "نشست"
+
+msgid "Avg. engaged time"
+msgstr "میانگین زمان فعال"
+
+msgid "Previous period:"
+msgstr "دوره قبل:"
+
+msgid "Bounce rate"
+msgstr "نرخ پرش"
+
+msgid "Visitors are based on a daily hash; the same person on different days is counted again."
+msgstr "بازدیدکننده بر پایه هش روزانه محاسبه می‌شود؛ بازدید یک نفر در روزهای مختلف دوباره شمرده می‌شود."
+
+msgid "Traffic quality is recorded from now on; older data is only visible in \"All\" mode."
+msgstr "تفکیک کیفیت از این پس ثبت می‌شود؛ داده‌های قبلی فقط در حالت «همه» دیده می‌شوند."
+
+msgid "verified"
+msgstr "تأییدشده"
+
+msgid "Traffic quality breakdown"
+msgstr "ترکیب کیفیت بازدیدها"
+
+msgid "Some data in this range was recorded before quality breakdown was enabled and is not counted in Verified, No-JS, or Suspect."
+msgstr "بخشی از داده‌های این بازه قبل از فعال‌سازی تفکیک کیفیت ثبت شده است و در حالت‌های تأییدشده، بدون JS و مشکوک شمرده نمی‌شود."
+
+msgid "Page, source, device, and event details for part of this range have been deleted. Totals are calculated from daily summaries; details are available from %s."
+msgstr "جزئیات صفحه، منبع، دستگاه و رویدادها برای بخشی از این بازه پاک شده است. اعداد کلی از خلاصه روزانه محاسبه می‌شوند و جزئیات از تاریخ %s در دسترس است."
+
+msgid "No data for this range in \"%s\" mode."
+msgstr "در حالت «%s» برای این بازه داده‌ای نیست."
+
+msgid "Show all visits"
+msgstr "نمایش همه بازدیدها"
+
+msgid "Choose another range."
+msgstr "بازه دیگری را انتخاب کنید."
+
+msgid "Daily pageviews"
+msgstr "بازدید روزانه"
+
+msgid "Total pageviews:"
+msgstr "مجموع بازدید:"
+
+msgid "Peak day:"
+msgstr "بیشترین روز:"
+
+msgid "pageviews on"
+msgstr "بازدید در"
+
+msgid "Daily pageviews chart"
+msgstr "نمودار بازدید روزانه"
+
+msgid "%1$s — %2$s pageviews, %3$s visitors"
+msgstr "%1$s — %2$s بازدید، %3$s بازدیدکننده"
+
+msgid "Top pages"
+msgstr "صفحات پرتردید"
+
+msgid "10 pages"
+msgstr "۱۰ صفحه"
+
+msgid "Page"
+msgstr "صفحه"
+
+msgid "Avg. time"
+msgstr "میانگین زمان"
+
+msgid "No data to display."
+msgstr "داده‌ای برای نمایش نیست."
+
+msgid "Top 10 pages; visitors per page are unique, and one person can be counted on multiple pages."
+msgstr "۱۰ صفحه پرتردید؛ بازدیدکننده هر صفحه جداست و یک نفر می‌تواند در چند صفحه شمرده شود."
+
+msgid "Sources"
+msgstr "منابع ورود"
+
+msgid "10 sources"
+msgstr "۱۰ منبع"
+
+msgid "Source"
+msgstr "منبع"
+
+msgid "Channel"
+msgstr "کانال"
+
+msgid "Direct"
+msgstr "مستقیم"
+
+msgid "Top 10 sources; visitors per source are unique; internal navigation is excluded, so the sum does not equal total pageviews."
+msgstr "۱۰ منبع نخست؛ بازدیدکننده هر منبع جداست؛ بازدیدهای ناوبری داخلی در این جدول نیستند؛ به همین دلیل جمع آن با کل بازدید برابر نیست."
+
+msgid "Devices"
+msgstr "دستگاه‌ها"
+
+msgid "Share of total pageviews"
+msgstr "سهم از کل بازدید"
+
+msgid "Device"
+msgstr "دستگاه"
+
+msgid "Share"
+msgstr "سهم"
+
+msgid "Visitors per device are unique; one person using multiple devices is counted in multiple rows."
+msgstr "بازدیدکننده هر دستگاه جداست؛ یک نفر با چند دستگاه در چند ردیف شمرده می‌شود."
+
+msgid "Events"
+msgstr "رویدادها"
+
+msgid "Top 8 events"
+msgstr "۸ رویداد پرتکرار"
+
+msgid "Event"
+msgstr "رویداد"
+
+msgid "Count"
+msgstr "تعداد"
+
+msgid "No events recorded."
+msgstr "رویدادی ثبت نشده است."
+
+msgid "Events are collected from browser interactions."
+msgstr "رویدادها از تعامل‌های سمت مرورگر جمع‌آوری می‌شوند."
+
+msgid "%s of data is queued for processing."
+msgstr "%s داده در صف پردازش است."
+
+msgid "Process queue manually"
+msgstr "پردازش دستی صف"
+
+msgid "Scheduled processing is not active. Process the queue manually from the settings page or set a server cron for %s."
+msgstr "زمان‌بندی پردازش دوره‌ای فعال نیست. از صفحه تنظیمات، صف را دستی پردازش کنید یا cron سرور را برای رویداد %s تنظیم کنید."
+
+msgid "Settings and data retention"
+msgstr "تنظیمات و نگهداری داده‌ها"
+
+msgid "Not yet"
+msgstr "هنوز انجام نشده"
+
+msgid "No attempts yet"
+msgstr "هنوز تلاشی انجام نشده"
+
+msgid "in about %s"
+msgstr "حدود %s دیگر"
+
+msgid "Waiting to run"
+msgstr "در انتظار اجرا"
+
+msgid "Cloud mode — analytics data is not stored on this site"
+msgstr "حالت ابری — داده‌های آماری روی این سایت ذخیره نمی‌شوند"
+
+msgid "Connection ready"
+msgstr "اتصال آماده"
+
+msgid "Needs review"
+msgstr "نیاز به بررسی"
+
+msgid "Not configured"
+msgstr "تنظیم نشده"
+
+msgid "The site connection key is not set. Nothing is sent to the console until you enter the key in Settings."
+msgstr "کلید اتصال سایت تنظیم نشده است. تا زمانی که کلید را در تنظیمات وارد نکنید، ارسالی به کنسول انجام نمی‌شود."
+
+msgid "Console analytics"
+msgstr "آمار از کنسول"
+
+msgid "Last %s day"
+msgid_plural "Last %s days"
+msgstr[0] "%s روز اخیر"
+msgstr[1] "%s روز اخیر"
+
+msgid "Only verified visits (valid User-Agent + browser signals) are shown; see the console analytics dashboard for other modes."
+msgstr "فقط بازدیدهای تأییدشده (User-Agent سالم + رفتار مرورگر) نمایش داده می‌شوند؛ برای حالت‌های دیگر، داشبورد آمار کنسول را ببینید."
+
+msgid "Queued"
+msgstr "در صف ارسال"
+
+msgid "%1$s in %2$s files"
+msgstr "%1$s در %2$s فایل"
+
+msgid "Last successful sync"
+msgstr "آخرین ارسال موفق"
+
+msgid "Last attempt:"
+msgstr "آخرین تلاش:"
+
+msgid "Consecutive failures"
+msgstr "خطاهای پیاپی"
+
+msgid "Next attempt:"
+msgstr "تلاش بعدی:"
+
+msgid "Connection status"
+msgstr "وضعیت اتصال"
+
+msgid "Open console"
+msgstr "بازکردن کنسول"
+
+msgid "Connection key"
+msgstr "کلید اتصال"
+
+msgid "Configured"
+msgstr "تنظیم شده"
+
+msgid "Last batch"
+msgstr "آخرین دسته ارسالی"
+
+msgid "%1$s events — HTTP %2$s"
+msgstr "%1$s رویداد — HTTP %2$s"
+
+msgid "Sync schedule"
+msgstr "زمان‌بندی ارسال"
+
+msgid "Last error"
+msgstr "آخرین خطا"
+
+msgid "Old local data"
+msgstr "داده‌های محلی قدیمی"
+
+msgid "%s summary day"
+msgid_plural "%s summary days"
+msgstr[0] "%s روز خلاصه"
+msgstr[1] "%s روز خلاصه"
+
+msgid "In Cloud mode, data is only placed in a temporary queue and removed from the site after a successful sync. If the console is unavailable, the site and visitors are unaffected and sending is retried later."
+msgstr "در حالت ابری، داده‌ها فقط در صف موقت قرار می‌گیرند و پس از ارسال موفق از سایت پاک می‌شوند. اگر کنسول در دسترس نباشد، سایت و بازدیدکنندگان هیچ اختلالی نمی‌بینند و ارسال با تأخیر دوباره تلاش می‌شود."
+
+msgid "Actions"
+msgstr "عملیات"
+
+msgid "Manual"
+msgstr "دستی"
+
+msgid "Send queue now"
+msgstr "ارسال فوری صف"
+
+msgid "Test connection"
+msgstr "تست اتصال"
+
+msgid "Purge local analytics data? This cannot be undone."
+msgstr "داده‌های محلی آمار پاک شوند؟ این کار قابل بازگشت نیست."
+
+msgid "Purge local data"
+msgstr "پاک‌کردن داده‌های محلی"
+
+msgid "Storage mode: Cloud"
+msgstr "حالت ذخیره‌سازی: ابری"
+
+msgid "Settings and connection key"
+msgstr "تنظیمات و کلید اتصال"
+
+msgid "WP-Hub Analytics Settings"
+msgstr "تنظیمات آمار WP-Hub"
+
+msgid "Data retention, privacy, and processing status"
+msgstr "نگهداری داده‌ها، حریم خصوصی و وضعیت پردازش"
+
+msgid "Back to dashboard"
+msgstr "بازگشت به داشبورد"
+
+msgid "Settings saved."
+msgstr "تنظیمات ذخیره شد."
+
+msgid "Queue processed; existing data was added to analytics."
+msgstr "صف پردازش شد؛ داده‌های موجود به آمار اضافه شدند."
+
+msgid "The site connection key is not set; in Cloud mode, no data is sent to the console until you enter it."
+msgstr "کلید اتصال سایت تنظیم نشده است؛ در حالت ابری تا ورود کلید، داده‌ای به کنسول ارسال نمی‌شود."
+
+msgid "Three data retention levels"
+msgstr "سه سطح نگهداری داده"
+
+msgid "Keeps the database lean"
+msgstr "دیتابیس سبک می‌ماند"
+
+msgid "Data is retained in tiers; after each level expires, only the next level remains."
+msgstr "داده‌ها به‌صورت پله‌ای نگهداری می‌شوند؛ بعد از پایان هر سطح، فقط سطح بعدی باقی می‌ماند."
+
+msgid "Level"
+msgstr "سطح"
+
+msgid "Includes"
+msgstr "شامل"
+
+msgid "Default"
+msgstr "پیش‌فرض"
+
+msgid "Detailed data"
+msgstr "جزئیات لحظه‌ای"
+
+msgid "Per-visit tracking, hourly table, sessions, and events"
+msgstr "ردیابی تک‌بازدید، جدول ساعتی، نشست‌ها و رویدادها"
+
+msgid "30 days"
+msgstr "۳۰ روز"
+
+msgid "Daily data"
+msgstr "جزئیات روزانه"
+
+msgid "Page, source, device, and browser breakdown by day"
+msgstr "تفکیک صفحه، منبع ورود، دستگاه و مرورگر در سطح روز"
+
+msgid "180 days"
+msgstr "۱۸۰ روز"
+
+msgid "Daily totals"
+msgstr "خلاصه روزانه"
+
+msgid "Pageviews, visitors, sessions, bounces, and engaged time without page or source breakdown"
+msgstr "بازدید، بازدیدکننده، نشست، پرش و زمان فعال بدون تفکیک صفحه و منبع"
+
+msgid "24 months"
+msgstr "۲۴ ماه"
+
+msgid "Storage mode"
+msgstr "حالت ذخیره‌سازی"
+
+msgid "Local or cloud"
+msgstr "محلی یا ابری"
+
+msgid "Local"
+msgstr "محلی"
+
+msgid "Data is stored in this site's database and the full local dashboard is available."
+msgstr "داده‌ها در دیتابیس همین سایت ذخیره می‌شوند و داشبورد محلی کامل فعال است."
+
+msgid "Cloud"
+msgstr "ابری"
+
+msgid "No analytics data is stored in the site database; a temporary queue is sent to the console at most every five minutes."
+msgstr "هیچ داده آماری در دیتابیس سایت ذخیره نمی‌شود؛ صف موقت حداکثر هر ۵ دقیقه به کنسول ارسال می‌شود."
+
+msgid "In Cloud mode, the temporary queue is cleared after a successful sync. If the console is unavailable, the site and its visitors are unaffected."
+msgstr "در حالت ابری، صف موقت بعد از ارسال موفق پاک می‌شود و اگر کنسول در دسترس نباشد، سایت و بازدیدکنندگان هیچ اختلالی نمی‌بینند."
+
+msgid "WP-Hub console"
+msgstr "کنسول WP-Hub"
+
+msgid "Analytics, speed, security, and monitoring in one dashboard"
+msgstr "آمار، سرعت، امنیت و پایش در یک داشبورد"
+
+msgid "For full reports, speed tests, security checks, and monitoring, get a site key from the console. The console URL is fixed in the plugin and does not need to be entered."
+msgstr "برای دیدن گزارش‌های کامل، تست سرعت، امنیت و پایش، کلید اتصال سایت را از کنسول بگیرید. آدرس کنسول در پلاگین ثابت است و نیازی به وارد کردن آن نیست."
+
+msgid "Get key from console"
+msgstr "دریافت کلید از کنسول"
+
+msgid "Console connection"
+msgstr "اتصال به کنسول"
+
+msgid "Cloud mode only"
+msgstr "فقط در حالت ابری"
+
+msgid "Site connection key"
+msgstr "کلید اتصال سایت"
+
+msgid "Get the site's dedicated key from the console and enter it here. The console URL is fixed in the plugin; requests use Bearer authentication and an HMAC signature."
+msgstr "کلید اختصاصی سایت را از کنسول دریافت و اینجا وارد کنید. آدرس کنسول در پلاگین ثابت است و ارسال با Bearer و امضای HMAC انجام می‌شود."
+
+msgid "Data retention"
+msgstr "نگهداری داده‌ها"
+
+msgid "Configurable ranges"
+msgstr "بازه‌های قابل تنظیم"
+
+msgid "After this period, per-visit tracking, hourly stats, sessions, and events are deleted."
+msgstr "بعد از این مدت، ردیابی تک‌بازدید، آمار ساعتی، نشست‌ها و رویدادها حذف می‌شوند."
+
+msgid "After this period, page, source, device, and browser breakdowns are deleted and only daily totals remain."
+msgstr "بعد از این مدت، تفکیک صفحه، منبع، دستگاه و مرورگر حذف می‌شود و فقط خلاصه روزانه می‌ماند."
+
+msgid "Keep forever"
+msgstr "همیشه نگه‌داری شود"
+
+msgid "%s month"
+msgid_plural "%s months"
+msgstr[0] "%s ماه"
+msgstr[1] "%s ماه"
+
+msgid "Older data, including daily totals, is deleted after this period. \"Keep forever\" accepts very slow database growth."
+msgstr "قدیمی‌تر از این مدت، حتی خلاصه روزانه هم حذف می‌شود. گزینه «همیشه» رشد بسیار کند دیتابیس را می‌پذیرد."
+
+msgid "Bot detection and traffic quality"
+msgstr "تشخیص ربات و کیفیت بازدید"
+
+msgid "User-Agent + browser signals"
+msgstr "User-Agent + رفتار مرورگر"
+
+msgid "Browser verification"
+msgstr "تأیید رفتار مرورگر"
+
+msgid "To count a visit as \"verified\", also check JavaScript execution and browser signals"
+msgstr "برای شمردن بازدید در حالت «تأییدشده»، اجرای JS و سیگنال‌های مرورگر هم بررسی شود"
+
+msgid "Known bots are filtered by User-Agent. Visits without browser verification appear in \"No-JS\", and rejected visits appear in \"Suspect\"."
+msgstr "ربات‌های شناخته‌شده بر اساس User-Agent حذف می‌شوند. بازدیدهای بدون تأیید مرورگر در حالت «بدون JS» و بازدیدهای ردشده در حالت «مشکوک» نمایش داده می‌شوند."
+
+msgid "Send visitor IP to console"
+msgstr "ارسال IP به کنسول"
+
+msgid "In Cloud mode, send the visitor IP to the console for datacenter and country detection"
+msgstr "در حالت ابری، IP بازدیدکننده برای تشخیص دیتاسنتر و کشور به کنسول ارسال شود"
+
+msgid "The IP is sent only server-to-server over HTTPS; the console stores only the result (datacenter/country) and does not keep the raw IP. This option has no effect in Local mode."
+msgstr "IP فقط در ارتباط سرور به سرور و روی HTTPS ارسال می‌شود؛ کنسول فقط نتیجه (دیتاسنتر/کشور) را ذخیره می‌کند و IP خام را نگه نمی‌دارد. در حالت محلی این گزینه اثری ندارد."
+
+msgid "Privacy and filtering"
+msgstr "حریم خصوصی و فیلتر"
+
+msgid "No raw IP storage"
+msgstr "بدون ذخیره IP خام"
+
+msgid "Logged-in users"
+msgstr "کاربران واردشده"
+
+msgid "Track logged-in users too"
+msgstr "بازدید کاربران واردشده هم ثبت شود"
+
+msgid "By default, admin and logged-in user visits are not tracked."
+msgstr "به‌صورت پیش‌فرض بازدید مدیر و کاربران واردشده ثبت نمی‌شود."
+
+msgid "Do Not Track"
+msgstr "Do Not Track"
+
+msgid "Respect visitors' DNT / GPC requests"
+msgstr "درخواست DNT / GPC کاربران رعایت شود"
+
+msgid "404 pages"
+msgstr "صفحات ۴۰۴"
+
+msgid "Do not track 404 pages"
+msgstr "صفحات ۴۰۴ ثبت نشوند"
+
+msgid "Uninstall"
+msgstr "حذف افزونه"
+
+msgid "Delete analytics tables on uninstall"
+msgstr "هنگام حذف افزونه، جدول‌های آمار هم حذف شوند"
+
+msgid "If disabled, data remains in the database after the plugin is uninstalled."
+msgstr "اگر این گزینه خاموش باشد، داده‌ها پس از حذف افزونه در دیتابیس باقی می‌مانند."
+
+msgid "Appearance and notifications"
+msgstr "ظاهر و اعلان‌ها"
+
+msgid "Analytics pages only"
+msgstr "فقط در صفحات آمار"
+
+msgid "WordPress notices"
+msgstr "اعلان‌های وردپرس"
+
+msgid "Hide WordPress and other plugin notices on analytics pages"
+msgstr "اعلان‌های وردپرس و افزونه‌های دیگر در صفحات آمار پنهان شوند"
+
+msgid "This option only affects this plugin's dashboard and settings pages, not other admin pages."
+msgstr "این گزینه فقط روی داشبورد و تنظیمات همین افزونه اعمال می‌شود و روی بقیه صفحات مدیریت اثری ندارد."
+
+msgid "Source credit"
+msgstr "نام در سورس"
+
+msgid "Show the WP-Hub name at the top of the page source"
+msgstr "نام WP-Hub در بالای سورس صفحات نمایش داده شود"
+
+msgid "This is only an HTML comment and does not affect the site's appearance or speed."
+msgstr "این فقط یک کامنت HTML است و روی ظاهر یا سرعت سایت اثری ندارد."
+
+msgid "Save settings"
+msgstr "ذخیره تنظیمات"
+
+msgid "Processing status"
+msgstr "وضعیت پردازش"
+
+msgid "Queue health and schedule"
+msgstr "سلامت صف و زمان‌بندی"
+
+msgid "Scheduled processing"
+msgstr "پردازش دوره‌ای"
+
+msgid "Active — "
+msgstr "فعال — "
+
+msgid "Disabled"
+msgstr "غیرفعال"
+
+msgid "Last processed"
+msgstr "آخرین پردازش"
+
+msgid "Current queue"
+msgstr "صف فعلی"
+
+msgid "in"
+msgstr "در"
+
+msgid "files"
+msgstr "فایل"
+
+msgid "Queue directory"
+msgstr "پوشه صف"
+
+msgid "Writable"
+msgstr "قابل نوشتن"
+
+msgid "Not writable"
+msgstr "غیرقابل نوشتن"
+
+msgid "If you use full-page caching, clear it once after activation so the tracker is included in cached pages. Analytics are kept only on this site with no external requests."
+msgstr "اگر از کش تمام‌صفحه استفاده می‌کنید، بعد از فعال‌سازی افزونه یک‌بار کش را پاک کنید تا اسکریپت ردیاب در صفحات کش‌شده قرار بگیرد. آمار بدون هیچ درخواست خارجی و فقط روی همین سایت نگه‌داری می‌شود."
+
+msgid "If DISABLE_WP_CRON is enabled, set a real server cron for wphs_aggregate or use the manual processing button."
+msgstr "اگر DISABLE_WP_CRON فعال است، برای رویداد wphs_aggregate یک cron واقعی روی سرور تنظیم کنید یا از دکمه پردازش دستی استفاده کنید."
+
+msgid "Cloud sync status"
+msgstr "وضعیت ارسال ابری"
+
+msgid "No local storage"
+msgstr "بدون ذخیره‌سازی محلی"
+
+msgid "Queued events"
+msgstr "در صف ارسال"
+
+msgid "events"
+msgstr "رویداد"
+
+msgid "Next attempt / schedule"
+msgstr "تلاش بعدی / زمان‌بندی"
+
+msgid "summary days"
+msgstr "روز خلاصه"
+
+msgid "In Cloud mode, no analytics data is written to the site database; only a temporary queue file is used. Events are removed from the queue after a successful sync."
+msgstr "در حالت ابری هیچ داده آماری در دیتابیس سایت نوشته نمی‌شود؛ فقط صف موقت فایل. پس از ارسال موفق، رویدادها از صف حذف می‌شوند."
+
+msgid "If DISABLE_WP_CRON is enabled, set a real server cron for wphs_cloud_sync or use the send-now button."
+msgstr "اگر DISABLE_WP_CRON فعال است، برای رویداد wphs_cloud_sync یک cron واقعی روی سرور تنظیم کنید یا از دکمه ارسال فوری استفاده کنید."
+
+msgid "sec"
+msgstr "ثانیه"
+
+msgid "Critical"
+msgstr "بحرانی"
+
+msgid "High"
+msgstr "بالا"
+
+msgid "Medium"
+msgstr "متوسط"
+
+msgid "Low"
+msgstr "پایین"
+
+msgid "Headers"
+msgstr "هدرها"
+
+msgid "SSL"
+msgstr "SSL"
+
+msgid "Vulnerabilities"
+msgstr "آسیب‌پذیری"
+
+msgid "Online"
+msgstr "آنلاین"
+
+msgid "Offline"
+msgstr "آفلاین"
+
+msgid "Unknown"
+msgstr "نامشخص"
+
+msgid "Site status"
+msgstr "وضعیت سایت"
+
+msgid "Failed to fetch site status from the console:"
+msgstr "دریافت وضعیت سایت از کنسول ناموفق بود:"
+
+msgid "Check connection"
+msgstr "بررسی اتصال"
+
+msgid "Could not reach the console; showing the last saved data."
+msgstr "ارتباط تازه با کنسول برقرار نشد؛ آخرین داده‌های ذخیره‌شده نمایش داده می‌شود."
+
+msgid "Latest speed test"
+msgstr "آخرین تست سرعت"
+
+msgid "Mobile and desktop"
+msgstr "موبایل و دسکتاپ"
+
+msgid "No speed test recorded yet."
+msgstr "هنوز تست سرعتی ثبت نشده است."
+
+msgid "Mobile"
+msgstr "موبایل"
+
+msgid "Desktop"
+msgstr "دسکتاپ"
+
+msgid "Tested:"
+msgstr "تست:"
+
+msgid "No test recorded"
+msgstr "تستی ثبت نشده"
+
+msgid "Speed test details in the console"
+msgstr "جزئیات تست سرعت در کنسول"
+
+msgid "Latest security test"
+msgstr "آخرین تست امنیت"
+
+msgid "If available"
+msgstr "در صورت وجود"
+
+msgid "No security test recorded yet."
+msgstr "هنوز تست امنیتی ثبت نشده است."
+
+msgid "Security score"
+msgstr "نمره امنیت"
+
+msgid "Security test details in the console"
+msgstr "جزئیات تست امنیت در کنسول"
+
+msgid "Monitoring"
+msgstr "پایش و مانیتورینگ"
+
+msgid "24 hours"
+msgstr "۲۴ ساعت"
+
+msgid "Monitoring is not active or no data has been recorded."
+msgstr "مانیتورینگ فعال نیست یا داده‌ای ثبت نشده است."
+
+msgid "Uptime"
+msgstr "آپتایم"
+
+msgid "Valid"
+msgstr "معتبر"
+
+msgid "Invalid"
+msgstr "نامعتبر"
+
+msgid "Last check:"
+msgstr "آخرین بررسی:"
+
+msgid "Monitoring details in the console"
+msgstr "جزئیات پایش در کنسول"
+
+msgid "Security check"
+msgstr "بررسی امنیتی"
+
+msgid "Basic checks"
+msgstr "بررسی‌های پایه"
+
+msgid "Re-check"
+msgstr "بررسی مجدد"
+
+msgid "All basic checks passed."
+msgstr "همهٔ بررسی‌های پایه موفق بودند."
+
+msgid "Some checks could not run from this server."
+msgstr "برخی بررسی‌ها از این سرور قابل اجرا نبودند."
+
+msgid "Checked %s ago."
+msgstr "بررسی‌شده %s پیش."
+
+msgid "Could not fetch site status from the console (HTTP %d)."
+msgstr "دریافت وضعیت سایت از کنسول ممکن نشد (HTTP %d)."
+
+msgid "The site connection key is not set."
+msgstr "کلید اتصال سایت تنظیم نشده است."
+
+msgid "Connected to the console."
+msgstr "اتصال به کنسول برقرار است."
+
+msgid "Invalid response from the console (HTTP %d)"
+msgstr "پاسخ نامعتبر از کنسول (HTTP %d)"
+
+msgid "Verified"
+msgstr "تأییدشده"
+
+msgid "All"
+msgstr "همه"
+
+msgid "No-JS"
+msgstr "بدون JS"
+
+msgid "Suspect"
+msgstr "مشکوک"
+
+msgid "All recorded visits, including verified, No-JS, and suspect traffic."
+msgstr "همه بازدیدهای ثبت‌شده؛ شامل تأییدشده، بدون JS و مشکوک."
+
+msgid "The User-Agent was valid, but no browser verification (JavaScript) was received."
+msgstr "User-Agent سالم بوده اما تأیید رفتار مرورگر (JS) دریافت نشده است."
+
+msgid "Browser signals were not verified or bot signals were detected."
+msgstr "رفتار مرورگر تأیید نشده یا نشانه‌های ربات دیده شده است."
+
+msgid "Only visits with a valid User-Agent and verified browser signals."
+msgstr "فقط بازدیدهایی که User-Agent سالم و رفتار مرورگرشان تأیید شده است."
+
+msgid "Datacenter"
+msgstr "دیتاسنتر"
+
+msgid "Before breakdown"
+msgstr "قبل از تفکیک"
+
+msgid "%s second"
+msgid_plural "%s seconds"
+msgstr[0] "%s ثانیه"
+msgstr[1] "%s ثانیه"
+
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s دقیقه"
+msgstr[1] "%s دقیقه"
+
+msgid "%1$s min %2$s sec"
+msgstr "%1$s دقیقه و %2$s ثانیه"
+
+msgid "Search"
+msgstr "جستجو"
+
+msgid "Social"
+msgstr "شبکه اجتماعی"
+
+msgid "Referral"
+msgstr "ارجاع"
+
+msgid "Paid"
+msgstr "تبلیغات"
+
+msgid "Email"
+msgstr "ایمیل"
+
+msgid "Campaign"
+msgstr "کمپین"
+
+msgid "Internal"
+msgstr "داخلی"
+
+msgid "Tablet"
+msgstr "تبلت"
+
+msgid "Outbound click"
+msgstr "کلیک لینک خروجی"
+
+msgid "File download"
+msgstr "دانلود فایل"
+
+msgid "Form submission"
+msgstr "ارسال فرم"
+
+msgid "Add to cart"
+msgstr "افزودن به سبد"
+
+msgid "Scroll 25%"
+msgstr "اسکرول ۲۵٪"
+
+msgid "Scroll 50%"
+msgstr "اسکرول ۵۰٪"
+
+msgid "Scroll 75%"
+msgstr "اسکرول ۷۵٪"
+
+msgid "Scroll 100%"
+msgstr "اسکرول ۱۰۰٪"
+
+msgid "Search:"
+msgstr "جستجو:"
+
+msgid "WP-Hub Analytics"
+msgstr "آمار WP-Hub"
+
+msgid "Dashboard"
+msgstr "داشبورد"
+
+msgid "You do not have permission to access this page."
+msgstr "دسترسی مجاز نیست."
+
+msgid "%1$s events were sent to the console; %2$s events remain queued."
+msgstr "%1$s رویداد به کنسول ارسال شد؛ %2$s رویداد در صف باقی مانده است."
+
+msgid "The queue was empty; nothing to send."
+msgstr "صف خالی بود؛ چیزی برای ارسال نبود."
+
+msgid "Cloud mode is not active."
+msgstr "حالت ابری فعال نیست."
+
+msgid "The next attempt is not allowed yet; try again later."
+msgstr "ارسال بعدی هنوز مجاز نیست؛ کمی بعد دوباره تلاش کنید."
+
+msgid "Another process is already running."
+msgstr "یک پردازش دیگر در حال اجراست."
+
+msgid "Sync failed: "
+msgstr "ارسال ناموفق: "
+
+msgid "Local analytics data was purged."
+msgstr "داده‌های محلی آمار پاک شد."
+
+msgid "Directory listing is enabled"
+msgstr "نمایش فهرست دایرکتوری فعال است."
+
+msgid "REST users endpoint is public"
+msgstr "مسیر REST کاربران عمومی است."
+
+msgid "wp-admin is directly accessible"
+msgstr "دسترسی مستقیم به wp-admin باز است."
+
+msgid "No security plugin detected"
+msgstr "هیچ افزونهٔ امنیتی فعالی شناسایی نشد."
+
+msgid "File editing is enabled"
+msgstr "ویرایش فایل‌ها از پنل فعال است."
+
+msgid "Debug display is enabled"
+msgstr "نمایش خطاهای دیباگ فعال است."
