@@ -1,4 +1,4 @@
-# HubPilot
+# Hubpulse
 
 پلاگین اتصال وردپرس به کنسول WP-Hub؛ آمار محلی و بدون کوکی، بررسی امنیتی ساده، و نمایش وضعیت سرعت، امنیت و پایش در یک داشبورد.
 
@@ -9,7 +9,7 @@ A WordPress connector for the WP-Hub console with local cookie-free analytics, b
 
 ---
 
-## چرا HubPilot؟
+## چرا Hubpulse؟
 
 - **اتصال به کنسول**: وضعیت تست سرعت، امنیت و پایش را از کنسول WP-Hub داخل وردپرس نشان می‌دهد.
 - **بررسی امنیتی ساده**: دایرکتوری، REST users، wp-admin، افزونهٔ امنیتی، ویرایش فایل و دیباگ را در یک کارت کم‌حجم چک می‌کند.
@@ -46,7 +46,7 @@ A WordPress connector for the WP-Hub console with local cookie-free analytics, b
 
 ## نصب
 
-1. فایل ZIP نسخهٔ انتشار را از بخش Releases دانلود کنید (یا پوشهٔ `hub-pilot` را از همین مخزن بردارید).
+1. فایل ZIP نسخهٔ انتشار را از بخش Releases دانلود کنید (یا پوشهٔ `hubpulse` را از همین مخزن بردارید).
 2. در وردپرس به **افزونه‌ها ← افزودن** بروید و ZIP را نصب و فعال کنید.
 3. به **آمار WP-Hub ← تنظیمات** بروید.
 4. حالت ذخیره‌سازی را انتخاب کنید:
@@ -102,7 +102,7 @@ define( 'WPHS_CONSOLE_URL', 'https://your-console.example' );
 ## توسعه
 
 - مستندات قرارداد کنسول و پیاده‌سازی سمت سرور: [`CONSOLE-INTEGRATION-GUIDE.md`](CONSOLE-INTEGRATION-GUIDE.md)
-- کد پلاگین در پوشهٔ `hub-pilot/` است.
+- کد پلاگین در پوشهٔ `hubpulse/` است.
 - Issues و Pull Requestها در همین مخزن پذیرفته می‌شوند.
 - برای گزارش مشکلات امنیتی، لطفاً از مسیر پشتیبانی کنسول استفاده کنید و جزئیات را عمومی نکنید.
 

@@ -1,0 +1,10 @@
+#toplevel_page_hubpulse .wp-menu-image {
+	background-image: url("../../assets/menu-icon.png") !important;
+	background-size: 20px 20px !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+}
+
+#toplevel_page_hubpulse .wp-menu-image::before {
+	content: none !important;
+}

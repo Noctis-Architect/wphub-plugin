@@ -1,6 +1,6 @@
-# راهنمای اتصال پلاگین HubPilot به کنسول
+# راهنمای اتصال پلاگین Hubpulse به کنسول
 
-نسخه پلاگین: `0.4.2`  
+نسخه پلاگین: `0.5.0`  
 هدف: پلاگین در حالت عادی فقط آمار بازدید را نگه می‌دارد؛ به‌محض اتصال به کنسول، داشبورد همان سایت علاوه بر آمار، **آخرین تست سرعت موبایل/دسکتاپ، آخرین تست امنیت و داده‌های پایش** را از کنسول نشان می‌دهد. ذخیره‌سازی ابری هم اختیاری است و هیچ ردیف آماری در دیتابیس سایت نوشته نمی‌شود.
 
 از نسخه ۰.۴.۰ هر بازدید یک **درجه کیفیت** دارد و آمار در چهار حالت نمایش داده می‌شود: `verified` (پیش‌فرض، User-Agent سالم + تأیید رفتار مرورگر)، `all`، `nojs` و `suspect`. تشخیص دیتاسنتر در کنسول انجام می‌شود، نه در پلاگین.
@@ -577,3 +577,36 @@ curl -s -H "Authorization: Bearer $TOKEN" \
 - آمار چهارحالته: `verified` (پیش‌فرض)، `all`، `nojs`، `suspect`؛ حالت دیتاسنتر در کنسول اضافه می‌شود.
 - تشخیص دیتاسنتر/کشور در کنسول با CIDR محلی + فایل دستی + GeoIP اختیاری؛ پلاگین خودش IP را تشخیص نمی‌دهد.
 - سمت کنسول endpointهای ping/ingest/stats، مهاجرت grade/datacenter و تست‌های quality/mode پیاده‌سازی شده‌اند.
+
+---
+
+## ۱۲) نویسندهٔ هوشمند و استودیوی محتوا (از نسخهٔ ۰.۵.۰)
+
+Hubpulse حالا همان مسیرهای افزونهٔ جداگانهٔ «WP-Hub Content Connector» را دارد (`/wp-json/wphub-content/v1/{ping,posts,terms,media,publish,update}`، POST + امضای HMAC با `X-WPHub-Timestamp/Nonce/Signature`). اگر افزونهٔ قدیمی فعال باشد، Hubpulse مسیرها را ثبت نمی‌کند و از کاربر می‌خواهد آن را غیرفعال کند.
+
+### endpointهای کنسول با کلید سایت (`Authorization: Bearer <site_token>`)
+
+فایل: `backend/app/api/v1/site.py` — تست: `backend/tests/test_site_content_api.py`
+
+| Method | Path | کاربرد |
+|---|---|---|
+| GET | `/api/v1/site/content/status` | وضعیت اتصال محتوا + سهمیهٔ پلن (`quota.articles.remaining/limit`) |
+| POST | `/api/v1/site/content/link` | ساخت/چرخش اتصال `plugin` برای همین سایت؛ `{"site_url"}` → `{"connection_key": "wphc_..."}` (فقط یک بار) |
+| POST | `/api/v1/site/content/test` | کنسول افزونه را ping می‌کند؛ در صورت موفقیت همگام‌سازی اولیه شروع می‌شود |
+| DELETE | `/api/v1/site/content/link` | قطع اتصال و پاک‌کردن داده‌های همگام‌شده |
+| GET | `/api/v1/site/content/articles` | ۵۰ مقالهٔ آخر همین سایت |
+| POST | `/api/v1/site/content/articles` | ساخت مقاله (همان فیلدهای Content Studio: `title`, `focus_keyword`, `tone`, `length`, `audience`, `internal_links`, `use_images`, `include_faq`, `instructions`, `category_ids`) — سهمیه از پلن صاحب سایت کم می‌شود |
+| GET | `/api/v1/site/content/articles/{id}` | جزئیات و HTML مقاله (فقط اگر متعلق به همین سایت باشد) |
+| POST | `/api/v1/site/content/articles/{id}/publish` | `{"status": "draft"|"pending"|"publish"|"future"}` → ارسال به وردپرس |
+
+### جریان در افزونه
+
+1. کاربر کلید سایت را در «نویسندهٔ هوشمند» یا تنظیمات وارد می‌کند (`/analytics/ping` برای تأیید).
+2. «فعال‌سازی نوشتن مقاله» → `link` → کلید `wphc_` در option `wphs_content` ذخیره می‌شود → `test`.
+3. ساخت، پیش‌نمایش (iframe ایزوله) و ارسال مقاله از داخل وردپرس با AJAX و پراکسی به endpointهای بالا.
+4. به‌صورت پیش‌فرض فقط `draft`/`pending` مجاز است؛ انتشار مستقیم باید در «دسترسی انتشار» روشن شود.
+5. حذف کلید سایت از تنظیمات، کلید محتوا را هم باطل می‌کند.
+
+### حالت دستی (بدون کنسول)
+
+درخواست مستقیم از سایت به سرویس انتخابی کاربر (هر API سازگار با OpenAI، مدل خودمیزبان روی شبکهٔ محلی، یا `wp_ai_client_prompt()` وردپرس ۷). کنسول در این حالت هیچ نقشی ندارد.
