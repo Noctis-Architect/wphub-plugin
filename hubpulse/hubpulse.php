@@ -30,7 +30,6 @@ require_once WPHS_DIR . 'includes/class-collector.php';
 require_once WPHS_DIR . 'includes/class-aggregator.php';
 require_once WPHS_DIR . 'includes/class-cloud.php';
 require_once WPHS_DIR . 'includes/class-reports.php';
-require_once WPHS_DIR . 'includes/class-credit.php';
 require_once WPHS_DIR . 'includes/class-security-check.php';
 require_once WPHS_DIR . 'includes/class-content-seo.php';
 require_once WPHS_DIR . 'includes/class-content-api.php';
@@ -49,7 +48,6 @@ add_action(
 		WPHS_Collector::init();
 		WPHS_Aggregator::init();
 		WPHS_Cloud::init();
-		WPHS_Credit::init();
 		WPHS_Content_API::init();
 
 		if ( is_admin() ) {

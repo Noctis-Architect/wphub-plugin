@@ -15,7 +15,6 @@ final class WPHS_Settings {
 			'respect_dnt'             => true,
 			'exclude_404'             => true,
 			'bot_js_check'            => true,
-			'source_credit'           => false,
 			'retention_detail_days'   => 30,
 			'retention_daily_days'    => 180,
 			'retention_totals_months' => 24,
@@ -91,7 +90,6 @@ final class WPHS_Settings {
 		$out['respect_dnt']         = ! empty( $input['respect_dnt'] );
 		$out['exclude_404']         = ! empty( $input['exclude_404'] );
 		$out['bot_js_check']        = ! empty( $input['bot_js_check'] );
-		$out['source_credit']       = ! empty( $input['source_credit'] );
 		$out['delete_on_uninstall'] = ! empty( $input['delete_on_uninstall'] );
 
 		$detail = isset( $input['retention_detail_days'] ) ? absint( $input['retention_detail_days'] ) : 30;

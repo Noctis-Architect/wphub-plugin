@@ -199,10 +199,6 @@ $month_label = static function ( $months ) {
 					<label><input type="checkbox" name="delete_on_uninstall" value="1" <?php checked( ! empty( $settings['delete_on_uninstall'] ) ); ?>> <?php esc_html_e( 'Delete all Hubpulse data when the plugin is deleted', 'hubpulse' ); ?></label>
 					<p class="wphs-hint"><?php esc_html_e( 'Off by default, so reinstalling keeps your history.', 'hubpulse' ); ?></p>
 				</li>
-				<li>
-					<label><input type="checkbox" name="source_credit" value="1" <?php checked( ! empty( $settings['source_credit'] ) ); ?>> <?php esc_html_e( 'Add a "Traffic Analytics by Hubpulse" comment to the page source', 'hubpulse' ); ?></label>
-					<p class="wphs-hint"><?php esc_html_e( 'Invisible to visitors. Off by default.', 'hubpulse' ); ?></p>
-				</li>
 			</ul>
 		</details>
 

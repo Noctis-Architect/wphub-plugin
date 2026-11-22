@@ -53,10 +53,6 @@ On-site storage is self-contained and needs no account. Data is stored in your o
 
 Console storage is optional. It requires an account at the WP-Hub console, a verified domain, and a site key.
 
-= Source credit =
-
-Off by default. If you enable it under **Settings → Advanced**, the plugin adds an HTML comment and a generator meta tag reading "Traffic Analytics by Hubpulse" to the page head. It is not visible to visitors.
-
 = Privacy =
 
 Local mode:
@@ -170,9 +166,9 @@ Yes. Clear the page cache once after activation. The server-side pageview is rec
 
 The plugin uses the current site's database prefix. Multisite network activation is not officially tested.
 
-= Is there a source credit on my site? =
+= Does the plugin add a credit or link to my site? =
 
-Not unless you enable it under **Settings → Advanced**.
+No. Hubpulse adds nothing to your public pages except the cookie-free tracker script.
 
 == Screenshots ==
 
@@ -195,7 +191,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 * The console can now read published content and send articles to the site through signed REST routes, replacing the separate WP-Hub Content Connector plugin. Drafts only unless you allow publishing.
 * SEO fields for Yoast SEO, Rank Math and All in One SEO, plus FAQ schema.
 * Simpler settings: the site key is always available, privacy and retention side by side, advanced options and diagnostics folded away. The saved key is no longer shown in the form.
-* The source credit is now off by default.
+* Removed the source credit option; the plugin adds no credit to your pages.
 * The plugin no longer hides WordPress and other plugins' notices on its pages.
 * Admin scripts and the menu icon style moved to enqueued files; no inline scripts or styles.
 * The temporary queue now lives in the uploads directory (`uploads/hubpulse/`), protected from direct access.
@@ -231,7 +227,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 == Upgrade Notice ==
 
 = 0.5.0 =
-Adds the AI Writer (WP-Hub console or your own AI provider), simplifies settings, and turns the source credit off by default.
+Adds the AI Writer (WP-Hub console or your own AI provider), simplifies settings, and removes the source credit.
 
 = 0.4.2 =
 Updates the source credit text to "Traffic Analytics by Hubpulse" and makes visitor labels simpler.
