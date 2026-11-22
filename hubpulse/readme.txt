@@ -84,7 +84,7 @@ Hubpulse works fully without any external service. It contacts a remote service 
 * Used only after you save a site key in **Settings** or the **AI Writer**.
 * Console reports: the dashboard requests the latest speed, security and uptime results for your site (sends the site key).
 * Console storage mode: every five minutes, or when you press "Send queue now", queued analytics events are sent: site URL and host, WordPress version, plugin version, timezone, page paths and titles, referrer host, channel, device, browser, operating system, country code, hashed visitor and session identifiers, visit grade, timestamps, engagement time, scroll depth, event counts, and the visitor IP address (used for country and datacenter classification, not stored).
-* AI Writer (console mode): when you press "Enable article writing", Hubpulse generates a private content key on your site and registers it with the console over HTTPS; the console never sends keys back. With it, the console can call this site's signed REST routes (`/wp-json/wphub-content/v1/`) to read published posts, pages, products (WooCommerce), categories, tags and metadata of images that belong to published content, and to create drafts (or published posts, only if you allow it). Article topics and options you enter are sent to the console when you press "Write with the console".
+* AI Writer (console mode): when you save a site key, Hubpulse also generates a private content key on your site and registers it with the console over HTTPS; the console never sends keys back. With it, the console can call this site's signed REST routes (`/wp-json/wphub-content/v1/`) to read published posts, pages, products (WooCommerce), categories, tags and metadata of images that belong to published content, and to create drafts (or published posts, only if you allow it). Article topics and options you enter are sent to the console when you press "Write with the console".
 * Outage fallback: if the console does not answer at all for 6 hours while Console storage is active, Hubpulse switches back to on-site storage automatically, counts the queued visits locally and shows a notice; you choose when to return to the console.
 * Terms of Use: https://wp-hub.org/terms
 * Privacy Policy: https://wp-hub.org/privacy
@@ -193,6 +193,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 * Simpler settings: the site key is always available, privacy and retention side by side, advanced options and diagnostics folded away. The saved key is no longer shown in the form.
 * Removed the source credit option; the plugin adds no credit to your pages.
 * Removed the basic local security check card; console security reports are unchanged.
+* One site key connects everything: saving it also turns on console article writing, with no separate step. Disconnect removes it everywhere.
 * The plugin no longer hides WordPress and other plugins' notices on its pages.
 * Admin scripts and the menu icon style moved to enqueued files; no inline scripts or styles.
 * The temporary queue now lives in the uploads directory (`uploads/hubpulse/`), protected from direct access.

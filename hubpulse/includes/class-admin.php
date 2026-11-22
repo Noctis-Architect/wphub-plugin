@@ -121,7 +121,7 @@ final class WPHS_Admin {
 					'failed'       => __( 'Request failed. Try again.', 'hubpulse' ),
 					'confirmReset' => __( 'Replace the system prompt with the default text?', 'hubpulse' ),
 					'confirmPurge' => __( 'Purge local analytics data? This cannot be undone.', 'hubpulse' ),
-					'confirmOff'   => __( 'Disconnect the console from writing to this site?', 'hubpulse' ),
+					'confirmOff'   => __( 'Remove the site key and disconnect from the console?', 'hubpulse' ),
 					'noModels'     => __( 'The provider did not list models; type the model name.', 'hubpulse' ),
 					'models'       => __( 'models loaded — pick one from the list.', 'hubpulse' ),
 					'preview'      => __( 'Preview', 'hubpulse' ),
@@ -230,8 +230,17 @@ final class WPHS_Admin {
 
 		check_admin_referer( 'wphs_save_settings' );
 
+		$old_token = WPHS_Settings::value( 'console_token' );
+
 		WPHS_Settings::save( wp_unslash( $_POST ) ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Every field is sanitized in WPHS_Settings::sanitize().
 		delete_option( 'wphs_last_cleanup' );
+
+		// A new site key connects everything at once, article writing included.
+		$new_token = WPHS_Settings::value( 'console_token' );
+
+		if ( '' !== $new_token && $new_token !== $old_token && class_exists( 'WPHS_Writer' ) ) {
+			WPHS_Writer::link_console();
+		}
 
 		wp_safe_redirect(
 			add_query_arg(

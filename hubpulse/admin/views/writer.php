@@ -71,8 +71,6 @@ $category_select = static function ( $name, $selected, $id ) {
 
 	<?php if ( 'saved' === $msg ) : ?>
 		<div class="wphs-notice is-success"><?php esc_html_e( 'Settings saved.', 'hubpulse' ); ?></div>
-	<?php elseif ( 'badkey' === $msg ) : ?>
-		<div class="wphs-notice is-error"><?php esc_html_e( 'The content key is not valid. It starts with wphc_ and must be copied completely.', 'hubpulse' ); ?></div>
 	<?php endif; ?>
 
 	<nav class="wphs-choice" aria-label="<?php esc_attr_e( 'Writing method', 'hubpulse' ); ?>">
@@ -141,28 +139,18 @@ $category_select = static function ( $name, $selected, $id ) {
 			</section>
 
 		<?php elseif ( ! $linked ) : ?>
-			<section class="wphs-card">
+			<section class="wphs-card wphs-autolink"<?php echo ( $is_admin && ! $standalone ) ? ' data-wphs-autolink' : ''; ?>>
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Let the console write to this site', 'hubpulse' ); ?></h2>
+					<h2><?php esc_html_e( 'Connecting to the console', 'hubpulse' ); ?></h2>
 					<span class="wphs-pill is-green"><?php esc_html_e( 'Site key connected', 'hubpulse' ); ?></span>
 				</div>
-				<p><?php esc_html_e( 'One click creates a private content key between this site and the console. The console can then read your published posts, categories and images to plan better articles, and send finished articles here. By default it can only create drafts; you decide what gets published.', 'hubpulse' ); ?></p>
 				<?php if ( $is_admin ) : ?>
+					<p data-wphs-autolink-text><?php esc_html_e( 'Finishing the connection so the console can write articles here. This takes a few seconds.', 'hubpulse' ); ?></p>
 					<div class="wphs-actions-row">
-						<button type="button" class="wphs-btn is-primary" data-wphs-click="console_link"<?php disabled( $standalone ); ?>><?php esc_html_e( 'Enable article writing', 'hubpulse' ); ?></button>
+						<button type="button" class="wphs-btn is-primary" data-wphs-click="console_link" hidden<?php disabled( $standalone ); ?>><?php esc_html_e( 'Try again', 'hubpulse' ); ?></button>
 					</div>
-					<details class="wphs-details">
-						<summary><?php esc_html_e( 'I already have a content key from the console (starts with wphc_)', 'hubpulse' ); ?></summary>
-						<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="wphs-inline-form">
-							<input type="hidden" name="action" value="wphs_writer_save">
-							<input type="hidden" name="section" value="console">
-							<input type="hidden" name="author_id" value="<?php echo esc_attr( $content['author_id'] ); ?>">
-							<input type="hidden" name="default_category" value="<?php echo esc_attr( $content['default_category'] ); ?>">
-							<?php wp_nonce_field( 'wphs_writer_save' ); ?>
-							<input type="text" name="content_key" placeholder="wphc_..." dir="ltr" autocomplete="off" spellcheck="false" required>
-							<button type="submit" class="wphs-btn is-secondary"><?php esc_html_e( 'Save key', 'hubpulse' ); ?></button>
-						</form>
-					</details>
+				<?php else : ?>
+					<p><?php esc_html_e( 'A site administrator needs to open this page once to finish connecting.', 'hubpulse' ); ?></p>
 				<?php endif; ?>
 			</section>
 
@@ -275,7 +263,7 @@ $category_select = static function ( $name, $selected, $id ) {
 						</table>
 						<div class="wphs-actions-row">
 							<button type="submit" class="wphs-btn is-primary"><?php esc_html_e( 'Save', 'hubpulse' ); ?></button>
-							<button type="button" class="wphs-btn is-danger" data-wphs-click="console_unlink"><?php esc_html_e( 'Disconnect writing', 'hubpulse' ); ?></button>
+							<button type="button" class="wphs-btn is-danger" data-wphs-click="console_unlink"><?php esc_html_e( 'Disconnect', 'hubpulse' ); ?></button>
 						</div>
 					</form>
 					<?php if ( ! empty( $content['log'] ) ) : ?>

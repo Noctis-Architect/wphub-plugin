@@ -381,6 +381,7 @@
 
 	var clicks = {
 		console_link: function (button) {
+			button.hidden = false;
 			busy(button, true);
 			call('console_link')
 				.then(function () {
@@ -523,6 +524,22 @@
 			}
 		});
 	});
+
+	// A saved site key connects article writing on its own; no extra step for the user.
+	var autolink = $('[data-wphs-autolink]');
+	if (autolink) {
+		var retry = $('[data-wphs-click="console_link"]', autolink);
+		call('console_link')
+			.then(function () {
+				window.location.reload();
+			})
+			.catch(function (err) {
+				if (retry) {
+					retry.hidden = false;
+				}
+				say(err.message, 'error');
+			});
+	}
 
 	if (list) {
 		loadArticles();

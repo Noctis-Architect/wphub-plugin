@@ -162,16 +162,6 @@ final class WPHS_Writer {
 				'author_id'        => isset( $_POST['author_id'] ) ? absint( $_POST['author_id'] ) : 0,
 				'default_category' => isset( $_POST['default_category'] ) ? absint( $_POST['default_category'] ) : 0,
 			);
-			$key     = isset( $_POST['content_key'] ) ? trim( sanitize_text_field( wp_unslash( $_POST['content_key'] ) ) ) : '';
-
-			if ( '' !== $key ) {
-				if ( ! WPHS_Content_API::valid_secret( $key ) ) {
-					self::redirect( 'badkey' );
-				}
-
-				$changes['secret']    = $key;
-				$changes['linked_at'] = time();
-			}
 
 			WPHS_Content_API::update( $changes );
 			self::redirect( 'saved' );
@@ -319,7 +309,16 @@ final class WPHS_Writer {
 		}
 
 		self::update( array( 'mode' => 'console' ) );
-		wp_send_json_success( array( 'message' => $ping[1] ) );
+
+		// One key does everything: reports, storage and article writing.
+		$link = self::link_console();
+
+		wp_send_json_success(
+			array(
+				'linked'  => $link['ok'],
+				'message' => $link['ok'] ? $ping[1] : $link['message'],
+			)
+		);
 	}
 
 	/* ───────────────────────── AJAX: console mode ───────────────────────── */
@@ -338,13 +337,18 @@ final class WPHS_Writer {
 	}
 
 	/**
-	 * Asks the console for a content key, stores it, then lets the console call back.
+	 * Connects article writing with the saved site key: asks the console for a content key,
+	 * stores it, then lets the console call back. The site key is the only thing the user enters.
+	 *
+	 * @return array { ok: bool, message: string, data: array }
 	 */
-	public static function ajax_console_link() {
-		self::ajax_guard();
+	public static function link_console() {
+		if ( ! WPHS_Cloud::has_token() ) {
+			return array( 'ok' => false, 'message' => __( 'Add the site key first.', 'hubpulse' ), 'data' => array() );
+		}
 
 		if ( WPHS_Content_API::standalone_connector_active() ) {
-			wp_send_json_error( array( 'message' => __( 'Deactivate the separate "WP-Hub Content Connector" plugin first; Hubpulse now includes it.', 'hubpulse' ) ), 409 );
+			return array( 'ok' => false, 'message' => __( 'Deactivate the separate "WP-Hub Content Connector" plugin first; Hubpulse now includes it.', 'hubpulse' ), 'data' => array() );
 		}
 
 		$secret = WPHS_Content_API::new_secret();
@@ -358,7 +362,7 @@ final class WPHS_Writer {
 		);
 
 		if ( ! $res['ok'] ) {
-			wp_send_json_error( array( 'message' => $res['message'] ), 502 );
+			return array( 'ok' => false, 'message' => $res['message'], 'data' => array() );
 		}
 
 		WPHS_Content_API::update(
@@ -371,28 +375,36 @@ final class WPHS_Writer {
 		$test = WPHS_Cloud::api( 'POST', 'api/v1/site/content/test', array(), 45 );
 
 		if ( ! $test['ok'] ) {
-			wp_send_json_error(
-				array(
-					/* translators: %s: error message from the console. */
-					'message' => sprintf( __( 'The key was saved, but the console could not reach this site yet: %s', 'hubpulse' ), $test['message'] ),
-				),
-				502
+			return array(
+				'ok'      => true,
+				/* translators: %s: error message from the console. */
+				'message' => sprintf( __( 'Connected, but the console could not reach this site yet: %s', 'hubpulse' ), $test['message'] ),
+				'data'    => array(),
 			);
 		}
 
-		wp_send_json_success( array_merge( $test['data'], array( 'linked' => true ) ) );
+		return array( 'ok' => true, 'message' => '', 'data' => (array) $test['data'] );
+	}
+
+	public static function ajax_console_link() {
+		self::ajax_guard();
+
+		$link = self::link_console();
+
+		if ( ! $link['ok'] ) {
+			wp_send_json_error( array( 'message' => $link['message'] ), 502 );
+		}
+
+		wp_send_json_success( array_merge( $link['data'], array( 'linked' => true, 'message' => $link['message'] ) ) );
 	}
 
 	public static function ajax_console_unlink() {
 		self::ajax_guard();
 
 		WPHS_Cloud::api( 'DELETE', 'api/v1/site/content/link', array() );
-		WPHS_Content_API::update(
-			array(
-				'secret'    => '',
-				'linked_at' => 0,
-			)
-		);
+
+		// One key connects everything, so disconnecting removes it (and the content key with it).
+		WPHS_Settings::set_token( '' );
 
 		wp_send_json_success();
 	}

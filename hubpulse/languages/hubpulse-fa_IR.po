@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Hubpulse 0.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hubpulse\n"
-"POT-Creation-Date: 2026-11-22T11:51:02+00:00\n"
+"POT-Creation-Date: 2026-11-22T16:02:11+00:00\n"
 "PO-Revision-Date: 2026-11-07 23:14+0330\n"
 "Last-Translator: WP-Hub <https://wp-hub.org>\n"
 "Language-Team: Persian\n"
@@ -334,7 +334,7 @@ msgstr "در صورت وجود کش، یک‌بار آن را پاک کنید"
 msgid "Check settings"
 msgstr "بررسی تنظیمات"
 
-#: admin/views/dashboard.php:209 admin/views/writer.php:232
+#: admin/views/dashboard.php:209 admin/views/writer.php:220
 msgid "Refresh"
 msgstr "بازخوانی"
 
@@ -623,7 +623,7 @@ msgstr ""
 "ذخیره در کنسول به کلید سایت نیاز دارد. تا کلید را وارد نکنید چیزی به کنسول "
 "ارسال نمی‌شود."
 
-#: admin/views/settings.php:82 admin/views/writer.php:81
+#: admin/views/settings.php:82 admin/views/writer.php:79
 msgid "WP-Hub console"
 msgstr "کنسول WP-Hub"
 
@@ -657,7 +657,7 @@ msgstr "کلید سایت"
 msgid "Get a key"
 msgstr "دریافت کلید"
 
-#: admin/views/settings.php:106
+#: admin/views/settings.php:106 admin/views/writer.php:266
 msgid "Disconnect"
 msgstr "قطع اتصال"
 
@@ -753,7 +753,7 @@ msgstr ""
 "داده‌های قدیمی مرحله‌به‌مرحله خلاصه می‌شوند: جزئیات هر بازدید به گزارش روزانه و "
 "گزارش روزانه به جمع روزانه تبدیل می‌شود."
 
-#: admin/views/settings.php:196 admin/views/writer.php:89
+#: admin/views/settings.php:196 admin/views/writer.php:87
 msgid "Advanced"
 msgstr "پیشرفته"
 
@@ -765,11 +765,11 @@ msgstr "حذف همهٔ داده‌های Hubpulse هنگام حذف افزون�
 msgid "Off by default, so reinstalling keeps your history."
 msgstr "به‌صورت پیش‌فرض خاموش است تا با نصب دوباره، سابقه حفظ شود."
 
-#: admin/views/settings.php:206 admin/views/writer.php:445
+#: admin/views/settings.php:206 admin/views/writer.php:433
 msgid "Save settings"
 msgstr "ذخیره تنظیمات"
 
-#: admin/views/settings.php:216
+#: admin/views/settings.php:216 includes/class-admin.php:124
 msgid "Remove the site key and disconnect from the console?"
 msgstr "کلید سایت حذف و اتصال به کنسول قطع شود؟"
 
@@ -1007,22 +1007,15 @@ msgid ""
 "Write SEO-ready articles for this site and send them straight to your posts."
 msgstr "برای این سایت مقالهٔ سئوشده بنویسید و مستقیم به نوشته‌ها بفرستید."
 
-#: admin/views/writer.php:75
-msgid ""
-"The content key is not valid. It starts with wphc_ and must be copied "
-"completely."
-msgstr ""
-"کلید محتوا معتبر نیست. این کلید با wphc_ شروع می‌شود و باید کامل کپی شود."
-
-#: admin/views/writer.php:78
+#: admin/views/writer.php:76
 msgid "Writing method"
 msgstr "روش نوشتن"
 
-#: admin/views/writer.php:82
+#: admin/views/writer.php:80
 msgid "Recommended"
 msgstr "پیشنهادی"
 
-#: admin/views/writer.php:84
+#: admin/views/writer.php:82
 msgid ""
 "No API key needed. The console studies your existing posts, adds internal "
 "links and images from your media library, and fills in SEO fields."
@@ -1030,11 +1023,11 @@ msgstr ""
 "کلید API لازم نیست. کنسول نوشته‌های فعلی شما را بررسی می‌کند، لینک داخلی و "
 "تصاویر کتابخانهٔ رسانه را اضافه می‌کند و فیلدهای سئو را پر می‌کند."
 
-#: admin/views/writer.php:88
+#: admin/views/writer.php:86
 msgid "Your own AI provider"
 msgstr "سرویس هوش مصنوعی خودتان"
 
-#: admin/views/writer.php:91
+#: admin/views/writer.php:89
 msgid ""
 "Use your own API key from OpenAI, Gemini, Claude, OpenRouter, AvalAI, GapGPT "
 "or any OpenAI-compatible service. You configure everything yourself."
@@ -1042,7 +1035,7 @@ msgstr ""
 "با کلید API خودتان از OpenAI، Gemini، Claude، OpenRouter، AvalAI، GapGPT یا "
 "هر سرویس سازگار با OpenAI. همه‌چیز را خودتان تنظیم می‌کنید."
 
-#: admin/views/writer.php:100
+#: admin/views/writer.php:98
 msgid ""
 "The separate \"WP-Hub Content Connector\" plugin is active. Hubpulse now "
 "includes it; deactivate it before connecting here."
@@ -1050,31 +1043,31 @@ msgstr ""
 "افزونهٔ جداگانهٔ «WP-Hub Content Connector» فعال است. Hubpulse حالا همین "
 "قابلیت را دارد؛ پیش از اتصال، آن را غیرفعال کنید."
 
-#: admin/views/writer.php:106
+#: admin/views/writer.php:104
 msgid "Connect this site in three steps"
 msgstr "اتصال سایت در سه قدم"
 
-#: admin/views/writer.php:107
+#: admin/views/writer.php:105
 msgid "About two minutes"
 msgstr "حدود دو دقیقه"
 
-#: admin/views/writer.php:113
+#: admin/views/writer.php:111
 msgid "Create a free account and add this site"
 msgstr "یک حساب رایگان بسازید و این سایت را اضافه کنید"
 
-#: admin/views/writer.php:114
+#: admin/views/writer.php:112
 msgid "Sign up in the WP-Hub console, add your domain and verify it."
 msgstr "در کنسول WP-Hub ثبت‌نام کنید، دامنه را اضافه و تأیید کنید."
 
-#: admin/views/writer.php:115
+#: admin/views/writer.php:113
 msgid "Open the console"
 msgstr "باز کردن کنسول"
 
-#: admin/views/writer.php:121
+#: admin/views/writer.php:119
 msgid "Copy the site key"
 msgstr "کلید سایت را کپی کنید"
 
-#: admin/views/writer.php:122
+#: admin/views/writer.php:120
 msgid ""
 "On your site page in the console, open \"Connect WordPress\" and copy the "
 "key that starts with wphs_."
@@ -1082,19 +1075,19 @@ msgstr ""
 "در صفحهٔ سایت در کنسول، بخش «اتصال وردپرس» را باز کنید و کلیدی را که با wphs_ "
 "شروع می‌شود کپی کنید."
 
-#: admin/views/writer.php:128
+#: admin/views/writer.php:126
 msgid "Paste it here"
 msgstr "اینجا وارد کنید"
 
-#: admin/views/writer.php:132
+#: admin/views/writer.php:130
 msgid "Connect"
 msgstr "اتصال"
 
-#: admin/views/writer.php:135
+#: admin/views/writer.php:133
 msgid "Ask a site administrator to connect the console."
 msgstr "از مدیر سایت بخواهید کنسول را متصل کند."
 
-#: admin/views/writer.php:140
+#: admin/views/writer.php:138
 msgid ""
 "The same key also turns on speed, security and uptime reports on the "
 "Hubpulse dashboard. You can remove it at any time in Settings."
@@ -1102,59 +1095,49 @@ msgstr ""
 "همین کلید گزارش سرعت، امنیت و پایش را هم در داشبورد Hubpulse فعال می‌کند. هر "
 "زمان بخواهید می‌توانید از تنظیمات حذفش کنید."
 
-#: admin/views/writer.php:146
-msgid "Let the console write to this site"
-msgstr "اجازهٔ نوشتن به کنسول"
+#: admin/views/writer.php:144
+msgid "Connecting to the console"
+msgstr "در حال اتصال به کنسول"
 
-#: admin/views/writer.php:147
+#: admin/views/writer.php:145
 msgid "Site key connected"
 msgstr "کلید سایت متصل است"
 
-#: admin/views/writer.php:149
+#: admin/views/writer.php:148
 msgid ""
-"One click creates a private content key between this site and the console. "
-"The console can then read your published posts, categories and images to "
-"plan better articles, and send finished articles here. By default it can "
-"only create drafts; you decide what gets published."
-msgstr ""
-"با یک کلیک یک کلید محتوای خصوصی بین سایت و کنسول ساخته می‌شود. کنسول بعد از "
-"آن می‌تواند نوشته‌های منتشرشده، دسته‌ها و تصاویر را برای برنامه‌ریزی بهتر بخواند "
-"و مقالهٔ آماده را به سایت بفرستد. به‌صورت پیش‌فرض فقط پیش‌نویس می‌سازد و انتشار "
-"با شماست."
+"Finishing the connection so the console can write articles here. This takes "
+"a few seconds."
+msgstr "در حال تکمیل اتصال تا کنسول بتواند اینجا مقاله بنویسد. چند ثانیه طول می‌کشد."
 
-#: admin/views/writer.php:152
-msgid "Enable article writing"
-msgstr "فعال‌سازی نوشتن مقاله"
+#: admin/views/writer.php:150
+msgid "Try again"
+msgstr "تلاش دوباره"
 
-#: admin/views/writer.php:155
-msgid "I already have a content key from the console (starts with wphc_)"
-msgstr "کلید محتوا را از کنسول گرفته‌ام (با wphc_ شروع می‌شود)"
+#: admin/views/writer.php:153
+msgid "A site administrator needs to open this page once to finish connecting."
+msgstr "برای کامل شدن اتصال، مدیر سایت باید یک بار این صفحه را باز کند."
 
-#: admin/views/writer.php:163
-msgid "Save key"
-msgstr "ذخیرهٔ کلید"
-
-#: admin/views/writer.php:172
+#: admin/views/writer.php:160
 msgid "Articles left this period"
 msgstr "مقالهٔ باقی‌مانده در این دوره"
 
-#: admin/views/writer.php:177
+#: admin/views/writer.php:165
 msgid "Free public test period"
 msgstr "دوره آزمایشی رایگان"
 
-#: admin/views/writer.php:178
+#: admin/views/writer.php:166
 msgid "Plan"
 msgstr "پلن"
 
-#: admin/views/writer.php:179
+#: admin/views/writer.php:167
 msgid "Connection"
 msgstr "اتصال"
 
-#: admin/views/writer.php:180
+#: admin/views/writer.php:168
 msgid "Open Content Studio"
 msgstr "باز کردن استودیوی محتوا"
 
-#: admin/views/writer.php:181
+#: admin/views/writer.php:169
 msgid ""
 "Competitor analysis, content health and topic ideas are available in the "
 "Content Studio on the console."
@@ -1162,110 +1145,110 @@ msgstr ""
 "تحلیل رقبا، سلامت محتوا و پیشنهاد موضوع در استودیوی محتوای کنسول در دسترس "
 "است."
 
-#: admin/views/writer.php:188 admin/views/writer.php:475
+#: admin/views/writer.php:176 admin/views/writer.php:463
 msgid "New article"
 msgstr "مقالهٔ جدید"
 
-#: admin/views/writer.php:189
+#: admin/views/writer.php:177
 msgid "Written by the console"
 msgstr "نوشته‌شده توسط کنسول"
 
-#: admin/views/writer.php:192 admin/views/writer.php:479
+#: admin/views/writer.php:180 admin/views/writer.php:467
 msgid "Topic or title"
 msgstr "موضوع یا عنوان"
 
-#: admin/views/writer.php:193
+#: admin/views/writer.php:181
 msgid "e.g. How to choose a gaming laptop in 2026"
 msgstr "مثلاً: راهنمای انتخاب لپ‌تاپ گیمینگ در ۱۴۰۵"
 
-#: admin/views/writer.php:194 admin/views/writer.php:481
+#: admin/views/writer.php:182 admin/views/writer.php:469
 msgid "Focus keyword"
 msgstr "کلمهٔ کلیدی اصلی"
 
-#: admin/views/writer.php:196 admin/views/writer.php:483
+#: admin/views/writer.php:184 admin/views/writer.php:471
 msgid "Category"
 msgstr "دسته‌بندی"
 
-#: admin/views/writer.php:198 admin/views/writer.php:485
+#: admin/views/writer.php:186 admin/views/writer.php:473
 msgid "Tone"
 msgstr "لحن"
 
-#: admin/views/writer.php:204 admin/views/writer.php:491
+#: admin/views/writer.php:192 admin/views/writer.php:479
 msgid "Length"
 msgstr "طول"
 
-#: admin/views/writer.php:211 admin/views/writer.php:498
+#: admin/views/writer.php:199 admin/views/writer.php:486
 msgid "More options"
 msgstr "گزینه‌های بیشتر"
 
-#: admin/views/writer.php:213 admin/views/writer.php:500
+#: admin/views/writer.php:201 admin/views/writer.php:488
 msgid "Audience"
 msgstr "مخاطب"
 
-#: admin/views/writer.php:215 admin/views/writer.php:502
+#: admin/views/writer.php:203 admin/views/writer.php:490
 msgid "Internal links"
 msgstr "لینک داخلی"
 
-#: admin/views/writer.php:217 admin/views/writer.php:509
+#: admin/views/writer.php:205 admin/views/writer.php:497
 msgid "Add an FAQ section with schema"
 msgstr "افزودن بخش پرسش‌های متداول با اسکیما"
 
-#: admin/views/writer.php:218
+#: admin/views/writer.php:206
 msgid "Use images from the media library"
 msgstr "استفاده از تصاویر کتابخانهٔ رسانه"
 
-#: admin/views/writer.php:219 admin/views/writer.php:510
+#: admin/views/writer.php:207 admin/views/writer.php:498
 msgid "Extra instructions"
 msgstr "توضیحات اضافه"
 
-#: admin/views/writer.php:224
+#: admin/views/writer.php:212
 msgid "Write with the console"
 msgstr "نوشتن با کنسول"
 
-#: admin/views/writer.php:231
+#: admin/views/writer.php:219
 msgid "Your articles"
 msgstr "مقاله‌های شما"
 
-#: admin/views/writer.php:235
+#: admin/views/writer.php:223
 msgid "Loading…"
 msgstr "در حال بارگذاری…"
 
-#: admin/views/writer.php:242
+#: admin/views/writer.php:230
 msgid "Publishing permissions and connection"
 msgstr "دسترسی انتشار و اتصال"
 
-#: admin/views/writer.php:249
+#: admin/views/writer.php:237
 msgid "Direct publishing"
 msgstr "انتشار مستقیم"
 
-#: admin/views/writer.php:251
+#: admin/views/writer.php:239
 msgid "Allow the console to publish and schedule posts"
 msgstr "اجازهٔ انتشار و زمان‌بندی نوشته به کنسول"
 
-#: admin/views/writer.php:252
+#: admin/views/writer.php:240
 msgid ""
 "When off, articles arrive only as drafts or pending review. Recommended: off."
 msgstr ""
 "وقتی خاموش است، مقاله‌ها فقط به‌صورت پیش‌نویس یا در انتظار بررسی می‌رسند. "
 "پیشنهاد: خاموش."
 
-#: admin/views/writer.php:256 admin/views/writer.php:434
+#: admin/views/writer.php:244 admin/views/writer.php:422
 msgid "Author"
 msgstr "نویسنده"
 
-#: admin/views/writer.php:259
+#: admin/views/writer.php:247
 msgid "First administrator"
 msgstr "اولین مدیر سایت"
 
-#: admin/views/writer.php:267 admin/views/writer.php:432
+#: admin/views/writer.php:255 admin/views/writer.php:420
 msgid "Default category"
 msgstr "دستهٔ پیش‌فرض"
 
-#: admin/views/writer.php:271
+#: admin/views/writer.php:259
 msgid "SEO plugin"
 msgstr "افزونهٔ سئو"
 
-#: admin/views/writer.php:273
+#: admin/views/writer.php:261
 msgid ""
 "Yoast SEO, Rank Math and All in One SEO receive the SEO title, meta "
 "description and focus keyword automatically."
@@ -1273,27 +1256,23 @@ msgstr ""
 "عنوان سئو، توضیحات متا و کلمهٔ کلیدی به‌طور خودکار در Yoast SEO، Rank Math و "
 "All in One SEO ثبت می‌شوند."
 
-#: admin/views/writer.php:277
+#: admin/views/writer.php:265
 msgid "Save"
 msgstr "ذخیره"
 
-#: admin/views/writer.php:278
-msgid "Disconnect writing"
-msgstr "قطع اتصال نوشتن"
-
-#: admin/views/writer.php:282
+#: admin/views/writer.php:270
 msgid "Recent requests from the console"
 msgstr "آخرین درخواست‌های کنسول"
 
-#: admin/views/writer.php:288
+#: admin/views/writer.php:276
 msgid "Accepted"
 msgstr "پذیرفته شد"
 
-#: admin/views/writer.php:288
+#: admin/views/writer.php:276
 msgid "Rejected"
 msgstr "رد شد"
 
-#: admin/views/writer.php:301
+#: admin/views/writer.php:289
 msgid ""
 "You pay your provider directly and are responsible for its terms. Prefer not "
 "to manage keys?"
@@ -1301,43 +1280,43 @@ msgstr ""
 "هزینه را مستقیم به سرویس‌دهنده می‌پردازید و رعایت قوانین آن با شماست. "
 "نمی‌خواهید درگیر کلید و تنظیمات شوید؟"
 
-#: admin/views/writer.php:302
+#: admin/views/writer.php:290
 msgid "Use the WP-Hub console instead"
 msgstr "از کنسول WP-Hub استفاده کنید"
 
-#: admin/views/writer.php:312
+#: admin/views/writer.php:300
 msgid "AI provider"
 msgstr "سرویس هوش مصنوعی"
 
-#: admin/views/writer.php:313
+#: admin/views/writer.php:301
 msgid "Any OpenAI-compatible API"
 msgstr "هر API سازگار با OpenAI"
 
-#: admin/views/writer.php:316 admin/views/writer.php:459
+#: admin/views/writer.php:304 admin/views/writer.php:447
 msgid "Provider"
 msgstr "سرویس‌دهنده"
 
-#: admin/views/writer.php:321
+#: admin/views/writer.php:309
 msgid "International"
 msgstr "خارجی"
 
-#: admin/views/writer.php:328
+#: admin/views/writer.php:316
 msgid "Iranian (no VPN needed)"
 msgstr "داخلی (بدون نیاز به VPN)"
 
-#: admin/views/writer.php:335
+#: admin/views/writer.php:323
 msgid "Other"
 msgstr "سایر"
 
-#: admin/views/writer.php:340
+#: admin/views/writer.php:328
 msgid "Get an API key"
 msgstr "دریافت کلید API"
 
-#: admin/views/writer.php:340
+#: admin/views/writer.php:328
 msgid "Open Settings → Connectors"
 msgstr "باز کردن تنظیمات ← اتصال‌ها"
 
-#: admin/views/writer.php:342
+#: admin/views/writer.php:330
 msgid ""
 "WordPress sends the request with the AI provider and key you connected in "
 "Settings → Connectors. No key is stored by Hubpulse."
@@ -1345,194 +1324,194 @@ msgstr ""
 "وردپرس درخواست را با سرویس و کلیدی که در «تنظیمات ← اتصال‌ها» وصل کرده‌اید "
 "ارسال می‌کند. Hubpulse هیچ کلیدی ذخیره نمی‌کند."
 
-#: admin/views/writer.php:343
+#: admin/views/writer.php:331
 msgid "API base URL"
 msgstr "آدرس پایهٔ API"
 
-#: admin/views/writer.php:345
+#: admin/views/writer.php:333
 msgid "API key"
 msgstr "کلید API"
 
-#: admin/views/writer.php:348
+#: admin/views/writer.php:336
 msgid "A key is saved. Leave empty to keep it."
 msgstr "کلیدی ذخیره شده است. برای نگه‌داشتن، خالی بگذارید."
 
-#: admin/views/writer.php:351
+#: admin/views/writer.php:339
 msgid "Model"
 msgstr "مدل"
 
-#: admin/views/writer.php:355
+#: admin/views/writer.php:343
 msgid "Creativity (temperature)"
 msgstr "خلاقیت (temperature)"
 
-#: admin/views/writer.php:357
+#: admin/views/writer.php:345
 msgid "Max output tokens"
 msgstr "حداکثر توکن خروجی"
 
-#: admin/views/writer.php:360
+#: admin/views/writer.php:348
 msgid "Test connection and load models"
 msgstr "تست اتصال و دریافت مدل‌ها"
 
-#: admin/views/writer.php:368
+#: admin/views/writer.php:356
 msgid "About your site"
 msgstr "دربارهٔ سایت شما"
 
-#: admin/views/writer.php:369
+#: admin/views/writer.php:357
 msgid "The more precise, the better the articles"
 msgstr "هرچه دقیق‌تر، مقاله‌ها بهتر"
 
-#: admin/views/writer.php:372
+#: admin/views/writer.php:360
 msgid "Site name"
 msgstr "نام سایت"
 
-#: admin/views/writer.php:374
+#: admin/views/writer.php:362
 msgid "Domain"
 msgstr "دامنه"
 
-#: admin/views/writer.php:376
+#: admin/views/writer.php:364
 msgid "Main topic or niche"
 msgstr "موضوع اصلی سایت"
 
-#: admin/views/writer.php:377
+#: admin/views/writer.php:365
 msgid "e.g. Online store for laptops and gaming gear"
 msgstr "مثلاً: فروشگاه آنلاین لپ‌تاپ و لوازم گیمینگ"
 
-#: admin/views/writer.php:378
+#: admin/views/writer.php:366
 msgid "About the business or store"
 msgstr "دربارهٔ کسب‌وکار یا فروشگاه"
 
-#: admin/views/writer.php:379
+#: admin/views/writer.php:367
 msgid "Who you are, what makes you different, shipping, warranty, city…"
 msgstr "چه کسی هستید، چه تفاوتی دارید، ارسال، گارانتی، شهر…"
 
-#: admin/views/writer.php:380
+#: admin/views/writer.php:368
 msgid "Main products or services"
 msgstr "محصولات یا خدمات اصلی"
 
-#: admin/views/writer.php:382
+#: admin/views/writer.php:370
 msgid "Target audience"
 msgstr "مخاطب هدف"
 
-#: admin/views/writer.php:384
+#: admin/views/writer.php:372
 msgid "Region or country"
 msgstr "منطقه یا کشور"
 
-#: admin/views/writer.php:386
+#: admin/views/writer.php:374
 msgid "Brand voice"
 msgstr "لحن برند"
 
-#: admin/views/writer.php:392
+#: admin/views/writer.php:380
 msgid "Article language"
 msgstr "زبان مقاله"
 
-#: admin/views/writer.php:399
+#: admin/views/writer.php:387
 msgid "Writing rules"
 msgstr "قواعد نگارش"
 
-#: admin/views/writer.php:400
+#: admin/views/writer.php:388
 msgid "Applied to every article"
 msgstr "برای همهٔ مقاله‌ها اعمال می‌شود"
 
-#: admin/views/writer.php:403
+#: admin/views/writer.php:391
 msgid "System prompt"
 msgstr "پرامپت سیستم"
 
-#: admin/views/writer.php:404
+#: admin/views/writer.php:392
 msgid "Reset to default"
 msgstr "بازگردانی پیش‌فرض"
 
-#: admin/views/writer.php:406
+#: admin/views/writer.php:394
 msgid "Your site details above are added to this prompt automatically."
 msgstr ""
 "اطلاعات سایت که بالا وارد کردید به‌طور خودکار به این پرامپت اضافه می‌شود."
 
-#: admin/views/writer.php:407
+#: admin/views/writer.php:395
 msgid "House rules"
 msgstr "قوانین اختصاصی"
 
-#: admin/views/writer.php:408
+#: admin/views/writer.php:396
 msgid ""
 "e.g. Never mention competitors by name. Always end with a call to action to "
 "our shop."
 msgstr "مثلاً: نام رقبا را نیاور. همیشه با دعوت به خرید از فروشگاه ما تمام کن."
 
-#: admin/views/writer.php:409
+#: admin/views/writer.php:397
 msgid "Default length"
 msgstr "طول پیش‌فرض"
 
-#: admin/views/writer.php:415
+#: admin/views/writer.php:403
 msgid "Internal links per article"
 msgstr "تعداد لینک داخلی در هر مقاله"
 
-#: admin/views/writer.php:417
+#: admin/views/writer.php:405
 msgid "Add an FAQ section with schema by default"
 msgstr "افزودن پیش‌فرض بخش پرسش‌های متداول با اسکیما"
 
-#: admin/views/writer.php:423
+#: admin/views/writer.php:411
 msgid "Saving articles"
 msgstr "ذخیرهٔ مقاله‌ها"
 
-#: admin/views/writer.php:424
+#: admin/views/writer.php:412
 msgid "Nothing is published without you"
 msgstr "بدون تأیید شما چیزی منتشر نمی‌شود"
 
-#: admin/views/writer.php:427 admin/views/writer.php:504
+#: admin/views/writer.php:415 admin/views/writer.php:492
 msgid "Save as"
 msgstr "ذخیره به‌صورت"
 
-#: admin/views/writer.php:429 admin/views/writer.php:506
+#: admin/views/writer.php:417 admin/views/writer.php:494
 msgid "Draft"
 msgstr "پیش‌نویس"
 
-#: admin/views/writer.php:430 admin/views/writer.php:507
+#: admin/views/writer.php:418 admin/views/writer.php:495
 msgid "Pending review"
 msgstr "در انتظار بررسی"
 
-#: admin/views/writer.php:436
+#: admin/views/writer.php:424
 msgid "The user who writes it"
 msgstr "کاربری که مقاله را می‌نویسد"
 
-#: admin/views/writer.php:447
+#: admin/views/writer.php:435
 msgid "Cancel"
 msgstr "انصراف"
 
-#: admin/views/writer.php:454
+#: admin/views/writer.php:442
 msgid "An administrator needs to set up the AI provider first."
 msgstr "ابتدا مدیر سایت باید سرویس هوش مصنوعی را تنظیم کند."
 
-#: admin/views/writer.php:464
+#: admin/views/writer.php:452
 msgid "Not tested"
 msgstr "تست نشده"
 
-#: admin/views/writer.php:468
+#: admin/views/writer.php:456
 msgid "Edit settings"
 msgstr "ویرایش تنظیمات"
 
-#: admin/views/writer.php:476
+#: admin/views/writer.php:464
 msgid "Saved as a draft for you to review"
 msgstr "به‌صورت پیش‌نویس برای بررسی شما ذخیره می‌شود"
 
-#: admin/views/writer.php:515
+#: admin/views/writer.php:503
 msgid "Write article"
 msgstr "نوشتن مقاله"
 
-#: admin/views/writer.php:522
+#: admin/views/writer.php:510
 msgid "Recent AI articles"
 msgstr "آخرین مقاله‌های هوشمند"
 
-#: admin/views/writer.php:527 includes/class-admin.php:132
+#: admin/views/writer.php:515 includes/class-admin.php:132
 msgid "No articles yet. Write your first one above."
 msgstr "هنوز مقاله‌ای نیست. اولین مقاله را از بالا بنویسید."
 
-#: admin/views/writer.php:536 includes/class-admin.php:127
+#: admin/views/writer.php:524 includes/class-admin.php:127
 msgid "Preview"
 msgstr "پیش‌نمایش"
 
-#: admin/views/writer.php:537 includes/class-admin.php:128
+#: admin/views/writer.php:525 includes/class-admin.php:128
 msgid "Edit"
 msgstr "ویرایش"
 
-#: admin/views/writer.php:551 includes/class-admin.php:134
+#: admin/views/writer.php:539 includes/class-admin.php:134
 msgid "Close"
 msgstr "بستن"
 
@@ -1571,10 +1550,6 @@ msgstr "درخواست ناموفق بود. دوباره تلاش کنید."
 #: includes/class-admin.php:122
 msgid "Replace the system prompt with the default text?"
 msgstr "پرامپت سیستم با متن پیش‌فرض جایگزین شود؟"
-
-#: includes/class-admin.php:124
-msgid "Disconnect the console from writing to this site?"
-msgstr "اتصال نوشتن کنسول با این سایت قطع شود؟"
 
 #: includes/class-admin.php:125
 msgid "The provider did not list models; type the model name."
@@ -1635,53 +1610,53 @@ msgstr "ناموفق"
 
 #: includes/class-admin.php:166 includes/class-admin.php:178
 #: includes/class-admin.php:218 includes/class-admin.php:228
-#: includes/class-admin.php:413 includes/class-aggregator.php:848
+#: includes/class-admin.php:422 includes/class-aggregator.php:848
 #: includes/class-writer.php:151
 msgid "You do not have permission to access this page."
 msgstr "دسترسی مجاز نیست."
 
-#: includes/class-admin.php:262
+#: includes/class-admin.php:271
 msgid "The site key was removed and the console was disconnected."
 msgstr "کلید سایت حذف شد و اتصال به کنسول قطع شد."
 
 #. translators: %1$s: number of sent events; %2$s: number of queued events.
-#: includes/class-admin.php:274
+#: includes/class-admin.php:283
 #, php-format
 msgid "%1$s events were sent to the console; %2$s events remain queued."
 msgstr "%1$s رویداد به کنسول ارسال شد؛ %2$s رویداد در صف باقی مانده است."
 
-#: includes/class-admin.php:279
+#: includes/class-admin.php:288
 msgid "The queue was empty; nothing to send."
 msgstr "صف خالی بود؛ چیزی برای ارسال نبود."
 
-#: includes/class-admin.php:282
+#: includes/class-admin.php:291
 msgid "Cloud mode is not active."
 msgstr "حالت ابری فعال نیست."
 
-#: includes/class-admin.php:283 includes/class-cloud.php:332
+#: includes/class-admin.php:292 includes/class-cloud.php:332
 msgid "The site connection key is not set."
 msgstr "کلید اتصال سایت تنظیم نشده است."
 
-#: includes/class-admin.php:284
+#: includes/class-admin.php:293
 msgid "The next attempt is not allowed yet; try again later."
 msgstr "ارسال بعدی هنوز مجاز نیست؛ کمی بعد دوباره تلاش کنید."
 
-#: includes/class-admin.php:285
+#: includes/class-admin.php:294
 msgid "Another process is already running."
 msgstr "یک پردازش دیگر در حال اجراست."
 
-#: includes/class-admin.php:288
+#: includes/class-admin.php:297
 msgid "Sync failed: "
 msgstr "ارسال ناموفق: "
 
-#: includes/class-admin.php:315
+#: includes/class-admin.php:324
 msgid ""
 "Hubpulse: the WP-Hub console did not answer, so analytics switched to local "
 "mode."
 msgstr "Hubpulse: کنسول WP-Hub پاسخ نداد؛ ذخیره آمار به حالت محلی منتقل شد."
 
 #. translators: 1: hours without an answer, 2: date and time of the switch.
-#: includes/class-admin.php:319
+#: includes/class-admin.php:328
 #, php-format
 msgid ""
 "There was no answer from the console for %1$s hours, so on %2$s visits "
@@ -1694,23 +1669,23 @@ msgstr ""
 "به‌صورت محلی شمرده شدند. این اتفاق معمولاً وقتی رخ می‌دهد که اینترنت بین‌الملل "
 "قطع شود (اینترنت ملی) و هاست‌های داخل ایران به کنسول دسترسی نداشته باشند."
 
-#: includes/class-admin.php:325
+#: includes/class-admin.php:334
 msgid "Last error:"
 msgstr "آخرین خطا:"
 
-#: includes/class-admin.php:328
+#: includes/class-admin.php:337
 msgid "Test and return to cloud mode"
 msgstr "آزمایش و بازگشت به حالت ابری"
 
-#: includes/class-admin.php:329
+#: includes/class-admin.php:338
 msgid "Stay in local mode"
 msgstr "در حالت محلی بمان"
 
-#: includes/class-admin.php:335
+#: includes/class-admin.php:344
 msgid "National internet warning:"
 msgstr "هشدار اینترنت ملی:"
 
-#: includes/class-admin.php:336
+#: includes/class-admin.php:345
 msgid ""
 "If international internet is cut (national internet), hosts inside Iran lose "
 "access to the WP-Hub console and there is nothing we can do about it from "
@@ -1725,21 +1700,21 @@ msgstr ""
 "حالت محلی روی همین هاست می‌برد تا هیچ بازدیدی از دست نرود؛ نوشتن و انتشار "
 "مقاله از طریق کنسول تا برقراری دوباره ارتباط در دسترس نخواهد بود."
 
-#: includes/class-admin.php:337
+#: includes/class-admin.php:346
 msgid "Got it, hide this"
 msgstr "متوجه شدم، پنهانش کن"
 
-#: includes/class-admin.php:383
+#: includes/class-admin.php:392
 msgid "The console answered; analytics are sent to the cloud again."
 msgstr "کنسول پاسخ داد؛ آمار دوباره به حالت ابری ارسال می‌شود."
 
 #. translators: %s: error message.
-#: includes/class-admin.php:385
+#: includes/class-admin.php:394
 #, php-format
 msgid "The console still does not answer, so local mode stays on: %s"
 msgstr "کنسول هنوز پاسخ نمی‌دهد و حالت محلی فعال می‌ماند: %s"
 
-#: includes/class-admin.php:394
+#: includes/class-admin.php:403
 msgid ""
 "Analytics stay in local mode. You can switch back to cloud mode in the "
 "settings at any time."
@@ -1747,7 +1722,7 @@ msgstr ""
 "آمار در حالت محلی می‌ماند. هر زمان خواستید می‌توانید از تنظیمات به حالت ابری "
 "برگردید."
 
-#: includes/class-admin.php:407
+#: includes/class-admin.php:416
 msgid "Local analytics data was purged."
 msgstr "داده‌های محلی آمار پاک شد."
 
@@ -2098,16 +2073,20 @@ msgstr "متوسط (حدود ۱۵۰۰ کلمه)"
 msgid "Long (about 2,500 words)"
 msgstr "بلند (حدود ۲۵۰۰ کلمه)"
 
-#: includes/class-writer.php:267
+#: includes/class-writer.php:257
 msgid "You do not have permission to do this."
 msgstr "اجازهٔ انجام این کار را ندارید."
 
-#: includes/class-writer.php:309
+#: includes/class-writer.php:299
 msgid ""
 "This does not look like a site key. Copy the whole key from the console."
 msgstr "این شبیه کلید سایت نیست. کلید را کامل از کنسول کپی کنید."
 
 #: includes/class-writer.php:347
+msgid "Add the site key first."
+msgstr "ابتدا کلید سایت را وارد کنید."
+
+#: includes/class-writer.php:351
 msgid ""
 "Deactivate the separate \"WP-Hub Content Connector\" plugin first; Hubpulse "
 "now includes it."
@@ -2116,24 +2095,24 @@ msgstr ""
 "حالا همین قابلیت را دارد."
 
 #. translators: %s: error message from the console.
-#: includes/class-writer.php:377
+#: includes/class-writer.php:381
 #, php-format
-msgid "The key was saved, but the console could not reach this site yet: %s"
-msgstr "کلید ذخیره شد، اما کنسول هنوز نتوانست به این سایت وصل شود: %s"
+msgid "Connected, but the console could not reach this site yet: %s"
+msgstr "اتصال برقرار شد، اما کنسول هنوز نتوانست به این سایت دسترسی پیدا کند: %s"
 
-#: includes/class-writer.php:434 includes/class-writer.php:527
+#: includes/class-writer.php:446 includes/class-writer.php:539
 msgid "Enter the article topic or title."
 msgstr "موضوع یا عنوان مقاله را وارد کنید."
 
-#: includes/class-writer.php:471
+#: includes/class-writer.php:483
 msgid "Enter the API key for this new address before testing it."
 msgstr "برای آزمایش این آدرس جدید، ابتدا کلید API همان سرویس را وارد کنید."
 
-#: includes/class-writer.php:509
+#: includes/class-writer.php:521
 msgid "Set up your AI provider first."
 msgstr "ابتدا سرویس هوش مصنوعی را تنظیم کنید."
 
-#: includes/class-writer.php:548
+#: includes/class-writer.php:560
 msgid ""
 "The model did not return a usable article. Try again, or raise the output "
 "token limit."
