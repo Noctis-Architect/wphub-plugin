@@ -44,7 +44,7 @@ final class WPHS_Admin {
 			'hubpulse',
 			array( __CLASS__, 'render_dashboard' ),
 			self::menu_icon(),
-			81
+			3 // Right below Dashboard: visitor analytics is the first thing site owners check each day.
 		);
 
 		add_submenu_page(

@@ -77,7 +77,7 @@ Uninstalling the plugin removes its settings and temporary queue. Analytics tabl
 
 = فارسی =
 
-Hubpulse یک افزونهٔ سبک و بدون کوکی آمار بازدید است. به‌صورت پیش‌فرض همه‌چیز روی همان سایت ذخیره می‌شود و هیچ رویداد آماری به بیرون ارسال نمی‌شود. حالت ابری اختیاری است و برای آن به کلید اتصال از کنسول WP-Hub نیاز دارید. ربات‌ها با User-Agent و سیگنال‌های مرورگر فیلتر می‌شوند، DNT/GPC رعایت می‌شود و بازدید کاربران واردشده به‌صورت پیش‌فرض ثبت نمی‌شود. رابط مدیریت به انگلیسی است و ترجمهٔ فارسی از طریق translate.wordpress.org ارائه می‌شود.
+Hubpulse یک افزونهٔ سبک و بدون کوکی آمار بازدید است. به‌صورت پیش‌فرض همه‌چیز روی همان سایت ذخیره می‌شود و هیچ رویداد آماری به بیرون ارسال نمی‌شود. حالت ابری اختیاری است و برای آن به کلید اتصال از کنسول WP-Hub نیاز دارید. ربات‌ها با User-Agent و سیگنال‌های مرورگر فیلتر می‌شوند، DNT/GPC رعایت می‌شود و بازدید کاربران واردشده به‌صورت پیش‌فرض ثبت نمی‌شود. رابط مدیریت به انگلیسی است و ترجمهٔ فارسی همراه افزونه است و وقتی زبان پیشخوان فارسی باشد خودکار نمایش داده می‌شود.
 
 == External services ==
 
@@ -199,8 +199,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 * The plugin no longer hides WordPress and other plugins' notices on its pages.
 * Admin scripts and the menu icon style moved to enqueued files; no inline scripts or styles.
 * The temporary queue now lives in the uploads directory (`uploads/hubpulse/`), protected from direct access.
-* The admin menu moved below Settings.
-* Translations are now delivered through translate.wordpress.org.
+* Translations: the bundled Persian translation is loaded by WordPress automatically from the plugin's languages folder (no custom loader); translations from translate.wordpress.org take priority.
 * The content signing key is generated on your site and only registered with the console; it is never sent back.
 * Automatic fallback to on-site analytics after 6 hours without an answer from the console, with an admin notice to switch back.
 * Rejected console requests are logged at most once a minute; media of unpublished posts is not shared with the console.
