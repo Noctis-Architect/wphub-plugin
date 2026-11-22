@@ -185,8 +185,6 @@ $connected    = $status['token_set'] && '' === $status['last_error'];
 		</div>
 	</section>
 
-	<?php require WPHS_DIR . 'admin/views/security-check.php'; ?>
-
 	<div class="wphs-footer">
 		<span><?php esc_html_e( 'Storage mode: Cloud', 'hubpulse' ); ?></span>
 		<a href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Settings and connection key', 'hubpulse' ); ?></a>

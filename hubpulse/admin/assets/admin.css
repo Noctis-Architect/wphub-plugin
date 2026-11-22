@@ -1362,77 +1362,6 @@ body.wphs-admin #wpbody-content {
 	}
 }
 
-/* Basic security check */
-.wphs-security-check.is-warn {
-	border-color: #fecaca;
-	background: #fef2f2;
-}
-
-.wphs-security-check.is-warn .wphs-card-head h2,
-.wphs-security-check.is-warn .wphs-muted {
-	color: #991b1b;
-}
-
-.wphs-security-list {
-	display: grid;
-	gap: 8px;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.wphs-security-list li {
-	display: flex;
-	align-items: flex-start;
-	gap: 9px;
-	color: #7f1d1d;
-	font-size: 12px;
-	line-height: 1.7;
-}
-
-.wphs-security-dot {
-	flex: 0 0 auto;
-	width: 7px;
-	height: 7px;
-	margin-top: 6px;
-	border-radius: 50%;
-	background: #dc2626;
-}
-
-.wphs-security-pass {
-	margin: 0;
-	color: #166534;
-	font-size: 12px;
-}
-
-.wphs-security-note {
-	margin: 8px 0 0;
-	color: #94a3b8;
-	font-size: 10px;
-}
-
-.wphs-card-head-actions {
-	display: inline-flex;
-	align-items: center;
-	gap: 10px;
-}
-
-.wphs-security-refresh {
-	color: var(--wphs-blue);
-	font-size: 11px;
-	font-weight: 600;
-	text-decoration: none;
-}
-
-.wphs-security-refresh:hover {
-	color: var(--wphs-blue-dark);
-	text-decoration: underline;
-}
-
-.wphs-security-check.is-warn .wphs-security-refresh {
-	color: #991b1b;
-}
-
 /* ───────── shared additions (0.5) ───────── */
 
 .wphs-notice.is-info {
@@ -2069,4 +1998,15 @@ body.wphs-admin #wpbody-content {
 		flex-direction: column;
 		align-items: stretch;
 	}
+}
+
+.wphs-key-saved {
+	display: inline-block;
+	padding: 9px 12px;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	background: #f8fafc;
+	font-size: 14px;
+	color: #334155;
+	letter-spacing: .02em;
 }

@@ -66,8 +66,8 @@ delete_option( 'wphs_last_run' );
 // Keys and AI provider credentials are always removed, whatever the data setting.
 delete_option( 'wphs_writer' );
 delete_option( 'wphs_content' );
-delete_option( 'wphs_security_edge' );
 delete_transient( 'wphs_ai_tested' );
+delete_transient( 'wphs_security_check' );
 
 // Cloud sync state, the outage fallback record and per-user notice choices.
 foreach ( array( 'last_attempt', 'last_success', 'last_error', 'last_count', 'last_http', 'failures', 'next_attempt', 'ping_at', 'ping_ok', 'ping_message', 'down_since', 'fallback' ) as $wphs_suffix ) {

@@ -8,10 +8,9 @@ final class WPHS_Admin {
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'assets' ) );
 		add_action( 'admin_post_wphs_save_settings', array( __CLASS__, 'save_settings' ) );
 		add_action( 'admin_post_wphs_cloud_test', array( __CLASS__, 'cloud_test' ) );
+		add_action( 'admin_post_wphs_disconnect', array( __CLASS__, 'disconnect' ) );
 		add_action( 'admin_post_wphs_cloud_sync', array( __CLASS__, 'cloud_sync' ) );
 		add_action( 'admin_post_wphs_purge_local', array( __CLASS__, 'purge_local' ) );
-		add_action( 'admin_post_wphs_security_recheck', array( __CLASS__, 'security_recheck' ) );
-		add_action( 'wp_ajax_wphs_security_edge', array( 'WPHS_Security_Check', 'ajax_edge' ) );
 		add_action( 'admin_post_wphs_cloud_restore', array( __CLASS__, 'cloud_restore' ) );
 		add_action( 'admin_post_wphs_cloud_stay_local', array( __CLASS__, 'cloud_stay_local' ) );
 		add_action( 'admin_post_wphs_dismiss_national_net', array( __CLASS__, 'dismiss_national_net' ) );
@@ -135,7 +134,6 @@ final class WPHS_Admin {
 					'close'        => __( 'Close', 'hubpulse' ),
 					/* translators: Used as "3 of 10" for the remaining article quota. */
 					'of'           => __( 'of', 'hubpulse' ),
-					'secPass'      => __( 'All basic checks passed.', 'hubpulse' ),
 					'conn'         => array(
 						'connected' => __( 'Connected', 'hubpulse' ),
 						'error'     => __( 'Error', 'hubpulse' ),
@@ -253,6 +251,15 @@ final class WPHS_Admin {
 		$result = WPHS_Cloud::ping();
 
 		self::cloud_notice( $result[0] ? 'success' : 'error', $result[1] );
+		self::back();
+	}
+
+	public static function disconnect() {
+		self::guard( 'wphs_disconnect' );
+
+		WPHS_Settings::set_token( '' );
+
+		self::cloud_notice( 'success', __( 'The site key was removed and the console was disconnected.', 'hubpulse' ) );
 		self::back();
 	}
 
@@ -399,22 +406,6 @@ final class WPHS_Admin {
 		WPHS_Cloud::purge_local_data();
 		self::cloud_notice( 'success', __( 'Local analytics data was purged.', 'hubpulse' ) );
 		self::back();
-	}
-
-	public static function security_recheck() {
-		self::guard( 'wphs_security_recheck' );
-
-		delete_transient( 'wphs_security_check' );
-		delete_option( 'wphs_security_edge' );
-
-		$back = wp_get_referer();
-
-		if ( ! $back || false === strpos( $back, 'hubpulse' ) ) {
-			$back = admin_url( 'admin.php?page=hubpulse' );
-		}
-
-		wp_safe_redirect( $back );
-		exit;
 	}
 
 	private static function guard( $action ) {

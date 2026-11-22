@@ -548,8 +548,6 @@ $channel_classes = array(
 		</div>
 	<?php endif; ?>
 
-	<?php require WPHS_DIR . 'admin/views/security-check.php'; ?>
-
 	<?php if ( $data['spool_size'] > 0 ) : ?>
 		<div class="wphs-notice">
 			<?php

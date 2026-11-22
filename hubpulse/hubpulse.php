@@ -30,7 +30,6 @@ require_once WPHS_DIR . 'includes/class-collector.php';
 require_once WPHS_DIR . 'includes/class-aggregator.php';
 require_once WPHS_DIR . 'includes/class-cloud.php';
 require_once WPHS_DIR . 'includes/class-reports.php';
-require_once WPHS_DIR . 'includes/class-security-check.php';
 require_once WPHS_DIR . 'includes/class-content-seo.php';
 require_once WPHS_DIR . 'includes/class-content-api.php';
 require_once WPHS_DIR . 'includes/class-ai-provider.php';

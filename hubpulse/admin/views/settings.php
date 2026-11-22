@@ -91,19 +91,19 @@ $month_label = static function ( $months ) {
 			<div class="wphs-connect">
 				<div>
 					<p class="wphs-hint" style="margin-top:0"><?php esc_html_e( 'Optional. With a free site key the dashboard also shows speed, security and uptime reports, analytics can be stored in the console, and the AI Writer can write articles for you.', 'hubpulse' ); ?></p>
-					<label for="wphs-console-token" class="screen-reader-text"><?php esc_html_e( 'Site key', 'hubpulse' ); ?></label>
-					<input type="text" id="wphs-console-token" name="console_token" value="" class="large-text" placeholder="<?php echo esc_attr( '' !== $masked ? $masked : 'wphs_...' ); ?>" dir="ltr" autocomplete="off" spellcheck="false">
-					<?php if ( '' !== $token ) : ?>
-						<p class="wphs-hint">
-							<?php esc_html_e( 'A key is saved. Leave the field empty to keep it.', 'hubpulse' ); ?>
-							<label><input type="checkbox" name="remove_token" value="1"> <?php esc_html_e( 'Remove the key and disconnect', 'hubpulse' ); ?></label>
-						</p>
+					<?php if ( '' === $token ) : ?>
+						<label for="wphs-console-token" class="screen-reader-text"><?php esc_html_e( 'Site key', 'hubpulse' ); ?></label>
+						<input type="text" id="wphs-console-token" name="console_token" value="" class="large-text" placeholder="wphs_..." dir="ltr" autocomplete="off" spellcheck="false">
+					<?php else : ?>
+						<code class="wphs-key-saved" dir="ltr"><?php echo esc_html( $masked ); ?></code>
 					<?php endif; ?>
 				</div>
 				<div class="wphs-actions-row">
-					<a class="wphs-btn is-secondary" href="<?php echo esc_url( WPHS_Settings::console_url() ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Get a key', 'hubpulse' ); ?> ↗</a>
-					<?php if ( '' !== $token ) : ?>
+					<?php if ( '' === $token ) : ?>
+						<a class="wphs-btn is-secondary" href="<?php echo esc_url( WPHS_Settings::console_url() ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Get a key', 'hubpulse' ); ?> ↗</a>
+					<?php else : ?>
 						<button type="submit" class="wphs-btn is-secondary" form="wphs-test-form"><?php esc_html_e( 'Test connection', 'hubpulse' ); ?></button>
+						<button type="submit" class="wphs-btn is-danger" form="wphs-disconnect-form"><?php esc_html_e( 'Disconnect', 'hubpulse' ); ?></button>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -211,6 +211,11 @@ $month_label = static function ( $months ) {
 	<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="wphs-test-form">
 		<input type="hidden" name="action" value="wphs_cloud_test">
 		<?php wp_nonce_field( 'wphs_cloud_test' ); ?>
+	</form>
+
+	<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" id="wphs-disconnect-form" data-wphs-confirm="<?php esc_attr_e( 'Remove the site key and disconnect from the console?', 'hubpulse' ); ?>">
+		<input type="hidden" name="action" value="wphs_disconnect">
+		<?php wp_nonce_field( 'wphs_disconnect' ); ?>
 	</form>
 
 	<details class="wphs-card wphs-details-card">

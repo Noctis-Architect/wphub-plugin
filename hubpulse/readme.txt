@@ -35,13 +35,13 @@ Works with Yoast SEO, Rank Math and All in One SEO. Without an SEO plugin, Hubpu
 
 = Free and paid =
 
-Every feature of this plugin is free and has no built-in limits: analytics, the local security check, and the AI Writer with your own provider. The plugin never locks features or shows paid-only screens.
+Every feature of this plugin is free and has no built-in limits: analytics and the AI Writer with your own provider. The plugin never locks features or shows paid-only screens.
 
 The WP-Hub console is a separate, optional web service with a free plan. During its current public test period, console article writing is free for every account (15 articles per month). Monthly limits are set and enforced by the console, not by this plugin, and are shown on the AI Writer screen. Competitor analysis, content health reports and topic suggestions are features of the console website itself; they are not part of this plugin.
 
 = Console reports (optional) =
 
-With a site key the dashboard also shows the latest mobile and desktop speed test, security test and uptime status from the WP-Hub console. A basic local security check (directory listing, REST users, wp-admin exposure, security plugins, file editing, debug display) works without any account.
+With a site key the dashboard also shows the latest mobile and desktop speed test, security test and uptime status from the WP-Hub console.
 
 = How it works =
 
@@ -124,7 +124,7 @@ No. The tracker does not set cookies, use local storage, or create a cross-site 
 
 = Do I need a WP-Hub account? =
 
-No. Analytics, the security check and the AI Writer with your own provider work without an account. Console reports, console storage and the console AI writer need a free site key.
+No. Analytics and the AI Writer with your own provider work without an account. Console reports, console storage and the console AI writer need a free site key.
 
 = Is the AI Writer free? =
 
@@ -173,7 +173,7 @@ No. Hubpulse adds nothing to your public pages except the cookie-free tracker sc
 == Screenshots ==
 
 1. Hubpulse dashboard overview with pageviews, visitors, sessions, average engaged time, bounce rate, and traffic quality.
-2. Top pages, sources, devices, events, and the basic security check.
+2. Top pages, sources, devices and events.
 3. Settings: console connection, storage mode, privacy and data retention.
 4. AI Writer: choose the WP-Hub console or your own AI provider.
 
@@ -192,6 +192,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 * SEO fields for Yoast SEO, Rank Math and All in One SEO, plus FAQ schema.
 * Simpler settings: the site key is always available, privacy and retention side by side, advanced options and diagnostics folded away. The saved key is no longer shown in the form.
 * Removed the source credit option; the plugin adds no credit to your pages.
+* Removed the basic local security check card; console security reports are unchanged.
 * The plugin no longer hides WordPress and other plugins' notices on its pages.
 * Admin scripts and the menu icon style moved to enqueued files; no inline scripts or styles.
 * The temporary queue now lives in the uploads directory (`uploads/hubpulse/`), protected from direct access.
