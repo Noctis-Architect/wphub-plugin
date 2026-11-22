@@ -124,7 +124,56 @@ final class WPHS_Security_Check {
 		return $unknown ? 'unknown' : 'pass';
 	}
 
+	/**
+	 * Checks whether an anonymous visitor can list users through the REST API.
+	 *
+	 * First a real, cookie-less HTTP request to the site's own REST URL, so firewalls,
+	 * server rules, CDN rules and security plugins are all taken into account exactly
+	 * as an outsider would see them. If the server cannot reach itself, it falls back
+	 * to an internal request that still honours the rest_authentication_errors filter
+	 * most security plugins use to block the API.
+	 */
 	private static function rest_users_status() {
+		$remote = self::rest_users_remote();
+
+		if ( 'unknown' !== $remote ) {
+			return $remote;
+		}
+
+		return self::rest_users_internal();
+	}
+
+	private static function rest_users_remote() {
+		$response = wp_remote_get(
+			add_query_arg( 'per_page', 1, rest_url( 'wp/v2/users' ) ),
+			array(
+				'timeout'     => 5,
+				'redirection' => 2,
+				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core filter used for loopback requests.
+				'sslverify'   => apply_filters( 'https_local_ssl_verify', false ),
+				'cookies'     => array(),
+				'headers'     => array(
+					'Accept'     => 'application/json',
+					'User-Agent' => 'Mozilla/5.0 (compatible; Hubpulse-Security-Check/' . WPHS_VERSION . ')',
+				),
+			)
+		);
+
+		if ( is_wp_error( $response ) ) {
+			return 'unknown';
+		}
+
+		$code = (int) wp_remote_retrieve_response_code( $response );
+
+		if ( 200 !== $code ) {
+			// 401/403/404, a firewall page or any other refusal: not publicly listable.
+			return $code > 0 && $code < 500 ? 'pass' : 'unknown';
+		}
+
+		return self::lists_users( json_decode( (string) wp_remote_retrieve_body( $response ), true ) ) ? 'fail' : 'pass';
+	}
+
+	private static function rest_users_internal() {
 		if ( ! function_exists( 'rest_do_request' ) || ! class_exists( 'WP_REST_Request' ) ) {
 			return 'unknown';
 		}
@@ -133,6 +182,14 @@ final class WPHS_Security_Check {
 		wp_set_current_user( 0 );
 
 		try {
+			// Security plugins usually block anonymous REST access here; rest_do_request() skips it.
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core filter.
+			$auth = apply_filters( 'rest_authentication_errors', null );
+
+			if ( is_wp_error( $auth ) ) {
+				return 'pass';
+			}
+
 			$request = new WP_REST_Request( 'GET', '/wp/v2/users' );
 			$request->set_query_params( array( 'per_page' => 1 ) );
 			$response = rest_do_request( $request );
@@ -143,13 +200,7 @@ final class WPHS_Security_Check {
 		$code = (int) $response->get_status();
 
 		if ( 200 === $code ) {
-			$data = $response->get_data();
-
-			if ( is_array( $data ) && ! empty( $data ) && isset( $data[0] ) && is_array( $data[0] ) && ( isset( $data[0]['id'] ) || isset( $data[0]['slug'] ) ) ) {
-				return 'fail';
-			}
-
-			return 'pass';
+			return self::lists_users( $response->get_data() ) ? 'fail' : 'pass';
 		}
 
 		if ( in_array( $code, array( 401, 403, 404 ), true ) ) {
@@ -157,6 +208,10 @@ final class WPHS_Security_Check {
 		}
 
 		return 'unknown';
+	}
+
+	private static function lists_users( $data ) {
+		return is_array( $data ) && isset( $data[0] ) && is_array( $data[0] ) && ( isset( $data[0]['id'] ) || isset( $data[0]['slug'] ) );
 	}
 
 	private static function admin_status() {
