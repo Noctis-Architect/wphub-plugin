@@ -18,7 +18,7 @@ $has_failures = ! empty( $security['failures'] );
 	<?php if ( $has_failures ) : ?>
 		<ul class="wphs-security-list">
 			<?php foreach ( $security['failures'] as $failure ) : ?>
-				<li>
+				<li<?php if ( 'rest_users' === $failure['key'] ) : ?> data-wphs-edge-check="rest_users" data-url="<?php echo esc_url( add_query_arg( 'per_page', 1, rest_url( 'wp/v2/users' ) ) ); ?>"<?php endif; ?>>
 					<span class="wphs-security-dot" aria-hidden="true"></span>
 					<span><?php echo esc_html( $failure['label'] ); ?></span>
 				</li>

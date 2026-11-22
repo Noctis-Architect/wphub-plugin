@@ -66,6 +66,7 @@ delete_option( 'wphs_last_run' );
 // Keys and AI provider credentials are always removed, whatever the data setting.
 delete_option( 'wphs_writer' );
 delete_option( 'wphs_content' );
+delete_option( 'wphs_security_edge' );
 delete_transient( 'wphs_ai_tested' );
 
 // Cloud sync state, the outage fallback record and per-user notice choices.

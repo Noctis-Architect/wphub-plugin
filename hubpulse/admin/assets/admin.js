@@ -524,6 +524,54 @@
 		});
 	});
 
+	/* ───────── security: re-check from the visitor's side ───────── */
+
+	// The server checks itself without passing the CDN or edge firewall. Ask the same URL
+	// from this browser with no cookies, the way any outsider would, and trust a block.
+	function edgeCheck(item) {
+		var url = item.getAttribute('data-url');
+		if (!url || !window.fetch) {
+			return;
+		}
+		fetch(url, { credentials: 'omit', cache: 'no-store', redirect: 'manual', headers: { Accept: 'application/json' } })
+			.then(function (res) {
+				if (res.type === 'opaqueredirect' || (res.status >= 400 && res.status < 500)) {
+					return 'blocked';
+				}
+				if (res.status !== 200) {
+					return null;
+				}
+				return res.json().then(function (data) {
+					var listed = Array.isArray(data) && data[0] && typeof data[0] === 'object' && ('id' in data[0] || 'slug' in data[0]);
+					return listed ? 'open' : 'blocked';
+				}, function () {
+					return 'blocked';
+				});
+			})
+			.then(function (result) {
+				if (!result) {
+					return;
+				}
+				return call('security_edge', { check: item.getAttribute('data-wphs-edge-check'), result: result }).then(function () {
+					if (result !== 'blocked') {
+						return;
+					}
+					var listEl = item.parentNode;
+					var card = item.closest('.wphs-security-check');
+					item.remove();
+					if (listEl && !listEl.children.length && card) {
+						var pass = el('p', { class: 'wphs-security-pass' }, t.secPass);
+						listEl.parentNode.replaceChild(pass, listEl);
+						card.classList.remove('is-warn');
+						card.classList.add('is-ok');
+					}
+				});
+			})
+			.catch(function () {});
+	}
+
+	$all('[data-wphs-edge-check]').forEach(edgeCheck);
+
 	if (list) {
 		loadArticles();
 	}

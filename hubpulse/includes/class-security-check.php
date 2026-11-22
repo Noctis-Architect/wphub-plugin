@@ -5,6 +5,8 @@ final class WPHS_Security_Check {
 
 	const TRANSIENT = 'wphs_security_check';
 	const TTL       = 12 * HOUR_IN_SECONDS;
+	const EDGE      = 'wphs_security_edge';
+	const EDGE_TTL  = 7 * DAY_IN_SECONDS;
 
 	public static function results( $force = false ) {
 		if ( ! $force ) {
@@ -38,6 +40,12 @@ final class WPHS_Security_Check {
 		}
 
 		$rest = self::rest_users_status();
+
+		// The server reaches itself without passing the CDN or edge firewall, so it can see a
+		// list that outsiders cannot. Trust a recent block seen from the admin's own browser.
+		if ( 'fail' === $rest && self::edge_blocked( 'rest_users' ) ) {
+			$rest = 'pass';
+		}
 
 		if ( 'fail' === $rest ) {
 			$failures[] = array(
@@ -133,6 +141,58 @@ final class WPHS_Security_Check {
 	 * to an internal request that still honours the rest_authentication_errors filter
 	 * most security plugins use to block the API.
 	 */
+	private static function edge_blocked( $key ) {
+		$edge = get_option( self::EDGE, array() );
+
+		return is_array( $edge ) && isset( $edge[ $key ] ) && ( time() - (int) $edge[ $key ] ) < self::EDGE_TTL;
+	}
+
+	/**
+	 * Stores what the admin's browser saw when it requested a check URL anonymously
+	 * (no cookies) through the public route: CDN, edge firewall and server rules included.
+	 */
+	public static function ajax_edge() {
+		check_ajax_referer( 'wphs_writer', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => __( 'You are not allowed to do this.', 'hubpulse' ) ), 403 );
+		}
+
+		$check  = isset( $_POST['check'] ) ? sanitize_key( wp_unslash( $_POST['check'] ) ) : '';
+		$result = isset( $_POST['result'] ) ? sanitize_key( wp_unslash( $_POST['result'] ) ) : '';
+
+		if ( 'rest_users' !== $check || ! in_array( $result, array( 'blocked', 'open' ), true ) ) {
+			wp_send_json_error( array( 'message' => __( 'Invalid request.', 'hubpulse' ) ), 400 );
+		}
+
+		$edge = get_option( self::EDGE, array() );
+		$edge = is_array( $edge ) ? $edge : array();
+
+		if ( 'blocked' === $result ) {
+			$edge[ $check ] = time();
+		} else {
+			unset( $edge[ $check ] );
+		}
+
+		update_option( self::EDGE, $edge, false );
+
+		$cached = get_transient( self::TRANSIENT );
+
+		if ( 'blocked' === $result && is_array( $cached ) && isset( $cached['failures'] ) ) {
+			$cached['failures'] = array_values(
+				array_filter(
+					$cached['failures'],
+					function ( $failure ) use ( $check ) {
+						return $check !== $failure['key'];
+					}
+				)
+			);
+			set_transient( self::TRANSIENT, $cached, self::TTL );
+		}
+
+		wp_send_json_success( array( 'result' => $result ) );
+	}
+
 	private static function rest_users_status() {
 		$remote = self::rest_users_remote();
 

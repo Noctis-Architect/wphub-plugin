@@ -11,6 +11,7 @@ final class WPHS_Admin {
 		add_action( 'admin_post_wphs_cloud_sync', array( __CLASS__, 'cloud_sync' ) );
 		add_action( 'admin_post_wphs_purge_local', array( __CLASS__, 'purge_local' ) );
 		add_action( 'admin_post_wphs_security_recheck', array( __CLASS__, 'security_recheck' ) );
+		add_action( 'wp_ajax_wphs_security_edge', array( 'WPHS_Security_Check', 'ajax_edge' ) );
 		add_action( 'admin_post_wphs_cloud_restore', array( __CLASS__, 'cloud_restore' ) );
 		add_action( 'admin_post_wphs_cloud_stay_local', array( __CLASS__, 'cloud_stay_local' ) );
 		add_action( 'admin_post_wphs_dismiss_national_net', array( __CLASS__, 'dismiss_national_net' ) );
@@ -134,6 +135,7 @@ final class WPHS_Admin {
 					'close'        => __( 'Close', 'hubpulse' ),
 					/* translators: Used as "3 of 10" for the remaining article quota. */
 					'of'           => __( 'of', 'hubpulse' ),
+					'secPass'      => __( 'All basic checks passed.', 'hubpulse' ),
 					'conn'         => array(
 						'connected' => __( 'Connected', 'hubpulse' ),
 						'error'     => __( 'Error', 'hubpulse' ),
@@ -403,6 +405,7 @@ final class WPHS_Admin {
 		self::guard( 'wphs_security_recheck' );
 
 		delete_transient( 'wphs_security_check' );
+		delete_option( 'wphs_security_edge' );
 
 		$back = wp_get_referer();
 
