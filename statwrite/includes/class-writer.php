@@ -3,7 +3,7 @@
  * AI Writer: write articles with the WP-Hub console (site key, console quota) or with
  * the administrator's own OpenAI-compatible provider (manual mode, no WP-Hub needed).
  *
- * @package Hubpulse
+ * @package Statwrite
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -109,20 +109,20 @@ final class WPHS_Writer {
 
 	public static function tones() {
 		return array(
-			'professional' => __( 'Professional', 'hubpulse' ),
-			'friendly'     => __( 'Friendly', 'hubpulse' ),
-			'educational'  => __( 'Educational', 'hubpulse' ),
-			'persuasive'   => __( 'Persuasive (sales)', 'hubpulse' ),
-			'formal'       => __( 'Formal', 'hubpulse' ),
-			'casual'       => __( 'Casual', 'hubpulse' ),
+			'professional' => __( 'Professional', 'statwrite' ),
+			'friendly'     => __( 'Friendly', 'statwrite' ),
+			'educational'  => __( 'Educational', 'statwrite' ),
+			'persuasive'   => __( 'Persuasive (sales)', 'statwrite' ),
+			'formal'       => __( 'Formal', 'statwrite' ),
+			'casual'       => __( 'Casual', 'statwrite' ),
 		);
 	}
 
 	public static function lengths() {
 		return array(
-			'short'  => __( 'Short (about 800 words)', 'hubpulse' ),
-			'medium' => __( 'Medium (about 1,500 words)', 'hubpulse' ),
-			'long'   => __( 'Long (about 2,500 words)', 'hubpulse' ),
+			'short'  => __( 'Short (about 800 words)', 'statwrite' ),
+			'medium' => __( 'Medium (about 1,500 words)', 'statwrite' ),
+			'long'   => __( 'Long (about 2,500 words)', 'statwrite' ),
 		);
 	}
 
@@ -148,7 +148,7 @@ final class WPHS_Writer {
 	 */
 	public static function save() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'hubpulse' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'statwrite' ) );
 		}
 
 		check_admin_referer( 'wphs_writer_save' );
@@ -236,7 +236,7 @@ final class WPHS_Writer {
 
 	private static function redirect( $msg, $tab = '' ) {
 		$args = array(
-			'page'      => 'hubpulse-writer',
+			'page'      => 'statwrite-writer',
 			'wphs_msg'  => $msg,
 		);
 
@@ -254,7 +254,7 @@ final class WPHS_Writer {
 		check_ajax_referer( 'wphs_writer', 'nonce' );
 
 		if ( ! current_user_can( $cap ) ) {
-			wp_send_json_error( array( 'message' => __( 'You do not have permission to do this.', 'hubpulse' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'You do not have permission to do this.', 'statwrite' ) ), 403 );
 		}
 	}
 
@@ -296,7 +296,7 @@ final class WPHS_Writer {
 		$key = trim( self::post_text( 'key', 200 ) );
 
 		if ( ! preg_match( '/^[A-Za-z0-9._\-]{16,200}$/', $key ) ) {
-			wp_send_json_error( array( 'message' => __( 'This does not look like a site key. Copy the whole key from the console.', 'hubpulse' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'This does not look like a site key. Copy the whole key from the console.', 'statwrite' ) ), 400 );
 		}
 
 		WPHS_Settings::set_token( $key );
@@ -344,11 +344,11 @@ final class WPHS_Writer {
 	 */
 	public static function link_console() {
 		if ( ! WPHS_Cloud::has_token() ) {
-			return array( 'ok' => false, 'message' => __( 'Add the site key first.', 'hubpulse' ), 'data' => array() );
+			return array( 'ok' => false, 'message' => __( 'Add the site key first.', 'statwrite' ), 'data' => array() );
 		}
 
 		if ( WPHS_Content_API::standalone_connector_active() ) {
-			return array( 'ok' => false, 'message' => __( 'Deactivate the separate "WP-Hub Content Connector" plugin first; Hubpulse now includes it.', 'hubpulse' ), 'data' => array() );
+			return array( 'ok' => false, 'message' => __( 'Deactivate the separate "WP-Hub Content Connector" plugin first; Statwrite now includes it.', 'statwrite' ), 'data' => array() );
 		}
 
 		$secret = WPHS_Content_API::new_secret();
@@ -378,7 +378,7 @@ final class WPHS_Writer {
 			return array(
 				'ok'      => true,
 				/* translators: %s: error message from the console. */
-				'message' => sprintf( __( 'Connected, but the console could not reach this site yet: %s', 'hubpulse' ), $test['message'] ),
+				'message' => sprintf( __( 'Connected, but the console could not reach this site yet: %s', 'statwrite' ), $test['message'] ),
 				'data'    => array(),
 			);
 		}
@@ -443,7 +443,7 @@ final class WPHS_Writer {
 		}
 
 		if ( mb_strlen( $body['title'] ) < 4 ) {
-			wp_send_json_error( array( 'message' => __( 'Enter the article topic or title.', 'hubpulse' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'Enter the article topic or title.', 'statwrite' ) ), 400 );
 		}
 
 		self::console_reply( WPHS_Cloud::api( 'POST', 'api/v1/site/content/articles', array_filter( $body, array( __CLASS__, 'not_empty' ) ), 30 ) );
@@ -480,7 +480,7 @@ final class WPHS_Writer {
 		// saved address: the stored key is never sent to a URL typed into this request.
 		if ( '' === $cfg['api_key'] || false !== strpos( $cfg['api_key'], '•' ) ) {
 			if ( untrailingslashit( $cfg['base_url'] ) !== untrailingslashit( (string) $s['base_url'] ) ) {
-				wp_send_json_error( array( 'message' => __( 'Enter the API key for this new address before testing it.', 'hubpulse' ) ), 400 );
+				wp_send_json_error( array( 'message' => __( 'Enter the API key for this new address before testing it.', 'statwrite' ) ), 400 );
 			}
 
 			$cfg['api_key'] = $s['api_key'];
@@ -518,7 +518,7 @@ final class WPHS_Writer {
 		self::ajax_guard( 'publish_posts' );
 
 		if ( ! self::manual_ready() ) {
-			wp_send_json_error( array( 'message' => __( 'Set up your AI provider first.', 'hubpulse' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'Set up your AI provider first.', 'statwrite' ) ), 400 );
 		}
 
 		$s     = self::settings();
@@ -536,7 +536,7 @@ final class WPHS_Writer {
 		);
 
 		if ( mb_strlen( $brief['title'] ) < 4 ) {
-			wp_send_json_error( array( 'message' => __( 'Enter the article topic or title.', 'hubpulse' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'Enter the article topic or title.', 'statwrite' ) ), 400 );
 		}
 
 		$result = WPHS_AI_Provider::chat(
@@ -557,7 +557,7 @@ final class WPHS_Writer {
 		$article = self::parse_article( $result['text'] );
 
 		if ( ! $article ) {
-			wp_send_json_error( array( 'message' => __( 'The model did not return a usable article. Try again, or raise the output token limit.', 'hubpulse' ) ), 502 );
+			wp_send_json_error( array( 'message' => __( 'The model did not return a usable article. Try again, or raise the output token limit.', 'statwrite' ) ), 502 );
 		}
 
 		$post_id = self::save_post( $article, $brief, $s );

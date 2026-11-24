@@ -33,7 +33,7 @@ if ( $wphs_delete ) {
 }
 
 $wphs_uploads = wp_upload_dir( null, false );
-$wphs_base    = untrailingslashit( $wphs_uploads['basedir'] ) . '/hubpulse';
+$wphs_base    = untrailingslashit( $wphs_uploads['basedir'] ) . '/statwrite';
 
 foreach ( is_dir( $wphs_base ) ? (array) scandir( $wphs_base ) : array() as $wphs_entry ) {
 	$wphs_dir = $wphs_base . '/' . $wphs_entry;

@@ -8,7 +8,7 @@ $overview_error = isset( $overview_error ) ? (string) $overview_error : '';
 $overview_stale = ! empty( $overview_stale );
 
 $console_url  = WPHS_Settings::console_url();
-$settings_url = add_query_arg( array( 'page' => 'hubpulse-settings' ), admin_url( 'admin.php' ) );
+$settings_url = add_query_arg( array( 'page' => 'statwrite-settings' ), admin_url( 'admin.php' ) );
 
 $site       = is_array( $overview['site'] ?? null ) ? $overview['site'] : array();
 $speed      = is_array( $overview['speed'] ?? null ) ? $overview['speed'] : array();
@@ -45,7 +45,7 @@ $fmt_seconds = static function ( $ms ) {
 		return '—';
 	}
 
-	return number_format_i18n( (float) $ms / 1000, 2 ) . ' ' . __( 'sec', 'hubpulse' );
+	return number_format_i18n( (float) $ms / 1000, 2 ) . ' ' . __( 'sec', 'statwrite' );
 };
 
 $fmt_ms = static function ( $ms ) {
@@ -70,10 +70,10 @@ $security_score = $security ? ( $security['security_score'] ?? ( $security['scor
 $security_grade = $security && ! empty( $security['grade'] ) ? (string) $security['grade'] : '';
 
 $count_defs = array(
-	'critical' => array( 'label' => __( 'Critical', 'hubpulse' ), 'class' => 'is-critical' ),
-	'high'     => array( 'label' => __( 'High', 'hubpulse' ), 'class' => 'is-high' ),
-	'medium'   => array( 'label' => __( 'Medium', 'hubpulse' ), 'class' => 'is-medium' ),
-	'low'      => array( 'label' => __( 'Low', 'hubpulse' ), 'class' => 'is-low' ),
+	'critical' => array( 'label' => __( 'Critical', 'statwrite' ), 'class' => 'is-critical' ),
+	'high'     => array( 'label' => __( 'High', 'statwrite' ), 'class' => 'is-high' ),
+	'medium'   => array( 'label' => __( 'Medium', 'statwrite' ), 'class' => 'is-medium' ),
+	'low'      => array( 'label' => __( 'Low', 'statwrite' ), 'class' => 'is-low' ),
 );
 
 $has_counts = false;
@@ -88,9 +88,9 @@ if ( $security ) {
 }
 
 $component_defs = array(
-	'headers_score'         => __( 'Headers', 'hubpulse' ),
-	'ssl_score'             => __( 'SSL', 'hubpulse' ),
-	'vulnerabilities_score' => __( 'Vulnerabilities', 'hubpulse' ),
+	'headers_score'         => __( 'Headers', 'statwrite' ),
+	'ssl_score'             => __( 'SSL', 'statwrite' ),
+	'vulnerabilities_score' => __( 'Vulnerabilities', 'statwrite' ),
 );
 $has_components = false;
 
@@ -105,47 +105,47 @@ if ( $security ) {
 
 $monitor_status = $monitoring && ! empty( $monitoring['status'] ) ? (string) $monitoring['status'] : 'unknown';
 $monitor_class  = 'up' === $monitor_status ? 'is-up' : ( 'down' === $monitor_status ? 'is-down' : 'is-unknown' );
-$monitor_label  = 'up' === $monitor_status ? __( 'Online', 'hubpulse' ) : ( 'down' === $monitor_status ? __( 'Offline', 'hubpulse' ) : __( 'Unknown', 'hubpulse' ) );
+$monitor_label  = 'up' === $monitor_status ? __( 'Online', 'statwrite' ) : ( 'down' === $monitor_status ? __( 'Offline', 'statwrite' ) : __( 'Unknown', 'statwrite' ) );
 
 $security_link = $security && ! empty( $security['url'] ) ? $security['url'] : $console_url;
 $monitor_link  = $monitoring && ! empty( $monitoring['url'] ) ? $monitoring['url'] : $console_url;
 ?>
 <section class="wphs-site-section">
 	<div class="wphs-section-head">
-		<h2><?php esc_html_e( 'Site status', 'hubpulse' ); ?></h2>
+		<h2><?php esc_html_e( 'Site status', 'statwrite' ); ?></h2>
 		<div class="wphs-section-links">
 			<?php if ( ! empty( $site['domain'] ) ) : ?>
 				<span class="wphs-muted"><?php echo esc_html( $site['domain'] ); ?></span>
 			<?php endif; ?>
-			<a href="<?php echo esc_url( $console_url ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Open console', 'hubpulse' ); ?></a>
+			<a href="<?php echo esc_url( $console_url ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Open console', 'statwrite' ); ?></a>
 		</div>
 	</div>
 
 	<?php if ( ! $overview && '' !== $overview_error ) : ?>
 		<div class="wphs-notice is-error">
-			<?php esc_html_e( 'Failed to fetch site status from the console:', 'hubpulse' ); ?> <?php echo esc_html( $overview_error ); ?>
-			<a href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Check connection', 'hubpulse' ); ?></a>
+			<?php esc_html_e( 'Failed to fetch site status from the console:', 'statwrite' ); ?> <?php echo esc_html( $overview_error ); ?>
+			<a href="<?php echo esc_url( $settings_url ); ?>"><?php esc_html_e( 'Check connection', 'statwrite' ); ?></a>
 		</div>
 	<?php else : ?>
 		<?php if ( $overview_stale && '' !== $overview_error ) : ?>
-			<div class="wphs-notice"><?php esc_html_e( 'Could not reach the console; showing the last saved data.', 'hubpulse' ); ?></div>
+			<div class="wphs-notice"><?php esc_html_e( 'Could not reach the console; showing the last saved data.', 'statwrite' ); ?></div>
 		<?php endif; ?>
 
 		<div class="wphs-site-grid">
 			<div class="wphs-card wphs-site-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Latest speed test', 'hubpulse' ); ?></h2>
-					<span class="wphs-muted"><?php esc_html_e( 'Mobile and desktop', 'hubpulse' ); ?></span>
+					<h2><?php esc_html_e( 'Latest speed test', 'statwrite' ); ?></h2>
+					<span class="wphs-muted"><?php esc_html_e( 'Mobile and desktop', 'statwrite' ); ?></span>
 				</div>
 
 				<?php if ( ! $mobile && ! $desktop ) : ?>
-					<div class="wphs-empty"><?php esc_html_e( 'No speed test recorded yet.', 'hubpulse' ); ?></div>
+					<div class="wphs-empty"><?php esc_html_e( 'No speed test recorded yet.', 'statwrite' ); ?></div>
 				<?php else : ?>
 					<div class="wphs-speed-grid">
 						<?php
 						foreach ( array(
-							'mobile'  => __( 'Mobile', 'hubpulse' ),
-							'desktop' => __( 'Desktop', 'hubpulse' ),
+							'mobile'  => __( 'Mobile', 'statwrite' ),
+							'desktop' => __( 'Desktop', 'statwrite' ),
 						) as $key => $label ) :
 							$strategy_data = 'mobile' === $key ? $mobile : $desktop;
 							?>
@@ -158,32 +158,32 @@ $monitor_link  = $monitoring && ! empty( $monitoring['url'] ) ? $monitoring['url
 										<span>CLS <b><?php echo esc_html( $fmt_cls( $strategy_data['cls'] ?? null ) ); ?></b></span>
 										<span>TBT <b><?php echo esc_html( $fmt_ms( $strategy_data['tbt_ms'] ?? null ) ); ?></b></span>
 									</div>
-									<div class="wphs-muted"><?php esc_html_e( 'Tested:', 'hubpulse' ); ?> <?php echo esc_html( $fmt_date( $strategy_data['created_at'] ?? null ) ); ?></div>
+									<div class="wphs-muted"><?php esc_html_e( 'Tested:', 'statwrite' ); ?> <?php echo esc_html( $fmt_date( $strategy_data['created_at'] ?? null ) ); ?></div>
 								<?php else : ?>
-									<div class="wphs-empty"><?php esc_html_e( 'No test recorded', 'hubpulse' ); ?></div>
+									<div class="wphs-empty"><?php esc_html_e( 'No test recorded', 'statwrite' ); ?></div>
 								<?php endif; ?>
 							</div>
 						<?php endforeach; ?>
 					</div>
 				<?php endif; ?>
 
-				<a class="wphs-card-link" href="<?php echo esc_url( $console_url ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Speed test details in the console', 'hubpulse' ); ?></a>
+				<a class="wphs-card-link" href="<?php echo esc_url( $console_url ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Speed test details in the console', 'statwrite' ); ?></a>
 			</div>
 
 			<div class="wphs-card wphs-site-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Latest security test', 'hubpulse' ); ?></h2>
-					<span class="wphs-muted"><?php esc_html_e( 'If available', 'hubpulse' ); ?></span>
+					<h2><?php esc_html_e( 'Latest security test', 'statwrite' ); ?></h2>
+					<span class="wphs-muted"><?php esc_html_e( 'If available', 'statwrite' ); ?></span>
 				</div>
 
 				<?php if ( ! $security ) : ?>
-					<div class="wphs-empty"><?php esc_html_e( 'No security test recorded yet.', 'hubpulse' ); ?></div>
+					<div class="wphs-empty"><?php esc_html_e( 'No security test recorded yet.', 'statwrite' ); ?></div>
 				<?php else : ?>
 					<div class="wphs-security-summary">
 						<div class="wphs-score <?php echo esc_attr( $score_class( $security_score ) ); ?>"><?php echo esc_html( $fmt_score( $security_score ) ); ?></div>
 						<div>
 							<div class="wphs-security-grade">
-								<?php esc_html_e( 'Security score', 'hubpulse' ); ?>
+								<?php esc_html_e( 'Security score', 'statwrite' ); ?>
 								<?php if ( '' !== $security_grade ) : ?>
 									<span class="wphs-badge"><?php echo esc_html( $security_grade ); ?></span>
 								<?php endif; ?>
@@ -197,7 +197,7 @@ $monitor_link  = $monitoring && ! empty( $monitoring['url'] ) ? $monitoring['url
 									<?php endforeach; ?>
 								</div>
 							<?php endif; ?>
-							<div class="wphs-muted"><?php esc_html_e( 'Tested:', 'hubpulse' ); ?> <?php echo esc_html( $fmt_date( $security['created_at'] ?? null ) ); ?></div>
+							<div class="wphs-muted"><?php esc_html_e( 'Tested:', 'statwrite' ); ?> <?php echo esc_html( $fmt_date( $security['created_at'] ?? null ) ); ?></div>
 						</div>
 					</div>
 
@@ -212,22 +212,22 @@ $monitor_link  = $monitoring && ! empty( $monitoring['url'] ) ? $monitoring['url
 					<?php endif; ?>
 				<?php endif; ?>
 
-				<a class="wphs-card-link" href="<?php echo esc_url( $security_link ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Security test details in the console', 'hubpulse' ); ?></a>
+				<a class="wphs-card-link" href="<?php echo esc_url( $security_link ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Security test details in the console', 'statwrite' ); ?></a>
 			</div>
 
 			<div class="wphs-card wphs-site-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Monitoring', 'hubpulse' ); ?></h2>
-					<span class="wphs-muted"><?php esc_html_e( '24 hours', 'hubpulse' ); ?></span>
+					<h2><?php esc_html_e( 'Monitoring', 'statwrite' ); ?></h2>
+					<span class="wphs-muted"><?php esc_html_e( '24 hours', 'statwrite' ); ?></span>
 				</div>
 
 				<?php if ( ! $monitoring ) : ?>
-					<div class="wphs-empty"><?php esc_html_e( 'Monitoring is not active or no data has been recorded.', 'hubpulse' ); ?></div>
+					<div class="wphs-empty"><?php esc_html_e( 'Monitoring is not active or no data has been recorded.', 'statwrite' ); ?></div>
 				<?php else : ?>
 					<div class="wphs-status-pill <?php echo esc_attr( $monitor_class ); ?>"><i></i><?php echo esc_html( $monitor_label ); ?></div>
 					<div class="wphs-metrics">
 						<?php if ( isset( $monitoring['uptime_24h'] ) && is_numeric( $monitoring['uptime_24h'] ) ) : ?>
-							<span><?php esc_html_e( 'Uptime', 'hubpulse' ); ?> <b><?php echo esc_html( number_format_i18n( (float) $monitoring['uptime_24h'], 1 ) . '%' ); ?></b></span>
+							<span><?php esc_html_e( 'Uptime', 'statwrite' ); ?> <b><?php echo esc_html( number_format_i18n( (float) $monitoring['uptime_24h'], 1 ) . '%' ); ?></b></span>
 						<?php endif; ?>
 						<?php if ( isset( $monitoring['avg_ttfb_ms'] ) && is_numeric( $monitoring['avg_ttfb_ms'] ) ) : ?>
 							<span>TTFB <b><?php echo esc_html( $fmt_ms( $monitoring['avg_ttfb_ms'] ) ); ?></b></span>
@@ -236,17 +236,17 @@ $monitor_link  = $monitoring && ! empty( $monitoring['url'] ) ? $monitoring['url
 							<span>SSL <b>
 							<?php
 							/* translators: %s: number of days. */
-							echo esc_html( sprintf( _n( '%s day', '%s days', (int) $monitoring['ssl_days_remaining'], 'hubpulse' ), number_format_i18n( (int) $monitoring['ssl_days_remaining'] ) ) );
+							echo esc_html( sprintf( _n( '%s day', '%s days', (int) $monitoring['ssl_days_remaining'], 'statwrite' ), number_format_i18n( (int) $monitoring['ssl_days_remaining'] ) ) );
 							?>
 							</b></span>
 						<?php elseif ( isset( $monitoring['ssl_valid'] ) ) : ?>
-							<span>SSL <b><?php echo $monitoring['ssl_valid'] ? esc_html__( 'Valid', 'hubpulse' ) : esc_html__( 'Invalid', 'hubpulse' ); ?></b></span>
+							<span>SSL <b><?php echo $monitoring['ssl_valid'] ? esc_html__( 'Valid', 'statwrite' ) : esc_html__( 'Invalid', 'statwrite' ); ?></b></span>
 						<?php endif; ?>
 					</div>
-					<div class="wphs-muted"><?php esc_html_e( 'Last check:', 'hubpulse' ); ?> <?php echo esc_html( $fmt_date( $monitoring['last_check'] ?? null ) ); ?></div>
+					<div class="wphs-muted"><?php esc_html_e( 'Last check:', 'statwrite' ); ?> <?php echo esc_html( $fmt_date( $monitoring['last_check'] ?? null ) ); ?></div>
 				<?php endif; ?>
 
-				<a class="wphs-card-link" href="<?php echo esc_url( $monitor_link ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Monitoring details in the console', 'hubpulse' ); ?></a>
+				<a class="wphs-card-link" href="<?php echo esc_url( $monitor_link ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Monitoring details in the console', 'statwrite' ); ?></a>
 			</div>
 		</div>
 	<?php endif; ?>

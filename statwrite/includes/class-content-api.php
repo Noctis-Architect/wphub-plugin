@@ -8,7 +8,7 @@
  * console issued for this site. Requests older than five minutes or re-using a nonce
  * are rejected. Nothing is exposed until the site owner connects the console.
  *
- * @package Hubpulse
+ * @package Statwrite
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -29,7 +29,7 @@ final class WPHS_Content_API {
 
 	/**
 	 * The standalone "WP-Hub Content Connector" plugin uses the same namespace; when it
-	 * is active it keeps serving the routes and Hubpulse stays out of the way.
+	 * is active it keeps serving the routes and Statwrite stays out of the way.
 	 */
 	public static function standalone_connector_active() {
 		return class_exists( 'WPHub_CC_REST' );
@@ -106,7 +106,7 @@ final class WPHS_Content_API {
 		$secret = (string) self::settings()['secret'];
 
 		if ( '' === $secret ) {
-			return new WP_Error( 'wphub_not_configured', __( 'The console is not connected to this site.', 'hubpulse' ), array( 'status' => 403 ) );
+			return new WP_Error( 'wphub_not_configured', __( 'The console is not connected to this site.', 'statwrite' ), array( 'status' => 403 ) );
 		}
 
 		$ts        = (string) $request->get_header( 'x_wphub_timestamp' );
@@ -114,11 +114,11 @@ final class WPHS_Content_API {
 		$signature = strtolower( (string) $request->get_header( 'x_wphub_signature' ) );
 
 		if ( '' === $ts || '' === $signature || ! ctype_digit( $ts ) || ! preg_match( '/^[a-f0-9]{16,64}$/', $nonce ) ) {
-			return new WP_Error( 'wphub_unsigned', __( 'The request is not signed.', 'hubpulse' ), array( 'status' => 401 ) );
+			return new WP_Error( 'wphub_unsigned', __( 'The request is not signed.', 'statwrite' ), array( 'status' => 401 ) );
 		}
 
 		if ( abs( time() - (int) $ts ) > self::MAX_SKEW ) {
-			return new WP_Error( 'wphub_clock', __( 'The server clock differs too much from the console; check the server time.', 'hubpulse' ), array( 'status' => 401 ) );
+			return new WP_Error( 'wphub_clock', __( 'The server clock differs too much from the console; check the server time.', 'statwrite' ), array( 'status' => 401 ) );
 		}
 
 		$route    = $request->get_route();
@@ -133,13 +133,13 @@ final class WPHS_Content_API {
 				self::log( 'rejected', $route );
 			}
 
-			return new WP_Error( 'wphub_bad_signature', __( 'Invalid request signature; reconnect the console.', 'hubpulse' ), array( 'status' => 401 ) );
+			return new WP_Error( 'wphub_bad_signature', __( 'Invalid request signature; reconnect the console.', 'statwrite' ), array( 'status' => 401 ) );
 		}
 
 		$nonce_key = 'wphs_cn_' . md5( $nonce );
 
 		if ( get_transient( $nonce_key ) ) {
-			return new WP_Error( 'wphub_replay', __( 'Repeated request rejected.', 'hubpulse' ), array( 'status' => 401 ) );
+			return new WP_Error( 'wphub_replay', __( 'Repeated request rejected.', 'statwrite' ), array( 'status' => 401 ) );
 		}
 
 		set_transient( $nonce_key, 1, self::MAX_SKEW * 2 );
@@ -401,7 +401,7 @@ final class WPHS_Content_API {
 
 		// Only posts that the console created may be overwritten.
 		if ( ! $post_id || ! get_post( $post_id ) || ! get_post_meta( $post_id, '_wphub_article_id', true ) ) {
-			return new WP_Error( 'wphub_not_found', __( 'This post was not created by WP-Hub.', 'hubpulse' ), array( 'status' => 404 ) );
+			return new WP_Error( 'wphub_not_found', __( 'This post was not created by WP-Hub.', 'statwrite' ), array( 'status' => 404 ) );
 		}
 
 		$postarr = self::prepare_postarr( $p, true );
@@ -437,7 +437,7 @@ final class WPHS_Content_API {
 		$status = isset( $p['status'] ) ? sanitize_key( $p['status'] ) : 'draft';
 
 		if ( ! in_array( $status, self::allowed_statuses(), true ) ) {
-			return new WP_Error( 'wphub_status_forbidden', __( 'Direct publishing is turned off in Hubpulse; send the article as a draft.', 'hubpulse' ), array( 'status' => 403 ) );
+			return new WP_Error( 'wphub_status_forbidden', __( 'Direct publishing is turned off in Statwrite; send the article as a draft.', 'statwrite' ), array( 'status' => 403 ) );
 		}
 
 		$postarr = array(
@@ -449,7 +449,7 @@ final class WPHS_Content_API {
 		);
 
 		if ( '' === $postarr['post_title'] || '' === $postarr['post_content'] ) {
-			return new WP_Error( 'wphub_invalid', __( 'The article title and content are required.', 'hubpulse' ), array( 'status' => 400 ) );
+			return new WP_Error( 'wphub_invalid', __( 'The article title and content are required.', 'statwrite' ), array( 'status' => 400 ) );
 		}
 
 		if ( ! empty( $p['slug'] ) ) {

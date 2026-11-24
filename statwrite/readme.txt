@@ -1,4 +1,4 @@
-=== Hubpulse – Analytics, AI Writer & Console Connector ===
+=== Statwrite – Analytics, AI Writer & Console Connector ===
 Contributors: mrnoctis
 Tags: analytics, ai writer, seo, privacy, cookieless
 Requires at least: 6.0
@@ -12,7 +12,7 @@ Cookie-free analytics and an AI article writer, with optional WP-Hub console rep
 
 == Description ==
 
-Hubpulse is the official WordPress plugin of WP-Hub (https://wp-hub.org). It gives you cookie-free visitor analytics and an AI article writer inside WordPress. Everything works without an account; connecting the optional WP-Hub console adds speed, security and uptime reports and a managed AI writer that needs no API key.
+Statwrite gives you cookie-free visitor analytics and an AI article writer inside WordPress. Everything works without an account; connecting the optional WP-Hub console (https://wp-hub.org) adds speed, security and uptime reports and a managed AI writer that needs no API key.
 
 = Analytics =
 
@@ -31,7 +31,7 @@ Write complete, SEO-ready articles and save them as drafts for review. Choose ho
 * **WP-Hub console (recommended):** connect a free site key and write from inside WordPress. The console studies your published posts, adds internal links and images from your media library, and fills in the SEO title, meta description, focus keyword and FAQ schema. Monthly limits come from your console plan. Nothing is published without your permission: by default the console can only create drafts.
 * **Your own AI provider (advanced):** use your own API key with OpenAI, Anthropic, Google Gemini, OpenRouter, DeepSeek, Groq, Mistral, AvalAI, GapGPT, Metis AI, a self-hosted model (Ollama, LM Studio) or any OpenAI-compatible API. On WordPress 7.0+ you can also use the AI provider connected in **Settings → Connectors**. You set the system prompt, site topic, business description, audience, brand voice, language, house rules, length, internal links and FAQ, and test the connection before writing. Requests go directly from your site to the provider you chose; WP-Hub is not involved.
 
-Works with Yoast SEO, Rank Math and All in One SEO. Without an SEO plugin, Hubpulse prints the meta description and FAQ schema for its own articles.
+Works with Yoast SEO, Rank Math and All in One SEO. Without an SEO plugin, Statwrite prints the meta description and FAQ schema for its own articles.
 
 = Free and paid =
 
@@ -73,19 +73,19 @@ Uninstalling the plugin removes its settings and temporary queue. Analytics tabl
 
 = فارسی =
 
-Hubpulse یک افزونهٔ سبک و بدون کوکی آمار بازدید است. به‌صورت پیش‌فرض همه‌چیز روی همان سایت ذخیره می‌شود و هیچ رویداد آماری به بیرون ارسال نمی‌شود. حالت ابری اختیاری است و برای آن به کلید اتصال از کنسول WP-Hub نیاز دارید. ربات‌ها با User-Agent و سیگنال‌های مرورگر فیلتر می‌شوند، DNT/GPC رعایت می‌شود و بازدید کاربران واردشده به‌صورت پیش‌فرض ثبت نمی‌شود. رابط مدیریت به انگلیسی است و ترجمهٔ فارسی همراه افزونه است و وقتی زبان پیشخوان فارسی باشد خودکار نمایش داده می‌شود.
+Statwrite یک افزونهٔ سبک و بدون کوکی آمار بازدید است. به‌صورت پیش‌فرض همه‌چیز روی همان سایت ذخیره می‌شود و هیچ رویداد آماری به بیرون ارسال نمی‌شود. حالت ابری اختیاری است و برای آن به کلید اتصال از کنسول WP-Hub نیاز دارید. ربات‌ها با User-Agent و سیگنال‌های مرورگر فیلتر می‌شوند، DNT/GPC رعایت می‌شود و بازدید کاربران واردشده به‌صورت پیش‌فرض ثبت نمی‌شود. رابط مدیریت به انگلیسی است و ترجمهٔ فارسی همراه افزونه است و وقتی زبان پیشخوان فارسی باشد خودکار نمایش داده می‌شود.
 
 == External services ==
 
-Hubpulse works fully without any external service. It contacts a remote service only after you turn on one of the features below.
+Statwrite works fully without any external service. It contacts a remote service only after you turn on one of the features below.
 
 **WP-Hub console** — https://console.wp-hub.org
 
 * Used only after you save a site key in **Settings** or the **AI Writer**.
 * Console reports: the dashboard requests the latest speed, security and uptime results for your site (sends the site key).
 * Console storage mode: every five minutes, or when you press "Send queue now", queued analytics events are sent: site URL and host, WordPress version, plugin version, timezone, page paths and titles, referrer host, channel, device, browser, operating system, country code, hashed visitor and session identifiers, visit grade, timestamps, engagement time, scroll depth, event counts, and the visitor IP address (used for country and datacenter classification, not stored).
-* AI Writer (console mode): when you save a site key, Hubpulse also generates a private content key on your site and registers it with the console over HTTPS; the console never sends keys back. With it, the console can call this site's signed REST routes (`/wp-json/wphub-content/v1/`) to read published posts, pages, products (WooCommerce), categories, tags and metadata of images that belong to published content, and to create drafts (or published posts, only if you allow it). Article topics and options you enter are sent to the console when you press "Write with the console".
-* Outage fallback: if the console does not answer at all for 6 hours while Console storage is active, Hubpulse switches back to on-site storage automatically, counts the queued visits locally and shows a notice; you choose when to return to the console.
+* AI Writer (console mode): when you save a site key, Statwrite also generates a private content key on your site and registers it with the console over HTTPS; the console never sends keys back. With it, the console can call this site's signed REST routes (`/wp-json/wphub-content/v1/`) to read published posts, pages, products (WooCommerce), categories, tags and metadata of images that belong to published content, and to create drafts (or published posts, only if you allow it). Article topics and options you enter are sent to the console when you press "Write with the console".
+* Outage fallback: if the console does not answer at all for 6 hours while Console storage is active, Statwrite switches back to on-site storage automatically, counts the queued visits locally and shows a notice; you choose when to return to the console.
 * Terms of Use: https://wp-hub.org/terms
 * Privacy Policy: https://wp-hub.org/privacy
 
@@ -111,8 +111,8 @@ Hubpulse works fully without any external service. It contacts a remote service 
 
 1. Install the plugin from **Plugins → Add New**, or upload the ZIP file.
 2. Activate it. Analytics start immediately and are stored on your site.
-3. Optional: open **Hubpulse → Settings**, paste a free site key from https://console.wp-hub.org to add speed, security and uptime reports.
-4. Optional: open **Hubpulse → AI Writer** and choose the WP-Hub console or your own AI provider.
+3. Optional: open **Statwrite → Settings**, paste a free site key from https://console.wp-hub.org to add speed, security and uptime reports.
+4. Optional: open **Statwrite → AI Writer** and choose the WP-Hub console or your own AI provider.
 5. If you use a full-page cache, clear it once after activation so the tracker is included in cached pages.
 6. If WP-Cron is disabled, run the `wphs_aggregate` and `wphs_cloud_sync` events from a real cron job or use the manual buttons under **Settings → Diagnostics**.
 
@@ -128,11 +128,11 @@ No. Analytics and the AI Writer with your own provider work without an account. 
 
 = Is the AI Writer free? =
 
-With your own provider, Hubpulse itself is free; you pay your provider directly, or nothing for a self-hosted model. In console mode, the number of articles per month depends on your WP-Hub plan and is shown on the AI Writer screen.
+With your own provider, Statwrite itself is free; you pay your provider directly, or nothing for a self-hosted model. In console mode, the number of articles per month depends on your WP-Hub plan and is shown on the AI Writer screen.
 
 = What happens if the console cannot be reached? =
 
-Analytics are never lost. If the console gives no answer for 6 hours (for example during a regional internet outage), Hubpulse switches to on-site storage, counts the queued visits locally and shows a notice with a button to return to the console once it is reachable. Console article writing is unavailable until the connection returns.
+Analytics are never lost. If the console gives no answer for 6 hours (for example during a regional internet outage), Statwrite switches to on-site storage, counts the queued visits locally and shows a notice with a button to return to the console once it is reachable. Console article writing is unavailable until the connection returns.
 
 = Can the console publish to my site without asking? =
 
@@ -156,7 +156,7 @@ Yes. DNT and GPC are respected by default. You can change this in the settings.
 
 = How do I delete the data? =
 
-In console storage mode, use **Settings → Diagnostics → Purge old local data** to remove leftover local summaries. To drop the analytics tables on uninstall, enable **Settings → Advanced → Delete all Hubpulse data when the plugin is deleted**. Keys and AI provider credentials are always removed on uninstall.
+In console storage mode, use **Settings → Diagnostics → Purge old local data** to remove leftover local summaries. To drop the analytics tables on uninstall, enable **Settings → Advanced → Delete all Statwrite data when the plugin is deleted**. Keys and AI provider credentials are always removed on uninstall.
 
 = Does it work with caching plugins? =
 
@@ -168,11 +168,11 @@ The plugin uses the current site's database prefix. Multisite network activation
 
 = Does the plugin add a credit or link to my site? =
 
-No. Hubpulse adds nothing to your public pages except the cookie-free tracker script.
+No. Statwrite adds nothing to your public pages except the cookie-free tracker script.
 
 == Screenshots ==
 
-1. Hubpulse dashboard overview with pageviews, visitors, sessions, average engaged time, bounce rate, and traffic quality.
+1. Statwrite dashboard overview with pageviews, visitors, sessions, average engaged time, bounce rate, and traffic quality.
 2. Top pages, sources, devices and events.
 3. Settings: console connection, storage mode, privacy and data retention.
 4. AI Writer: choose the WP-Hub console or your own AI provider.
@@ -186,7 +186,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 == Changelog ==
 
 = 0.5.0 =
-* Renamed to Hubpulse (slug: hubpulse).
+* Renamed to Statwrite (slug: statwrite).
 * New AI Writer with two modes: the WP-Hub console (no API key, console quota) or your own AI provider (OpenAI-compatible presets, self-hosted models, or the WordPress 7 AI Client), with connection testing, model list, system prompt and detailed site profile.
 * The console can now read published content and send articles to the site through signed REST routes, replacing the separate WP-Hub Content Connector plugin. Drafts only unless you allow publishing.
 * SEO fields for Yoast SEO, Rank Math and All in One SEO, plus FAQ schema.
@@ -196,7 +196,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 * One site key connects everything: saving it also turns on console article writing, with no separate step. Disconnect removes it everywhere.
 * The plugin no longer hides WordPress and other plugins' notices on its pages.
 * Admin scripts and the menu icon style moved to enqueued files; no inline scripts or styles.
-* The temporary queue now lives in the uploads directory (`uploads/hubpulse/`), protected from direct access.
+* The temporary queue now lives in the uploads directory (`uploads/statwrite/`), protected from direct access.
 * Translations: the bundled Persian translation is loaded by WordPress automatically from the plugin's languages folder (no custom loader); translations from translate.wordpress.org take priority.
 * The content signing key is generated on your site and only registered with the console; it is never sent back.
 * Automatic fallback to on-site analytics after 6 hours without an answer from the console, with an admin notice to switch back.
@@ -205,7 +205,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 * WooCommerce products can be used as internal link targets.
 
 = 0.4.2 =
-* Source credit now reads "Traffic Analytics by Hubpulse" in both the HTML comment and the generator meta tag.
+* Source credit text updated in both the HTML comment and the generator meta tag.
 * Simpler visitor labels: "Browser detected", "No browser", and "Bot" replace the technical Verified, No-JS, and Suspect labels.
 
 = 0.4.1 =
@@ -232,7 +232,7 @@ The admin interface uses the Vazirmatn font, licensed under the SIL Open Font Li
 Adds the AI Writer (WP-Hub console or your own AI provider), simplifies settings, and removes the source credit.
 
 = 0.4.2 =
-Updates the source credit text to "Traffic Analytics by Hubpulse" and makes visitor labels simpler.
+Updates the source credit text and makes visitor labels simpler.
 
 = 0.4.1 =
 Improves tracker delivery on cached and CDN-protected sites, keeps the source credit in optimized HTML, and removes the separate visitor IP option. Cloud mode now includes the visitor IP.

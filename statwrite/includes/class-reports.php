@@ -25,10 +25,10 @@ final class WPHS_Reports {
 
 	public static function mode_options() {
 		return array(
-			'verified' => __( 'Browser detected', 'hubpulse' ),
-			'all'      => __( 'All', 'hubpulse' ),
-			'nojs'     => __( 'No browser', 'hubpulse' ),
-			'suspect'  => __( 'Bot', 'hubpulse' ),
+			'verified' => __( 'Browser detected', 'statwrite' ),
+			'all'      => __( 'All', 'statwrite' ),
+			'nojs'     => __( 'No browser', 'statwrite' ),
+			'suspect'  => __( 'Bot', 'statwrite' ),
 		);
 	}
 
@@ -42,13 +42,13 @@ final class WPHS_Reports {
 	public static function mode_hint( $mode ) {
 		switch ( self::valid_mode( $mode ) ) {
 			case 'all':
-				return __( 'All recorded visits, including browser-detected, no-browser, and bot traffic.', 'hubpulse' );
+				return __( 'All recorded visits, including browser-detected, no-browser, and bot traffic.', 'statwrite' );
 			case 'nojs':
-				return __( 'The browser was not recognized or JavaScript did not run.', 'hubpulse' );
+				return __( 'The browser was not recognized or JavaScript did not run.', 'statwrite' );
 			case 'suspect':
-				return __( 'Bot-like behavior was detected.', 'hubpulse' );
+				return __( 'Bot-like behavior was detected.', 'statwrite' );
 			default:
-				return __( 'Only visits where the browser was detected.', 'hubpulse' );
+				return __( 'Only visits where the browser was detected.', 'statwrite' );
 		}
 	}
 
@@ -458,11 +458,11 @@ final class WPHS_Reports {
 		}
 
 		$definitions = array(
-			array( 'key' => 'verified', 'grade' => 'v', 'label' => __( 'Browser detected', 'hubpulse' ), 'tone' => 'is-verified' ),
-			array( 'key' => 'nojs', 'grade' => 'u', 'label' => __( 'No browser', 'hubpulse' ), 'tone' => 'is-nojs' ),
-			array( 'key' => 'suspect', 'grade' => 's', 'label' => __( 'Bot', 'hubpulse' ), 'tone' => 'is-suspect' ),
-			array( 'key' => 'datacenter', 'grade' => 'd', 'label' => __( 'Server', 'hubpulse' ), 'tone' => 'is-datacenter' ),
-			array( 'key' => 'legacy', 'grade' => '', 'label' => __( 'Before breakdown', 'hubpulse' ), 'tone' => 'is-legacy' ),
+			array( 'key' => 'verified', 'grade' => 'v', 'label' => __( 'Browser detected', 'statwrite' ), 'tone' => 'is-verified' ),
+			array( 'key' => 'nojs', 'grade' => 'u', 'label' => __( 'No browser', 'statwrite' ), 'tone' => 'is-nojs' ),
+			array( 'key' => 'suspect', 'grade' => 's', 'label' => __( 'Bot', 'statwrite' ), 'tone' => 'is-suspect' ),
+			array( 'key' => 'datacenter', 'grade' => 'd', 'label' => __( 'Server', 'statwrite' ), 'tone' => 'is-datacenter' ),
+			array( 'key' => 'legacy', 'grade' => '', 'label' => __( 'Before breakdown', 'statwrite' ), 'tone' => 'is-legacy' ),
 		);
 
 		$total = 0;
@@ -533,7 +533,7 @@ final class WPHS_Reports {
 		if ( $seconds < 60 ) {
 			return sprintf(
 				/* translators: %s: number of seconds. */
-				_n( '%s second', '%s seconds', $seconds, 'hubpulse' ),
+				_n( '%s second', '%s seconds', $seconds, 'statwrite' ),
 				number_format_i18n( $seconds )
 			);
 		}
@@ -544,14 +544,14 @@ final class WPHS_Reports {
 		if ( 0 === $rest ) {
 			return sprintf(
 				/* translators: %s: number of minutes. */
-				_n( '%s minute', '%s minutes', $minutes, 'hubpulse' ),
+				_n( '%s minute', '%s minutes', $minutes, 'statwrite' ),
 				number_format_i18n( $minutes )
 			);
 		}
 
 		return sprintf(
 			/* translators: %1$s: minutes; %2$s: seconds. */
-			__( '%1$s min %2$s sec', 'hubpulse' ),
+			__( '%1$s min %2$s sec', 'statwrite' ),
 			number_format_i18n( $minutes ),
 			number_format_i18n( $rest )
 		);
@@ -559,14 +559,14 @@ final class WPHS_Reports {
 
 	public static function channel_label( $channel ) {
 		$labels = array(
-			'direct'   => __( 'Direct', 'hubpulse' ),
-			'search'   => __( 'Search', 'hubpulse' ),
-			'social'   => __( 'Social', 'hubpulse' ),
-			'referral' => __( 'Referral', 'hubpulse' ),
-			'paid'     => __( 'Paid', 'hubpulse' ),
-			'email'    => __( 'Email', 'hubpulse' ),
-			'campaign' => __( 'Campaign', 'hubpulse' ),
-			'internal' => __( 'Internal', 'hubpulse' ),
+			'direct'   => __( 'Direct', 'statwrite' ),
+			'search'   => __( 'Search', 'statwrite' ),
+			'social'   => __( 'Social', 'statwrite' ),
+			'referral' => __( 'Referral', 'statwrite' ),
+			'paid'     => __( 'Paid', 'statwrite' ),
+			'email'    => __( 'Email', 'statwrite' ),
+			'campaign' => __( 'Campaign', 'statwrite' ),
+			'internal' => __( 'Internal', 'statwrite' ),
 		);
 
 		return isset( $labels[ $channel ] ) ? $labels[ $channel ] : $channel;
@@ -574,9 +574,9 @@ final class WPHS_Reports {
 
 	public static function device_label( $device ) {
 		$labels = array(
-			'desktop' => __( 'Desktop', 'hubpulse' ),
-			'mobile'  => __( 'Mobile', 'hubpulse' ),
-			'tablet'  => __( 'Tablet', 'hubpulse' ),
+			'desktop' => __( 'Desktop', 'statwrite' ),
+			'mobile'  => __( 'Mobile', 'statwrite' ),
+			'tablet'  => __( 'Tablet', 'statwrite' ),
 		);
 
 		return isset( $labels[ $device ] ) ? $labels[ $device ] : $device;
@@ -584,14 +584,14 @@ final class WPHS_Reports {
 
 	public static function event_label( $event ) {
 		$labels = array(
-			'outbound'   => __( 'Outbound click', 'hubpulse' ),
-			'download'   => __( 'File download', 'hubpulse' ),
-			'form'       => __( 'Form submission', 'hubpulse' ),
-			'cart'       => __( 'Add to cart', 'hubpulse' ),
-			'scroll_25'  => __( 'Scroll 25%', 'hubpulse' ),
-			'scroll_50'  => __( 'Scroll 50%', 'hubpulse' ),
-			'scroll_75'  => __( 'Scroll 75%', 'hubpulse' ),
-			'scroll_100' => __( 'Scroll 100%', 'hubpulse' ),
+			'outbound'   => __( 'Outbound click', 'statwrite' ),
+			'download'   => __( 'File download', 'statwrite' ),
+			'form'       => __( 'Form submission', 'statwrite' ),
+			'cart'       => __( 'Add to cart', 'statwrite' ),
+			'scroll_25'  => __( 'Scroll 25%', 'statwrite' ),
+			'scroll_50'  => __( 'Scroll 50%', 'statwrite' ),
+			'scroll_75'  => __( 'Scroll 75%', 'statwrite' ),
+			'scroll_100' => __( 'Scroll 100%', 'statwrite' ),
 		);
 
 		return isset( $labels[ $event ] ) ? $labels[ $event ] : $event;

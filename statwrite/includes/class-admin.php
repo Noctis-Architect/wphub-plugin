@@ -27,7 +27,7 @@ final class WPHS_Admin {
 	public static function body_class( $classes ) {
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 
-		if ( $screen && false !== strpos( (string) $screen->id, 'hubpulse' ) ) {
+		if ( $screen && false !== strpos( (string) $screen->id, 'statwrite' ) ) {
 			$classes .= ' wphs-admin';
 		}
 
@@ -38,45 +38,45 @@ final class WPHS_Admin {
 		$cap = 'manage_options';
 
 		add_menu_page(
-			__( 'Hubpulse', 'hubpulse' ),
-			__( 'Hubpulse', 'hubpulse' ),
+			__( 'Statwrite', 'statwrite' ),
+			__( 'Statwrite', 'statwrite' ),
 			$cap,
-			'hubpulse',
+			'statwrite',
 			array( __CLASS__, 'render_dashboard' ),
 			self::menu_icon(),
 			3 // Right below Dashboard: visitor analytics is the first thing site owners check each day.
 		);
 
 		add_submenu_page(
-			'hubpulse',
-			__( 'Dashboard', 'hubpulse' ),
-			__( 'Dashboard', 'hubpulse' ),
+			'statwrite',
+			__( 'Dashboard', 'statwrite' ),
+			__( 'Dashboard', 'statwrite' ),
 			$cap,
-			'hubpulse',
+			'statwrite',
 			array( __CLASS__, 'render_dashboard' )
 		);
 
 		add_submenu_page(
-			'hubpulse',
-			__( 'AI Writer', 'hubpulse' ),
-			__( 'AI Writer', 'hubpulse' ),
+			'statwrite',
+			__( 'AI Writer', 'statwrite' ),
+			__( 'AI Writer', 'statwrite' ),
 			'publish_posts',
-			'hubpulse-writer',
+			'statwrite-writer',
 			array( __CLASS__, 'render_writer' )
 		);
 
 		add_submenu_page(
-			'hubpulse',
-			__( 'Settings', 'hubpulse' ),
-			__( 'Settings', 'hubpulse' ),
+			'statwrite',
+			__( 'Settings', 'statwrite' ),
+			__( 'Settings', 'statwrite' ),
 			$cap,
-			'hubpulse-settings',
+			'statwrite-settings',
 			array( __CLASS__, 'render_settings' )
 		);
 	}
 
 	public static function assets( $hook ) {
-		if ( false === strpos( (string) $hook, 'hubpulse' ) ) {
+		if ( false === strpos( (string) $hook, 'statwrite' ) ) {
 			return;
 		}
 
@@ -114,38 +114,38 @@ final class WPHS_Admin {
 				'presets' => $presets,
 				'prompt'  => WPHS_Writer::default_system_prompt(),
 				'i18n'    => array(
-					'working'      => __( 'Working…', 'hubpulse' ),
-					'testing'      => __( 'Testing the connection…', 'hubpulse' ),
-					'writing'      => __( 'Writing the article. This can take one to three minutes; keep this page open.', 'hubpulse' ),
-					'queued'       => __( 'The console is writing the article. You can stay here or come back later.', 'hubpulse' ),
-					'failed'       => __( 'Request failed. Try again.', 'hubpulse' ),
-					'confirmReset' => __( 'Replace the system prompt with the default text?', 'hubpulse' ),
-					'confirmPurge' => __( 'Purge local analytics data? This cannot be undone.', 'hubpulse' ),
-					'confirmOff'   => __( 'Remove the site key and disconnect from the console?', 'hubpulse' ),
-					'noModels'     => __( 'The provider did not list models; type the model name.', 'hubpulse' ),
-					'models'       => __( 'models loaded — pick one from the list.', 'hubpulse' ),
-					'preview'      => __( 'Preview', 'hubpulse' ),
-					'edit'         => __( 'Edit', 'hubpulse' ),
-					'sendDraft'    => __( 'Send as draft', 'hubpulse' ),
-					'publish'      => __( 'Publish now', 'hubpulse' ),
-					'view'         => __( 'View post', 'hubpulse' ),
-					'empty'        => __( 'No articles yet. Write your first one above.', 'hubpulse' ),
-					'words'        => __( 'words', 'hubpulse' ),
-					'close'        => __( 'Close', 'hubpulse' ),
+					'working'      => __( 'Working…', 'statwrite' ),
+					'testing'      => __( 'Testing the connection…', 'statwrite' ),
+					'writing'      => __( 'Writing the article. This can take one to three minutes; keep this page open.', 'statwrite' ),
+					'queued'       => __( 'The console is writing the article. You can stay here or come back later.', 'statwrite' ),
+					'failed'       => __( 'Request failed. Try again.', 'statwrite' ),
+					'confirmReset' => __( 'Replace the system prompt with the default text?', 'statwrite' ),
+					'confirmPurge' => __( 'Purge local analytics data? This cannot be undone.', 'statwrite' ),
+					'confirmOff'   => __( 'Remove the site key and disconnect from the console?', 'statwrite' ),
+					'noModels'     => __( 'The provider did not list models; type the model name.', 'statwrite' ),
+					'models'       => __( 'models loaded — pick one from the list.', 'statwrite' ),
+					'preview'      => __( 'Preview', 'statwrite' ),
+					'edit'         => __( 'Edit', 'statwrite' ),
+					'sendDraft'    => __( 'Send as draft', 'statwrite' ),
+					'publish'      => __( 'Publish now', 'statwrite' ),
+					'view'         => __( 'View post', 'statwrite' ),
+					'empty'        => __( 'No articles yet. Write your first one above.', 'statwrite' ),
+					'words'        => __( 'words', 'statwrite' ),
+					'close'        => __( 'Close', 'statwrite' ),
 					/* translators: Used as "3 of 10" for the remaining article quota. */
-					'of'           => __( 'of', 'hubpulse' ),
+					'of'           => __( 'of', 'statwrite' ),
 					'conn'         => array(
-						'connected' => __( 'Connected', 'hubpulse' ),
-						'error'     => __( 'Error', 'hubpulse' ),
-						'pending'   => __( 'Pending', 'hubpulse' ),
+						'connected' => __( 'Connected', 'statwrite' ),
+						'error'     => __( 'Error', 'statwrite' ),
+						'pending'   => __( 'Pending', 'statwrite' ),
 					),
 					'status'       => array(
-						'queued'         => __( 'Queued', 'hubpulse' ),
-						'generating'     => __( 'Writing…', 'hubpulse' ),
-						'ready'          => __( 'Ready to send', 'hubpulse' ),
-						'published'      => __( 'Sent to site', 'hubpulse' ),
-						'publish_failed' => __( 'Sending failed', 'hubpulse' ),
-						'failed'         => __( 'Failed', 'hubpulse' ),
+						'queued'         => __( 'Queued', 'statwrite' ),
+						'generating'     => __( 'Writing…', 'statwrite' ),
+						'ready'          => __( 'Ready to send', 'statwrite' ),
+						'published'      => __( 'Sent to site', 'statwrite' ),
+						'publish_failed' => __( 'Sending failed', 'statwrite' ),
+						'failed'         => __( 'Failed', 'statwrite' ),
 					),
 				),
 			)
@@ -155,7 +155,7 @@ final class WPHS_Admin {
 	public static function action_links( $links ) {
 		array_unshift(
 			$links,
-			'<a href="' . esc_url( admin_url( 'admin.php?page=hubpulse-settings' ) ) . '">' . esc_html__( 'Settings', 'hubpulse' ) . '</a>'
+			'<a href="' . esc_url( admin_url( 'admin.php?page=statwrite-settings' ) ) . '">' . esc_html__( 'Settings', 'statwrite' ) . '</a>'
 		);
 
 		return $links;
@@ -163,7 +163,7 @@ final class WPHS_Admin {
 
 	public static function render_writer() {
 		if ( ! current_user_can( 'publish_posts' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'hubpulse' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'statwrite' ) );
 		}
 
 		require WPHS_DIR . 'admin/views/writer.php';
@@ -175,7 +175,7 @@ final class WPHS_Admin {
 
 	public static function render_dashboard() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'hubpulse' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'statwrite' ) );
 		}
 
 		$token_set      = WPHS_Cloud::has_token();
@@ -215,7 +215,7 @@ final class WPHS_Admin {
 
 	public static function render_settings() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'hubpulse' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'statwrite' ) );
 		}
 
 		$settings = WPHS_Settings::all();
@@ -225,7 +225,7 @@ final class WPHS_Admin {
 
 	public static function save_settings() {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'hubpulse' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'statwrite' ) );
 		}
 
 		check_admin_referer( 'wphs_save_settings' );
@@ -245,7 +245,7 @@ final class WPHS_Admin {
 		wp_safe_redirect(
 			add_query_arg(
 				array(
-					'page'    => 'hubpulse-settings',
+					'page'    => 'statwrite-settings',
 					'updated' => 1,
 				),
 				admin_url( 'admin.php' )
@@ -268,7 +268,7 @@ final class WPHS_Admin {
 
 		WPHS_Settings::set_token( '' );
 
-		self::cloud_notice( 'success', __( 'The site key was removed and the console was disconnected.', 'hubpulse' ) );
+		self::cloud_notice( 'success', __( 'The site key was removed and the console was disconnected.', 'statwrite' ) );
 		self::back();
 	}
 
@@ -280,21 +280,21 @@ final class WPHS_Admin {
 		if ( $result['ok'] && 'sent' === $result['message'] ) {
 			$message = sprintf(
 				/* translators: %1$s: number of sent events; %2$s: number of queued events. */
-				__( '%1$s events were sent to the console; %2$s events remain queued.', 'hubpulse' ),
+				__( '%1$s events were sent to the console; %2$s events remain queued.', 'statwrite' ),
 				number_format_i18n( $result['sent'] ),
 				number_format_i18n( $result['pending'] )
 			);
 		} elseif ( $result['ok'] ) {
-			$message = __( 'The queue was empty; nothing to send.', 'hubpulse' );
+			$message = __( 'The queue was empty; nothing to send.', 'statwrite' );
 		} else {
 			$map = array(
-				'not_cloud' => __( 'Cloud mode is not active.', 'hubpulse' ),
-				'no_token'  => __( 'The site connection key is not set.', 'hubpulse' ),
-				'backoff'   => __( 'The next attempt is not allowed yet; try again later.', 'hubpulse' ),
-				'locked'    => __( 'Another process is already running.', 'hubpulse' ),
+				'not_cloud' => __( 'Cloud mode is not active.', 'statwrite' ),
+				'no_token'  => __( 'The site connection key is not set.', 'statwrite' ),
+				'backoff'   => __( 'The next attempt is not allowed yet; try again later.', 'statwrite' ),
+				'locked'    => __( 'Another process is already running.', 'statwrite' ),
 			);
 
-			$message = isset( $map[ $result['message'] ] ) ? $map[ $result['message'] ] : __( 'Sync failed: ', 'hubpulse' ) . $result['message'];
+			$message = isset( $map[ $result['message'] ] ) ? $map[ $result['message'] ] : __( 'Sync failed: ', 'statwrite' ) . $result['message'];
 		}
 
 		self::cloud_notice( $result['ok'] ? 'success' : 'error', $message );
@@ -304,8 +304,8 @@ final class WPHS_Admin {
 	/**
 	 * Outage fallback and national-internet notices.
 	 *
-	 * The fallback notice is shown on Hubpulse screens and the WordPress dashboard until the owner
-	 * decides; the national-internet warning is shown on Hubpulse screens while the site is
+	 * The fallback notice is shown on Statwrite screens and the WordPress dashboard until the owner
+	 * decides; the national-internet warning is shown on Statwrite screens while the site is
 	 * connected to the console.
 	 */
 	public static function connection_notices() {
@@ -315,35 +315,35 @@ final class WPHS_Admin {
 
 		$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : null;
 		$id     = $screen ? (string) $screen->id : '';
-		$ours   = false !== strpos( $id, 'hubpulse' );
+		$ours   = false !== strpos( $id, 'statwrite' );
 
 		$fallback = WPHS_Cloud::fallback_state();
 
 		if ( $fallback && ( $ours || 'dashboard' === $id ) ) {
 			$hours = max( 6, (int) round( ( (int) $fallback['at'] - (int) $fallback['since'] ) / HOUR_IN_SECONDS ) );
-			echo '<div class="notice notice-error wphs-fallback-notice"><p><strong>' . esc_html__( 'Hubpulse: the WP-Hub console did not answer, so analytics switched to local mode.', 'hubpulse' ) . '</strong></p><p>';
+			echo '<div class="notice notice-error wphs-fallback-notice"><p><strong>' . esc_html__( 'Statwrite: the WP-Hub console did not answer, so analytics switched to local mode.', 'statwrite' ) . '</strong></p><p>';
 			echo esc_html(
 				sprintf(
 					/* translators: 1: hours without an answer, 2: date and time of the switch. */
-					__( 'There was no answer from the console for %1$s hours, so on %2$s visits started being stored on this host instead. Nothing was lost: queued visits were counted locally. This usually happens when international internet is cut (national internet) and hosts in Iran cannot reach the console.', 'hubpulse' ),
+					__( 'There was no answer from the console for %1$s hours, so on %2$s visits started being stored on this host instead. Nothing was lost: queued visits were counted locally. This usually happens when international internet is cut (national internet) and hosts in Iran cannot reach the console.', 'statwrite' ),
 					self::local_digits( number_format_i18n( $hours ) ),
 					wp_date( get_option( 'date_format' ) . ' ' . get_option( 'time_format' ), (int) $fallback['at'] )
 				)
 			);
 			if ( ! empty( $fallback['error'] ) ) {
-				echo '<br><small>' . esc_html__( 'Last error:', 'hubpulse' ) . ' ' . esc_html( $fallback['error'] ) . '</small>';
+				echo '<br><small>' . esc_html__( 'Last error:', 'statwrite' ) . ' ' . esc_html( $fallback['error'] ) . '</small>';
 			}
 			echo '</p><p>';
-			echo '<a class="button button-primary" href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=wphs_cloud_restore' ), 'wphs_cloud_restore' ) ) . '">' . esc_html__( 'Test and return to cloud mode', 'hubpulse' ) . '</a> ';
-			echo '<a class="button" href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=wphs_cloud_stay_local' ), 'wphs_cloud_stay_local' ) ) . '">' . esc_html__( 'Stay in local mode', 'hubpulse' ) . '</a>';
+			echo '<a class="button button-primary" href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=wphs_cloud_restore' ), 'wphs_cloud_restore' ) ) . '">' . esc_html__( 'Test and return to cloud mode', 'statwrite' ) . '</a> ';
+			echo '<a class="button" href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=wphs_cloud_stay_local' ), 'wphs_cloud_stay_local' ) ) . '">' . esc_html__( 'Stay in local mode', 'statwrite' ) . '</a>';
 			echo '</p></div>';
 		}
 
 		if ( $ours && WPHS_Cloud::has_token() && self::is_iran_site() && ! get_user_meta( get_current_user_id(), 'wphs_dismissed_national_net', true ) ) {
 			$dismiss = wp_nonce_url( admin_url( 'admin-post.php?action=wphs_dismiss_national_net' ), 'wphs_dismiss_national_net' );
-			echo '<div class="notice notice-warning wphs-national-net-notice"><p><strong>' . esc_html__( 'National internet warning:', 'hubpulse' ) . '</strong> ';
-			echo esc_html__( 'If international internet is cut (national internet), hosts inside Iran lose access to the WP-Hub console and there is nothing we can do about it from our side. In that case Hubpulse switches analytics to local storage on this host after 6 hours without an answer, so no visits are lost; writing and publishing articles through the console stays unavailable until the connection returns.', 'hubpulse' );
-			echo ' <a href="' . esc_url( $dismiss ) . '">' . esc_html__( 'Got it, hide this', 'hubpulse' ) . '</a>';
+			echo '<div class="notice notice-warning wphs-national-net-notice"><p><strong>' . esc_html__( 'National internet warning:', 'statwrite' ) . '</strong> ';
+			echo esc_html__( 'If international internet is cut (national internet), hosts inside Iran lose access to the WP-Hub console and there is nothing we can do about it from our side. In that case Statwrite switches analytics to local storage on this host after 6 hours without an answer, so no visits are lost; writing and publishing articles through the console stays unavailable until the connection returns.', 'statwrite' );
+			echo ' <a href="' . esc_url( $dismiss ) . '">' . esc_html__( 'Got it, hide this', 'statwrite' ) . '</a>';
 			echo '</p></div>';
 		}
 	}
@@ -377,7 +377,7 @@ final class WPHS_Admin {
 
 		update_user_meta( get_current_user_id(), 'wphs_dismissed_national_net', 1 );
 		$back = wp_get_referer();
-		wp_safe_redirect( $back ? $back : admin_url( 'admin.php?page=hubpulse' ) );
+		wp_safe_redirect( $back ? $back : admin_url( 'admin.php?page=statwrite' ) );
 		exit;
 	}
 
@@ -389,19 +389,19 @@ final class WPHS_Admin {
 		self::cloud_notice(
 			$result[0] ? 'success' : 'error',
 			$result[0]
-				? __( 'The console answered; analytics are sent to the cloud again.', 'hubpulse' )
+				? __( 'The console answered; analytics are sent to the cloud again.', 'statwrite' )
 				/* translators: %s: error message. */
-				: sprintf( __( 'The console still does not answer, so local mode stays on: %s', 'hubpulse' ), $result[1] )
+				: sprintf( __( 'The console still does not answer, so local mode stays on: %s', 'statwrite' ), $result[1] )
 		);
-		self::back_to( 'hubpulse-settings' );
+		self::back_to( 'statwrite-settings' );
 	}
 
 	public static function cloud_stay_local() {
 		self::guard( 'wphs_cloud_stay_local' );
 
 		WPHS_Cloud::dismiss_fallback();
-		self::cloud_notice( 'success', __( 'Analytics stay in local mode. You can switch back to cloud mode in the settings at any time.', 'hubpulse' ) );
-		self::back_to( 'hubpulse-settings' );
+		self::cloud_notice( 'success', __( 'Analytics stay in local mode. You can switch back to cloud mode in the settings at any time.', 'statwrite' ) );
+		self::back_to( 'statwrite-settings' );
 	}
 
 	private static function back_to( $page ) {
@@ -413,13 +413,13 @@ final class WPHS_Admin {
 		self::guard( 'wphs_purge_local' );
 
 		WPHS_Cloud::purge_local_data();
-		self::cloud_notice( 'success', __( 'Local analytics data was purged.', 'hubpulse' ) );
+		self::cloud_notice( 'success', __( 'Local analytics data was purged.', 'statwrite' ) );
 		self::back();
 	}
 
 	private static function guard( $action ) {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to access this page.', 'hubpulse' ) );
+			wp_die( esc_html__( 'You do not have permission to access this page.', 'statwrite' ) );
 		}
 
 		check_admin_referer( $action );
@@ -439,8 +439,8 @@ final class WPHS_Admin {
 	private static function back() {
 		$back = wp_get_referer();
 
-		if ( ! $back || false === strpos( $back, 'hubpulse' ) ) {
-			$back = admin_url( 'admin.php?page=hubpulse-settings' );
+		if ( ! $back || false === strpos( $back, 'statwrite' ) ) {
+			$back = admin_url( 'admin.php?page=statwrite-settings' );
 		}
 
 		wp_safe_redirect( $back );

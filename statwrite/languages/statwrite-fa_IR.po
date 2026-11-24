@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Hubpulse 0.5.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/hubpulse\n"
-"POT-Creation-Date: 2026-11-22T16:02:11+00:00\n"
+"Project-Id-Version: Statwrite 0.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/statwrite\n"
+"POT-Creation-Date: 2026-11-24T08:31:10+00:00\n"
 "PO-Revision-Date: 2026-11-07 23:14+0330\n"
 "Last-Translator: WP-Hub <https://wp-hub.org>\n"
 "Language-Team: Persian\n"
@@ -10,21 +10,21 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Domain: hubpulse\n"
+"X-Domain: statwrite\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. Plugin Name of the plugin
-#: hubpulse.php
-msgid "Hubpulse – Analytics, AI Writer & Console Connector"
-msgstr "Hubpulse – آمار، نویسندهٔ هوشمند و اتصال کنسول"
+#: statwrite.php
+msgid "Statwrite – Analytics, AI Writer & Console Connector"
+msgstr "Statwrite – آمار، نویسندهٔ هوشمند و اتصال کنسول"
 
 #. Plugin URI of the plugin
-#: hubpulse.php
+#: statwrite.php
 msgid "https://wp-hub.org"
 msgstr "https://wp-hub.org"
 
 #. Description of the plugin
-#: hubpulse.php
+#: statwrite.php
 msgid ""
 "Cookie-free visitor analytics and an AI article writer (WP-Hub console or "
 "your own AI provider), with optional speed, security and uptime reports from "
@@ -34,9 +34,9 @@ msgstr ""
 "مصنوعی خودتان)، به‌همراه گزارش اختیاری سرعت، امنیت و پایش از کنسول WP-Hub."
 
 #. Author of the plugin
-#: hubpulse.php
-msgid "WP-Hub"
-msgstr "WP-Hub"
+#: statwrite.php
+msgid "Mr Noctis"
+msgstr "Mr Noctis"
 
 #. translators: %s: time difference, for example "5 minutes".
 #: admin/views/cloud.php:39 admin/views/cloud.php:41
@@ -68,8 +68,8 @@ msgid "Waiting to run"
 msgstr "در انتظار اجرا"
 
 #: admin/views/cloud.php:53 admin/views/dashboard.php:177
-msgid "Hubpulse Dashboard"
-msgstr "داشبورد Hubpulse"
+msgid "Statwrite Dashboard"
+msgstr "داشبورد Statwrite"
 
 #: admin/views/cloud.php:54
 msgid "Cloud mode — analytics data is not stored on this site"
@@ -596,8 +596,8 @@ msgstr[0] "%s ماه"
 msgstr[1] "%s ماه"
 
 #: admin/views/settings.php:49
-msgid "Hubpulse Settings"
-msgstr "تنظیمات Hubpulse"
+msgid "Statwrite Settings"
+msgstr "تنظیمات Statwrite"
 
 #: admin/views/settings.php:50
 msgid "Console connection, privacy and data retention"
@@ -671,11 +671,11 @@ msgstr "روی همین سایت"
 
 #: admin/views/settings.php:120
 msgid ""
-"Default. Visits are stored in this site's database and shown on the Hubpulse "
-"dashboard. Nothing leaves your server."
+"Default. Visits are stored in this site's database and shown on the "
+"Statwrite dashboard. Nothing leaves your server."
 msgstr ""
-"پیش‌فرض. بازدیدها در دیتابیس همین سایت ذخیره و در داشبورد Hubpulse نمایش داده "
-"می‌شوند. هیچ داده‌ای از سرور شما خارج نمی‌شود."
+"پیش‌فرض. بازدیدها در دیتابیس همین سایت ذخیره و در داشبورد Statwrite نمایش "
+"داده می‌شوند. هیچ داده‌ای از سرور شما خارج نمی‌شود."
 
 #: admin/views/settings.php:124
 msgid "In the WP-Hub console"
@@ -758,8 +758,8 @@ msgid "Advanced"
 msgstr "پیشرفته"
 
 #: admin/views/settings.php:199
-msgid "Delete all Hubpulse data when the plugin is deleted"
-msgstr "حذف همهٔ داده‌های Hubpulse هنگام حذف افزونه"
+msgid "Delete all Statwrite data when the plugin is deleted"
+msgstr "حذف همهٔ داده‌های Statwrite هنگام حذف افزونه"
 
 #: admin/views/settings.php:200
 msgid "Off by default, so reinstalling keeps your history."
@@ -1037,10 +1037,10 @@ msgstr ""
 
 #: admin/views/writer.php:98
 msgid ""
-"The separate \"WP-Hub Content Connector\" plugin is active. Hubpulse now "
+"The separate \"WP-Hub Content Connector\" plugin is active. Statwrite now "
 "includes it; deactivate it before connecting here."
 msgstr ""
-"افزونهٔ جداگانهٔ «WP-Hub Content Connector» فعال است. Hubpulse حالا همین "
+"افزونهٔ جداگانهٔ «WP-Hub Content Connector» فعال است. Statwrite حالا همین "
 "قابلیت را دارد؛ پیش از اتصال، آن را غیرفعال کنید."
 
 #: admin/views/writer.php:104
@@ -1090,9 +1090,9 @@ msgstr "از مدیر سایت بخواهید کنسول را متصل کند."
 #: admin/views/writer.php:138
 msgid ""
 "The same key also turns on speed, security and uptime reports on the "
-"Hubpulse dashboard. You can remove it at any time in Settings."
+"Statwrite dashboard. You can remove it at any time in Settings."
 msgstr ""
-"همین کلید گزارش سرعت، امنیت و پایش را هم در داشبورد Hubpulse فعال می‌کند. هر "
+"همین کلید گزارش سرعت، امنیت و پایش را هم در داشبورد Statwrite فعال می‌کند. هر "
 "زمان بخواهید می‌توانید از تنظیمات حذفش کنید."
 
 #: admin/views/writer.php:144
@@ -1107,7 +1107,8 @@ msgstr "کلید سایت متصل است"
 msgid ""
 "Finishing the connection so the console can write articles here. This takes "
 "a few seconds."
-msgstr "در حال تکمیل اتصال تا کنسول بتواند اینجا مقاله بنویسد. چند ثانیه طول می‌کشد."
+msgstr ""
+"در حال تکمیل اتصال تا کنسول بتواند اینجا مقاله بنویسد. چند ثانیه طول می‌کشد."
 
 #: admin/views/writer.php:150
 msgid "Try again"
@@ -1319,10 +1320,10 @@ msgstr "باز کردن تنظیمات ← اتصال‌ها"
 #: admin/views/writer.php:330
 msgid ""
 "WordPress sends the request with the AI provider and key you connected in "
-"Settings → Connectors. No key is stored by Hubpulse."
+"Settings → Connectors. No key is stored by Statwrite."
 msgstr ""
 "وردپرس درخواست را با سرویس و کلیدی که در «تنظیمات ← اتصال‌ها» وصل کرده‌اید "
-"ارسال می‌کند. Hubpulse هیچ کلیدی ذخیره نمی‌کند."
+"ارسال می‌کند. Statwrite هیچ کلیدی ذخیره نمی‌کند."
 
 #: admin/views/writer.php:331
 msgid "API base URL"
@@ -1516,8 +1517,8 @@ msgid "Close"
 msgstr "بستن"
 
 #: includes/class-admin.php:41 includes/class-admin.php:42
-msgid "Hubpulse"
-msgstr "Hubpulse"
+msgid "Statwrite"
+msgstr "Statwrite"
 
 #: includes/class-admin.php:52 includes/class-admin.php:53
 msgid "Dashboard"
@@ -1651,9 +1652,9 @@ msgstr "ارسال ناموفق: "
 
 #: includes/class-admin.php:324
 msgid ""
-"Hubpulse: the WP-Hub console did not answer, so analytics switched to local "
+"Statwrite: the WP-Hub console did not answer, so analytics switched to local "
 "mode."
-msgstr "Hubpulse: کنسول WP-Hub پاسخ نداد؛ ذخیره آمار به حالت محلی منتقل شد."
+msgstr "Statwrite: کنسول WP-Hub پاسخ نداد؛ ذخیره آمار به حالت محلی منتقل شد."
 
 #. translators: 1: hours without an answer, 2: date and time of the switch.
 #: includes/class-admin.php:328
@@ -1689,14 +1690,14 @@ msgstr "هشدار اینترنت ملی:"
 msgid ""
 "If international internet is cut (national internet), hosts inside Iran lose "
 "access to the WP-Hub console and there is nothing we can do about it from "
-"our side. In that case Hubpulse switches analytics to local storage on this "
+"our side. In that case Statwrite switches analytics to local storage on this "
 "host after 6 hours without an answer, so no visits are lost; writing and "
 "publishing articles through the console stays unavailable until the "
 "connection returns."
 msgstr ""
 "اگر اینترنت بین‌الملل قطع شود (اینترنت ملی)، دسترسی هاست‌های داخل ایران به "
 "کنسول WP-Hub قطع می‌شود و از سمت ما هیچ کاری نمی‌توان کرد. در این حالت "
-"Hubpulse اگر ۶ ساعت از کنسول پاسخی نگیرد، ذخیره آمار را به‌صورت خودکار به "
+"Statwrite اگر ۶ ساعت از کنسول پاسخی نگیرد، ذخیره آمار را به‌صورت خودکار به "
 "حالت محلی روی همین هاست می‌برد تا هیچ بازدیدی از دست نرود؛ نوشتن و انتشار "
 "مقاله از طریق کنسول تا برقراری دوباره ارتباط در دسترس نخواهد بود."
 
@@ -1899,8 +1900,8 @@ msgstr "این نوشته توسط WP-Hub ساخته نشده است."
 
 #: includes/class-content-api.php:440
 msgid ""
-"Direct publishing is turned off in Hubpulse; send the article as a draft."
-msgstr "انتشار مستقیم در Hubpulse خاموش است؛ مقاله را به‌صورت پیش‌نویس بفرستید."
+"Direct publishing is turned off in Statwrite; send the article as a draft."
+msgstr "انتشار مستقیم در Statwrite خاموش است؛ مقاله را به‌صورت پیش‌نویس بفرستید."
 
 #: includes/class-content-api.php:452
 msgid "The article title and content are required."
@@ -2088,17 +2089,18 @@ msgstr "ابتدا کلید سایت را وارد کنید."
 
 #: includes/class-writer.php:351
 msgid ""
-"Deactivate the separate \"WP-Hub Content Connector\" plugin first; Hubpulse "
+"Deactivate the separate \"WP-Hub Content Connector\" plugin first; Statwrite "
 "now includes it."
 msgstr ""
-"ابتدا افزونهٔ جداگانهٔ «WP-Hub Content Connector» را غیرفعال کنید؛ Hubpulse "
+"ابتدا افزونهٔ جداگانهٔ «WP-Hub Content Connector» را غیرفعال کنید؛ Statwrite "
 "حالا همین قابلیت را دارد."
 
 #. translators: %s: error message from the console.
 #: includes/class-writer.php:381
 #, php-format
 msgid "Connected, but the console could not reach this site yet: %s"
-msgstr "اتصال برقرار شد، اما کنسول هنوز نتوانست به این سایت دسترسی پیدا کند: %s"
+msgstr ""
+"اتصال برقرار شد، اما کنسول هنوز نتوانست به این سایت دسترسی پیدا کند: %s"
 
 #: includes/class-writer.php:446 includes/class-writer.php:539
 msgid "Enter the article topic or title."

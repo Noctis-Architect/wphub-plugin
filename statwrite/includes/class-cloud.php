@@ -221,7 +221,7 @@ final class WPHS_Cloud {
 		}
 
 		/* translators: %d: HTTP status code. */
-		$message = is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Could not fetch site status from the console (HTTP %d).', 'hubpulse' ), $code );
+		$message = is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Could not fetch site status from the console (HTTP %d).', 'statwrite' ), $code );
 
 		return self::overview_fallback( substr( wp_strip_all_tags( (string) $message ), 0, 300 ), $code );
 	}
@@ -243,7 +243,7 @@ final class WPHS_Cloud {
 				'ok'      => false,
 				'code'    => 0,
 				'data'    => array(),
-				'message' => __( 'Connect this site to the WP-Hub console first.', 'hubpulse' ),
+				'message' => __( 'Connect this site to the WP-Hub console first.', 'statwrite' ),
 			);
 		}
 
@@ -255,7 +255,7 @@ final class WPHS_Cloud {
 			'headers'     => array(
 				'Authorization' => 'Bearer ' . $token,
 				'Accept'        => 'application/json',
-				'User-Agent'    => 'Hubpulse/' . WPHS_VERSION,
+				'User-Agent'    => 'Statwrite/' . WPHS_VERSION,
 			),
 		);
 
@@ -272,7 +272,7 @@ final class WPHS_Cloud {
 				'code'    => 0,
 				'data'    => array(),
 				/* translators: %s: network error message. */
-				'message' => sprintf( __( 'Could not reach the console: %s', 'hubpulse' ), substr( $response->get_error_message(), 0, 200 ) ),
+				'message' => sprintf( __( 'Could not reach the console: %s', 'statwrite' ), substr( $response->get_error_message(), 0, 200 ) ),
 			);
 		}
 
@@ -288,10 +288,10 @@ final class WPHS_Cloud {
 			} elseif ( isset( $data['message'] ) && is_string( $data['message'] ) ) {
 				$msg = $data['message'];
 			} elseif ( 401 === $code ) {
-				$msg = __( 'The console rejected the site key. Check the key in Settings.', 'hubpulse' );
+				$msg = __( 'The console rejected the site key. Check the key in Settings.', 'statwrite' );
 			} else {
 				/* translators: %d: HTTP status code. */
-				$msg = sprintf( __( 'Unexpected response from the console (HTTP %d).', 'hubpulse' ), $code );
+				$msg = sprintf( __( 'Unexpected response from the console (HTTP %d).', 'statwrite' ), $code );
 			}
 		}
 
@@ -329,7 +329,7 @@ final class WPHS_Cloud {
 		$token = self::token();
 
 		if ( '' === $token ) {
-			return array( false, __( 'The site connection key is not set.', 'hubpulse' ), 0 );
+			return array( false, __( 'The site connection key is not set.', 'statwrite' ), 0 );
 		}
 
 		$response = wp_remote_get(
@@ -362,7 +362,7 @@ final class WPHS_Cloud {
 			delete_option( 'wphs_cloud_down_since' ); // The console answered.
 		}
 		/* translators: %d: HTTP status code. */
-		$msg  = $ok ? __( 'Connected to the console.', 'hubpulse' ) : ( is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Invalid response from the console (HTTP %d)', 'hubpulse' ), $code ) );
+		$msg  = $ok ? __( 'Connected to the console.', 'statwrite' ) : ( is_array( $data ) && ! empty( $data['message'] ) ? $data['message'] : sprintf( __( 'Invalid response from the console (HTTP %d)', 'statwrite' ), $code ) );
 		$msg  = substr( wp_strip_all_tags( (string) $msg ), 0, 300 );
 
 		self::save_ping( $ok, $msg );

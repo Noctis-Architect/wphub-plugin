@@ -1,4 +1,4 @@
-# راهنمای اتصال پلاگین Hubpulse به کنسول
+# راهنمای اتصال پلاگین Statwrite به کنسول
 
 نسخه پلاگین: `0.5.0`  
 هدف: پلاگین در حالت عادی فقط آمار بازدید را نگه می‌دارد؛ به‌محض اتصال به کنسول، داشبورد همان سایت علاوه بر آمار، **آخرین تست سرعت موبایل/دسکتاپ، آخرین تست امنیت و داده‌های پایش** را از کنسول نشان می‌دهد. ذخیره‌سازی ابری هم اختیاری است و هیچ ردیف آماری در دیتابیس سایت نوشته نمی‌شود.
@@ -582,7 +582,7 @@ curl -s -H "Authorization: Bearer $TOKEN" \
 
 ## ۱۲) نویسندهٔ هوشمند و استودیوی محتوا (از نسخهٔ ۰.۵.۰)
 
-Hubpulse حالا همان مسیرهای افزونهٔ جداگانهٔ «WP-Hub Content Connector» را دارد (`/wp-json/wphub-content/v1/{ping,posts,terms,media,publish,update}`، POST + امضای HMAC با `X-WPHub-Timestamp/Nonce/Signature`). اگر افزونهٔ قدیمی فعال باشد، Hubpulse مسیرها را ثبت نمی‌کند و از کاربر می‌خواهد آن را غیرفعال کند.
+Statwrite حالا همان مسیرهای افزونهٔ جداگانهٔ «WP-Hub Content Connector» را دارد (`/wp-json/wphub-content/v1/{ping,posts,terms,media,publish,update}`، POST + امضای HMAC با `X-WPHub-Timestamp/Nonce/Signature`). اگر افزونهٔ قدیمی فعال باشد، Statwrite مسیرها را ثبت نمی‌کند و از کاربر می‌خواهد آن را غیرفعال کند.
 
 ### endpointهای کنسول با کلید سایت (`Authorization: Bearer <site_token>`)
 

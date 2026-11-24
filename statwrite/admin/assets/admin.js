@@ -1,4 +1,4 @@
-/* Hubpulse admin: settings toggles and the AI Writer. No dependencies. */
+/* Statwrite admin: settings toggles and the AI Writer. No dependencies. */
 (function () {
 	'use strict';
 

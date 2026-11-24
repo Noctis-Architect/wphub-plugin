@@ -39,7 +39,7 @@ final class WPHS_Spool {
 	}
 
 	/**
-	 * The plugin's folder in the uploads directory, for example wp-content/uploads/hubpulse.
+	 * The plugin's folder in the uploads directory, for example wp-content/uploads/statwrite.
 	 * The queue lives in a randomly named subfolder that also blocks direct web access.
 	 */
 	public static function base_dir() {

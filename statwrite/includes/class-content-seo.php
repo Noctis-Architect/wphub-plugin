@@ -1,10 +1,10 @@
 <?php
 /**
- * SEO meta for articles written with Hubpulse: reads and writes Yoast SEO, Rank Math
+ * SEO meta for articles written with Statwrite: reads and writes Yoast SEO, Rank Math
  * and All in One SEO fields, and prints the FAQ schema / fallback description that
- * Hubpulse stored for its own articles.
+ * Statwrite stored for its own articles.
  *
- * @package Hubpulse
+ * @package Statwrite
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -35,7 +35,7 @@ final class WPHS_Content_SEO {
 		);
 		$plugin = self::detect();
 
-		return isset( $labels[ $plugin ] ) ? $labels[ $plugin ] : __( 'None detected', 'hubpulse' );
+		return isset( $labels[ $plugin ] ) ? $labels[ $plugin ] : __( 'None detected', 'statwrite' );
 	}
 
 	public static function read( $post_id ) {
@@ -139,7 +139,7 @@ final class WPHS_Content_SEO {
 				return true;
 		}
 
-		// No SEO plugin: keep the description so Hubpulse can print it in the page head.
+		// No SEO plugin: keep the description so Statwrite can print it in the page head.
 		self::maybe_meta( $post_id, '_wphs_meta_description', $desc );
 
 		return false;

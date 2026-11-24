@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Hubpulse – Analytics, AI Writer & Console Connector
+ * Plugin Name: Statwrite – Analytics, AI Writer & Console Connector
  * Plugin URI:  https://wp-hub.org
  * Description: Cookie-free visitor analytics and an AI article writer (WP-Hub console or your own AI provider), with optional speed, security and uptime reports from the WP-Hub console.
  * Version:     0.5.0
- * Author:      WP-Hub
+ * Author:      Mr Noctis
  * License:     GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: hubpulse
+ * Text Domain: statwrite
  * Domain Path: /languages
  * Requires PHP: 7.4
  * Requires at least: 6.0
@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 
 define( 'WPHS_VERSION', '0.5.0' );
 define( 'WPHS_PRODUCTION_CONSOLE_URL', 'https://console.wp-hub.org' );
-define( 'WPHS_SLUG', 'hubpulse' );
+define( 'WPHS_SLUG', 'statwrite' );
 define( 'WPHS_FILE', __FILE__ );
 define( 'WPHS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WPHS_URL', plugin_dir_url( __FILE__ ) );

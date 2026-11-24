@@ -4,7 +4,7 @@
  * ("your own API key") mode of the AI Writer. Requests go straight from this site to
  * the provider the administrator configured; nothing passes through WP-Hub.
  *
- * @package Hubpulse
+ * @package Statwrite
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -19,7 +19,7 @@ final class WPHS_AI_Provider {
 		// phpcs:disable PluginCheck.CodeAnalysis.AIProvider.DirectIntegration -- Optional presets for the "bring your own provider" mode; the WordPress AI Client is offered first when available and is the default on WordPress 7.0+.
 		return array(
 			'wordpress'  => array(
-				'label'  => __( 'WordPress AI (Settings → Connectors)', 'hubpulse' ),
+				'label'  => __( 'WordPress AI (Settings → Connectors)', 'statwrite' ),
 				'group'  => 'wp',
 				'base'   => '',
 				'model'  => '',
@@ -96,14 +96,14 @@ final class WPHS_AI_Provider {
 				'signup' => 'https://metisai.ir',
 			),
 			'ollama'     => array(
-				'label'  => __( 'Self-hosted (Ollama, LM Studio)', 'hubpulse' ),
+				'label'  => __( 'Self-hosted (Ollama, LM Studio)', 'statwrite' ),
 				'group'  => 'custom',
 				'base'   => 'http://localhost:11434/v1',
 				'model'  => 'llama3.1',
 				'signup' => '',
 			),
 			'custom'     => array(
-				'label'  => __( 'Other (OpenAI-compatible)', 'hubpulse' ),
+				'label'  => __( 'Other (OpenAI-compatible)', 'statwrite' ),
 				'group'  => 'custom',
 				'base'   => '',
 				'model'  => '',
@@ -144,7 +144,7 @@ final class WPHS_AI_Provider {
 				)
 			);
 
-			return array( $chat['ok'], $chat['ok'] ? __( 'Connected. The AI provider configured in WordPress answered successfully.', 'hubpulse' ) : $chat['message'], array() );
+			return array( $chat['ok'], $chat['ok'] ? __( 'Connected. The AI provider configured in WordPress answered successfully.', 'statwrite' ) : $chat['message'], array() );
 		}
 
 		$check = self::validate( $cfg );
@@ -187,7 +187,7 @@ final class WPHS_AI_Provider {
 		}
 
 		/* translators: %s: model name. */
-		$message = sprintf( __( 'Connected. The model "%s" answered successfully.', 'hubpulse' ), $cfg['model'] );
+		$message = sprintf( __( 'Connected. The model "%s" answered successfully.', 'statwrite' ), $cfg['model'] );
 
 		return array( true, $message, array_slice( $models, 0, 300 ) );
 	}
@@ -261,7 +261,7 @@ final class WPHS_AI_Provider {
 			return array(
 				'ok'      => false,
 				'text'    => '',
-				'message' => __( 'The provider returned an empty answer. Try another model or a higher output token limit.', 'hubpulse' ),
+				'message' => __( 'The provider returned an empty answer. Try another model or a higher output token limit.', 'statwrite' ),
 				'usage'   => array(),
 			);
 		}
@@ -289,7 +289,7 @@ final class WPHS_AI_Provider {
 		};
 
 		if ( ! self::wp_ai_available() ) {
-			return $fail( __( 'The WordPress AI Client is not available. It needs WordPress 7.0 or newer with AI enabled.', 'hubpulse' ) );
+			return $fail( __( 'The WordPress AI Client is not available. It needs WordPress 7.0 or newer with AI enabled.', 'statwrite' ) );
 		}
 
 		$system = '';
@@ -323,7 +323,7 @@ final class WPHS_AI_Provider {
 			}
 
 			if ( ! $builder->is_supported_for_text_generation() ) {
-				return $fail( __( 'No AI provider that can write text is connected in WordPress. Add one in Settings → Connectors.', 'hubpulse' ) );
+				return $fail( __( 'No AI provider that can write text is connected in WordPress. Add one in Settings → Connectors.', 'statwrite' ) );
 			}
 
 			$text = $builder->generate_text();
@@ -336,7 +336,7 @@ final class WPHS_AI_Provider {
 		}
 
 		if ( '' === trim( (string) $text ) ) {
-			return $fail( __( 'The provider returned an empty answer. Try again or raise the output token limit.', 'hubpulse' ) );
+			return $fail( __( 'The provider returned an empty answer. Try again or raise the output token limit.', 'statwrite' ) );
 		}
 
 		return array(
@@ -356,19 +356,19 @@ final class WPHS_AI_Provider {
 		$scheme = (string) wp_parse_url( $base, PHP_URL_SCHEME );
 
 		if ( '' === $base || ! filter_var( $base, FILTER_VALIDATE_URL ) || ! in_array( $scheme, array( 'http', 'https' ), true ) ) {
-			return __( 'Enter a valid API base URL.', 'hubpulse' );
+			return __( 'Enter a valid API base URL.', 'statwrite' );
 		}
 
 		if ( 0 !== strpos( $base, 'https://' ) && ! self::is_local_url( $base ) ) {
-			return __( 'The API base URL must use HTTPS so the key is not sent in plain text.', 'hubpulse' );
+			return __( 'The API base URL must use HTTPS so the key is not sent in plain text.', 'statwrite' );
 		}
 
 		if ( empty( $cfg['api_key'] ) && ! self::is_local_url( $base ) ) {
-			return __( 'Enter the API key.', 'hubpulse' );
+			return __( 'Enter the API key.', 'statwrite' );
 		}
 
 		if ( empty( $cfg['model'] ) ) {
-			return __( 'Enter a model name.', 'hubpulse' );
+			return __( 'Enter a model name.', 'statwrite' );
 		}
 
 		return true;
@@ -432,7 +432,7 @@ final class WPHS_AI_Provider {
 				'code'    => 0,
 				'data'    => array(),
 				/* translators: %s: network error message. */
-				'message' => sprintf( __( 'Could not reach the provider: %s', 'hubpulse' ), substr( $response->get_error_message(), 0, 200 ) ),
+				'message' => sprintf( __( 'Could not reach the provider: %s', 'statwrite' ), substr( $response->get_error_message(), 0, 200 ) ),
 			);
 		}
 
@@ -462,14 +462,14 @@ final class WPHS_AI_Provider {
 		}
 
 		$hints = array(
-			401 => __( 'The API key was rejected.', 'hubpulse' ),
-			402 => __( 'The provider account has no credit left.', 'hubpulse' ),
-			403 => __( 'Access denied by the provider (the key or your server region may not be allowed).', 'hubpulse' ),
-			404 => __( 'The endpoint or model was not found; check the base URL and model name.', 'hubpulse' ),
-			429 => __( 'Rate limit or quota reached at the provider.', 'hubpulse' ),
+			401 => __( 'The API key was rejected.', 'statwrite' ),
+			402 => __( 'The provider account has no credit left.', 'statwrite' ),
+			403 => __( 'Access denied by the provider (the key or your server region may not be allowed).', 'statwrite' ),
+			404 => __( 'The endpoint or model was not found; check the base URL and model name.', 'statwrite' ),
+			429 => __( 'Rate limit or quota reached at the provider.', 'statwrite' ),
 		);
 		/* translators: %d: HTTP status code. */
-		$message = isset( $hints[ $code ] ) ? $hints[ $code ] : sprintf( __( 'The provider returned HTTP %d.', 'hubpulse' ), $code );
+		$message = isset( $hints[ $code ] ) ? $hints[ $code ] : sprintf( __( 'The provider returned HTTP %d.', 'statwrite' ), $code );
 
 		if ( '' !== $detail ) {
 			$message .= ' ' . substr( wp_strip_all_tags( $detail ), 0, 300 );
