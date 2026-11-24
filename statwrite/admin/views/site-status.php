@@ -112,7 +112,7 @@ $monitor_link  = $monitoring && ! empty( $monitoring['url'] ) ? $monitoring['url
 ?>
 <section class="wphs-site-section">
 	<div class="wphs-section-head">
-		<h2><?php esc_html_e( 'Site status', 'statwrite' ); ?></h2>
+		<h2><?php WPHS_Admin::wphub_mark(); ?><?php esc_html_e( 'Site status', 'statwrite' ); ?></h2>
 		<div class="wphs-section-links">
 			<?php if ( ! empty( $site['domain'] ) ) : ?>
 				<span class="wphs-muted"><?php echo esc_html( $site['domain'] ); ?></span>

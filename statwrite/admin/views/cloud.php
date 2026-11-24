@@ -50,7 +50,7 @@ $connected    = $status['token_set'] && '' === $status['last_error'];
 		<div class="wphs-hero-brand">
 			<span class="wphs-logo"><img src="<?php echo esc_url( WPHS_URL . 'assets/logo.png' ); ?>" alt="" width="38" height="38"></span>
 			<div>
-				<h1 class="wphs-title"><?php esc_html_e( 'Statwrite Dashboard', 'statwrite' ); ?></h1>
+				<h1 class="wphs-title"><?php esc_html_e( 'Statwrite Dashboard', 'statwrite' ); ?> <?php WPHS_Admin::byline(); ?></h1>
 				<p class="wphs-sub"><?php esc_html_e( 'Cloud mode — analytics data is not stored on this site', 'statwrite' ); ?></p>
 			</div>
 		</div>
@@ -76,7 +76,7 @@ $connected    = $status['token_set'] && '' === $status['last_error'];
 	<?php if ( $console_analytics ) : ?>
 		<section class="wphs-card">
 			<div class="wphs-card-head">
-				<h2><?php esc_html_e( 'Console analytics', 'statwrite' ); ?></h2>
+				<h2><?php WPHS_Admin::wphub_mark(); ?><?php esc_html_e( 'Console analytics', 'statwrite' ); ?></h2>
 				<span class="wphs-muted">
 				<?php
 				/* translators: %s: number of days. */

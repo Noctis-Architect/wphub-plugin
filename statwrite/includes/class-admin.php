@@ -3,6 +3,22 @@ defined( 'ABSPATH' ) || exit;
 
 final class WPHS_Admin {
 
+	/**
+	 * Prints the "by Mr Noctis" byline shown next to page titles.
+	 */
+	public static function byline() {
+		/* translators: %s: plugin author name. */
+		echo '<span class="wphs-by">' . esc_html( sprintf( __( 'by %s', 'statwrite' ), 'Mr Noctis' ) ) . '</span>';
+	}
+
+	/**
+	 * Prints the WP-Hub logo used to mark sections that come from the WP-Hub console.
+	 */
+	public static function wphub_mark() {
+		echo '<img class="wphs-wphub-mark" src="' . esc_url( WPHS_URL . 'assets/wphub-logo.png' ) . '" alt="WP-Hub" width="22" height="22">';
+	}
+
+
 	public static function init() {
 		add_action( 'admin_menu', array( __CLASS__, 'menu' ) );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'assets' ) );

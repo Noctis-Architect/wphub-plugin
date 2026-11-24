@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Statwrite 0.5.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/statwrite\n"
-"POT-Creation-Date: 2026-11-24T08:31:10+00:00\n"
+"POT-Creation-Date: 2026-11-24T08:51:55+00:00\n"
 "PO-Revision-Date: 2026-11-07 23:14+0330\n"
 "Last-Translator: WP-Hub <https://wp-hub.org>\n"
 "Language-Team: Persian\n"
@@ -89,13 +89,13 @@ msgstr "تنظیم نشده"
 
 #: admin/views/cloud.php:59 admin/views/dashboard.php:183
 #: admin/views/settings.php:207 admin/views/writer.php:66
-#: includes/class-admin.php:61 includes/class-admin.php:62
+#: includes/class-admin.php:77 includes/class-admin.php:78
 msgid "AI Writer"
 msgstr "نویسندهٔ هوشمند"
 
 #: admin/views/cloud.php:60 admin/views/dashboard.php:184
-#: includes/class-admin.php:70 includes/class-admin.php:71
-#: includes/class-admin.php:158
+#: includes/class-admin.php:86 includes/class-admin.php:87
+#: includes/class-admin.php:174
 msgid "Settings"
 msgstr "تنظیمات"
 
@@ -152,7 +152,7 @@ msgstr ""
 "فقط بازدیدهایی که مرورگرشان تشخیص داده شده نمایش داده می‌شوند؛ برای حالت‌های "
 "دیگر، داشبورد آمار کنسول را ببینید."
 
-#: admin/views/cloud.php:100 includes/class-admin.php:143
+#: admin/views/cloud.php:100 includes/class-admin.php:159
 msgid "Queued"
 msgstr "در صف ارسال"
 
@@ -251,7 +251,7 @@ msgid "Test connection"
 msgstr "تست اتصال"
 
 #: admin/views/cloud.php:179 admin/views/settings.php:284
-#: includes/class-admin.php:123
+#: includes/class-admin.php:139
 msgid "Purge local analytics data? This cannot be undone."
 msgstr "داده‌های محلی آمار پاک شوند؟ این کار قابل بازگشت نیست."
 
@@ -631,7 +631,7 @@ msgstr "کنسول WP-Hub"
 msgid "Not connected"
 msgstr "متصل نیست"
 
-#: admin/views/settings.php:86 includes/class-admin.php:138
+#: admin/views/settings.php:86 includes/class-admin.php:154
 msgid "Connected"
 msgstr "متصل"
 
@@ -769,7 +769,7 @@ msgstr "به‌صورت پیش‌فرض خاموش است تا با نصب دو�
 msgid "Save settings"
 msgstr "ذخیره تنظیمات"
 
-#: admin/views/settings.php:216 includes/class-admin.php:124
+#: admin/views/settings.php:216 includes/class-admin.php:140
 msgid "Remove the site key and disconnect from the console?"
 msgstr "کلید سایت حذف و اتصال به کنسول قطع شود؟"
 
@@ -1500,164 +1500,170 @@ msgstr "نوشتن مقاله"
 msgid "Recent AI articles"
 msgstr "آخرین مقاله‌های هوشمند"
 
-#: admin/views/writer.php:515 includes/class-admin.php:132
+#: admin/views/writer.php:515 includes/class-admin.php:148
 msgid "No articles yet. Write your first one above."
 msgstr "هنوز مقاله‌ای نیست. اولین مقاله را از بالا بنویسید."
 
-#: admin/views/writer.php:524 includes/class-admin.php:127
+#: admin/views/writer.php:524 includes/class-admin.php:143
 msgid "Preview"
 msgstr "پیش‌نمایش"
 
-#: admin/views/writer.php:525 includes/class-admin.php:128
+#: admin/views/writer.php:525 includes/class-admin.php:144
 msgid "Edit"
 msgstr "ویرایش"
 
-#: admin/views/writer.php:539 includes/class-admin.php:134
+#: admin/views/writer.php:539 includes/class-admin.php:150
 msgid "Close"
 msgstr "بستن"
 
-#: includes/class-admin.php:41 includes/class-admin.php:42
+#. translators: %s: plugin author name.
+#: includes/class-admin.php:11
+#, php-format
+msgid "by %s"
+msgstr "توسط %s"
+
+#: includes/class-admin.php:57 includes/class-admin.php:58
 msgid "Statwrite"
 msgstr "Statwrite"
 
-#: includes/class-admin.php:52 includes/class-admin.php:53
+#: includes/class-admin.php:68 includes/class-admin.php:69
 msgid "Dashboard"
 msgstr "داشبورد"
 
-#: includes/class-admin.php:117
+#: includes/class-admin.php:133
 msgid "Working…"
 msgstr "در حال انجام…"
 
-#: includes/class-admin.php:118
+#: includes/class-admin.php:134
 msgid "Testing the connection…"
 msgstr "در حال تست اتصال…"
 
-#: includes/class-admin.php:119
+#: includes/class-admin.php:135
 msgid ""
 "Writing the article. This can take one to three minutes; keep this page open."
 msgstr ""
 "در حال نوشتن مقاله. ممکن است یک تا سه دقیقه طول بکشد؛ این صفحه را باز نگه "
 "دارید."
 
-#: includes/class-admin.php:120
+#: includes/class-admin.php:136
 msgid ""
 "The console is writing the article. You can stay here or come back later."
 msgstr "کنسول در حال نوشتن مقاله است. می‌توانید همین‌جا بمانید یا بعداً برگردید."
 
-#: includes/class-admin.php:121
+#: includes/class-admin.php:137
 msgid "Request failed. Try again."
 msgstr "درخواست ناموفق بود. دوباره تلاش کنید."
 
-#: includes/class-admin.php:122
+#: includes/class-admin.php:138
 msgid "Replace the system prompt with the default text?"
 msgstr "پرامپت سیستم با متن پیش‌فرض جایگزین شود؟"
 
-#: includes/class-admin.php:125
+#: includes/class-admin.php:141
 msgid "The provider did not list models; type the model name."
 msgstr "سرویس‌دهنده فهرست مدل‌ها را برنگرداند؛ نام مدل را وارد کنید."
 
-#: includes/class-admin.php:126
+#: includes/class-admin.php:142
 msgid "models loaded — pick one from the list."
 msgstr "مدل دریافت شد — از فهرست انتخاب کنید."
 
-#: includes/class-admin.php:129
+#: includes/class-admin.php:145
 msgid "Send as draft"
 msgstr "ارسال به‌صورت پیش‌نویس"
 
-#: includes/class-admin.php:130
+#: includes/class-admin.php:146
 msgid "Publish now"
 msgstr "انتشار فوری"
 
-#: includes/class-admin.php:131
+#: includes/class-admin.php:147
 msgid "View post"
 msgstr "مشاهدهٔ نوشته"
 
-#: includes/class-admin.php:133
+#: includes/class-admin.php:149
 msgid "words"
 msgstr "کلمه"
 
 #. translators: Used as "3 of 10" for the remaining article quota.
-#: includes/class-admin.php:136
+#: includes/class-admin.php:152
 msgid "of"
 msgstr "از"
 
-#: includes/class-admin.php:139
+#: includes/class-admin.php:155
 msgid "Error"
 msgstr "خطا"
 
-#: includes/class-admin.php:140
+#: includes/class-admin.php:156
 msgid "Pending"
 msgstr "در انتظار"
 
-#: includes/class-admin.php:144
+#: includes/class-admin.php:160
 msgid "Writing…"
 msgstr "در حال نوشتن…"
 
-#: includes/class-admin.php:145
+#: includes/class-admin.php:161
 msgid "Ready to send"
 msgstr "آمادهٔ ارسال"
 
-#: includes/class-admin.php:146
+#: includes/class-admin.php:162
 msgid "Sent to site"
 msgstr "ارسال شد"
 
-#: includes/class-admin.php:147
+#: includes/class-admin.php:163
 msgid "Sending failed"
 msgstr "ارسال ناموفق"
 
-#: includes/class-admin.php:148
+#: includes/class-admin.php:164
 msgid "Failed"
 msgstr "ناموفق"
 
-#: includes/class-admin.php:166 includes/class-admin.php:178
-#: includes/class-admin.php:218 includes/class-admin.php:228
-#: includes/class-admin.php:422 includes/class-aggregator.php:848
+#: includes/class-admin.php:182 includes/class-admin.php:194
+#: includes/class-admin.php:234 includes/class-admin.php:244
+#: includes/class-admin.php:438 includes/class-aggregator.php:848
 #: includes/class-writer.php:151
 msgid "You do not have permission to access this page."
 msgstr "دسترسی مجاز نیست."
 
-#: includes/class-admin.php:271
+#: includes/class-admin.php:287
 msgid "The site key was removed and the console was disconnected."
 msgstr "کلید سایت حذف شد و اتصال به کنسول قطع شد."
 
 #. translators: %1$s: number of sent events; %2$s: number of queued events.
-#: includes/class-admin.php:283
+#: includes/class-admin.php:299
 #, php-format
 msgid "%1$s events were sent to the console; %2$s events remain queued."
 msgstr "%1$s رویداد به کنسول ارسال شد؛ %2$s رویداد در صف باقی مانده است."
 
-#: includes/class-admin.php:288
+#: includes/class-admin.php:304
 msgid "The queue was empty; nothing to send."
 msgstr "صف خالی بود؛ چیزی برای ارسال نبود."
 
-#: includes/class-admin.php:291
+#: includes/class-admin.php:307
 msgid "Cloud mode is not active."
 msgstr "حالت ابری فعال نیست."
 
-#: includes/class-admin.php:292 includes/class-cloud.php:332
+#: includes/class-admin.php:308 includes/class-cloud.php:332
 msgid "The site connection key is not set."
 msgstr "کلید اتصال سایت تنظیم نشده است."
 
-#: includes/class-admin.php:293
+#: includes/class-admin.php:309
 msgid "The next attempt is not allowed yet; try again later."
 msgstr "ارسال بعدی هنوز مجاز نیست؛ کمی بعد دوباره تلاش کنید."
 
-#: includes/class-admin.php:294
+#: includes/class-admin.php:310
 msgid "Another process is already running."
 msgstr "یک پردازش دیگر در حال اجراست."
 
-#: includes/class-admin.php:297
+#: includes/class-admin.php:313
 msgid "Sync failed: "
 msgstr "ارسال ناموفق: "
 
-#: includes/class-admin.php:324
+#: includes/class-admin.php:340
 msgid ""
 "Statwrite: the WP-Hub console did not answer, so analytics switched to local "
 "mode."
 msgstr "Statwrite: کنسول WP-Hub پاسخ نداد؛ ذخیره آمار به حالت محلی منتقل شد."
 
 #. translators: 1: hours without an answer, 2: date and time of the switch.
-#: includes/class-admin.php:328
+#: includes/class-admin.php:344
 #, php-format
 msgid ""
 "There was no answer from the console for %1$s hours, so on %2$s visits "
@@ -1670,23 +1676,23 @@ msgstr ""
 "به‌صورت محلی شمرده شدند. این اتفاق معمولاً وقتی رخ می‌دهد که اینترنت بین‌الملل "
 "قطع شود (اینترنت ملی) و هاست‌های داخل ایران به کنسول دسترسی نداشته باشند."
 
-#: includes/class-admin.php:334
+#: includes/class-admin.php:350
 msgid "Last error:"
 msgstr "آخرین خطا:"
 
-#: includes/class-admin.php:337
+#: includes/class-admin.php:353
 msgid "Test and return to cloud mode"
 msgstr "آزمایش و بازگشت به حالت ابری"
 
-#: includes/class-admin.php:338
+#: includes/class-admin.php:354
 msgid "Stay in local mode"
 msgstr "در حالت محلی بمان"
 
-#: includes/class-admin.php:344
+#: includes/class-admin.php:360
 msgid "National internet warning:"
 msgstr "هشدار اینترنت ملی:"
 
-#: includes/class-admin.php:345
+#: includes/class-admin.php:361
 msgid ""
 "If international internet is cut (national internet), hosts inside Iran lose "
 "access to the WP-Hub console and there is nothing we can do about it from "
@@ -1701,21 +1707,21 @@ msgstr ""
 "حالت محلی روی همین هاست می‌برد تا هیچ بازدیدی از دست نرود؛ نوشتن و انتشار "
 "مقاله از طریق کنسول تا برقراری دوباره ارتباط در دسترس نخواهد بود."
 
-#: includes/class-admin.php:346
+#: includes/class-admin.php:362
 msgid "Got it, hide this"
 msgstr "متوجه شدم، پنهانش کن"
 
-#: includes/class-admin.php:392
+#: includes/class-admin.php:408
 msgid "The console answered; analytics are sent to the cloud again."
 msgstr "کنسول پاسخ داد؛ آمار دوباره به حالت ابری ارسال می‌شود."
 
 #. translators: %s: error message.
-#: includes/class-admin.php:394
+#: includes/class-admin.php:410
 #, php-format
 msgid "The console still does not answer, so local mode stays on: %s"
 msgstr "کنسول هنوز پاسخ نمی‌دهد و حالت محلی فعال می‌ماند: %s"
 
-#: includes/class-admin.php:403
+#: includes/class-admin.php:419
 msgid ""
 "Analytics stay in local mode. You can switch back to cloud mode in the "
 "settings at any time."
@@ -1723,7 +1729,7 @@ msgstr ""
 "آمار در حالت محلی می‌ماند. هر زمان خواستید می‌توانید از تنظیمات به حالت ابری "
 "برگردید."
 
-#: includes/class-admin.php:416
+#: includes/class-admin.php:432
 msgid "Local analytics data was purged."
 msgstr "داده‌های محلی آمار پاک شد."
 

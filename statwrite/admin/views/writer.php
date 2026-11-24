@@ -63,7 +63,7 @@ $category_select = static function ( $name, $selected, $id ) {
 		<div class="wphs-hero-brand">
 			<span class="wphs-logo"><img src="<?php echo esc_url( WPHS_URL . 'assets/logo.png' ); ?>" alt="" width="38" height="38"></span>
 			<div>
-				<h1 class="wphs-title"><?php esc_html_e( 'AI Writer', 'statwrite' ); ?></h1>
+				<h1 class="wphs-title"><?php esc_html_e( 'AI Writer', 'statwrite' ); ?> <?php WPHS_Admin::byline(); ?></h1>
 				<p class="wphs-sub"><?php esc_html_e( 'Write SEO-ready articles for this site and send them straight to your posts.', 'statwrite' ); ?></p>
 			</div>
 		</div>
@@ -76,7 +76,7 @@ $category_select = static function ( $name, $selected, $id ) {
 	<nav class="wphs-choice" aria-label="<?php esc_attr_e( 'Writing method', 'statwrite' ); ?>">
 		<a class="wphs-choice-card<?php echo 'console' === $tab ? ' is-active' : ''; ?>" href="<?php echo esc_url( add_query_arg( 'tab', 'console', $base_url ) ); ?>">
 			<span class="wphs-choice-top">
-				<strong><?php esc_html_e( 'WP-Hub console', 'statwrite' ); ?></strong>
+				<strong><?php WPHS_Admin::wphub_mark(); ?><?php esc_html_e( 'WP-Hub console', 'statwrite' ); ?></strong>
 				<em class="wphs-pill is-blue"><?php esc_html_e( 'Recommended', 'statwrite' ); ?></em>
 			</span>
 			<span class="wphs-choice-desc"><?php esc_html_e( 'No API key needed. The console studies your existing posts, adds internal links and images from your media library, and fills in SEO fields.', 'statwrite' ); ?></span>
@@ -101,7 +101,7 @@ $category_select = static function ( $name, $selected, $id ) {
 		<?php if ( ! $has_key ) : ?>
 			<section class="wphs-card">
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Connect this site in three steps', 'statwrite' ); ?></h2>
+					<h2><?php WPHS_Admin::wphub_mark(); ?><?php esc_html_e( 'Connect this site in three steps', 'statwrite' ); ?></h2>
 					<span class="wphs-muted"><?php esc_html_e( 'About two minutes', 'statwrite' ); ?></span>
 				</div>
 				<ol class="wphs-onboard">
@@ -141,7 +141,7 @@ $category_select = static function ( $name, $selected, $id ) {
 		<?php elseif ( ! $linked ) : ?>
 			<section class="wphs-card wphs-autolink"<?php echo ( $is_admin && ! $standalone ) ? ' data-wphs-autolink' : ''; ?>>
 				<div class="wphs-card-head">
-					<h2><?php esc_html_e( 'Connecting to the console', 'statwrite' ); ?></h2>
+					<h2><?php WPHS_Admin::wphub_mark(); ?><?php esc_html_e( 'Connecting to the console', 'statwrite' ); ?></h2>
 					<span class="wphs-pill is-green"><?php esc_html_e( 'Site key connected', 'statwrite' ); ?></span>
 				</div>
 				<?php if ( $is_admin ) : ?>
@@ -174,7 +174,7 @@ $category_select = static function ( $name, $selected, $id ) {
 				<section class="wphs-card">
 					<div class="wphs-card-head">
 						<h2><?php esc_html_e( 'New article', 'statwrite' ); ?></h2>
-						<span class="wphs-muted"><?php esc_html_e( 'Written by the console', 'statwrite' ); ?></span>
+						<span class="wphs-muted"><?php WPHS_Admin::wphub_mark(); ?><?php esc_html_e( 'Written by the console', 'statwrite' ); ?></span>
 					</div>
 					<form class="wphs-form-grid" data-wphs-action="console_create">
 						<label class="is-wide"><span><?php esc_html_e( 'Topic or title', 'statwrite' ); ?> *</span>

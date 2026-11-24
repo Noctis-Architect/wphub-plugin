@@ -46,7 +46,7 @@ $month_label = static function ( $months ) {
 		<div class="wphs-hero-brand">
 			<span class="wphs-logo"><img src="<?php echo esc_url( WPHS_URL . 'assets/logo.png' ); ?>" alt="" width="38" height="38"></span>
 			<div>
-				<h1 class="wphs-title"><?php esc_html_e( 'Statwrite Settings', 'statwrite' ); ?></h1>
+				<h1 class="wphs-title"><?php esc_html_e( 'Statwrite Settings', 'statwrite' ); ?> <?php WPHS_Admin::byline(); ?></h1>
 				<p class="wphs-sub"><?php esc_html_e( 'Console connection, privacy and data retention', 'statwrite' ); ?></p>
 			</div>
 		</div>
@@ -79,7 +79,7 @@ $month_label = static function ( $months ) {
 
 		<section class="wphs-card">
 			<div class="wphs-card-head">
-				<h2><?php esc_html_e( 'WP-Hub console', 'statwrite' ); ?></h2>
+				<h2><?php WPHS_Admin::wphub_mark(); ?><?php esc_html_e( 'WP-Hub console', 'statwrite' ); ?></h2>
 				<?php if ( '' === $token ) : ?>
 					<span class="wphs-pill"><?php esc_html_e( 'Not connected', 'statwrite' ); ?></span>
 				<?php elseif ( $ping_ok ) : ?>

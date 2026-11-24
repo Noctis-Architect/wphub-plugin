@@ -174,7 +174,7 @@ $channel_classes = array(
 		<div class="wphs-hero-brand">
 			<span class="wphs-logo"><img src="<?php echo esc_url( WPHS_URL . 'assets/logo.png' ); ?>" alt="" width="38" height="38"></span>
 			<div>
-				<h1 class="wphs-title"><?php esc_html_e( 'Statwrite Dashboard', 'statwrite' ); ?></h1>
+				<h1 class="wphs-title"><?php esc_html_e( 'Statwrite Dashboard', 'statwrite' ); ?> <?php WPHS_Admin::byline(); ?></h1>
 				<p class="wphs-sub"><?php echo $token_set ? esc_html__( 'Site analytics, speed, security, and monitoring', 'statwrite' ) : esc_html__( 'Lightweight pageview and engagement analytics', 'statwrite' ); ?></p>
 			</div>
 		</div>
